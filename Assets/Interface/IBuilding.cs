@@ -12,7 +12,7 @@ public interface IBuilding
     string CommentEnglish { get; }
     Troop Troop { get; }
     List<ActionScope> ActionScopes { get; }
-    List<BuildingLabelSO> Label { get; }
+    BuildingLabelSO Label { get; }
     uint Exp { get; }
     List<MainBuildingSO> Requirement { get; }
     Vector2Int Area { get; }

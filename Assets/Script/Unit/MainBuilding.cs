@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class mainBuilding : MonoBehaviour
+public class MainBuilding : MonoBehaviour
 {
-    
+    public MainBuildingSO mainBuildSO;
+
+    public Page page;
+
 }

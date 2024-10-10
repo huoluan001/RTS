@@ -160,9 +160,9 @@ GameObject:
   m_Component:
   - component: {fileID: 707351846523863637}
   - component: {fileID: 3068762701592717135}
-  - component: {fileID: 4449270609487937670}
+  - component: {fileID: -9157760106830693231}
   m_Layer: 5
-  m_Name: Sequence
+  m_Name: Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486519808654510009}
   m_CullTransparentMesh: 1
---- !u!114 &4449270609487937670
+--- !u!114 &-9157760106830693231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,29 +206,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1486519808654510009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea97107a19aa7463784aa0a4cf143c19, type: 3}
+  m_Script: {fileID: 11500000, guid: e3340dc67d1984f4c92591cb7ff48e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainBuilding: {fileID: 0}
+  sequences: []
+  images: []
   isShow: 0
-  images:
-  - {fileID: 5154588298384684222}
-  - {fileID: 7690033644114292483}
-  - {fileID: 4049562988806032268}
-  - {fileID: 1522970075125509189}
-  - {fileID: 1239926734609805048}
-  - {fileID: 5016501843340152488}
-  - {fileID: 8900881924009821351}
-  - {fileID: 316772618192081985}
-  - {fileID: 967274918476147889}
-  - {fileID: 6219054932697795757}
-  - {fileID: 431720539453650092}
-  - {fileID: 8180237830255498167}
-  - {fileID: 6975815944106758669}
-  - {fileID: 5697467765185626018}
-  - {fileID: 5776859532990112805}
-  BuildingInfos: []
-  ArmorInfos: []
-  currentProduce: 0
 --- !u!1 &1733460051766494005
 GameObject:
   m_ObjectHideFlags: 0
