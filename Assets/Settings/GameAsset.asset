@@ -16,7 +16,11 @@ MonoBehaviour:
   selectionBoxUI: {fileID: 0}
   eventSystem: {fileID: 0}
   graphicRaycaster: {fileID: 0}
-  sequencePrefab: {fileID: 1486519808654510009, guid: 116980c90f1d54153bf29f98192186c4, type: 3}
+  sequencePagePrefab: {fileID: 0}
   cameraMoveVector2: {x: 0, y: 0}
   cameraMoveSpeed: 20
   cameraRotationSpeed: 0
+  buildLabel:
+  - {fileID: 11400000, guid: 26d9ab9b5093b43e0a83dd9f9e4dd04d, type: 2}
+  - {fileID: 11400000, guid: 8fe0d0b338bef480ab8a04bc96416b8b, type: 2}
+  ProductionLabel: []

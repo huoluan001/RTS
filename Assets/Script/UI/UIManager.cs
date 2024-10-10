@@ -6,10 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject selectionBoxUI;
     public GameAsset gameAsset;
-
-    public Sequence currentSequence;
-    public Dictionary<SequenceType, Page> pages;
-
+    public MainBuildingPage mainBuildingPage;
 
     public GameObject sequencesParent;
 
@@ -17,35 +14,52 @@ public class UIManager : MonoBehaviour
     {
         gameAsset.selectionBoxUI = selectionBoxUI;
         gameAsset.graphicRaycaster = GetComponent<GraphicRaycaster>();
-        // CreateSequence(SequenceType.MainBuildingSequence);
-        // UpdateSequence();
-    }
 
-    public void CreatePage(SequenceType sequenceType)
+        CreateSequence(SequenceType.MainBuildingSequence);
+    }
+    public void CreateMainBuildingSequence()
     {
         GameObject sequenceGameObject = Instantiate(gameAsset.sequencePagePrefab);
-        var page = sequenceGameObject.GetComponent<Page>();
+        var page = sequenceGameObject.GetComponent<MainBuildingPage>();
+        page.sequenceType = SequenceType.MainBuildingSequence;
         page.transform.SetParent(sequencesParent.transform, false);
-        if(sequenceType == SequenceType.MainBuildingSequence)
-        {
-            page.buildingInfos = gameAsset.factionSO.MainBuildings;
-        }
-        else if(sequenceType == SequenceType.InfantrySequence || 
-                    sequenceType == SequenceType.VehicleSequence || 
-                        sequenceType == SequenceType.VehicleSequence || 
-                            sequenceType == SequenceType.DockSequence) 
-        {
-            page.armyInfos = gameAsset.factionSO.Infantry;
-        }
+        page.Infos = gameAsset.factionSO.MainBuildings;
         page.isShow = true;
     }
+    // public void CreateArmyPage(SequenceType sequenceType)
+    // {
+    //     GameObject sequenceGameObject = Instantiate(gameAsset.sequencePagePrefab);
+    //     var page = sequenceGameObject.GetComponent<Page>();
+    //     page.sequenceType = sequenceType;
+    //     page.transform.SetParent(sequencesParent.transform, false);
+    //     if(sequenceType == SequenceType.MainBuildingSequence)
+    //     {
+    //         page.buildingInfos = gameAsset.factionSO.MainBuildings;
+    //     }
+    //     else if(sequenceType == SequenceType.InfantrySequence || 
+    //                 sequenceType == SequenceType.VehicleSequence || 
+    //                     sequenceType == SequenceType.VehicleSequence || 
+    //                         sequenceType == SequenceType.DockSequence) 
+    //     {
+    //         page.armyInfos = gameAsset.factionSO.Infantry;
+    //     }
+    //     page.isShow = true;
+    // }
 
     public void CreateSequence(SequenceType sequenceType)
     {
-        if(!pages.ContainsKey(sequenceType))
+        if(sequenceType == SequenceType.MainBuildingSequence)
         {
-            CreatePage(sequenceType);
+            if(mainBuildingPage)
+            {
+                CreateMainBuildingSequence();
+            }
+            mainBuildingPage.AddSequence();
         }
-        pages[sequenceType].AddSequence();
+        // if(!pages.ContainsKey(sequenceType))
+        // {
+        //     CreatePage(sequenceType);
+        // }
+        // pages[sequenceType].AddSequence();
     }
 }

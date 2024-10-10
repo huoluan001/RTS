@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine;
-public class Sequence : MonoBehaviour
+public class MainBuildingSequence
 {
+    public uint sequenceIndex;
+    public LinkedList<MainBuildingProduceTask> produceTasks;
 
-    public float currentProduce;
+    public bool isRun;
 
 
     private void Start()
@@ -15,7 +17,7 @@ public class Sequence : MonoBehaviour
 
     private void Update()
     {
-
+    
     }
 
     
