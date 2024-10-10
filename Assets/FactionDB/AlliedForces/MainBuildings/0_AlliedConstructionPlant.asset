@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
+  m_Name: 0_AlliedConstructionPlant
+  m_EditorClassIdentifier: 
+  faction: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10100
+  nameChinese: "\u76DF\u519B\u5EFA\u9020\u5382"
+  nameEnglish: AlliedConstructionPlant
+  icon: {fileID: 21300000, guid: 98db09ffdc5824b818e76c9440d3ce5b, type: 3}
+  commentChinese: "\u76DF\u519B\u6218\u5730\u603B\u90E8\u3002\u5B83\u4EEC\u5177\u5907\u751F\u4EA7\u80FD\u529B\uFF0C\u751F\u4EA7\u5E76\u53EF\u8D4B\u4E88\u79D1\u6280\u8BB8\u53EF\u7ED9\u90BB\u8FD1\u8BBE\u65BD"
+  commentEnglish: 
+  troop: 0
+  actionScopes: 0000000001000000
+  label:
+  - {fileID: 11400000, guid: 26d9ab9b5093b43e0a83dd9f9e4dd04d, type: 2}
+  exp: 10000
+  requirement: []
+  area: {x: 4, y: 4}
+  buildingAndPlacementTime: {x: 0, y: 2}
+  expandScope: {x: 40, y: 40}
+  buildingPrice: 5000
+  warningAndClearFogRad: {x: 150, y: 1000}
+  powerConsume: 50
+  skills:
+  - skillNameZH: "\u6536\u8D77"
+    skillNameEN: 
+    icon: {fileID: 21300000, guid: bc4375029468144b9868bea6b58407ab, type: 3}
+    commentChinese: "\u53D8\u6362\u4E3A\u53EF\u4EE5\u5728\u65B0\u5730\u70B9\u91CD\u65B0\u90E8\u7F72\u7684\u79FB\u52A8\u57FA\u5730\u8F66"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 2
+  armorType: {fileID: 11400000, guid: 5bb9267ecfd6a4584aee22f5e32250d1, type: 2}
+  hp: 4000

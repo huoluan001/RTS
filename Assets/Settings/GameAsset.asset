@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9622922921f1467383678a213c3e1dc, type: 3}
+  m_Name: GameAsset
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 0}
+  selectionBoxUI: {fileID: 0}
+  eventSystem: {fileID: 0}
+  graphicRaycaster: {fileID: 0}
+  sequencePrefab: {fileID: 1486519808654510009, guid: 116980c90f1d54153bf29f98192186c4, type: 3}
+  cameraMoveVector2: {x: 0, y: 0}
+  cameraMoveSpeed: 20
+  cameraRotationSpeed: 0

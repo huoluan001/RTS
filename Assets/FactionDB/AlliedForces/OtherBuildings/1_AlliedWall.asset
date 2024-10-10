@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda795255295f4312af0b7182d87b8ba, type: 3}
+  m_Name: 1_AlliedWall
+  m_EditorClassIdentifier: 
+  faction: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10201
+  nameChinese: "\u76DF\u519B\u56F4\u5899"
+  nameEnglish: AlliedWall
+  icon: {fileID: 21300000, guid: 5555a6f439add47ebb85b200ce10b22f, type: 3}
+  commentChinese: "\u5E76\u6392\u5B89\u7F6E\u4E24\u9053\u5899\uFF0C\u53EF\u4EE5\u7B51\u8D77\u4E00\u9053\u6C34\u6CE5\u969C\u58C1\u963B\u788D\u654C\u65B9\u90E8\u961F"
+  commentEnglish: 
+  troop: 0
+  actionScopes: 00000000
+  label:
+  - {fileID: 11400000, guid: de5539a24ec12449bbb78c576d2a478e, type: 2}
+  exp: 0
+  requirement: []
+  area: {x: 1, y: 1}
+  buildingAndPlacementTime: {x: 0, y: 5}
+  expandScope: {x: 0, y: 0}
+  buildingPrice: 10
+  warningAndClearFogRad: {x: 10, y: 50}
+  powerConsume: 0
+  weapons: []
+  skills: []
+  armorType: {fileID: 11400000, guid: e51b230520bfd426a96dc2156844a670, type: 2}
+  hp: 0
