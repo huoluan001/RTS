@@ -15,7 +15,7 @@ public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
     [Tooltip("中文备注"), TextArea(), SerializeField] private string commentChinese;
     [Tooltip("英文备注"), TextArea(), SerializeField] private string commentEnglish;
-    [Tooltip("Icon"), SerializeField] private Texture2D icon;  
+    [Tooltip("Icon"), SerializeField] private Sprite icon;  
     [Tooltip("兵种"), SerializeField] private Troop troop;
     [Tooltip("行动范围"), SerializeField] private List<ActionScope> actionScopeList;
     [Tooltip("移动速度"), SerializeField] private Vector3 moveSpeed;
@@ -40,7 +40,7 @@ public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill
     public string NameEnglish => nameEnglish;
     public string CommentChinese => commentChinese;
     public string CommentEnglish => commentEnglish;
-    public Texture2D Icon => icon;
+    public Sprite Icon => icon;
     public Troop Troop => troop;
     public List<ActionScope> ActionScopeList => actionScopeList;
     public Vector3 MoveSpeed => moveSpeed;

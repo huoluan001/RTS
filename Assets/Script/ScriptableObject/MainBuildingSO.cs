@@ -18,7 +18,7 @@ public class MainBuildingSO : ScriptableObject, IBuilding,ISkill
     [Tooltip("英文备注"), TextArea(), SerializeField] private string commentEnglish;
     [Tooltip("兵种"), SerializeField] private Troop troop;
     [Tooltip("活动范围"), SerializeField] private List<ActionScope> actionScopes;
-    [Tooltip("用途"), SerializeField] private List<BuildingLabelSO> label;
+    [Tooltip("用途"), SerializeField] private BuildingLabelSO label;
     [Tooltip("经验"), SerializeField] private uint exp;
     [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
     [Tooltip("占地面积"), SerializeField] private Vector2Int area;
@@ -40,7 +40,7 @@ public class MainBuildingSO : ScriptableObject, IBuilding,ISkill
     public string CommentEnglish => commentEnglish;
     public Troop Troop => troop;
     public List<ActionScope> ActionScopes => actionScopes;
-    public List<BuildingLabelSO> Label => label;
+    public BuildingLabelSO Label => label;
     public uint Exp => exp;
     public List<MainBuildingSO> Requirement => requirement;
     public Vector2Int Area => area;

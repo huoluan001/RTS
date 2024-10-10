@@ -10,7 +10,7 @@ interface IArmy
     string NameEnglish { get; }
     string CommentChinese { get; }
     string CommentEnglish { get; }
-    Texture2D Icon { get; }
+    Sprite Icon { get; }
     Troop Troop { get; }
     List<ActionScope> ActionScopeList { get; }
     Vector3 MoveSpeed { get; }
