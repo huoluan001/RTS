@@ -2,9 +2,17 @@ using UnityEngine;
 
 public class MainBuildingProduceTask
 {
-    public uint unit_Id;
+    public MainBuildingSO info;
     public float timeSingle;
     public uint count;
+    public bool isRun;
+
+    public MainBuildingProduceTask(MainBuildingSO info)
+    {
+        this.info = info;
+        timeSingle = info.BuildingAndPlacementTime.x;
+
+    }
 
     public void AddTaskPlus()
     {
