@@ -15,7 +15,7 @@ public class GameAsset : ScriptableObject
     public GameObject selectionBoxUI;
     [HideInInspector] public EventSystem eventSystem;
     [HideInInspector] public GraphicRaycaster graphicRaycaster;
-    public GameObject sequencePagePrefab;
+    public GameObject mainBuildingSequencePagePrefab;
 
     // CameraMove
     public Vector2 cameraMoveVector2;

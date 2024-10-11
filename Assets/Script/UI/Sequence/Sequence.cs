@@ -4,11 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System.Threading.Tasks;
-public class MainBuildingSequence
+public class Sequence<TScriptableIbject>
 {
     public uint sequenceIndex;
-    public MainBuildingPage mainBuildingPage;
-    public LinkedList<MainBuildingProduceTask> produceTasks;
+    public Page<TScriptableIbject> Page;
+    public LinkedList<ProduceTask<TScriptableIbject>> produceTasks;
 
     public uint currentSequenceMaxTaskCount = 1;
 
@@ -18,7 +18,7 @@ public class MainBuildingSequence
         // nex task
         if(tasks.Count() == 0)
         {
-            produceTasks.AddLast(new MainBuildingProduceTask(info));
+            produceTasks.AddLast(new ProduceTask<TScriptableIbject>(info));
             tasks[0].AddTask();
         }
         // old task add count

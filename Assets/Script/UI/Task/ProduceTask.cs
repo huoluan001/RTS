@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class MainBuildingProduceTask
+public class ProduceTask<TScriptableIbject>
 {
     public MainBuildingSO info;
     public float timeSingle;
     public uint count;
     public bool isRun;
 
-    public MainBuildingProduceTask(MainBuildingSO info)
+    public ProduceTask(MainBuildingSO info)
     {
         this.info = info;
         timeSingle = info.BuildingAndPlacementTime.x;
