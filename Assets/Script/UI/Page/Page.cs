@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using System.Linq;
 
-public class Page<TScriptableIbject> : MonoBehaviour
+public class Page<TScriptableIbject> : MonoBehaviour where TScriptableIbject : IBaseInfo
 {
     public GameAsset gameAsset;
     public MainBuilding mainBuilding;
     public Transform contentTransform;
     public SequenceType sequenceType;
-    public List<MainBuildingSO> Infos;
+    public List<TScriptableIbject> Infos;
     public List<Sequence<TScriptableIbject>> buildingSequences = new List<Sequence<TScriptableIbject>>();
     public bool isShow;
     private uint nextSequenceIndex = 1;

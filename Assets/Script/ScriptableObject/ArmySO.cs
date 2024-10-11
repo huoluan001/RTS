@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "ArmyOS", menuName = "ScriptableObjects/Data/ArmyOS"), SerializeField]
-public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill
+public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill,IBaseInfo
 {
     [Header("Info")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
@@ -42,7 +42,7 @@ public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill
     public string CommentEnglish => commentEnglish;
     public Sprite Icon => icon;
     public Troop Troop => troop;
-    public List<ActionScope> ActionScopeList => actionScopeList;
+    public List<ActionScope> ActionScopes => actionScopeList;
     public Vector3 MoveSpeed => moveSpeed;
     public uint Exp => exp;
     public bool IsAmphibious => isAmphibious;
@@ -54,8 +54,9 @@ public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill
     public uint BuildingTime => buildingTime;
     public uint BuildingPrice => buildingPrice;
     public MainBuildingSO BuildFacilities => buildFacilities;
-    public ArmorSO Armor => armor;
+    public ArmorSO ArmorType => armor;
     public uint Hp => hp;
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
+
 }
