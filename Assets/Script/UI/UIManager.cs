@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     // 四个兵种的page。暂时略
     // public Page<ArmySO> ;
 
-    public GameObject sequencesParent;
+    public GameObject pageParent;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
             GameObject sequenceGameObject = Instantiate(gameAsset.mainBuildingSequencePagePrefab);
             var page = sequenceGameObject.GetComponent<Page<MainBuildingSO>>();
             page.sequenceType = sequenceType;
-            page.transform.SetParent(sequencesParent.transform, false);
+            page.transform.SetParent(pageParent.transform, false);
             page.Infos = gameAsset.factionSO.MainBuildings;
             page.isShow = true;
             mainBuildingPage = page;
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
             GameObject sequenceGameObject = Instantiate(gameAsset.mainBuildingSequencePagePrefab);
             var page = sequenceGameObject.GetComponent<Page<OtherBuildingSO>>();
             page.sequenceType = sequenceType;
-            page.transform.SetParent(sequencesParent.transform, false);
+            page.transform.SetParent(pageParent.transform, false);
             page.Infos = gameAsset.factionSO.MainBuildings;
             page.isShow = true;
             otherBuildingPage = page;
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
             GameObject sequenceGameObject = Instantiate(gameAsset.mainBuildingSequencePagePrefab);
             var page = sequenceGameObject.GetComponent<Page<ArmySO>>();
             page.sequenceType = SequenceType.MainBuildingSequence;
-            page.transform.SetParent(sequencesParent.transform, false);
+            page.transform.SetParent(pageParent.transform, false);
             page.Infos = gameAsset.factionSO.MainBuildings;
             page.isShow = true;
             // Page = page;
