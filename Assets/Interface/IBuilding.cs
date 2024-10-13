@@ -3,11 +3,7 @@ using UnityEngine;
 
 public interface IBuilding
 {
-    
-    
-   
     BuildingLabelSO Label { get; }
-   
     List<MainBuildingSO> Requirement { get; }
     Vector2Int Area { get; }
     Vector2Int BuildingAndPlacementTime { get; }

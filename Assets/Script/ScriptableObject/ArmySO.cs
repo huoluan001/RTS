@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "ArmyOS", menuName = "ScriptableObjects/Data/ArmyOS"), SerializeField]
-public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill,IBaseInfo
+public class ArmySO : ScriptableObject, IArmy, IWeapon, ISkill, IBaseInfo
 {
     [Header("Info")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
@@ -15,7 +15,7 @@ public class ArmySO : ScriptableObject,IArmy,IWeapon,ISkill,IBaseInfo
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
     [Tooltip("中文备注"), TextArea(), SerializeField] private string commentChinese;
     [Tooltip("英文备注"), TextArea(), SerializeField] private string commentEnglish;
-    [Tooltip("Icon"), SerializeField] private Sprite icon;  
+    [Tooltip("Icon"), SerializeField] private Sprite icon;
     [Tooltip("兵种"), SerializeField] private Troop troop;
     [Tooltip("行动范围"), SerializeField] private List<ActionScope> actionScopeList;
     [Tooltip("移动速度"), SerializeField] private Vector3 moveSpeed;
