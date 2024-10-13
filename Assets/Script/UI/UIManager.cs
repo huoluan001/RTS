@@ -6,60 +6,61 @@ public class UIManager : MonoBehaviour
 {
     public GameObject selectionBoxUI;
     public GameAsset gameAsset;
-    public MainBuildingPage mainBuildingPage;
+    public Page<MainBuildingSO> mainBuildingPage;
+    public Page<OtherBuildingSO> otherBuildingPage;
+    // 四个兵种的page。暂时略
+    // public Page<ArmySO> ;
 
-    public GameObject sequencesParent;
+    public GameObject pageParent;
 
     private void Start()
     {
         gameAsset.selectionBoxUI = selectionBoxUI;
         gameAsset.graphicRaycaster = GetComponent<GraphicRaycaster>();
 
-        CreateSequence(SequenceType.MainBuildingSequence);
+        // CreatePage(SequenceType.MainBuildingSequence);
     }
-    public void CreateMainBuildingSequence()
-    {
-        GameObject sequenceGameObject = Instantiate(gameAsset.sequencePagePrefab);
-        var page = sequenceGameObject.GetComponent<MainBuildingPage>();
-        page.sequenceType = SequenceType.MainBuildingSequence;
-        page.transform.SetParent(sequencesParent.transform, false);
-        page.Infos = gameAsset.factionSO.MainBuildings;
-        page.isShow = true;
-    }
-    // public void CreateArmyPage(SequenceType sequenceType)
-    // {
-    //     GameObject sequenceGameObject = Instantiate(gameAsset.sequencePagePrefab);
-    //     var page = sequenceGameObject.GetComponent<Page>();
-    //     page.sequenceType = sequenceType;
-    //     page.transform.SetParent(sequencesParent.transform, false);
-    //     if(sequenceType == SequenceType.MainBuildingSequence)
-    //     {
-    //         page.buildingInfos = gameAsset.factionSO.MainBuildings;
-    //     }
-    //     else if(sequenceType == SequenceType.InfantrySequence || 
-    //                 sequenceType == SequenceType.VehicleSequence || 
-    //                     sequenceType == SequenceType.VehicleSequence || 
-    //                         sequenceType == SequenceType.DockSequence) 
-    //     {
-    //         page.armyInfos = gameAsset.factionSO.Infantry;
-    //     }
-    //     page.isShow = true;
-    // }
 
-    public void CreateSequence(SequenceType sequenceType)
+
+    public void CreatePage(SequenceType sequenceType, MainBuilding addPageBuilding)
     {
-        if(sequenceType == SequenceType.MainBuildingSequence)
+        // 主建筑
+        if (sequenceType == SequenceType.MainBuildingSequence)
         {
-            if(mainBuildingPage)
-            {
-                CreateMainBuildingSequence();
-            }
-            mainBuildingPage.AddSequence();
+            GameObject sequenceGameObject = Instantiate(gameAsset.mainBuildingSequencePagePrefab);
+            var page = sequenceGameObject.AddComponent<Page<MainBuildingSO>>();
+            page.gameAsset = gameAsset;
+            page.mainBuilding = addPageBuilding;
+            page.sequenceType = sequenceType;
+            page.transform.SetParent(pageParent.transform, false);
+            page.Infos = gameAsset.factionSO.MainBuildings;
+            page.isShow = true;
+            mainBuildingPage = page;
         }
-        // if(!pages.ContainsKey(sequenceType))
+        // // 其他建筑
+        // else if (sequenceType == SequenceType.OtherBuildingSequence)
         // {
-        //     CreatePage(sequenceType);
+        //     GameObject sequenceGameObject = Instantiate(gameAsset.mainBuildingSequencePagePrefab);
+        //     var page = sequenceGameObject.GetComponent<Page<OtherBuildingSO>>();
+        //     page.sequenceType = sequenceType;
+        //     page.transform.SetParent(pageParent.transform, false);
+        //     page.Infos = gameAsset.factionSO.MainBuildings;
+        //     page.isShow = true;
+        //     otherBuildingPage = page;
         // }
-        // pages[sequenceType].AddSequence();
+        // // 军队
+        // else
+        // {
+        //     GameObject sequenceGameObject = Instantiate(gameAsset.mainBuildingSequencePagePrefab);
+        //     var page = sequenceGameObject.GetComponent<Page<ArmySO>>();
+        //     page.sequenceType = SequenceType.MainBuildingSequence;
+        //     page.transform.SetParent(pageParent.transform, false);
+        //     page.Infos = gameAsset.factionSO.MainBuildings;
+        //     page.isShow = true;
+        //     // Page = page;
+        // }
+        
+
+
     }
 }

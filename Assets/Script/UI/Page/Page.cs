@@ -5,25 +5,25 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using System.Linq;
 
-public class MainBuildingPage : MonoBehaviour
+public class Page<TScriptableIbject> : MonoBehaviour where TScriptableIbject : IBaseInfo
 {
+    public GameAsset gameAsset;
     public MainBuilding mainBuilding;
     public Transform contentTransform;
     public SequenceType sequenceType;
-    public GameAsset gameAsset;
-    public List<Image> images;
+    public List<TScriptableIbject> Infos;
+    public List<Sequence<TScriptableIbject>> buildingSequences = new List<Sequence<TScriptableIbject>>();
     public bool isShow;
-    public List<MainBuildingSO> Infos;
-    public List<MainBuildingSequence> buildingSequences = new List<MainBuildingSequence>();
     private uint nextSequenceIndex = 1;
     private RectTransform rectTransform;
+    
     void Start()
     {
-        images = contentTransform.GetComponentsInChildren<Image>().ToList();
         rectTransform = GetComponent<RectTransform>();
         if (isShow) Show();
         else Hide();
         UpdateContainImage();
+        AddSequence();
     }
 
     private void Update()
@@ -41,6 +41,7 @@ public class MainBuildingPage : MonoBehaviour
 
     private void UpdateContainImage()
     {
+        List<Image> images = contentTransform.GetComponentsInChildren<Image>().ToList();
         for (int i = 0; i < Infos.Count; i++)
             images[i].sprite = Infos[i].Icon;
         for (int i = Infos.Count; i < images.Count; i++)
@@ -51,11 +52,10 @@ public class MainBuildingPage : MonoBehaviour
     {
         if (sequenceType == SequenceType.MainBuildingSequence)
         {
-            var mainBuildingSequence = new MainBuildingSequence();
-            buildingSequences.Add(mainBuildingSequence);
+            var sequence = new Sequence<TScriptableIbject>();
+            buildingSequences.Add(sequence);
+            sequence.sequenceIndex = nextSequenceIndex;
             nextSequenceIndex++;
-
-
         }
     }
 

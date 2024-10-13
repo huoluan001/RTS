@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "MainBuildingSO", menuName = "ScriptableObjects/Data/MainBuildingSO")]
-public class MainBuildingSO : ScriptableObject, IBuilding,ISkill
+public class MainBuildingSO : ScriptableObject, IBuilding,ISkill,IBaseInfo
 {
     [Header("info")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
