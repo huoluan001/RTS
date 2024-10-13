@@ -4,42 +4,56 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System.Threading.Tasks;
-public class Sequence<TScriptableIbject>
+public class Sequence<TScriptableObject> where TScriptableObject : IBaseInfo
 {
     public uint sequenceIndex;
-    public Page<TScriptableIbject> Page;
-    public LinkedList<ProduceTask<TScriptableIbject>> produceTasks;
-
+    public Page<TScriptableObject> page;
+    public Dictionary<TScriptableObject, ProduceTask<TScriptableObject>> produceTasks;
     public uint currentSequenceMaxTaskCount = 1;
 
-    public void AddTask(MainBuildingSO info)
+    public Sequence()
     {
-        var tasks = produceTasks.Where(task => task.info == info).ToArray();
-        // nex task
-        if(tasks.Count() == 0)
+        if(page.sequenceType == SequenceType.MainBuildingSequence 
+            || page.sequenceType == SequenceType.OtherBuildingSequence)
         {
-            produceTasks.AddLast(new ProduceTask<TScriptableIbject>(info));
-            tasks[0].AddTask();
+            currentSequenceMaxTaskCount = 1;
         }
-        // old task add count
         else
         {
-            tasks[0].AddTask();
+            currentSequenceMaxTaskCount = 99;
         }
     }
 
-    public void RemoveTask()
+    public void AddTask(TScriptableObject info, bool isPlus)
     {
-
+        // new task
+        if(!produceTasks.ContainsKey(info))
+        {
+            produceTasks.Add(info, new ProduceTask<TScriptableObject>(info));
+        }
+        if(isPlus)
+        {
+            produceTasks[info].AddTaskPlus();
+        }
+        else
+        {
+            produceTasks[info].AddTask();
+        } 
     }
 
-    public void ClearTask()
+    public void CancalTask(TScriptableObject info)
     {
-
+        if(produceTasks.ContainsKey(info))
+        {
+            produceTasks[info].CancalTask();
+        }
     }
 
-
-    
-
-    
+    public void ClearTask(TScriptableObject info)
+    {
+        if(produceTasks.ContainsKey(info))
+        {
+            produceTasks.Remove(info);
+        }
+    }
 }

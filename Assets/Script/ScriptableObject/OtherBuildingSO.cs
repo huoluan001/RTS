@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "OtherBuildingSO", menuName = "ScriptableObjects/Data/OtherBuildingSO")]
-public class OtherBuildingSO : ScriptableObject, IBuilding,IWeapon,ISkill, IBaseInfo
+public class OtherBuildingSO : ScriptableObject, IBuilding, IWeapon, ISkill, IBaseInfo
 {
     [Header("info")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
@@ -31,7 +31,7 @@ public class OtherBuildingSO : ScriptableObject, IBuilding,IWeapon,ISkill, IBase
     [Tooltip("技能组"), SerializeField] private List<Skill> skills;
     [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
     [Tooltip("生命值"), SerializeField] private uint hp;
-    
+
     public FactionSO Faction => faction;
     public uint Id => id;
     public string NameChinese => nameChinese;

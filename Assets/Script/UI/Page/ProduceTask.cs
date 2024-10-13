@@ -1,38 +1,42 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
-public class ProduceTask<TScriptableIbject>
+public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
 {
-    public MainBuildingSO info;
-    public float timeSingle;
-    public uint count;
+    public dynamic info;
+    
+    private uint _count;
+    private uint Count => _count;
     public bool isRun;
-
-    public ProduceTask(MainBuildingSO info)
+    private float timeSingle;
+    public ProduceTask(TScriptableObject info)
     {
-        this.info = info;
-        timeSingle = info.BuildingAndPlacementTime.x;
-
+        if(info is MainBuildingSO mainBuildingSO)
+        {
+            this.info = mainBuildingSO;
+        }
+        else if (info is OtherBuildingSO otherBuildingSO)
+        {
+            this.info = otherBuildingSO;
+        }
+        else if (info is ArmySO armySO)
+        {
+            this.info = armySO;
+        }
+        
+        
     }
 
     public void AddTaskPlus()
     {
-        count+=5;
+        _count += 5;
     }
     public void AddTask()
     {
-        count++;
+        _count++;
     }
     public void CancalTask()
     {
-        count--;
-        if(count < 0)
-        {
-            count = 0;
-        }
-    }
-
-    public void ClearTask()
-    {
-        count = 0;
+        _count--;
     }
 }

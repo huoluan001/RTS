@@ -5,15 +5,16 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using System.Linq;
 
-public class Page<TScriptableIbject> : MonoBehaviour where TScriptableIbject : IBaseInfo
+public class Page<TScriptableObject> : MonoBehaviour where TScriptableObject : IBaseInfo
 {
     public GameAsset gameAsset;
     public MainBuilding mainBuilding;
     public Transform contentTransform;
     public SequenceType sequenceType;
-    public List<TScriptableIbject> Infos;
-    public List<Sequence<TScriptableIbject>> buildingSequences = new List<Sequence<TScriptableIbject>>();
+    public List<TScriptableObject> Infos;
+    public List<Sequence<TScriptableObject>> buildingSequences = new List<Sequence<TScriptableObject>>();
     public bool isShow;
+    public uint currentSequenceIndex;
     private uint nextSequenceIndex = 1;
     private RectTransform rectTransform;
     
@@ -52,7 +53,8 @@ public class Page<TScriptableIbject> : MonoBehaviour where TScriptableIbject : I
     {
         if (sequenceType == SequenceType.MainBuildingSequence)
         {
-            var sequence = new Sequence<TScriptableIbject>();
+            var sequence = new Sequence<TScriptableObject>();
+            sequence.page = this;
             buildingSequences.Add(sequence);
             sequence.sequenceIndex = nextSequenceIndex;
             nextSequenceIndex++;

@@ -13,5 +13,4 @@ public interface IArmy
     uint BuildingTime { get; }
     uint BuildingPrice { get; }
     MainBuildingSO BuildFacilities { get; }
-    
 }
