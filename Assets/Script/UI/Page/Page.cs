@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Rendering;
 using System.Linq;
-
+st
 public class Page<TScriptableObject> : MonoBehaviour where TScriptableObject : IBaseInfo
 {
     public GameAsset gameAsset;
