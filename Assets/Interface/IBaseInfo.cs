@@ -14,6 +14,9 @@ public interface IBaseInfo
     List<ActionScope> ActionScopes { get; }
     uint Exp { get; }
     uint Hp { get; }
+    uint BuildingPrice { get; }
+    List<MainBuildingSO> Requirement { get; }
+    Vector2Int WarningAndClearFogRad { get; }
     ArmorSO ArmorType { get; }
 
 }

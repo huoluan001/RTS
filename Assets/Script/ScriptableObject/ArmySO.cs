@@ -25,7 +25,7 @@ public class ArmySO : ScriptableObject, IArmy, IWeapon, ISkill, IBaseInfo
     [Tooltip("碾压等级/被碾压等级"), SerializeField] private CrushList crushingAndCrushedLevel;
     [Tooltip("警戒/清雾半径"), SerializeField] private Vector2Int warningAndClearFogRad;
     [Tooltip("标签"), SerializeField] private List<ArmyLabelSO> labels;
-    [Tooltip("科技前提"), SerializeField] private List<GameObject> requirement;
+    [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
     [Tooltip("建造时间"), SerializeField] private uint buildingTime;
     [Tooltip("建造价格"), SerializeField] private uint buildingPrice;
     [Tooltip("建造设施"), SerializeField] private MainBuildingSO buildFacilities;
@@ -50,7 +50,7 @@ public class ArmySO : ScriptableObject, IArmy, IWeapon, ISkill, IBaseInfo
     public CrushList CrushingAndCrushedLevel => crushingAndCrushedLevel;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
     public List<ArmyLabelSO> Labels => labels;
-    public List<GameObject> Requirement => requirement;
+    public List<MainBuildingSO> Requirement => requirement;
     public uint BuildingTime => buildingTime;
     public uint BuildingPrice => buildingPrice;
     public MainBuildingSO BuildFacilities => buildFacilities;
@@ -58,5 +58,4 @@ public class ArmySO : ScriptableObject, IArmy, IWeapon, ISkill, IBaseInfo
     public uint Hp => hp;
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
-
 }
