@@ -24,6 +24,7 @@ public class Sequence<TScriptableObject> where TScriptableObject : IBaseInfo
         }
     }
 
+
     public void AddTask(TScriptableObject info, bool isPlus)
     {
         // new task

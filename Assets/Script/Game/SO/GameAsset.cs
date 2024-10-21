@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "GameAsset", menuName = "ScriptableObjects/Programming/GameAsset")]
 public class GameAsset : ScriptableObject
 {
+    public Player commander;
     // inputSystem
     public RTSInputSystem inputSystem;
     public RTSInputSystem.PlayerActions player;
