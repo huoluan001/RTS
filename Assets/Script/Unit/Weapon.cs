@@ -5,18 +5,26 @@ using UnityEngine;
 [Serializable]
 public class Weapon
 {
+    
     public string WeaponNameZH;
     public string WeaponNameEN;
     
+    [Header("Damage")]
     [Tooltip("伤害类型")] public DamageTypeSO damageType;
+    [Tooltip("单发伤害"), SerializeField] private Vector2 _singleDamage;
     [Tooltip("弹夹大小")] public float magazineSize;
     [Tooltip("射程"),SerializeField] public Vector2 _range;
-    [Tooltip("溅射半径"),SerializeField] private Vector2 _sputteringRadius;
-    [Tooltip("溅射伤害"), SerializeField] private Vector2 _sputteringDamage;
-    [Tooltip("单发伤害"), SerializeField] private Vector2 _singleDamage;
+
+    [Header("Time")]
+    [Tooltip("弹夹装填时间"), SerializeField] private Vector2 _magazineLoadingTime;
     [Tooltip("瞄准时间"), SerializeField] private Vector2 _aimingTime;
     [Tooltip("开火持续时间"), SerializeField] private Vector2 _firingDuration;
-    [Tooltip("弹夹装填时间"), SerializeField] private Vector2 _magazineLoadingTime;
+
+    [Header("溅射")]
+    [Tooltip("溅射半径"),SerializeField] private Vector2 _sputteringRadius;
+    [Tooltip("溅射伤害"), SerializeField] private Vector2 _sputteringDamage;
+
+    [Header("info")]
     [Tooltip("一轮攻击时间"), SerializeField] private Vector2 _oneAttackTime;
     [Tooltip("一轮攻击伤害"), SerializeField] private Vector2 _oneAttackDamage;
     [Tooltip("DPS"), SerializeField] private Vector2 _DPS;
