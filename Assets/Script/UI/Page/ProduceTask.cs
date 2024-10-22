@@ -7,11 +7,11 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
     public dynamic info;
     private uint _count;
     private uint Count => _count;
-    public bool isRun;
     public float value = 0;
     private float produceSpeed4Price;
     private float produceSpeed4Value;
     private GameObject gameObjectPrefab;
+
     public ProduceTask(TScriptableObject info)
     {
         
@@ -39,7 +39,7 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
     {
         if(gameAsset.commander.Fund < produceSpeed4Price * Time.deltaTime)
         {
-            // 停止
+            gameAsset.commander.ProduceStop();
         }
         else
         {

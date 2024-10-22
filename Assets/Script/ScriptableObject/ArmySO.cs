@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 
@@ -33,6 +34,7 @@ public class ArmySO : ScriptableObject, IArmy, IWeapon, ISkill, IBaseInfo
     [Tooltip("技能"), SerializeField] private List<Skill> skills;
     [Tooltip("护甲类型"), SerializeField] private ArmorSO armor;
     [Tooltip("生命值"), SerializeField] public uint hp;
+    [Tooltip("预制体"), SerializeField] public GameObject gameObjectPrefab;
 
     public FactionSO Faction => faction;
     public uint Id => id;
@@ -58,4 +60,5 @@ public class ArmySO : ScriptableObject, IArmy, IWeapon, ISkill, IBaseInfo
     public uint Hp => hp;
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
+    public GameObject GameObjectPrefab => gameObjectPrefab;
 }

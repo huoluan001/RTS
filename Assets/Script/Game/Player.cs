@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public uint PowerProduction = 0;
     public uint PowerConsumption = 0;
     public float Fund;
+    public bool isRunningProduce = true;
 
     public CommandModel commandModel = CommandModel.None;
     public CommandType commandType = CommandType.None;
@@ -31,6 +32,15 @@ public class Player : MonoBehaviour
     public void Pay(float value)
     {
         Fund -= value;
+    }
+
+    public void ProduceStart()
+    {
+        isRunningProduce = true;
+    }
+    public void ProduceStop()
+    {
+        isRunningProduce = false;
     }
 
 }

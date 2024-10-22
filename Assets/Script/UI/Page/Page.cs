@@ -5,19 +5,18 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using System.Linq;
 
-public class Page<TScriptableObject> : MonoBehaviour where TScriptableObject : IBaseInfo
+public class Page : MonoBehaviour
 {
     public GameAsset gameAsset;
     public MainBuilding mainBuilding;
     public Transform contentTransform;
     public SequenceType sequenceType;
-    public List<TScriptableObject> Infos;
-    public List<Sequence<TScriptableObject>> buildingSequences = new List<Sequence<TScriptableObject>>();
+    public List<Sequence> sequences = new List<Sequence>();
     public bool isShow;
     public uint currentSequenceIndex;
     private uint nextSequenceIndex = 1;
-    private RectTransform rectTransform;
     
+    private RectTransform rectTransform;
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -29,7 +28,10 @@ public class Page<TScriptableObject> : MonoBehaviour where TScriptableObject : I
 
     private void Update()
     {
-
+        if(gameAsset.commander.isRunningProduce)
+        {
+            sequences.ForEach(sequence => sequence.ProductionMovesForward());
+        }
     }
     private void Show()
     {
@@ -42,20 +44,21 @@ public class Page<TScriptableObject> : MonoBehaviour where TScriptableObject : I
 
     private void UpdateContainImage()
     {
+        var infos = sequences.Where(sequence => sequence.sequenceIndex == currentSequenceIndex).ToArray().First().baseInfos;
         List<Image> images = contentTransform.GetComponentsInChildren<Image>().ToList();
-        for (int i = 0; i < Infos.Count; i++)
-            images[i].sprite = Infos[i].Icon;
-        for (int i = Infos.Count; i < images.Count; i++)
+        for (int i = 0; i < infos.Count; i++)
+            images[i].sprite = infos[i].Icon;
+        for (int i = infos.Count; i < images.Count; i++)
             images[i].sprite = null;
     }
 
     public void AddSequence()
-    {
+    { 
         if (sequenceType == SequenceType.MainBuildingSequence)
         {
-            var sequence = new Sequence<TScriptableObject>();
+            var sequence = new Sequence();
             sequence.page = this;
-            buildingSequences.Add(sequence);
+            sequences.Add(sequence);
             sequence.sequenceIndex = nextSequenceIndex;
             nextSequenceIndex++;
         }

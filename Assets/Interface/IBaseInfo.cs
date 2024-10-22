@@ -18,5 +18,6 @@ public interface IBaseInfo
     List<MainBuildingSO> Requirement { get; }
     Vector2Int WarningAndClearFogRad { get; }
     ArmorSO ArmorType { get; }
+    GameObject GameObjectPrefab { get; }
 
 }

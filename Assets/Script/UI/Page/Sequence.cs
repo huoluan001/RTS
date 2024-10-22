@@ -4,12 +4,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System.Threading.Tasks;
-public class Sequence<TScriptableObject> where TScriptableObject : IBaseInfo
+public class Sequence
 {
     public uint sequenceIndex;
-    public Page<TScriptableObject> page;
-    public Dictionary<TScriptableObject, ProduceTask<TScriptableObject>> produceTasks;
+    public FactionSO factionSO;
+    public Page page;
+    public List<IBaseInfo> baseInfos;
+    public Dictionary<IBaseInfo, ProduceTask<IBaseInfo>> produceTasks;
+    public bool isRunning;
     public uint currentSequenceMaxTaskCount = 1;
+
+    
 
     public Sequence()
     {
@@ -24,13 +29,21 @@ public class Sequence<TScriptableObject> where TScriptableObject : IBaseInfo
         }
     }
 
+    public void ProductionMovesForward()
+    {
+        // 序列的第一个任务向前生产
+        produceTasks.First().Value.ProductionMovesForward();
+        
 
-    public void AddTask(TScriptableObject info, bool isPlus)
+    }
+
+
+    public void AddTask(IBaseInfo info, bool isPlus)
     {
         // new task
         if(!produceTasks.ContainsKey(info))
         {
-            produceTasks.Add(info, new ProduceTask<TScriptableObject>(info));
+            produceTasks.Add(info, new ProduceTask<IBaseInfo>(info));
         }
         if(isPlus)
         {
@@ -42,7 +55,7 @@ public class Sequence<TScriptableObject> where TScriptableObject : IBaseInfo
         } 
     }
 
-    public void CancalTask(TScriptableObject info)
+    public void CancalTask(IBaseInfo info)
     {
         if(produceTasks.ContainsKey(info))
         {
@@ -50,7 +63,7 @@ public class Sequence<TScriptableObject> where TScriptableObject : IBaseInfo
         }
     }
 
-    public void ClearTask(TScriptableObject info)
+    public void ClearTask(IBaseInfo info)
     {
         if(produceTasks.ContainsKey(info))
         {

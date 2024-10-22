@@ -8,6 +8,7 @@ using UnityEngine;
 public class FactionSO : ScriptableObject
 {
     public Faction Faction;
+    public Dictionary<SequenceType, IBaseInfo> factionInfos;
     public List<MainBuildingSO> MainBuildings;
     public List<OtherBuildingSO> OtherBuildings;
 
