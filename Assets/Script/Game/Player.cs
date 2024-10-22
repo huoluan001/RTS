@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     public Technology MaxTechnology = Technology.T1;
     public uint PowerProduction = 0;
     public uint PowerConsumption = 0;
-    public uint Fund;
+    public float Fund;
+    public bool isRunningProduce = true;
 
     public CommandModel commandModel = CommandModel.None;
     public CommandType commandType = CommandType.None;
@@ -25,6 +26,21 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         gameAsset.factionSO = factionSO;
+    }
+
+
+    public void Pay(float value)
+    {
+        Fund -= value;
+    }
+
+    public void ProduceStart()
+    {
+        isRunningProduce = true;
+    }
+    public void ProduceStop()
+    {
+        isRunningProduce = false;
     }
 
 }

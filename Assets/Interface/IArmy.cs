@@ -4,13 +4,11 @@ using UnityEngine;
 
 public interface IArmy
 {
-    bool IsAmphibious { get; }
+    Vector3 MoveSpeed { get; }
     bool3 IsReverseMove { get; }
+    bool IsAmphibious { get; }
     CrushList CrushingAndCrushedLevel { get; }
-    Vector2Int WarningAndClearFogRad { get; }
     List<ArmyLabelSO> Labels { get; }
-    List<GameObject> Requirement { get; }
     uint BuildingTime { get; }
-    uint BuildingPrice { get; }
     MainBuildingSO BuildFacilities { get; }
 }
