@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
 {
-    public GameAsset gameAsset;
     public dynamic info;
+    public Sequence sequence;
     private uint _count;
     private uint Count => _count;
     public float value = 0;
     private float produceSpeed4Price;
     private float produceSpeed4Value;
     private GameObject gameObjectPrefab;
+
 
     public ProduceTask(TScriptableObject info)
     {
@@ -37,17 +38,30 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
 
     public void ProductionMovesForward()
     {
-        if(gameAsset.commander.Fund < produceSpeed4Price * Time.deltaTime)
+        var commander = GameManager.gameAsset.commander;
+        if(commander.Fund < produceSpeed4Price * Time.deltaTime)
         {
-            gameAsset.commander.ProduceStop();
+            commander.ProduceStop();
         }
         else
         {
-            gameAsset.commander.Pay(produceSpeed4Price * Time.deltaTime);
+            commander.Pay(produceSpeed4Price * Time.deltaTime);
             value += produceSpeed4Value * Time.deltaTime;
             if(value >= 1)
             {
-                // end
+                // end 完成一次生产
+                var gameObject = GameObject.Instantiate(gameObjectPrefab);
+                _count--;
+                if(_count == 0)
+                {
+                    sequence.EndCurrentTaskCallBack();
+                }
+                else
+                {
+                    value = 0;
+                }
+                
+
             }
         }
     }
@@ -60,7 +74,7 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
     {
         _count++;
     }
-    public void CancalTask()
+    public void ReductionOneTask()
     {
         _count--;
     }

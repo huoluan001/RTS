@@ -31,6 +31,7 @@ public class OtherBuildingSO : ScriptableObject, IBuilding, IWeapon, ISkill, IBa
     [Tooltip("技能组"), SerializeField] private List<Skill> skills;
     [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
     [Tooltip("生命值"), SerializeField] private uint hp;
+    [Tooltip("预制体"), SerializeField] public GameObject gameObjectPrefab;
 
     public FactionSO Faction => faction;
     public uint Id => id;
@@ -54,4 +55,5 @@ public class OtherBuildingSO : ScriptableObject, IBuilding, IWeapon, ISkill, IBa
     public uint Hp => hp;
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
+    public GameObject GameObjectPrefab => gameObjectPrefab;
 }
