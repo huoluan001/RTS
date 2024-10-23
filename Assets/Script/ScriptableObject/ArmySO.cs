@@ -6,7 +6,7 @@ using UnityEditor.EditorTools;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "ArmyOS", menuName = "ScriptableObjects/Data/ArmyOS"), SerializeField]
+[CreateAssetMenu(fileName = "ArmySO", menuName = "ScriptableObjects/Data/ArmySO"), SerializeField]
 public class ArmySO : ScriptableObject,IBaseInfo, IArmy, IWeapon, ISkill
 {
     [Header("IBaseInfo")]

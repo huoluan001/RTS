@@ -7,6 +7,13 @@ using UnityEngine;
 public class CrushList : SerializableDictionary<CrushLabel, Vector2> {}
 
 [Serializable]
+public class MainBuildingSOPageElement : SerializableDictionary<uint, MainBuildingSO> {}
+[Serializable]
+public class OtherBuildingSOPageElement : SerializableDictionary<uint, OtherBuildingSO> {}
+[Serializable]
+public class ArmySOPageElement : SerializableDictionary<uint, ArmySO> {}
+
+[Serializable]
 public class DamageModifiers : SerializableDictionary<DamageTypeSO, int> {}
 
 [Serializable]

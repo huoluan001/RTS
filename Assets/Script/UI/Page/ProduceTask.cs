@@ -19,19 +19,19 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
         if(info is MainBuildingSO mainBuildingSO)
         {
             this.info = mainBuildingSO;
-            produceSpeed4Price = info.BuildingPrice / mainBuildingSO.BuildingAndPlacementTime.x;
+            produceSpeed4Price = info.Price / mainBuildingSO.BuildingAndPlacementTime.x;
             produceSpeed4Value = 1 / mainBuildingSO.BuildingAndPlacementTime.x;
         }
         else if (info is OtherBuildingSO otherBuildingSO)
         {
             this.info = otherBuildingSO;
-            produceSpeed4Price = info.BuildingPrice / otherBuildingSO.BuildingAndPlacementTime.x;
+            produceSpeed4Price = info.Price / otherBuildingSO.BuildingAndPlacementTime.x;
             produceSpeed4Value = 1 / otherBuildingSO.BuildingAndPlacementTime.x;
         }
         else if (info is ArmySO armySO)
         {
             this.info = armySO;
-            produceSpeed4Price = info.BuildingPrice / armySO.BuildingTime;
+            produceSpeed4Price = info.Price / armySO.BuildingTime;
             produceSpeed4Value = 1 / armySO.BuildingTime;
         }
     }
