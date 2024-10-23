@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e53224bc51cc40dbac682c55205757e, type: 3}
   m_Name: 1_BuildingAlliedBuilding
   m_EditorClassIdentifier: 
-  elementIndex: 201
+  elementIndex: 1
   LableNameZH: "\u5EFA\u9020\u76DF\u519B\u5EFA\u7B51"
   LabelNameEN: BuildingAlliedBuilding

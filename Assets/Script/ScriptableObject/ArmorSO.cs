@@ -10,18 +10,18 @@ using System.Linq;
 [CreateAssetMenu(fileName = "ArmorSO", menuName = "ScriptableObjects/Data/ArmorSO")]
 public class ArmorSO : ScriptableObject
 {
-    [SerializeField] private uint elementIndex;
+    [SerializeField] private int elementIndex;
     [SerializeField] private string armorNameZH;
     [SerializeField] private string armorNameEN;
     [SerializeField] private DamageModifiers damageModifiers;
 
-    public uint ElementIndex => elementIndex;
+    public int ElementIndex => elementIndex;
     public string ArmorNameZH => armorNameZH;
     public string ArmorNameEN => armorNameEN;
     public DamageModifiers DamageModifiers => damageModifiers;
 
-    public void SetIndex(uint index) => elementIndex = index;
-    public void SetArmorNameZH(string newName) => armorNameEN = newName;
+    public void SetIndex(int index) => elementIndex = index;
+    public void SetArmorNameZH(string newName) => armorNameZH = newName;
     public void SetArmorNameEN(string newName) => armorNameEN = newName;
 
     public void SetDamageModifiers(DamageTypeSO damage, int value) => damageModifiers[damage] = value;

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e53224bc51cc40dbac682c55205757e, type: 3}
   m_Name: 13_PositionalDefense
   m_EditorClassIdentifier: 
+  elementIndex: 13
   LableNameZH: "\u9635\u5730\u9632\u5FA1"
   LabelNameEN: PositionalDefense

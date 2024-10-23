@@ -12,24 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3e25e395ec4ec188056256baa55c2, type: 3}
   m_Name: 1_MainBuildingArmor
   m_EditorClassIdentifier: 
-  elementIndex: 101
-  armorNameZH: "\u4E3B\u5EFA\u7B51\u62A4\u7532"
-  armorNameEN: MainBuildingArmor
+  elementIndex: 0
+  armorNameZH: 
+  armorNameEN: 
   damageModifiers:
-    m_keys:
-    - {fileID: 11400000, guid: 23b462395bdd34483b52941f8662e8f3, type: 2}
-    - {fileID: 11400000, guid: a916f73c3fd4f40fb94583527c1c1683, type: 2}
-    - {fileID: 11400000, guid: ba9e7a61bf2524edf86ebea62bd24f2a, type: 2}
-    - {fileID: 11400000, guid: 84ee9967b914c4c558ad2ac5cf4cb259, type: 2}
-    - {fileID: 11400000, guid: b57fd4cce5026428eb72a68a9147f5eb, type: 2}
-    - {fileID: 11400000, guid: 1e8873ebd77bb4cbb993f02d3248b4ee, type: 2}
-    - {fileID: 11400000, guid: fea6ca6468fec418f95099fca8f88c14, type: 2}
-    - {fileID: 11400000, guid: 9f5ff46317242470bb3e9b0a5329f2ba, type: 2}
-    - {fileID: 11400000, guid: fe901d04e2ede4abf85b72651329d764, type: 2}
-    - {fileID: 11400000, guid: 176ac90b6c9424972ad8bac833b19e0d, type: 2}
-    - {fileID: 11400000, guid: 7b195a8e248a24f8091007b2da6687ca, type: 2}
-    - {fileID: 11400000, guid: d61b899387f89426fa5a01d7245b505c, type: 2}
-    - {fileID: 11400000, guid: bc03d2c37c6a04bc3bf42172764c0aa4, type: 2}
-    - {fileID: 11400000, guid: 93cb89a5daadd45e7b7826958cea5636, type: 2}
-    - {fileID: 11400000, guid: b4cd3545521244c62b9f45233093fdbb, type: 2}
-    m_values: 0000000000000000640000003200000064000000640000006400000064000000640000007d0000006400000064000000640000006400000000000000
+    m_keys: []
+    m_values: 

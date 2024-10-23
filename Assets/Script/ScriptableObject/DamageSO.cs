@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DamageTypeSO", menuName = "ScriptableObjects/Data/DamageTypeSO")]
 public class DamageTypeSO : ScriptableObject
 {
-    public uint index;
+    public int index;
     public string damageTypeZH;
     public string damageTypeEN;
 

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 7_Penetration
   m_EditorClassIdentifier: 
-  elementIndex: 0
+  elementIndex: 7
   LableNameZH: "\u6E17\u900F"
   LabelNameEN: Penetration

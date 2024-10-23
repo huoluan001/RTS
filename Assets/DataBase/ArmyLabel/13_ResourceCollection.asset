@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 13_ResourceCollection
   m_EditorClassIdentifier: 
-  elementIndex: 0
+  elementIndex: 13
   LableNameZH: "\u8D44\u6E90\u91C7\u96C6"
   LabelNameEN: ResourceCollection

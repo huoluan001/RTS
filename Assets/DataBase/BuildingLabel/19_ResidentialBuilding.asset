@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e53224bc51cc40dbac682c55205757e, type: 3}
   m_Name: 19_ResidentialBuilding
   m_EditorClassIdentifier: 
+  elementIndex: 19
   LableNameZH: "\u5165\u9A7B\u5EFA\u7B51"
   LabelNameEN: ResidentialBuilding

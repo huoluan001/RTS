@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 1_AntiInfantry
   m_EditorClassIdentifier: 
-  elementIndex: 301
+  elementIndex: 1
   LableNameZH: "\u53CD\u6B65\u5175"
   LabelNameEN: AntiInfantry

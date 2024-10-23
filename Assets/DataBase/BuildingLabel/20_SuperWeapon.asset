@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e53224bc51cc40dbac682c55205757e, type: 3}
   m_Name: 20_SuperWeapon
   m_EditorClassIdentifier: 
+  elementIndex: 20
   LableNameZH: "\u8D85\u7EA7\u6B66\u5668"
   LabelNameEN: SuperWeapon

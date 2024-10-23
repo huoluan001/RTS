@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 4_AdvancedAntiArmor
   m_EditorClassIdentifier: 
-  elementIndex: 304
+  elementIndex: 4
   LableNameZH: "\u5148\u8FDB\u53CD\u88C5\u7532"
   LabelNameEN: AdvancedAntiArmor

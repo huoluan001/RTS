@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1b2509ee825407db8c3b0fdda7bded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainBuildingSOPage: {fileID: 0}
+  mainBuildingSOPage: {fileID: 11400000, guid: a23d3141f834f48f69fabda3214eb0e5, type: 2}
   otherBuildingSOPage: {fileID: 0}
   armySOPage: {fileID: 0}
   excelFilePath: Assets/DataBase/RTS.xlsx
@@ -156,6 +156,8 @@ MonoBehaviour:
   buildingLabelPath: 
   damageTypePath: /DataBase/DamageType
   factionDBPath: 
+  row: 0
+  col: 0
 --- !u!4 &32866508
 Transform:
   m_ObjectHideFlags: 0

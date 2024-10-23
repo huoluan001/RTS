@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e53224bc51cc40dbac682c55205757e, type: 3}
   m_Name: 11_ProductionMecha
   m_EditorClassIdentifier: 
+  elementIndex: 11
   LableNameZH: "\u751F\u4EA7\u673A\u7532"
   LabelNameEN: ProductionMecha
