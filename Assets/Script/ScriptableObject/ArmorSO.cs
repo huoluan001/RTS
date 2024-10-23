@@ -14,10 +14,18 @@ public class ArmorSO : ScriptableObject
     [SerializeField] private string armorNameZH;
     [SerializeField] private string armorNameEN;
     [SerializeField] private DamageModifiers damageModifiers;
-    public DamageModifiers DamageModifiers => damageModifiers;
+
+    public uint ElementIndex => elementIndex;
     public string ArmorNameZH => armorNameZH;
     public string ArmorNameEN => armorNameEN;
-    public uint ElementIndex => elementIndex;
+    public DamageModifiers DamageModifiers => damageModifiers;
+
+    public void SetIndex(uint index) => elementIndex = index;
+    public void SetArmorNameZH(string newName) => armorNameEN = newName;
+    public void SetArmorNameEN(string newName) => armorNameEN = newName;
+
+    public void SetDamageModifiers(DamageTypeSO damage, int value) => damageModifiers[damage] = value;
+
 
 
     // 肉搏,Melee;
