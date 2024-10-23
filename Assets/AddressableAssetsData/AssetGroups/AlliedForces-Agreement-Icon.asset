@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AlliedForces-Agreement-Icon
+  m_EditorClassIdentifier: 
+  m_GroupName: AlliedForces-Agreement-Icon
+  m_GUID: 7ca8f17da6d23445e8c292b2fe001c76
+  m_SerializeEntries:
+  - m_GUID: 1b5accbb9c4ad40e9b170eabfac4cf6d
+    m_Address: "\u65F6\u7A7A\u70B8\u5F39"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2807ab0d37a374559a541bd45019b6e5
+    m_Address: "\u8D85\u65F6\u7A7A\u88C2\u53E3"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29c58b76f0745467da0b90adc31cd813
+    m_Address: "\u51B7\u51BB\u6253\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d845d923d9014f959ae40d5d9280cd8
+    m_Address: "\u5148\u8FDB\u822A\u7A7A\u5B66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 430f6c5918abc45afabbe7a1a513b00a
+    m_Address: "\u7EC8\u6781\u5B9A\u65F6\u70B8\u5F39"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c5f9211d11884a6492c6bb6e9f8cc14
+    m_Address: "\u8D85\u65F6\u7A7A\u4E92\u6362"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63c0ff550716d4215962f9cf90236f1e
+    m_Address: "\u8D85\u65F6\u7A7A\u6DF1\u6E0A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f50849b3028d42fc917ba23b9ab207b
+    m_Address: "\u51B7\u51BB\u66B4\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7121a7ecb09cf48c091b843243ca09d8
+    m_Address: "\u7CBE\u786E\u6253\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a60d40ac1862401180c99851deb0cbc
+    m_Address: "\u81EA\u7531\u8D38\u6613"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a94a313f2b2ae4dad98cf9fb98be9c01
+    m_Address: "\u8D85\u65F6\u7A7A\u88C2\u7F1D"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1dcc19d7d2c844c7a8f9bd7aa46e545
+    m_Address: "\u51B7\u51BB\u8F70\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba30e92d1732040c386827cdd96faf8d
+    m_Address: "\u8D85\u7EA7\u5B9A\u65F6\u70B8\u5F39"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0c9d5510919a49158b8a71ca1653760
+    m_Address: "\u9AD8\u79D1\u6280"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea9afd19d08344d81961f4409b40a889
+    m_Address: "\u76D1\u89C6\u626B\u63CF"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Agreement
+    - AlliedForces
+    - Icon
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4e7b53770dd334abe832499c0f9f724a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 3f734234e61a148fb964428847bea8f5, type: 2}
+    - {fileID: 11400000, guid: 74a0b4fe17126491caf48ede43754e8a, type: 2}

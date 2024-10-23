@@ -24,11 +24,11 @@ MonoBehaviour:
   m_InternalBundleIdMode: 1
   m_AssetLoadMode: 0
   m_BundledAssetProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
   m_AssetBundleProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_EnableJsonCatalog: 0
@@ -59,8 +59,13 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 962bed2af1a2940f5aff8baf7008332e, type: 2}
+  - {fileID: 11400000, guid: 79eeb922ec917425b962f24c30e677fb, type: 2}
   - {fileID: 11400000, guid: 52df608cb96774b799c25e788e308cde, type: 2}
+  - {fileID: 11400000, guid: bb50342e33f9a41ffa21af41dc4a5ac4, type: 2}
+  - {fileID: 11400000, guid: 97a24639000f845fa80eb22a95ad55f8, type: 2}
   - {fileID: 11400000, guid: c67895e52b4e9471394fec2bbead443f, type: 2}
+  - {fileID: 11400000, guid: 457b99e079db249feb9ec0aaca546cc4, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -100,6 +105,22 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - MainBuilding
+    - OtherBuilding
+    - Infantry
+    - Vehicle
+    - Dock
+    - Aircraft
+    - Unit
+    - Skill
+    - Agreement
+    - AlliedForces
+    - Empire
+    - SovietUnion
+    - AlliedForces
+    - Icon
+    - Aircraft
+    - Unit
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: a416ecc77aba24679a695d0251a40240, type: 2}

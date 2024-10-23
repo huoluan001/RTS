@@ -152,10 +152,10 @@ MonoBehaviour:
   armySOPage: {fileID: 0}
   excelFilePath: Assets/DataBase/RTS.xlsx
   armorTypePath: /DataBase/ArmorType
-  armyLabelPath: 
-  buildingLabelPath: 
+  armyLabelPath: /DataBase/ArmyType
+  buildingLabelPath: /DataBase/BuildingType
   damageTypePath: /DataBase/DamageType
-  factionDBPath: 
+  factionDBPath: /Faction
   row: 0
   col: 0
 --- !u!4 &32866508
