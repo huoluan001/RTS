@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 public class Sequence
 {
     public uint sequenceIndex;
-    public FactionSO factionSO;
     public Page page;
     public List<IBaseInfo> baseInfos;
     public Dictionary<IBaseInfo, ProduceTask<IBaseInfo>> produceTasks;
-    public bool isRunning;
     public uint currentSequenceMaxTaskCount = 1;
-
-    
 
     public Sequence()
     {
@@ -33,8 +29,11 @@ public class Sequence
     {
         // 序列的第一个任务向前生产
         produceTasks.First().Value.ProductionMovesForward();
-        
+    }
 
+    public void EndCurrentTaskCallBack()
+    {
+        produceTasks.Remove(produceTasks.First().Key);
     }
 
 
@@ -52,14 +51,15 @@ public class Sequence
         else
         {
             produceTasks[info].AddTask();
-        } 
+        }
+        produceTasks[info].sequence = this;
     }
 
     public void CancalTask(IBaseInfo info)
     {
         if(produceTasks.ContainsKey(info))
         {
-            produceTasks[info].CancalTask();
+            produceTasks[info].ReductionOneTask();
         }
     }
 

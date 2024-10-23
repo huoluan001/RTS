@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 14_Commandos
   m_EditorClassIdentifier: 
-  elementIndex: 0
+  elementIndex: 14
   LableNameZH: "\u7A81\u51FB\u961F\u5458"
   LabelNameEN: 

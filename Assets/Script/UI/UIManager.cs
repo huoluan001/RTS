@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public GameObject selectionBoxUI;
     public GameAsset gameAsset;
-    public Page<MainBuildingSO> mainBuildingPage;
-    public Page<OtherBuildingSO> otherBuildingPage;
+    public Page mainBuildingPage;
+    public Page otherBuildingPage;
     // 四个兵种的page。暂时略
     // public Page<ArmySO> ;
 
@@ -28,12 +29,11 @@ public class UIManager : MonoBehaviour
         if (sequenceType == SequenceType.MainBuildingSequence)
         {
             GameObject sequenceGameObject = Instantiate(gameAsset.mainBuildingSequencePagePrefab);
-            var page = sequenceGameObject.AddComponent<Page<MainBuildingSO>>();
+            var page = sequenceGameObject.AddComponent<Page>();
             page.gameAsset = gameAsset;
             page.mainBuilding = addPageBuilding;
             page.sequenceType = sequenceType;
             page.transform.SetParent(pageParent.transform, false);
-            page.Infos = gameAsset.factionSO.MainBuildings;
             page.isShow = true;
             mainBuildingPage = page;
         }

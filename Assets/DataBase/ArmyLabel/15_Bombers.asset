@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 15_Bombers
   m_EditorClassIdentifier: 
-  elementIndex: 0
+  elementIndex: 15
   LableNameZH: "\u8F70\u70B8\u673A"
   LabelNameEN: Bombers

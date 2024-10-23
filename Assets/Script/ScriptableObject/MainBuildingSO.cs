@@ -6,9 +6,9 @@ using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "MainBuildingSO", menuName = "ScriptableObjects/Data/MainBuildingSO")]
-public class MainBuildingSO : ScriptableObject, IBuilding, ISkill, IBaseInfo
+public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
 {
-    [Header("info")]
+    [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
     [Tooltip("编号"), SerializeField] private uint id;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
@@ -18,19 +18,24 @@ public class MainBuildingSO : ScriptableObject, IBuilding, ISkill, IBaseInfo
     [Tooltip("英文备注"), TextArea(), SerializeField] private string commentEnglish;
     [Tooltip("兵种"), SerializeField] private Troop troop;
     [Tooltip("活动范围"), SerializeField] private List<ActionScope> actionScopes;
-    [Tooltip("用途"), SerializeField] private BuildingLabelSO label;
     [Tooltip("经验"), SerializeField] private uint exp;
-    [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
-    [Tooltip("占地面积"), SerializeField] private Vector2Int area;
-    [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
-    [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
-    [Tooltip("建造价格"), SerializeField] private uint buildingPrice;
-    [Tooltip("警戒/清雾半径"), SerializeField] private Vector2Int warningAndClearFogRad;
-    [Tooltip("电力消耗"), SerializeField] private int powerConsume;
-    [Tooltip("技能组"), SerializeField] private List<Skill> skills;
-    [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
     [Tooltip("生命值"), SerializeField] private uint hp;
+    [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
+    [Tooltip("建造价格"), SerializeField] private uint price;
+    [Tooltip("警戒/清雾半径"), SerializeField] private Vector2Int warningAndClearFogRad;
+    [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
+    [Tooltip("预制体"), SerializeField] private GameObject gameObjectPrefab;
 
+    [Header("IBuilding")]
+    [Tooltip("用途"), SerializeField] private BuildingLabelSO label;
+    [Tooltip("占地面积"), SerializeField] private Vector2Int area;
+    [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
+    [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
+    [Tooltip("电力消耗"), SerializeField] private int powerConsume;
+    
+    [Header("ISkill")]
+    [Tooltip("技能组"), SerializeField] private List<Skill> skills;
+    
     public FactionSO Faction => faction;
     public uint Id => id;
     public string NameChinese => nameChinese;
@@ -46,10 +51,11 @@ public class MainBuildingSO : ScriptableObject, IBuilding, ISkill, IBaseInfo
     public Vector2Int Area => area;
     public Vector2Int BuildingAndPlacementTime => buildingAndPlacementTime;
     public Vector2Int ExpandScope => expandScope;
-    public uint BuildingPrice => buildingPrice;
+    public uint Price => price;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
     public int PowerConsume => powerConsume;
     public ArmorSO ArmorType => armorType;
     public uint Hp => hp;
     public List<Skill> Skills => skills;
+    public GameObject GameObjectPrefab => gameObjectPrefab;
 }

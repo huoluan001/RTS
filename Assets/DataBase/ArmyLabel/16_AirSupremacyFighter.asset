@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 16_AirSupremacyFighter
   m_EditorClassIdentifier: 
-  elementIndex: 0
+  elementIndex: 16
   LableNameZH: "\u5236\u7A7A\u6218\u673A"
   LabelNameEN: AirSupremacyFighter

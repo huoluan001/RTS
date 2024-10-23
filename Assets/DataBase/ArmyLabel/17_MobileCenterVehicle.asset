@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 17_MobileCenterVehicle
   m_EditorClassIdentifier: 
-  elementIndex: 0
+  elementIndex: 17
   LableNameZH: "\u79FB\u52A8\u57FA\u5730\u8F66"
   LabelNameEN: MobileCenterVehicle

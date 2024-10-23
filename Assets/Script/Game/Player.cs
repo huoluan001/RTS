@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         gameAsset.factionSO = factionSO;
+        gameAsset.commander = this;
+        GameManager.gameAsset = gameAsset;
+        
     }
 
 

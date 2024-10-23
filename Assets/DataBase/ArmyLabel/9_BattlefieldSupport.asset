@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03327348965544e7ea50db90e389bde5, type: 3}
   m_Name: 9_BattlefieldSupport
   m_EditorClassIdentifier: 
-  elementIndex: 0
+  elementIndex: 9
   LableNameZH: "\u6218\u573A\u652F\u63F4"
   LabelNameEN: BattlefieldSupport

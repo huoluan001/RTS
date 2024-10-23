@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e53224bc51cc40dbac682c55205757e, type: 3}
   m_Name: 8_ProductionLandVehicle
   m_EditorClassIdentifier: 
+  elementIndex: 8
   LableNameZH: "\u751F\u4EA7\u9646\u519B\u8F7D\u5177"
   LabelNameEN: ProductionLandVehicle

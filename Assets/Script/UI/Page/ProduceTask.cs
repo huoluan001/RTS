@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
 {
-    public GameAsset gameAsset;
     public dynamic info;
+    public Sequence sequence;
     private uint _count;
     private uint Count => _count;
     public float value = 0;
@@ -12,42 +12,57 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
     private float produceSpeed4Value;
     private GameObject gameObjectPrefab;
 
+
     public ProduceTask(TScriptableObject info)
     {
         
         if(info is MainBuildingSO mainBuildingSO)
         {
             this.info = mainBuildingSO;
-            produceSpeed4Price = info.BuildingPrice / mainBuildingSO.BuildingAndPlacementTime.x;
+            produceSpeed4Price = info.Price / mainBuildingSO.BuildingAndPlacementTime.x;
             produceSpeed4Value = 1 / mainBuildingSO.BuildingAndPlacementTime.x;
         }
         else if (info is OtherBuildingSO otherBuildingSO)
         {
             this.info = otherBuildingSO;
-            produceSpeed4Price = info.BuildingPrice / otherBuildingSO.BuildingAndPlacementTime.x;
+            produceSpeed4Price = info.Price / otherBuildingSO.BuildingAndPlacementTime.x;
             produceSpeed4Value = 1 / otherBuildingSO.BuildingAndPlacementTime.x;
         }
         else if (info is ArmySO armySO)
         {
             this.info = armySO;
-            produceSpeed4Price = info.BuildingPrice / armySO.BuildingTime;
+            produceSpeed4Price = info.Price / armySO.BuildingTime;
             produceSpeed4Value = 1 / armySO.BuildingTime;
         }
     }
 
     public void ProductionMovesForward()
     {
-        if(gameAsset.commander.Fund < produceSpeed4Price * Time.deltaTime)
+        var commander = GameManager.gameAsset.commander;
+        if(commander.Fund < produceSpeed4Price * Time.deltaTime)
         {
-            gameAsset.commander.ProduceStop();
+            commander.ProduceStop();
         }
         else
         {
-            gameAsset.commander.Pay(produceSpeed4Price * Time.deltaTime);
+            commander.Pay(produceSpeed4Price * Time.deltaTime);
             value += produceSpeed4Value * Time.deltaTime;
             if(value >= 1)
             {
-                // end
+                // end 完成一次生产
+                var gameObject = GameObject.Instantiate(gameObjectPrefab);
+                _count--;
+                if(_count == 0)
+                {
+                    sequence.EndCurrentTaskCallBack();
+                }
+                else
+                {
+                    value = 0;
+                }
+                
+
+
             }
         }
     }
@@ -60,7 +75,7 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
     {
         _count++;
     }
-    public void CancalTask()
+    public void ReductionOneTask()
     {
         _count--;
     }
