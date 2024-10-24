@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -81,7 +82,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         armorType = armorSO;
     }
 
-    public void SetDataBuildingInfo(BuildingLabelSO label, Vector2Int area, 
+    public void SetDataBuildingInfo(BuildingLabelSO label, Vector2Int area,
         Vector2Int expandScope, Vector2Int buildingAndPlacementTime, int powerConsume)
     {
         this.label = label;
@@ -93,9 +94,21 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
 
     public void SetSkill(Skill skill)
     {
-        if(skills == null)  
+        if (skills == null)
             skills = new List<Skill>();
-        skills.Add(skill);
+        var res = skills.Where(s => s.skillNameEN == skill.skillNameEN).ToList();
+        if (res.Count() == 0)
+            skills.Add(skill);
+        else
+        {
+            var sameSkill = res[0];
+            sameSkill.skillNameZH = skill.skillNameZH;
+            sameSkill.skillNameEN = skill.skillNameEN;
+            sameSkill.commentChinese = skill.commentChinese;
+            sameSkill.skillCooling = skill.skillCooling;
+            sameSkill.skillPre_Swing = skill.skillPre_Swing;
+            sameSkill.skillPost_Swing = skill.skillPost_Swing;
+        }
     }
     public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
     {
