@@ -152,12 +152,12 @@ MonoBehaviour:
   armySOPage: {fileID: 0}
   excelFilePath: Assets/DataBase/RTS.xlsx
   armorTypePath: /DataBase/ArmorType
+  damageTypePath: /DataBase/DamageType
   armyLabelPath: /DataBase/ArmyType
   buildingLabelPath: /DataBase/BuildingType
-  damageTypePath: /DataBase/DamageType
   factionDBPath: /Faction
-  row: 0
-  col: 0
+  row: 2
+  col: 7
 --- !u!4 &32866508
 Transform:
   m_ObjectHideFlags: 0

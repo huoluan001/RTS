@@ -17,17 +17,80 @@ public class DataLoad : MonoBehaviour
     public string damageTypePath;
     public string armyLabelPath;
     public string buildingLabelPath;
-
-
-    public string factionDBPath;
-
-    public int row;
-    public int col;
-
-    public void Start()
+    public string FactionDBPath;
+    public partial class MainBuildingSO
     {
-        LoadArmorData();
+        [ContextMenu("MainBuildingData")]
+        public void LoadMainDuilding()
+        {
+            // string alliedForcesMainBuildingPath = DataLoad.GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence);
+            // string empireMainBuildingPath = GetFactionPath(Faction.Empire, SequenceType.MainBuildingSequence);
+            // string sovietUnionMainBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.MainBuildingSequence);
+            // List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
+            // List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
+            // List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
+            // using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
+            {
+                // var workbook = new XSSFWorkbook(fileStream);
+                // ISheet sheet = workbook.GetSheetAt(0);
+
+                // var currentRow = sheet.GetRow(3);
+                // string factionName = currentRow.Cells[1].ToString();
+                // uint id = uint.Parse(currentRow.Cells[2].ToString());
+                // string nameZH = currentRow.Cells[3].ToString();
+                // string nameEN = currentRow.Cells[4].ToString();
+                // string comment = currentRow.Cells[5].ToString();
+
+                // string fileName = $"{id}_{nameEN}";
+                // string folderPath = null;
+                // List<string> exitsFileNames;
+                // if (factionName == "盟军")
+                // {
+                //     folderPath = alliedForcesMainBuildingPath;
+                //     exitsFileNames = alliedForcesMainBuildingSOFiles;
+                // }
+                // else if (factionName == "帝国")
+                // {
+                //     folderPath = empireMainBuildingPath;
+                //     exitsFileNames = empireMainBuildingSOFiles;
+                // }
+                // else
+                // {
+                //     folderPath = sovietUnionMainBuildingPath;
+                //     exitsFileNames = sovietUnionMainBuildingSOFiles;
+                // }
+                // string filePath = $"Assets" + folderPath + "/" + fileName;
+                // MainBuildingSO mainBuildingSO;
+                // if (exitsFileNames.Contains(fileName))
+                // {
+                //     // get
+                //     mainBuildingSO = AssetDatabase.LoadAssetAtPath<MainBuildingSO>(filePath);
+                // }
+                // else
+                // {
+                //     //create
+                //     mainBuildingSO = ScriptableObject.CreateInstance<MainBuildingSO>();
+                //     AssetDatabase.CreateAsset(mainBuildingSO, filePath);
+                // }
+
+
+
+
+
+
+
+
+            }
+
+
+        }
+
     }
+
+
+
+
+
 
 
 
@@ -75,6 +138,11 @@ public class DataLoad : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 得到一个文件路径内所有文件的文件名列表
+    /// </summary>
+    /// <param name="pathName">路径不包含Assets及其之前的路径</param>
+    /// <returns>List<string></returns>
     private List<string> GetFileNameInPath(string pathName)
     {
         var files = Directory.GetFiles(Application.dataPath + pathName);
@@ -87,7 +155,10 @@ public class DataLoad : MonoBehaviour
         return res;
     }
 
-    [ContextMenu("GetDamageTypeSOs")]
+    /// <summary>
+    /// 得到游戏伤害类型
+    /// </summary>
+    /// <returns>返回一个字典，key为伤害编号，value为DamageTypeSO</returns>
     private Dictionary<int, DamageTypeSO> GetDamageTypeSOs()
     {
         var fileNames = GetFileNameInPath(damageTypePath);
@@ -100,14 +171,37 @@ public class DataLoad : MonoBehaviour
         return res;
     }
 
+
+    private string GetFactionPath(Faction faction, SequenceType sequenceType)
+    {
+        return FactionDBPath +
+            faction switch
+            {
+                Faction.AlliedForces => "/AlliedForces",
+                Faction.Empire => "/Empire",
+                _ => "/SovietUnion"
+            } +
+            sequenceType switch
+            {
+                SequenceType.MainBuildingSequence => "/MainBuilding",
+                SequenceType.OtherBuildingSequence => "/OtherBuilding",
+                SequenceType.InfantrySequence => "/Infantry",
+                SequenceType.VehicleSequence => "/Vehicle",
+                SequenceType.DockSequence => "/Dock",
+                _ => "/Aircraft"
+            };
+    }
+
     [ContextMenu("DownloadExcel")]
     void LoadExcelAsync()
     {
-
-    }
-    public class FactionSOPath
-    {
-
+        Debug.Log(GetFileNameInPath(GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence))[0]);
+        // using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
+        // {
+        //     var workbook = new XSSFWorkbook(fileStream);
+        //     ISheet sheet = workbook.GetSheetAt(0);
+        //     Debug.Log(sheet.GetRow(row).GetCell(col).ToString());
+        // }
     }
 
 

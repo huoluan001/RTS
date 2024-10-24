@@ -6,8 +6,9 @@ using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "MainBuildingSO", menuName = "ScriptableObjects/Data/MainBuildingSO")]
-public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
+public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, ISkill
 {
+    #region SO
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
     [Tooltip("编号"), SerializeField] private uint id;
@@ -32,11 +33,13 @@ public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
     [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
     [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
     [Tooltip("电力消耗"), SerializeField] private int powerConsume;
-    
+
     [Header("ISkill")]
     [Tooltip("技能组"), SerializeField] private List<Skill> skills;
-    
-    public FactionSO Faction => faction;
+    #endregion
+
+    #region Interface
+    public FactionSO FactionSO => faction;
     public uint Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
@@ -58,4 +61,44 @@ public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
     public uint Hp => hp;
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
+    #endregion
+    public void SetDataBaseInfoNoRequirementAndGameObjectPrefab(FactionSO factionSO, uint id, string nameZH, string nameEN,
+                        string commentZH, string commentEN, Troop troop, List<ActionScope> actionScopes,
+                        uint exp, uint hp, uint price, Vector2Int warningAndClearFogRad, ArmorSO armorSO)
+    {
+        faction = factionSO;
+        this.id = id;
+        nameChinese = nameZH;
+        nameEnglish = nameEN;
+        commentChinese = commentZH;
+        commentEnglish = commentEN;
+        this.troop = troop;
+        this.actionScopes = actionScopes;
+        this.exp = exp;
+        this.hp = hp;
+        this.price = price;
+        this.warningAndClearFogRad = warningAndClearFogRad;
+        armorType = armorSO;
+    }
+
+    public void SetDataBuildingInfo(BuildingLabelSO label, Vector2Int area, 
+        Vector2Int expandScope, Vector2Int buildingAndPlacementTime, int powerConsume)
+    {
+        this.label = label;
+        this.area = area;
+        this.expandScope = expandScope;
+        this.buildingAndPlacementTime = buildingAndPlacementTime;
+        this.powerConsume = powerConsume;
+    }
+
+    public void SetSkill(Skill skill)
+    {
+        if(skills == null)  
+            skills = new List<Skill>();
+        skills.Add(skill);
+    }
+    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
+    {
+        requirement = mainBuildingSOs;
+    }
 }

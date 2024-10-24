@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IBaseInfo
 {
-    FactionSO Faction { get; }
+    FactionSO FactionSO { get; }
     uint Id { get; }
     string NameChinese { get; }
     string NameEnglish { get; }
@@ -19,5 +19,4 @@ public interface IBaseInfo
     Vector2Int WarningAndClearFogRad { get; }
     ArmorSO ArmorType { get; }
     GameObject GameObjectPrefab { get; }
-
 }
