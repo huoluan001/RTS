@@ -4,88 +4,95 @@ using UnityEditor;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using System.Collections.Generic;
-using System.Net.Http;
 using System;
-using System.Threading.Tasks;
+
+using System.Linq;
+
 public class DataLoad : MonoBehaviour
 {
     public MainBuildingSOPage mainBuildingSOPage;
     public OtherBuildingSOPage otherBuildingSOPage;
     public ArmySOPage armySOPage;
+
+    public FactionSO alliedForcesFactionSO;
+    public FactionSO empireFactionSO;
+    public FactionSO sovietUnionFactionSO;
+
     public string excelFilePath;
     public string armorTypePath;
     public string damageTypePath;
     public string armyLabelPath;
     public string buildingLabelPath;
     public string FactionDBPath;
-    public partial class MainBuildingSO
-    {
-        [ContextMenu("MainBuildingData")]
-        public void LoadMainDuilding()
-        {
-            // string alliedForcesMainBuildingPath = DataLoad.GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence);
-            // string empireMainBuildingPath = GetFactionPath(Faction.Empire, SequenceType.MainBuildingSequence);
-            // string sovietUnionMainBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.MainBuildingSequence);
-            // List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
-            // List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
-            // List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
-            // using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
-            {
-                // var workbook = new XSSFWorkbook(fileStream);
-                // ISheet sheet = workbook.GetSheetAt(0);
 
-                // var currentRow = sheet.GetRow(3);
-                // string factionName = currentRow.Cells[1].ToString();
-                // uint id = uint.Parse(currentRow.Cells[2].ToString());
-                // string nameZH = currentRow.Cells[3].ToString();
-                // string nameEN = currentRow.Cells[4].ToString();
-                // string comment = currentRow.Cells[5].ToString();
+    //[ContextMenu("MainBuildingData")]
+    // public void LoadMainDuilding()
+    // {
+    //     string alliedForcesMainBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence);
+    //     string empireMainBuildingPath = GetFactionPath(Faction.Empire, SequenceType.MainBuildingSequence);
+    //     string sovietUnionMainBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.MainBuildingSequence);
+    //     List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
+    //     List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
+    //     List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
+    //     using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
+    //     {
+    //         var workbook = new XSSFWorkbook(fileStream);
+    //         ISheet sheet = workbook.GetSheetAt(0);
 
-                // string fileName = $"{id}_{nameEN}";
-                // string folderPath = null;
-                // List<string> exitsFileNames;
-                // if (factionName == "盟军")
-                // {
-                //     folderPath = alliedForcesMainBuildingPath;
-                //     exitsFileNames = alliedForcesMainBuildingSOFiles;
-                // }
-                // else if (factionName == "帝国")
-                // {
-                //     folderPath = empireMainBuildingPath;
-                //     exitsFileNames = empireMainBuildingSOFiles;
-                // }
-                // else
-                // {
-                //     folderPath = sovietUnionMainBuildingPath;
-                //     exitsFileNames = sovietUnionMainBuildingSOFiles;
-                // }
-                // string filePath = $"Assets" + folderPath + "/" + fileName;
-                // MainBuildingSO mainBuildingSO;
-                // if (exitsFileNames.Contains(fileName))
-                // {
-                //     // get
-                //     mainBuildingSO = AssetDatabase.LoadAssetAtPath<MainBuildingSO>(filePath);
-                // }
-                // else
-                // {
-                //     //create
-                //     mainBuildingSO = ScriptableObject.CreateInstance<MainBuildingSO>();
-                //     AssetDatabase.CreateAsset(mainBuildingSO, filePath);
-                // }
+    //         var currentRow = sheet.GetRow(3);
+    //         string factionName = currentRow.Cells[1].ToString();
+    //         FactionSO factionSO;
+    //         uint id = uint.Parse(currentRow.Cells[2].ToString());
+    //         string nameZH = currentRow.Cells[3].ToString();
+    //         string nameEN = currentRow.Cells[4].ToString();
+    //         string comment = currentRow.Cells[6].ToString();
+    //         Troop troop = currentRow.Cells[7].ToString().ConvertToTroop();
+    //         List<ActionScope> actionScopes = currentRow.Cells[8].ToString().Split(',').ToList().Select(s => s.ConvertToActionScope()).ToList();
+    //         uint exp = uint.Parse(currentRow.Cells[9].ToString());
+    //         uint hp = uint.Parse(currentRow.Cells[10].ToString());
+    //         uint price = uint.Parse(currentRow.Cells[12].ToString());
+    //         Vector2Int warningAndClearFogRad = currentRow.Cells[13].ToString().ConvertToVector2Int();
+
+    //         string fileName = $"{id}_{nameEN}";
+    //         string folderPath = null;
+    //         List<string> exitsFileNames;
+    //         if (factionName == "盟军")
+    //         {
+    //             folderPath = alliedForcesMainBuildingPath;
+    //             exitsFileNames = alliedForcesMainBuildingSOFiles;
+    //             factionSO = alliedForcesFactionSO;
+    //         }
+    //         else if (factionName == "帝国")
+    //         {
+    //             folderPath = empireMainBuildingPath;
+    //             exitsFileNames = empireMainBuildingSOFiles;
+    //             factionSO = empireFactionSO;
+    //         }
+    //         else
+    //         {
+    //             folderPath = sovietUnionMainBuildingPath;
+    //             exitsFileNames = sovietUnionMainBuildingSOFiles;
+    //             factionSO = sovietUnionFactionSO;
+    //         }
+    //         string filePath = $"Assets" + folderPath + "/" + fileName;
+    //         MainBuildingSO mainBuildingSO;
+    //         if (exitsFileNames.Contains(fileName))  // get
+    //         {
+    //             mainBuildingSO = AssetDatabase.LoadAssetAtPath<MainBuildingSO>(filePath);
+    //         }
+    //         else    //create
+    //         {
+    //             mainBuildingSO = ScriptableObject.CreateInstance<MainBuildingSO>();
+    //             AssetDatabase.CreateAsset(mainBuildingSO, filePath);
+    //         }
+    //         mainBuildingSO.SetDataBaseInfoNoRequirementAndGameObjectPrefab(factionSO, id, nameZH, nameEN,
+    //             comment, null, troop, actionScopes, exp, hp, price,);
 
 
 
+    //     }
 
-
-
-
-
-            }
-
-
-        }
-
-    }
+    // }
 
 
 
@@ -205,5 +212,49 @@ public class DataLoad : MonoBehaviour
     }
 
 
+
 }
 
+public static class ConvertTo
+{
+    public static ActionScope ConvertToActionScope(this string value)
+    {
+        if (value.ToLower() == "land")
+            return ActionScope.Land;
+        else if (value.ToLower() == "ocean")
+            return ActionScope.Ocean;
+        else if (value.ToLower() == "air")
+            return ActionScope.Air;
+        else if (value.ToLower() == "submarine")
+            return ActionScope.Submarine;
+        else if (value.ToLower() == "aviation")
+            return ActionScope.Aviation;
+        else
+            return ActionScope.None;
+    }
+
+    public static Troop ConvertToTroop(this string value)
+    {
+        if (value == "建筑")
+            return Troop.Building;
+        else if (value == "步兵")
+            return Troop.Soldier;
+        else if (value == "载具")
+            return Troop.Vehicle;
+        else if (value == "科技")
+            return Troop.Technology;
+        else
+            return Troop.None;
+    }
+
+    public static Vector2Int ConvertToVector2Int(this string value)
+    {
+        int[] res = value.Split(',').Select(i => int.Parse(i)).ToArray();
+        return new Vector2Int(res[0], res[1]);
+    }
+    // public static ArmorSO ConvertToArmorSO(this string value)
+    // {
+
+    // }
+
+}

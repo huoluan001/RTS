@@ -42,7 +42,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
 
 
 
-    public FactionSO Faction => faction;
+    public FactionSO FactionSO => faction;
     public uint Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;

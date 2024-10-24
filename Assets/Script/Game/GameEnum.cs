@@ -47,7 +47,8 @@ namespace UnityEngine
         Ocean,  // 海洋
         Air,    // 空中
         Submarine,  // 下潜
-        Aviation    // 航空
+        Aviation,   // 航空
+        None,
     }
     // 兵种
     public enum Troop
@@ -55,6 +56,8 @@ namespace UnityEngine
         Building,   // 建筑
         Soldier,    // 步兵
         Vehicle,    // 载具
+        Technology,
+        None
     }
 
     // 军队行为模式

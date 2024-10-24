@@ -155,9 +155,7 @@ MonoBehaviour:
   damageTypePath: /DataBase/DamageType
   armyLabelPath: /DataBase/ArmyType
   buildingLabelPath: /DataBase/BuildingType
-  factionDBPath: /Faction
-  row: 2
-  col: 7
+  FactionDBPath: /FactionDB
 --- !u!4 &32866508
 Transform:
   m_ObjectHideFlags: 0

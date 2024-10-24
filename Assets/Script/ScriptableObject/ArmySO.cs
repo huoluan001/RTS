@@ -49,7 +49,7 @@ public class ArmySO : ScriptableObject,IBaseInfo, IArmy, IWeapon, ISkill
 
 
 
-    public FactionSO Faction => faction;
+    public FactionSO FactionSO => faction;
     public uint Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;

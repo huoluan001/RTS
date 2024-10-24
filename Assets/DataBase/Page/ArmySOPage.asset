@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b27ac66edb2e04b5391a49c9e6c7b4c8, type: 3}
+  m_Script: {fileID: 11500000, guid: c433da21c70234252af910dc5d6bb537, type: 3}
   m_Name: ArmySOPage
-  m_EditorClassIdentifier: Assembly-CSharp::ArmySOPage
-  mainBuildingSOPageElement:
+  m_EditorClassIdentifier: 
+  armySOPageElement:
     m_keys: 
     m_values: []
