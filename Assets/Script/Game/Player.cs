@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
 
     public Identity identity = Identity.Dependent;
     public Technology MaxTechnology = Technology.T1;
-    public uint PowerProduction = 0;
-    public uint PowerConsumption = 0;
+    public int PowerProduction = 0;
+    public int PowerConsumption = 0;
     public float Fund;
     public bool isRunningProduce = true;
 

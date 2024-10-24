@@ -13,6 +13,7 @@ public class DataLoad : MonoBehaviour
     public MainBuildingSOPage mainBuildingSOPage;
     public OtherBuildingSOPage otherBuildingSOPage;
     public ArmySOPage armySOPage;
+    public ArmorSOPage armorSOPage;
 
     public FactionSO alliedForcesFactionSO;
     public FactionSO empireFactionSO;
@@ -25,74 +26,82 @@ public class DataLoad : MonoBehaviour
     public string buildingLabelPath;
     public string FactionDBPath;
 
-    //[ContextMenu("MainBuildingData")]
-    // public void LoadMainDuilding()
-    // {
-    //     string alliedForcesMainBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence);
-    //     string empireMainBuildingPath = GetFactionPath(Faction.Empire, SequenceType.MainBuildingSequence);
-    //     string sovietUnionMainBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.MainBuildingSequence);
-    //     List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
-    //     List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
-    //     List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
-    //     using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
-    //     {
-    //         var workbook = new XSSFWorkbook(fileStream);
-    //         ISheet sheet = workbook.GetSheetAt(0);
+    [ContextMenu("MainBuildingData")]
+    public void LoadMainDuilding()
+    {
+        string alliedForcesMainBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence);
+        string empireMainBuildingPath = GetFactionPath(Faction.Empire, SequenceType.MainBuildingSequence);
+        string sovietUnionMainBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.MainBuildingSequence);
+        List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
+        List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
+        List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
+        var buildingLabelSOs = GetBuildingLabelSOs();
+        using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
+        {
+            var workbook = new XSSFWorkbook(fileStream);
+            ISheet sheet = workbook.GetSheetAt(0);
 
-    //         var currentRow = sheet.GetRow(3);
-    //         string factionName = currentRow.Cells[1].ToString();
-    //         FactionSO factionSO;
-    //         uint id = uint.Parse(currentRow.Cells[2].ToString());
-    //         string nameZH = currentRow.Cells[3].ToString();
-    //         string nameEN = currentRow.Cells[4].ToString();
-    //         string comment = currentRow.Cells[6].ToString();
-    //         Troop troop = currentRow.Cells[7].ToString().ConvertToTroop();
-    //         List<ActionScope> actionScopes = currentRow.Cells[8].ToString().Split(',').ToList().Select(s => s.ConvertToActionScope()).ToList();
-    //         uint exp = uint.Parse(currentRow.Cells[9].ToString());
-    //         uint hp = uint.Parse(currentRow.Cells[10].ToString());
-    //         uint price = uint.Parse(currentRow.Cells[12].ToString());
-    //         Vector2Int warningAndClearFogRad = currentRow.Cells[13].ToString().ConvertToVector2Int();
+            var currentRow = sheet.GetRow(3);
+            string factionName = currentRow.Cells[1].ToString();
+            FactionSO factionSO;
+            int id = int.Parse(currentRow.Cells[2].ToString());
+            string nameZH = currentRow.Cells[3].ToString().Trim();
+            string nameEN = currentRow.Cells[4].ToString().Trim();
+            string comment = currentRow.Cells[6].ToString().Trim();
+            Troop troop = currentRow.Cells[7].ToString().Trim().ConvertToTroop();
+            List<ActionScope> actionScopes = currentRow.Cells[8].
+                ToString().Trim().Split(',').ToList().Select(s => s.ConvertToActionScope()).ToList();
+            int exp = int.Parse(currentRow.Cells[9].ToString().Trim());
+            int hp = int.Parse(currentRow.Cells[10].ToString().Trim());
+            int price = int.Parse(currentRow.Cells[12].ToString());
+            Vector2Int warningAndClearFogRad = currentRow.Cells[13].ToString().ConvertToVector2Int();
+            ArmorSO armorSO = currentRow.Cells[14].ToString().ConvertToArmorSO(armorSOPage);
 
-    //         string fileName = $"{id}_{nameEN}";
-    //         string folderPath = null;
-    //         List<string> exitsFileNames;
-    //         if (factionName == "盟军")
-    //         {
-    //             folderPath = alliedForcesMainBuildingPath;
-    //             exitsFileNames = alliedForcesMainBuildingSOFiles;
-    //             factionSO = alliedForcesFactionSO;
-    //         }
-    //         else if (factionName == "帝国")
-    //         {
-    //             folderPath = empireMainBuildingPath;
-    //             exitsFileNames = empireMainBuildingSOFiles;
-    //             factionSO = empireFactionSO;
-    //         }
-    //         else
-    //         {
-    //             folderPath = sovietUnionMainBuildingPath;
-    //             exitsFileNames = sovietUnionMainBuildingSOFiles;
-    //             factionSO = sovietUnionFactionSO;
-    //         }
-    //         string filePath = $"Assets" + folderPath + "/" + fileName;
-    //         MainBuildingSO mainBuildingSO;
-    //         if (exitsFileNames.Contains(fileName))  // get
-    //         {
-    //             mainBuildingSO = AssetDatabase.LoadAssetAtPath<MainBuildingSO>(filePath);
-    //         }
-    //         else    //create
-    //         {
-    //             mainBuildingSO = ScriptableObject.CreateInstance<MainBuildingSO>();
-    //             AssetDatabase.CreateAsset(mainBuildingSO, filePath);
-    //         }
-    //         mainBuildingSO.SetDataBaseInfoNoRequirementAndGameObjectPrefab(factionSO, id, nameZH, nameEN,
-    //             comment, null, troop, actionScopes, exp, hp, price,);
+            string fileName = $"{id}_{nameEN}.asset";
+            string folderPath = null;
+            List<string> exitsFileNames;
+            if (factionName == "盟军")
+            {
+                folderPath = alliedForcesMainBuildingPath;
+                exitsFileNames = alliedForcesMainBuildingSOFiles;
+                factionSO = alliedForcesFactionSO;
+            }
+            else if (factionName == "帝国")
+            {
+                folderPath = empireMainBuildingPath;
+                exitsFileNames = empireMainBuildingSOFiles;
+                factionSO = empireFactionSO;
+            }
+            else
+            {
+                folderPath = sovietUnionMainBuildingPath;
+                exitsFileNames = sovietUnionMainBuildingSOFiles;
+                factionSO = sovietUnionFactionSO;
+            }
+            string filePath = $"Assets" + folderPath + "/" + fileName;
+            MainBuildingSO mainBuildingSO;
+            if (exitsFileNames.Contains(fileName))  // get
+            {
+                mainBuildingSO = AssetDatabase.LoadAssetAtPath<MainBuildingSO>(filePath);
+            }
+            else    //create
+            {
+                mainBuildingSO = ScriptableObject.CreateInstance<MainBuildingSO>();
+                AssetDatabase.CreateAsset(mainBuildingSO, filePath);
+            }
+            mainBuildingSO.SetDataBaseInfoNoRequirementAndGameObjectPrefab(factionSO, id, nameZH, nameEN,
+                comment, null, troop, actionScopes, exp, hp, price,warningAndClearFogRad, armorSO);
+            BuildingLabelSO buildingLabelSO = buildingLabelSOs[currentRow.Cells[16].ToString().Trim()];
+            Vector2Int area = currentRow.Cells[17].ToString().Trim().ConvertToVector2Int();
+            Vector2Int expandScope = currentRow.Cells[18].ToString().Trim().ConvertToVector2Int();
+            Vector2Int buildingAndPlacementTime = currentRow.Cells[19].ToString().Trim().ConvertToVector2Int();
+            int powerConsume = int.Parse(currentRow.Cells[20].ToString().Trim());
+            mainBuildingSO.SetDataBuildingInfo(buildingLabelSO, area, expandScope, 
+                buildingAndPlacementTime, powerConsume);
 
+        }
 
-
-    //     }
-
-    // }
+    }
 
 
 
@@ -115,8 +124,8 @@ public class DataLoad : MonoBehaviour
             {
                 var currentRow = sheet.GetRow(i);
                 int index = int.Parse(currentRow.GetCell(0).ToString());
-                string armorNameZH = currentRow.GetCell(1).ToString();
-                string armorNameEN = currentRow.GetCell(2).ToString();
+                string armorNameZH = currentRow.GetCell(1).ToString().Trim();
+                string armorNameEN = currentRow.GetCell(2).ToString().Trim();
                 string fileName = $"{index}_{armorNameEN}.asset";
                 string filePath = "Assets" + folderPath + "/" + fileName;
                 Action loadCallBack;
@@ -132,6 +141,7 @@ public class DataLoad : MonoBehaviour
                     AssetDatabase.CreateAsset(armorSO, filePath);
                     loadCallBack = new Action(() => Debug.Log(armorNameZH + "---创建并同步完成"));
                 }
+                
                 armorSO.SetIndex(index);
                 armorSO.SetArmorNameZH(armorNameZH);
                 armorSO.SetArmorNameEN(armorNameEN);
@@ -140,6 +150,7 @@ public class DataLoad : MonoBehaviour
                     int value = int.Parse(currentRow.GetCell(j + 3).ToString());
                     armorSO.SetDamageModifiers(damageTypeSOs[j], value);
                 }
+                armorSOPage.armorSOPageElement[index] = armorSO;
                 loadCallBack.Invoke();
             }
         }
@@ -178,6 +189,18 @@ public class DataLoad : MonoBehaviour
         return res;
     }
 
+    private Dictionary<string, BuildingLabelSO> GetBuildingLabelSOs()
+    {
+        var fileNames = GetFileNameInPath(buildingLabelPath);
+        Dictionary<string, BuildingLabelSO> res = new Dictionary<string, BuildingLabelSO>();
+        foreach (var fileName in fileNames)
+        {
+            var buildingLabelSO = AssetDatabase.LoadAssetAtPath<BuildingLabelSO>("Assets" + buildingLabelPath + "/" + fileName);
+            res[buildingLabelSO.LableNameZH] = buildingLabelSO;
+        }
+        return res;
+    }
+
 
     private string GetFactionPath(Faction faction, SequenceType sequenceType)
     {
@@ -210,9 +233,6 @@ public class DataLoad : MonoBehaviour
         //     Debug.Log(sheet.GetRow(row).GetCell(col).ToString());
         // }
     }
-
-
-
 }
 
 public static class ConvertTo
@@ -252,9 +272,17 @@ public static class ConvertTo
         int[] res = value.Split(',').Select(i => int.Parse(i)).ToArray();
         return new Vector2Int(res[0], res[1]);
     }
-    // public static ArmorSO ConvertToArmorSO(this string value)
-    // {
-
-    // }
+    public static ArmorSO ConvertToArmorSO(this string value, ArmorSOPage armorSOPage)
+    {
+        foreach(var armor in armorSOPage.armorSOPageElement)
+        {
+            if(armor.Value.ArmorNameZH == value)
+            {
+                return armor.Value;
+            }
+        }
+        return null;
+        
+    }
 
 }

@@ -9,6 +9,6 @@ public interface IArmy
     bool IsAmphibious { get; }
     CrushList CrushingAndCrushedLevel { get; }
     List<ArmyLabelSO> Labels { get; }
-    uint BuildingTime { get; }
+    int BuildingTime { get; }
     MainBuildingSO BuildFacilities { get; }
 }

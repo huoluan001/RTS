@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameSetting : ScriptableObject
 {
     public Vector2 windowSize = new Vector2(1920, 1080);
-    [Range(0,10)] public uint selectionBoxLineWidth;
+    [Range(0,10)] public int selectionBoxLineWidth;
 
     public ShowLanguage asas;
 }

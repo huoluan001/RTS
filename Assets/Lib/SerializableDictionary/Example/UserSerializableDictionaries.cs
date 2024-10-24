@@ -5,13 +5,14 @@ using UnityEngine;
 
 [Serializable]
 public class CrushList : SerializableDictionary<CrushLabel, Vector2> {}
-
 [Serializable]
-public class MainBuildingSOPageElement : SerializableDictionary<uint, MainBuildingSO> {}
+public class MainBuildingSOPageElement : SerializableDictionary<int, MainBuildingSO> {}
 [Serializable]
-public class OtherBuildingSOPageElement : SerializableDictionary<uint, OtherBuildingSO> {}
+public class OtherBuildingSOPageElement : SerializableDictionary<int, OtherBuildingSO> {}
 [Serializable]
-public class ArmySOPageElement : SerializableDictionary<uint, ArmySO> {}
+public class ArmySOPageElement : SerializableDictionary<int, ArmySO> {}
+[Serializable]
+public class ArmorSOPageElement : SerializableDictionary<int, ArmorSO> {}
 
 [Serializable]
 public class DamageModifiers : SerializableDictionary<DamageTypeSO, int> {}

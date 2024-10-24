@@ -5,8 +5,8 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
 {
     public dynamic info;
     public Sequence sequence;
-    private uint _count;
-    private uint Count => _count;
+    private int _count;
+    private int Count => _count;
     public float value = 0;
     private float produceSpeed4Price;
     private float produceSpeed4Value;
