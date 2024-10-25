@@ -6,11 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 public class Sequence
 {
-    public uint sequenceIndex;
+    public int sequenceIndex;
     public Page page;
     public List<IBaseInfo> baseInfos;
     public Dictionary<IBaseInfo, ProduceTask<IBaseInfo>> produceTasks;
-    public uint currentSequenceMaxTaskCount = 1;
+    public int currentSequenceMaxTaskCount = 1;
 
     public Sequence()
     {

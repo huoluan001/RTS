@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class GameAsset : ScriptableObject
 {
     public Player commander;
+
+    public MainBuildingSOPage mainBuildingSOPage;
+    public OtherBuildingSOPage otherBuildingSOPage;
+    public ArmySOPage armySOPage;
+    public ArmorSOPage armorSOPage;
     // inputSystem
     public RTSInputSystem inputSystem;
     public RTSInputSystem.PlayerActions player;

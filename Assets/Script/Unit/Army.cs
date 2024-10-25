@@ -6,10 +6,10 @@ public class Army : MonoBehaviour
     public ArmySO ArmySO;
 #region 公开控制信息
     public Player commander;
-    private uint CurrentMaxHP;
-    private uint CurrentHP;
-    private uint CurrentUpgradeExp;
-    private uint CurrentExp;
+    private int CurrentMaxHP;
+    private int CurrentHP;
+    private int CurrentUpgradeExp;
+    private int CurrentExp;
     private Level Level;
     private ArmyBehaviorModel ArmyBehaviorModel;
 #endregion

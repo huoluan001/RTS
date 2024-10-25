@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3e25e395ec4ec188056256baa55c2, type: 3}
   m_Name: 3_AdvancedDefenseBuildingArmor
   m_EditorClassIdentifier: 
-  elementIndex: 103
-  armorNameZH: "\u5148\u8FDB\u9632\u5FA1\u5EFA\u7B51\u62A4\u7532"
-  armorNameEN: AdvancedDefenseBuildingArmor
+  elementIndex: 0
+  armorNameZH: 
+  armorNameEN: 
   damageModifiers:
     m_keys: []
     m_values: 

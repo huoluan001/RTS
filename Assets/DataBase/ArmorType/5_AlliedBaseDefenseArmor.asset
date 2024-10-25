@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3e25e395ec4ec188056256baa55c2, type: 3}
   m_Name: 5_AlliedBaseDefenseArmor
   m_EditorClassIdentifier: 
-  elementIndex: 105
-  armorNameZH: "\u76DF\u519B\u57FA\u5730\u9632\u5FA1\u7532"
-  armorNameEN: AlliedBaseDefenseArmor
+  elementIndex: 0
+  armorNameZH: 
+  armorNameEN: 
   damageModifiers:
     m_keys: []
     m_values: 

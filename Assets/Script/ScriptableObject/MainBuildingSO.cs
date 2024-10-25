@@ -1,16 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "MainBuildingSO", menuName = "ScriptableObjects/Data/MainBuildingSO")]
-public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
+public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, ISkill
 {
+    #region SO
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
-    [Tooltip("编号"), SerializeField] private uint id;
+    [Tooltip("编号"), SerializeField] private int id;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
     [Tooltip("Icon"), SerializeField] private Sprite icon;
@@ -18,10 +20,10 @@ public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
     [Tooltip("英文备注"), TextArea(), SerializeField] private string commentEnglish;
     [Tooltip("兵种"), SerializeField] private Troop troop;
     [Tooltip("活动范围"), SerializeField] private List<ActionScope> actionScopes;
-    [Tooltip("经验"), SerializeField] private uint exp;
-    [Tooltip("生命值"), SerializeField] private uint hp;
+    [Tooltip("经验"), SerializeField] private int exp;
+    [Tooltip("生命值"), SerializeField] private int hp;
     [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
-    [Tooltip("建造价格"), SerializeField] private uint price;
+    [Tooltip("建造价格"), SerializeField] private int price;
     [Tooltip("警戒/清雾半径"), SerializeField] private Vector2Int warningAndClearFogRad;
     [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
     [Tooltip("预制体"), SerializeField] private GameObject gameObjectPrefab;
@@ -32,12 +34,14 @@ public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
     [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
     [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
     [Tooltip("电力消耗"), SerializeField] private int powerConsume;
-    
+
     [Header("ISkill")]
     [Tooltip("技能组"), SerializeField] private List<Skill> skills;
-    
-    public FactionSO Faction => faction;
-    public uint Id => id;
+    #endregion
+
+    #region Interface
+    public FactionSO FactionSO => faction;
+    public int Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
     public Sprite Icon => icon;
@@ -46,16 +50,67 @@ public class MainBuildingSO : ScriptableObject, IBaseInfo,IBuilding, ISkill
     public Troop Troop => troop;
     public List<ActionScope> ActionScopes => actionScopes;
     public BuildingLabelSO Label => label;
-    public uint Exp => exp;
+    public int Exp => exp;
     public List<MainBuildingSO> Requirement => requirement;
     public Vector2Int Area => area;
     public Vector2Int BuildingAndPlacementTime => buildingAndPlacementTime;
     public Vector2Int ExpandScope => expandScope;
-    public uint Price => price;
+    public int Price => price;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
     public int PowerConsume => powerConsume;
     public ArmorSO ArmorType => armorType;
-    public uint Hp => hp;
+    public int Hp => hp;
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
+    #endregion
+    public void SetDataBaseInfoNoRequirementAndGameObjectPrefab(FactionSO factionSO, int id, string nameZH, string nameEN,
+                        string commentZH, string commentEN, Troop troop, List<ActionScope> actionScopes,
+                        int exp, int hp, int price, Vector2Int warningAndClearFogRad, ArmorSO armorSO)
+    {
+        faction = factionSO;
+        this.id = id;
+        nameChinese = nameZH;
+        nameEnglish = nameEN;
+        commentChinese = commentZH;
+        commentEnglish = commentEN;
+        this.troop = troop;
+        this.actionScopes = actionScopes;
+        this.exp = exp;
+        this.hp = hp;
+        this.price = price;
+        this.warningAndClearFogRad = warningAndClearFogRad;
+        armorType = armorSO;
+    }
+
+    public void SetDataBuildingInfo(BuildingLabelSO label, Vector2Int area,
+        Vector2Int expandScope, Vector2Int buildingAndPlacementTime, int powerConsume)
+    {
+        this.label = label;
+        this.area = area;
+        this.expandScope = expandScope;
+        this.buildingAndPlacementTime = buildingAndPlacementTime;
+        this.powerConsume = powerConsume;
+    }
+
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
+    {
+        if (skills == null)
+            skills = new List<Skill>();
+        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
+        Skill skill;
+        if (res.Count() == 0)
+            skills.Add(skill = new Skill());
+        else
+            skill = res[0];
+        skill.skillNameZH = skillNameZH;
+        skill.skillNameEN = skillNameEN;
+        skill.commentChinese = commentChinese;
+        skill.skillCooling = skillCooling;
+        skill.skillPre_Swing = skillPre_Swing;
+        skill.skillPost_Swing = skillPost_Swing;
+    }
+    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
+    {
+        requirement = mainBuildingSOs;
+    }
 }

@@ -13,8 +13,8 @@ public class Page : MonoBehaviour
     public SequenceType sequenceType;
     public List<Sequence> sequences = new List<Sequence>();
     public bool isShow;
-    public uint currentSequenceIndex;
-    private uint nextSequenceIndex = 1;
+    public int currentSequenceIndex;
+    private int nextSequenceIndex = 1;
     
     private RectTransform rectTransform;
     void Start()

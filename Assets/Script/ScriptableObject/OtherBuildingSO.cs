@@ -10,7 +10,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
 {
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO faction;
-    [Tooltip("编号"), SerializeField] private uint id;
+    [Tooltip("编号"), SerializeField] private int id;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
     [Tooltip("Icon"), SerializeField] private Sprite icon;
@@ -18,10 +18,10 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
     [Tooltip("英文备注"), TextArea(), SerializeField] private string commentEnglish;
     [Tooltip("兵种"), SerializeField] private Troop troop;
     [Tooltip("活动范围"), SerializeField] private List<ActionScope> actionScopes;
-    [Tooltip("经验"), SerializeField] private uint exp;
-    [Tooltip("生命值"), SerializeField] private uint hp;
+    [Tooltip("经验"), SerializeField] private int exp;
+    [Tooltip("生命值"), SerializeField] private int hp;
     [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
-    [Tooltip("建造价格"), SerializeField] private uint price;
+    [Tooltip("建造价格"), SerializeField] private int price;
     [Tooltip("警戒/清雾半径"), SerializeField] private Vector2Int warningAndClearFogRad;
     [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
     [Tooltip("预制体"), SerializeField] private GameObject gameObjectPrefab;
@@ -42,8 +42,8 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
 
 
 
-    public FactionSO Faction => faction;
-    public uint Id => id;
+    public FactionSO FactionSO => faction;
+    public int Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
     public Sprite Icon => icon;
@@ -52,16 +52,16 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
     public Troop Troop => troop;
     public List<ActionScope> ActionScopes => actionScopes;
     public BuildingLabelSO Label => label;
-    public uint Exp => exp;
+    public int Exp => exp;
     public List<MainBuildingSO> Requirement => requirement;
     public Vector2Int Area => area;
     public Vector2Int BuildingAndPlacementTime => buildingAndPlacementTime;
     public Vector2Int ExpandScope => expandScope;
-    public uint Price => price;
+    public int Price => price;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
     public int PowerConsume => powerConsume;
     public ArmorSO ArmorType => armorType;
-    public uint Hp => hp;
+    public int Hp => hp;
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;

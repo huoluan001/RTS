@@ -8,7 +8,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BuildingLabelSO", menuName = "ScriptableObjects/Data/BuildingLabelSO")]
 public class BuildingLabelSO : ScriptableObject
 {
-    [SerializeField] private uint elementIndex;
+    [SerializeField] private int elementIndex;
     public string LableNameZH;
     public string LabelNameEN;
 }

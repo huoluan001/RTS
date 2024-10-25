@@ -11,6 +11,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(MainBuildingSOPageElement))]
 [CustomPropertyDrawer(typeof(OtherBuildingSOPageElement))]
 [CustomPropertyDrawer(typeof(ArmySOPageElement))]
+[CustomPropertyDrawer(typeof(ArmorSOPageElement))]
 
 
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer {}

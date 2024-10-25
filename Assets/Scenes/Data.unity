@@ -148,16 +148,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainBuildingSOPage: {fileID: 11400000, guid: a23d3141f834f48f69fabda3214eb0e5, type: 2}
-  otherBuildingSOPage: {fileID: 0}
-  armySOPage: {fileID: 0}
+  otherBuildingSOPage: {fileID: 11400000, guid: 8a65878401c594192bb2f90ceb617b19, type: 2}
+  armySOPage: {fileID: 11400000, guid: 215bf86148bd449878c79ff600cdc5fc, type: 2}
+  armorSOPage: {fileID: 11400000, guid: 2766ec0700a664b3caa1a96d29b9d2d5, type: 2}
+  alliedForcesFactionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  empireFactionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  sovietUnionFactionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
   excelFilePath: Assets/DataBase/RTS.xlsx
   armorTypePath: /DataBase/ArmorType
-  armyLabelPath: 
-  buildingLabelPath: 
   damageTypePath: /DataBase/DamageType
-  factionDBPath: 
-  row: 0
-  col: 0
+  armyLabelPath: /DataBase/ArmyLabel
+  buildingLabelPath: /DataBase/BuildingLabel
+  FactionDBPath: /FactionDB
+  row: 23
+  col: 2
 --- !u!4 &32866508
 Transform:
   m_ObjectHideFlags: 0
