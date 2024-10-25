@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3e25e395ec4ec188056256baa55c2, type: 3}
   m_Name: 2_BasicDefenseBuildingArmor
   m_EditorClassIdentifier: 
-  elementIndex: 102
-  armorNameZH: "\u57FA\u7840\u9632\u5FA1\u5EFA\u7B51\u62A4\u7532"
-  armorNameEN: BasicDefenseBuildingArmor
+  elementIndex: 0
+  armorNameZH: 
+  armorNameEN: 
   damageModifiers:
     m_keys: []
     m_values: 

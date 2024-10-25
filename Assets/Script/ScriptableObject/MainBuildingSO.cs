@@ -92,23 +92,22 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         this.powerConsume = powerConsume;
     }
 
-    public void SetSkill(Skill skill)
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
     {
         if (skills == null)
             skills = new List<Skill>();
-        var res = skills.Where(s => s.skillNameEN == skill.skillNameEN).ToList();
+        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
+        Skill skill;
         if (res.Count() == 0)
-            skills.Add(skill);
+            skills.Add(skill = new Skill());
         else
-        {
-            var sameSkill = res[0];
-            sameSkill.skillNameZH = skill.skillNameZH;
-            sameSkill.skillNameEN = skill.skillNameEN;
-            sameSkill.commentChinese = skill.commentChinese;
-            sameSkill.skillCooling = skill.skillCooling;
-            sameSkill.skillPre_Swing = skill.skillPre_Swing;
-            sameSkill.skillPost_Swing = skill.skillPost_Swing;
-        }
+            skill = res[0];
+        skill.skillNameZH = skillNameZH;
+        skill.skillNameEN = skillNameEN;
+        skill.commentChinese = commentChinese;
+        skill.skillCooling = skillCooling;
+        skill.skillPre_Swing = skillPre_Swing;
+        skill.skillPost_Swing = skillPost_Swing;
     }
     public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
     {
