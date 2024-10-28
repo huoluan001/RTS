@@ -81,7 +81,6 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         this.warningAndClearFogRad = warningAndClearFogRad;
         armorType = armorSO;
     }
-
     public void SetDataBuildingInfo(BuildingLabelSO label, Vector2Int area,
         Vector2Int expandScope, Vector2Int buildingAndPlacementTime, int powerConsume)
     {

@@ -1,13 +1,14 @@
-using UnityEngine;
+using System;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEditor;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
-using System.Collections.Generic;
-using System;
-
-using System.Linq;
-using NPOI.OpenXmlFormats.Dml.Spreadsheet;
+using System.ArrayExtensions;
+using JetBrains.Annotations;
+using NPOI.HSSF.Record;
 
 public class DataLoad : MonoBehaviour
 {
@@ -32,12 +33,15 @@ public class DataLoad : MonoBehaviour
     [ContextMenu("MainBuildingData主建筑数据导入")]
     public void LoadMainDuilding()
     {
+        // 获得各阵营主建筑SO文件夹路径
         string alliedForcesMainBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence);
         string empireMainBuildingPath = GetFactionPath(Faction.Empire, SequenceType.MainBuildingSequence);
         string sovietUnionMainBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.MainBuildingSequence);
+        // 获得各阵营主建筑SO文件名
         List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
         List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
         List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
+        // 得到建筑标签
         var buildingLabelSOs = GetBuildingLabelSOs();
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
@@ -47,36 +51,44 @@ public class DataLoad : MonoBehaviour
             for (int i = 3; i <= 32; i++)
             {
                 var currentRow = sheet.GetRow(i);
+                // ID 的string
                 string idstring = currentRow.Cells[2].ToString().Trim();
-                if (idstring == "") // 这一行没有信息，只是上一行的另外一个技能
+                // 如果ID为null，表示这一行没有信息，只是上一行的另外一个技能
+                if (idstring == "")
                 {
-                    string skillnameZH = currentRow.Cells[21].ToString().Trim();
-                    string skillNameEN = currentRow.Cells[22].ToString().Trim();
+                    // 技能的中文/英文名称
+                    (string skillnameZH, string skillNameEN) = (currentRow.Cells[21].ToString().Trim(),
+                                                                    currentRow.Cells[22].ToString().Trim());
+                    // 技能备注
                     string skillComment = currentRow.Cells[24].ToString().Trim();
-                    int cd = int.Parse(currentRow.Cells[25].ToString().Trim());
-                    int preTime = int.Parse(currentRow.Cells[26].ToString().Trim());
-                    int postTime = int.Parse(currentRow.Cells[27].ToString().Trim());
+                    // 技能time三维（cd， 前摇，后摇）
+                    (int cd, int preTime, int postTime) = (
+                            int.Parse(currentRow.Cells[25].ToString().Trim()),
+                                int.Parse(currentRow.Cells[26].ToString().Trim()),
+                                    int.Parse(currentRow.Cells[27].ToString().Trim()));
                     previousMainBuildingSO.SetSkill(skillnameZH, skillNameEN, skillComment, cd, preTime, postTime);
                     continue;
                 }
+
+
+                // id， 中英文名称，备注
+                (int id, string nameZH, string nameEN, string comment) = (
+                        int.Parse(idstring),
+                            currentRow.Cells[3].ToString().Trim(),
+                                currentRow.Cells[4].ToString().Trim(),
+                                    currentRow.Cells[6].ToString().Trim());
+
+                // 通过阵营名称，得到已存在的文件路径，FactionSO
                 string factionName = currentRow.Cells[1].ToString();
-                FactionSO factionSO;
-
-                int id = int.Parse(idstring);
-                string nameZH = currentRow.Cells[3].ToString().Trim();
-                string nameEN = currentRow.Cells[4].ToString().Trim();
-                string comment = currentRow.Cells[6].ToString().Trim();
-
-                string fileName = $"{id}_{nameEN}.asset";
-                string folderPath = null;
-                List<string> exitsFileNames;
-                (folderPath, exitsFileNames, factionSO) = factionName switch
+                (string folderPath, List<string> exitsFileNames, FactionSO factionSO) = factionName switch
                 {
                     "盟军" => (alliedForcesMainBuildingPath, alliedForcesMainBuildingSOFiles, alliedForcesFactionSO),
                     "帝国" => (empireMainBuildingPath, empireMainBuildingSOFiles, empireFactionSO),
                     _ => (sovietUnionMainBuildingPath, sovietUnionMainBuildingSOFiles, sovietUnionFactionSO)
                 };
 
+                // 判断SO文件是否已经存在
+                string fileName = $"{id}_{nameEN}.asset";
                 string filePath = $"Assets" + folderPath + "/" + fileName;
                 MainBuildingSO mainBuildingSO;
                 Action loadCallBack;
@@ -91,10 +103,13 @@ public class DataLoad : MonoBehaviour
                     AssetDatabase.CreateAsset(mainBuildingSO, filePath);
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
-                Troop troop = currentRow.Cells[7].ToString().Trim().ConvertToTroop();
-                int price = int.Parse(currentRow.Cells[12].ToString());
+                // 兵种， 价格， 建造和展开时间
+                (Troop troop, int price, Vector2Int buildingAndPlacementTime) = (
+                    currentRow.Cells[7].ToString().Trim().ConvertToTroop(),
+                        int.Parse(currentRow.Cells[12].ToString()),
+                            currentRow.Cells[19].ToString().Trim().ConvertToVector2Int());
 
-                Vector2Int buildingAndPlacementTime = currentRow.Cells[19].ToString().Trim().ConvertToVector2Int();
+                // 盟军的科技，这是一个特殊的存在
                 if (troop == Troop.Technology)
                 {
                     mainBuildingSO.SetDataBaseInfoNoRequirementAndGameObjectPrefab(factionSO, id, nameZH, nameEN, comment, null, troop, null, 0, 0, price, Vector2Int.zero, null);
@@ -105,45 +120,60 @@ public class DataLoad : MonoBehaviour
                     continue;
                 }
 
+                // 对建筑的剩余数据读取，并写入
+                // IBaseInfo
                 List<ActionScope> actionScopes = currentRow.Cells[8].ToString().Trim().Split(',').ToList().Select(s => s.ConvertToActionScope()).ToList();
-                int exp = int.Parse(currentRow.Cells[9].ToString().Trim());
-                int hp = int.Parse(currentRow.Cells[10].ToString().Trim());
-
+                (int exp, int hp) = (int.Parse(currentRow.Cells[9].ToString().Trim()),
+                                        int.Parse(currentRow.Cells[10].ToString().Trim()));
                 Vector2Int warningAndClearFogRad = currentRow.Cells[13].ToString().ConvertToVector2Int();
                 ArmorSO armorSO = currentRow.Cells[14].ToString().ConvertToArmorSO(armorSOPage);
                 mainBuildingSO.SetDataBaseInfoNoRequirementAndGameObjectPrefab(factionSO, id, nameZH, nameEN, comment, null, troop, actionScopes, exp, hp, price, warningAndClearFogRad, armorSO);
-                BuildingLabelSO buildingLabelSO = buildingLabelSOs[currentRow.Cells[16].ToString().Trim()];
-                Vector2Int area = currentRow.Cells[17].ToString().Trim().ConvertToVector2Int();
-                Vector2Int expandScope = currentRow.Cells[18].ToString().Trim().ConvertToVector2Int();
-
-                int powerConsume = int.Parse(currentRow.Cells[20].ToString().Trim());
-
+                // IBuilding
+                (BuildingLabelSO buildingLabelSO, Vector2Int area, Vector2Int expandScope, int powerConsume) = (
+                        buildingLabelSOs[currentRow.Cells[16].ToString().Trim()],
+                            currentRow.Cells[17].ToString().Trim().ConvertToVector2Int(),
+                                currentRow.Cells[18].ToString().Trim().ConvertToVector2Int(),
+                                    int.Parse(currentRow.Cells[20].ToString().Trim()));
                 mainBuildingSO.SetDataBuildingInfo(buildingLabelSO, area, expandScope, buildingAndPlacementTime, powerConsume);
 
+                // ISkill
                 string skillNameZH;
                 if ((skillNameZH = currentRow.Cells[21].ToString().Trim()) != "")
                 {
-                    string skillNameEN = currentRow.Cells[22].ToString().Trim();
-                    string skillComment = currentRow.Cells[24].ToString().Trim();
-                    int cd = int.Parse(currentRow.Cells[25].ToString().Trim());
-                    int preTime = int.Parse(currentRow.Cells[26].ToString().Trim());
-                    int postTime = int.Parse(currentRow.Cells[27].ToString().Trim());
+                    (string skillNameEN, string skillComment, int cd, int preTime, int postTime) = (
+                                    currentRow.Cells[22].ToString().Trim(),
+                                        currentRow.Cells[24].ToString().Trim(),
+                                            int.Parse(currentRow.Cells[25].ToString().Trim()),
+                                                int.Parse(currentRow.Cells[26].ToString().Trim()),
+                                                    int.Parse(currentRow.Cells[27].ToString().Trim()));
                     mainBuildingSO.SetSkill(skillNameZH, skillNameEN, skillComment, cd, preTime, postTime);
                 }
                 loadCallBack.Invoke();
                 previousMainBuildingSO = mainBuildingSO;
                 mainBuildingSOPage.mainBuildingSOPageElement[id] = mainBuildingSO;
             }
+            // 科技前提写入
 
-
+            Func<string, MainBuildingSO> GetMainBuildingWithName = (string name) =>
+            {
+                return mainBuildingSOPage.mainBuildingSOPageElement.Values.ToList().
+                    FirstOrDefault(mainBuilding => mainBuilding.NameChinese == name);
+            };
+            for (int i = 3; i <= 32; i++)
+            {
+                var currentRow = sheet.GetRow(i);
+                var requriement = currentRow.Cells[11].ToString().Trim();
+                if (requriement == "null") continue;
+                var requirements = requriement.Split(',').Select(req => GetMainBuildingWithName(req)).ToList();
+                var name = currentRow.Cells[3].ToString().Trim();
+                if (name == "") continue;
+                GetMainBuildingWithName(name).SetRequirement(requirements);
+                
+                
+            }
+            Debug.Log("requriement完成");
         }
-
     }
-
-
-
-
-
 
 
 

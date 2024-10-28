@@ -13,6 +13,7 @@ namespace NodeCanvas.Editor
         ///----------------------------------------------------------------------------------------------
 
         [UnityEditor.InitializeOnLoadMethod]
+        [System.Obsolete]
         public static void SetNodeCanvasDefine() {
             DefinesManager.SetDefineActiveForCurrentTargetGroup("NODECANVAS", true);
         }
