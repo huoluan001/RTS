@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, ISkill
 {
     [Header("IBaseInfo")]
-    [Tooltip("派系"), SerializeField] private FactionSO faction;
+    [Tooltip("派系"), SerializeField] private FactionSO factionSO;
     [Tooltip("编号"), SerializeField] private int id;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
@@ -42,7 +42,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
 
 
 
-    public FactionSO FactionSO => faction;
+    public FactionSO FactionSO => factionSO;
     public int Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
@@ -65,4 +65,32 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
+    public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, Troop troop, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
+    {
+        this.factionSO = factionSO;
+        this.id = id;
+        this.nameChinese = nameChinese;
+        this.nameEnglish = nameEnglish;
+        this.icon = icon;
+        this.commentChinese = commentChinese;
+        this.commentEnglish = commentEnglish;
+        this.troop = troop;
+        this.actionScopes = actionScopes;
+        this.exp = exp;
+        this.hp = hp;
+        this.requirement = requirement;
+        this.price = price;
+        this.warningAndClearFogRad = warningAndClearFogRad;
+        this.armorType = armorType;
+        this.gameObjectPrefab = gameObjectPrefab;
+    }
+
+    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int buildingAndPlacementTime, Vector2Int expandScope, int powerConsume)
+    {
+        this.label = label;
+        this.area = area;
+        this.expandScope = expandScope;
+        this.buildingAndPlacementTime = buildingAndPlacementTime;
+        this.powerConsume = powerConsume;
+    }
 }

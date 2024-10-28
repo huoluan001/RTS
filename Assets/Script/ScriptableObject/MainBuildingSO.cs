@@ -11,7 +11,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
 {
     #region SO
     [Header("IBaseInfo")]
-    [Tooltip("派系"), SerializeField] private FactionSO faction;
+    [Tooltip("派系"), SerializeField] private FactionSO factionSO;
     [Tooltip("编号"), SerializeField] private int id;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
@@ -40,7 +40,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     #endregion
 
     #region Interface
-    public FactionSO FactionSO => faction;
+    public FactionSO FactionSO => factionSO;
     public int Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
@@ -63,33 +63,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
     #endregion
-    public void SetDataBaseInfoNoRequirementAndGameObjectPrefab(FactionSO factionSO, int id, string nameZH, string nameEN,
-                        string commentZH, string commentEN, Troop troop, List<ActionScope> actionScopes,
-                        int exp, int hp, int price, Vector2Int warningAndClearFogRad, ArmorSO armorSO)
-    {
-        faction = factionSO;
-        this.id = id;
-        nameChinese = nameZH;
-        nameEnglish = nameEN;
-        commentChinese = commentZH;
-        commentEnglish = commentEN;
-        this.troop = troop;
-        this.actionScopes = actionScopes;
-        this.exp = exp;
-        this.hp = hp;
-        this.price = price;
-        this.warningAndClearFogRad = warningAndClearFogRad;
-        armorType = armorSO;
-    }
-    public void SetDataBuildingInfo(BuildingLabelSO label, Vector2Int area,
-        Vector2Int expandScope, Vector2Int buildingAndPlacementTime, int powerConsume)
-    {
-        this.label = label;
-        this.area = area;
-        this.expandScope = expandScope;
-        this.buildingAndPlacementTime = buildingAndPlacementTime;
-        this.powerConsume = powerConsume;
-    }
+
 
     public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
     {
@@ -111,5 +85,32 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
     {
         requirement = mainBuildingSOs;
+    }
+    public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, Troop troop, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
+    {
+        this.factionSO = factionSO;
+        this.id = id;
+        this.nameChinese = nameChinese;
+        this.nameEnglish = nameEnglish;
+        this.icon = icon;
+        this.commentChinese = commentChinese;
+        this.commentEnglish = commentEnglish;
+        this.troop = troop;
+        this.actionScopes = actionScopes;
+        this.exp = exp;
+        this.hp = hp;
+        this.requirement = requirement;
+        this.price = price;
+        this.warningAndClearFogRad = warningAndClearFogRad;
+        this.armorType = armorType;
+        this.gameObjectPrefab = gameObjectPrefab;
+    }
+    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int buildingAndPlacementTime, Vector2Int expandScope, int powerConsume)
+    {
+        this.label = label;
+        this.area = area;
+        this.expandScope = expandScope;
+        this.buildingAndPlacementTime = buildingAndPlacementTime;
+        this.powerConsume = powerConsume;
     }
 }
