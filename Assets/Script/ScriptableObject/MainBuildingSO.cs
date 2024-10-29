@@ -63,25 +63,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
     #endregion
-
-
-    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
-    {
-        if (skills == null)
-            skills = new List<Skill>();
-        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
-        Skill skill;
-        if (res.Count() == 0)
-            skills.Add(skill = new Skill());
-        else
-            skill = res[0];
-        skill.skillNameZH = skillNameZH;
-        skill.skillNameEN = skillNameEN;
-        skill.commentChinese = commentChinese;
-        skill.skillCooling = skillCooling;
-        skill.skillPre_Swing = skillPre_Swing;
-        skill.skillPost_Swing = skillPost_Swing;
-    }
+    
     public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
     {
         requirement = mainBuildingSOs;
@@ -112,5 +94,23 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         this.expandScope = expandScope;
         this.buildingAndPlacementTime = buildingAndPlacementTime;
         this.powerConsume = powerConsume;
+    }
+
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
+    {
+        if (skills == null)
+            skills = new List<Skill>();
+        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
+        Skill skill;
+        if (res.Count() == 0)
+            skills.Add(skill = new Skill());
+        else
+            skill = res[0];
+        skill.skillNameZH = skillNameZH;
+        skill.skillNameEN = skillNameEN;
+        skill.commentChinese = commentChinese;
+        skill.skillCooling = skillCooling;
+        skill.skillPre_Swing = skillPre_Swing;
+        skill.skillPost_Swing = skillPost_Swing;
     }
 }

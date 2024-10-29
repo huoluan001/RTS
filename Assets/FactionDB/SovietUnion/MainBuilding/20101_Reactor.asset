@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
   m_Name: 20101_Reactor
   m_EditorClassIdentifier: 
-  faction: {fileID: 0}
+  factionSO: {fileID: 0}
   id: 0
   nameChinese: 
   nameEnglish: 

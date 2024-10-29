@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "ArmySO", menuName = "ScriptableObjects/Data/ArmySO"), SerializeField]
-public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
+public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon //, ISkill
 {
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO factionSO;

@@ -46,6 +46,9 @@ public class DataLoad : MonoBehaviour
         List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
         // 得到建筑标签
         var buildingLabelSOs = GetBuildingLabelSOs();
+
+        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOPage);
+
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
@@ -59,17 +62,7 @@ public class DataLoad : MonoBehaviour
                 // 如果ID为null，表示这一行没有信息，只是上一行的另外一个技能
                 if (idstring == "")
                 {
-                    // 技能的中文/英文名称
-                    (string skillnameZH, string skillNameEN) = (currentRow.GetCellString(21),
-                                                                    currentRow.GetCellString(22));
-                    // 技能备注
-                    string skillComment = currentRow.GetCellString(24);
-                    // 技能time三维（cd， 前摇，后摇）
-                    (int cd, int preTime, int postTime) = (
-                            int.Parse(currentRow.GetCellString(25)),
-                                int.Parse(currentRow.GetCellString(26)),
-                                    int.Parse(currentRow.GetCellString(27)));
-                    previousMainBuildingSO.SetSkill(skillnameZH, skillNameEN, skillComment, cd, preTime, postTime);
+                    currentRow.ReadAndWriteRowToISkill(21, previousMainBuildingSO);
                     continue;
                 }
                 int id = int.Parse(idstring);
@@ -86,7 +79,7 @@ public class DataLoad : MonoBehaviour
                     "帝国" => (empireMainBuildingPath, empireMainBuildingSOFiles),
                     _ => (sovietUnionMainBuildingPath, sovietUnionMainBuildingSOFiles)
                 };
-                string filePath = $"Assets" + folderPath + "/" + fileName;
+                string filePath = $"Assets{folderPath}/{fileName}";
                 if (exitsFileNames.Contains(fileName))  // get
                 {
                     mainBuildingSO = AssetDatabase.LoadAssetAtPath<MainBuildingSO>(filePath);
@@ -99,67 +92,21 @@ public class DataLoad : MonoBehaviour
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
 
-                currentRow.ReadAndWriteRowToIBaseInfo(1, 14, mainBuildingSO);
+                currentRow.ReadAndWriteRowToIBaseInfo(mainBuildingSO);
+                currentRow.ReadAndWriteRowToIBuilding(16, mainBuildingSO, buildingLabelSOs);
 
-
-
-
-
-
-
-
-
-
-
-                // // 兵种， 价格， 建造和展开时间
-                // (Troop troop, int price, Vector2Int buildingAndPlacementTime) = (
-                //     currentRow.GetCellString(7).ConvertToTroop(),
-                //         int.Parse(currentRow.GetCellString(12)),
-                //             currentRow.GetCellString(19).ConvertToVector2Int());
+                Troop troop = currentRow.GetCellString(7).ConvertToTroop();
                 // 盟军的科技，这是一个特殊的存在
-                if (troop == Troop.Technology)
+                if (troop != Troop.Technology)
                 {
-                    mainBuildingSO.SetDataBaseInfoNoRequirementAndGameObjectPrefab(factionSO, id, nameZH, nameEN, comment, null, troop, null, 0, 0, price, Vector2Int.zero, null);
-                    mainBuildingSO.SetDataBuildingInfo(null, Vector2Int.zero, Vector2Int.zero, buildingAndPlacementTime, 0);
-                    loadCallBack.Invoke();
-                    previousMainBuildingSO = mainBuildingSO;
-                    mainBuildingSOPage.mainBuildingSOPageElement[id] = mainBuildingSO;
-                    continue;
-                }
-                // 对建筑的剩余数据读取，并写入
-                // IBaseInfo
-                List<ActionScope> actionScopes = currentRow.GetCellString(8).Split(',').ToList().Select(s => s.ConvertToActionScope()).ToList();
-                (int exp, int hp) = (int.Parse(currentRow.GetCellString(9)),
-                                        int.Parse(currentRow.GetCellString(10)));
-                Vector2Int warningAndClearFogRad = currentRow.GetCellString(13).ConvertToVector2Int();
-                ArmorSO armorSO = currentRow.GetCellString(14).ConvertToArmorSO(armorSOPage);
-                mainBuildingSO.SetDataBaseInfoNoRequirementAndGameObjectPrefab(factionSO, id, nameZH, nameEN, comment, null, troop, actionScopes, exp, hp, price, warningAndClearFogRad, armorSO);
-                // IBuilding
-                (BuildingLabelSO buildingLabelSO, Vector2Int area, Vector2Int expandScope, int powerConsume) = (
-                        buildingLabelSOs[currentRow.GetCellString(16)],
-                            currentRow.GetCellString(17).ConvertToVector2Int(),
-                                currentRow.GetCellString(18).ConvertToVector2Int(),
-                                    int.Parse(currentRow.GetCellString(20)));
-                mainBuildingSO.SetDataBuildingInfo(buildingLabelSO, area, expandScope, buildingAndPlacementTime, powerConsume);
-
-                // ISkill
-                string skillNameZH;
-                if ((skillNameZH = currentRow.GetCellString(21)) != "")
-                {
-                    (string skillNameEN, string skillComment, int cd, int preTime, int postTime) = (
-                                    currentRow.GetCellString(22),
-                                        currentRow.GetCellString(24),
-                                            int.Parse(currentRow.GetCellString(25)),
-                                                int.Parse(currentRow.GetCellString(26)),
-                                                    int.Parse(currentRow.GetCellString(27)));
-                    mainBuildingSO.SetSkill(skillNameZH, skillNameEN, skillComment, cd, preTime, postTime);
-                }
+                    currentRow.ReadAndWriteRowToISkill(21, mainBuildingSO);
+                }           
                 loadCallBack.Invoke();
                 previousMainBuildingSO = mainBuildingSO;
                 mainBuildingSOPage.mainBuildingSOPageElement[id] = mainBuildingSO;
             }
-            // 科技前提写入
 
+            // 科技前提写入
             Func<string, MainBuildingSO> GetMainBuildingWithName = (string name) =>
             {
                 return mainBuildingSOPage.mainBuildingSOPageElement.Values.ToList().
@@ -174,61 +121,59 @@ public class DataLoad : MonoBehaviour
                 var name = currentRow.GetCellString(3);
                 if (name == "") continue;
                 GetMainBuildingWithName(name).SetRequirement(requirements);
-
-
             }
             Debug.Log("requriement完成");
         }
     }
     #endregion
 
-    #region OB
-    [ContextMenu("OtherBuildingSO")]
-    public void LoadOtherBuildingSO()
-    {
-        // 获得各阵营其他建筑SO文件夹路径
-        string alliedForcesOtherBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.OtherBuildingSequence);
-        string empireOtherBuildingPath = GetFactionPath(Faction.Empire, SequenceType.OtherBuildingSequence);
-        string sovietUnionOtherBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.OtherBuildingSequence);
-        // 获得各阵营其他建筑SO文件名
-        List<string> alliedForcesOtherBuildingSOFiles = GetFileNameInPath(alliedForcesOtherBuildingPath);
-        List<string> empireOtherBuildingSOFiles = GetFileNameInPath(empireOtherBuildingPath);
-        List<string> sovietUnionOtherBuildingSOFiles = GetFileNameInPath(sovietUnionOtherBuildingPath);
-        // 得到建筑标签
-        var buildingLabelSOs = GetBuildingLabelSOs();
+    // #region OB
+    // [ContextMenu("OtherBuildingSO")]
+    // public void LoadOtherBuildingSO()
+    // {
+    //     // 获得各阵营其他建筑SO文件夹路径
+    //     string alliedForcesOtherBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.OtherBuildingSequence);
+    //     string empireOtherBuildingPath = GetFactionPath(Faction.Empire, SequenceType.OtherBuildingSequence);
+    //     string sovietUnionOtherBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.OtherBuildingSequence);
+    //     // 获得各阵营其他建筑SO文件名
+    //     List<string> alliedForcesOtherBuildingSOFiles = GetFileNameInPath(alliedForcesOtherBuildingPath);
+    //     List<string> empireOtherBuildingSOFiles = GetFileNameInPath(empireOtherBuildingPath);
+    //     List<string> sovietUnionOtherBuildingSOFiles = GetFileNameInPath(sovietUnionOtherBuildingPath);
+    //     // 得到建筑标签
+    //     var buildingLabelSOs = GetBuildingLabelSOs();
 
-        using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
-        {
-            var workbook = new XSSFWorkbook(fileStream);
-            ISheet sheet = workbook.GetSheetAt(0);
-            OtherBuildingSO previousOtherBuildingSO = null;
-            for (int i = 3; i <= 28; i++)
-            {
-                var currentRow = sheet.GetRow(i);
-                string factionso = currentRow.GetCellString(1);
-                string idString = currentRow.GetCellString(2);
-                int id = int.Parse(idString);
-                string nameZH = currentRow.GetCellString(3);
-                string zameEN = currentRow.GetCellString(4);
-                string comment = currentRow.GetCellString(6);
-                string troop = currentRow.GetCellString(7);
-                string[] actionScopes = currentRow.GetCellString(8).Split(' ');
-                int exp = int.Parse(currentRow.GetCellString(9));
-                int hp = int.Parse(currentRow.GetCellString(10));
-                string[] req = currentRow.GetCellString(11).Split(' ');
-                int price = int.Parse(currentRow.GetCellString(12));
-                Vector2Int warningAndClearFogRad = currentRow.GetCellString(13).ConvertToVector2Int();
-                ArmorSO armorSO = currentRow.GetCellString(14).ConvertToArmorSO(armorSOPage);
-                BuildingLabelSO buildingLabelSO = buildingLabelSOs[currentRow.GetCellString(16)];
-                Vector2Int area = currentRow.GetCellString(17).ConvertToVector2Int();
-
-
-            }
-        }
+    //     using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
+    //     {
+    //         var workbook = new XSSFWorkbook(fileStream);
+    //         ISheet sheet = workbook.GetSheetAt(0);
+    //         OtherBuildingSO previousOtherBuildingSO = null;
+    //         for (int i = 3; i <= 28; i++)
+    //         {
+    //             var currentRow = sheet.GetRow(i);
+    //             string factionso = currentRow.GetCellString(1);
+    //             string idString = currentRow.GetCellString(2);
+    //             int id = int.Parse(idString);
+    //             string nameZH = currentRow.GetCellString(3);
+    //             string zameEN = currentRow.GetCellString(4);
+    //             string comment = currentRow.GetCellString(6);
+    //             string troop = currentRow.GetCellString(7);
+    //             string[] actionScopes = currentRow.GetCellString(8).Split(' ');
+    //             int exp = int.Parse(currentRow.GetCellString(9));
+    //             int hp = int.Parse(currentRow.GetCellString(10));
+    //             string[] req = currentRow.GetCellString(11).Split(' ');
+    //             int price = int.Parse(currentRow.GetCellString(12));
+    //             Vector2Int warningAndClearFogRad = currentRow.GetCellString(13).ConvertToVector2Int();
+    //             ArmorSO armorSO = currentRow.GetCellString(14).ConvertToArmorSO(armorSOPage);
+    //             BuildingLabelSO buildingLabelSO = buildingLabelSOs[currentRow.GetCellString(16)];
+    //             Vector2Int area = currentRow.GetCellString(17).ConvertToVector2Int();
 
 
-    }
-    #endregion
+    //         }
+    //     }
+
+
+    // }
+    // #endregion
 
     #region Armor
     [ContextMenu("LoadArmorData")]
@@ -349,6 +294,9 @@ public class DataLoad : MonoBehaviour
             var workbook = new XSSFWorkbook(fileStream);
             ISheet sheet = workbook.GetSheetAt(0);
             var currentrow = sheet.GetRow(row);
+            MainBuildingSO mainBuildingSO = new MainBuildingSO();
+            currentrow.ReadAndWriteRowToIBaseInfo(mainBuildingSO);
+            Debug.Log("ddd");
         }
     }
 
@@ -360,22 +308,32 @@ public class DataLoad : MonoBehaviour
 
 public static class Tool
 {
-
-
-    public static ActionScope ConvertToActionScope(this string value)
+    public static FactionSO AlliedForcesFactionSO;
+    public static FactionSO EmpireFactionSO;
+    public static FactionSO SovietUnionFactionSO;
+    public static ArmorSOPage ArmorSOPage;
+    public static void InitFactionSOConvertTo(FactionSO alliedForcesFactionSO, FactionSO empireFactionSO, FactionSO sovietUnionFactionSO, ArmorSOPage armorSOPage)
     {
-        if (value.ToLower() == "land")
-            return ActionScope.Land;
-        else if (value.ToLower() == "ocean")
-            return ActionScope.Ocean;
-        else if (value.ToLower() == "air")
-            return ActionScope.Air;
-        else if (value.ToLower() == "submarine")
-            return ActionScope.Submarine;
-        else if (value.ToLower() == "aviation")
-            return ActionScope.Aviation;
-        else
-            return ActionScope.None;
+        AlliedForcesFactionSO = alliedForcesFactionSO;
+        EmpireFactionSO = empireFactionSO;
+        SovietUnionFactionSO = sovietUnionFactionSO;
+        ArmorSOPage =  armorSOPage;
+    }
+
+
+    public static List<ActionScope> ConvertToActionScopes(this string value)
+    {
+        if (value == "") return null;
+        return value.Split(',').ToList().Select(s => s.ToLower() switch
+        {
+            "land" => ActionScope.Land,
+            "ocean" => ActionScope.Ocean,
+            "air" => ActionScope.Air,
+            "submarine" => ActionScope.Submarine,
+            "aviation" => ActionScope.Aviation,
+            _ => ActionScope.None
+        }).ToList();
+
     }
     public static Troop ConvertToTroop(this string value)
     {
@@ -392,12 +350,14 @@ public static class Tool
     }
     public static Vector2Int ConvertToVector2Int(this string value)
     {
+        if (value == "") return Vector2Int.zero;
         int[] res = value.Split(',').Select(i => int.Parse(i)).ToArray();
         return new Vector2Int(res[0], res[1]);
     }
-    public static ArmorSO ConvertToArmorSO(this string value, ArmorSOPage armorSOPage)
+    public static ArmorSO ConvertToArmorSO(this string value)
     {
-        foreach (var armor in armorSOPage.armorSOPageElement)
+        if (value == "") return null;
+        foreach (var armor in ArmorSOPage.armorSOPageElement)
         {
             if (armor.Value.ArmorNameZH == value)
             {
@@ -405,39 +365,53 @@ public static class Tool
             }
         }
         return null;
-
     }
-
     public static string GetCellString(this IRow value, int index)
     {
         return value.Cells[index].ToString().Trim();
     }
-
-    public static void ReadAndWriteRowToIBaseInfo(this IRow current, int startIndex = 1, int endIndex = 14, IBaseInfo baseInfo)
+    public static FactionSO ConvertToFaction(this string value)
     {
-
-        // this.factionSO = factionSO;
-        FactionSO factionSO = new DataLoad().GetFactionSO(current.GetCellString(1));
+        return value switch { "盟军" => AlliedForcesFactionSO, "帝国" => EmpireFactionSO, _ => EmpireFactionSO };
+    }
+    public static void ReadAndWriteRowToIBaseInfo(this IRow current, IBaseInfo baseInfo)
+    {
+        FactionSO factionSO = current.GetCellString(1).ConvertToFaction();
         int id = int.Parse(current.GetCellString(2));
         string nameChinese = current.GetCellString(3);
         string nameEnglish = current.GetCellString(4);
         string commentChinese = current.GetCellString(6);
         string commentEnglish = "null";
         Troop troop = current.GetCellString(7).ConvertToTroop();
-        List<ActionScope> actionScopes = currentRow.GetCellString(8).Split(',').ToList().Select(s => s.ConvertToActionScope()).ToList();
-        int exp = int.Parse(current.GetCellString(2));
-        int hp = int.Parse(current.GetCellString(2));
-        MainBuildingSO requirement = requirement;
-        int price = int.Parse(current.GetCellString(2));
-        Vector2Int warningAndClearFogRad = warningAndClearFogRad;
-        ArmorSO armorType = armorType;
+        List<ActionScope> actionScopes = current.GetCellString(8).ConvertToActionScopes();
+        int exp = int.Parse(current.GetCellString(9));
+        int hp = int.Parse(current.GetCellString(10));
+        int price = int.Parse(current.GetCellString(12));
 
-
-        baseInfo.SetBaseInfo()
-
+        Vector2Int warningAndClearFogRad = current.GetCellString(13).ConvertToVector2Int();
+        ArmorSO armorType = current.GetCellString(14).ConvertToArmorSO();
+        baseInfo.SetBaseInfo(factionSO, id, nameChinese, nameEnglish, null, commentChinese, commentEnglish, troop, actionScopes, exp, hp, price, null, warningAndClearFogRad, armorType, null);
     }
-    public static void ReadRowToIBuilding(int startIndex, int endIndex, IBuilding building)
+    public static void ReadAndWriteRowToIBuilding(this IRow current, int startIndex, IBuilding building, Dictionary<string, BuildingLabelSO> buildingLabelSOs)
     {
+        BuildingLabelSO buildingLabelSO = current.GetCellString(startIndex) == "" ? null : buildingLabelSOs[current.GetCellString(startIndex)];
+        Vector2Int area = current.GetCellString(startIndex + 1).ConvertToVector2Int();
+        Vector2Int expandScope = current.GetCellString(startIndex + 2).ConvertToVector2Int();
+        Vector2Int buildingAndPlacementTime = current.GetCellString(startIndex + 3).ConvertToVector2Int();
+        int powerConsume = int.Parse(current.GetCellString(startIndex + 4));
+
+        building.SetBuilding(buildingLabelSO, area, expandScope, buildingAndPlacementTime, powerConsume);
+    }
+    public static void ReadAndWriteRowToISkill(this IRow current, int startIndex, ISkill skill)
+    {
+        string skillNameZH = current.GetCellString(startIndex);
+        if(skillNameZH == "") return;
+        string skillNameEN = current.GetCellString(startIndex + 1);
+        string skillComment = current.GetCellString(startIndex + 3);
+        int cd = int.Parse(current.GetCellString(startIndex + 4));
+        int preTime = int.Parse(current.GetCellString(startIndex + 5));
+        int postTime = int.Parse(current.GetCellString(startIndex + 6));
+        skill.SetSkill(skillNameZH, skillNameEN, skillComment, cd, preTime, postTime);
 
     }
 
