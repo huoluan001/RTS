@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "OtherBuildingSO", menuName = "ScriptableObjects/Data/OtherBuildingSO")]
-public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon // ISkill
+public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, ISkill
 {
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO factionSO;
@@ -32,7 +33,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon /
     [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
     [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
     [Tooltip("电力消耗"), SerializeField] private int powerConsume;
-    
+
     [Header("IWeapon")]
     [Tooltip("武器组"), SerializeField] private List<Weapon> weapons;
 
@@ -84,7 +85,6 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon /
         this.armorType = armorType;
         this.gameObjectPrefab = gameObjectPrefab;
     }
-
     public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int buildingAndPlacementTime, Vector2Int expandScope, int powerConsume)
     {
         this.label = label;
@@ -93,4 +93,45 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon /
         this.buildingAndPlacementTime = buildingAndPlacementTime;
         this.powerConsume = powerConsume;
     }
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
+    {
+        if (skills == null)
+            skills = new List<Skill>();
+        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
+        Skill skill;
+        if (res.Count() == 0)
+            skills.Add(skill = new Skill());
+        else
+            skill = res[0];
+        skill.skillNameZH = skillNameZH;
+        skill.skillNameEN = skillNameEN;
+        skill.commentChinese = commentChinese;
+        skill.skillCooling = skillCooling;
+        skill.skillPre_Swing = skillPre_Swing;
+        skill.skillPost_Swing = skillPost_Swing;
+    }
+    public void SetWeapon(string weaponNameZH, string weaponNameEN, DamageTypeSO damageType, Vector2 singleDamage, Vector2 range, float magazineSize, Vector2 magazineLoadingTime, Vector2 aimingTime, Vector2 firingDuration, Vector2 sputteringRadius, Vector2 sputteringDamage)
+    {
+        if (weapons == null)
+            weapons = new List<Weapon>();
+        var res = weapons.Where(w => w.WeaponNameZH == weaponNameZH).ToList();
+        Weapon weapon;
+        if (res.Count() == 0)
+            weapons.Add(weapon = new Weapon());
+        else
+            weapon = res[0];
+        weapon.WeaponNameZH = weaponNameZH;
+        weapon.WeaponNameEN = weaponNameEN;
+        weapon.damageType = damageType;
+        weapon.singleDamage = singleDamage;
+        weapon.range = range;
+        weapon.magazineSize = magazineSize;
+        weapon.magazineLoadingTime = magazineLoadingTime;
+        weapon.aimingTime = aimingTime;
+        weapon.firingDuration = firingDuration;
+        weapon.sputteringRadius = sputteringRadius;
+        weapon.sputteringDamage = sputteringDamage;
+    }
+
+   
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "ArmySO", menuName = "ScriptableObjects/Data/ArmySO"), SerializeField]
-public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon //, ISkill
+public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
 {
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO factionSO;
@@ -105,5 +105,15 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon //, ISkill
         this.labels = labels;
         this.buildingTime = buildingTime;
         this.buildFacilities = buildFacilities;
+    }
+
+    public void SetWeapon(string weaponNameZH, string weaponNameEN, DamageTypeSO damageType, Vector2 singleDamage, Vector2 range, float magazineSize, Vector2 magazineLoadingTime, Vector2 aimingTime, Vector2 firingDuration, Vector2 sputteringRadius, Vector2 sputteringDamage)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
+    {
+        throw new NotImplementedException();
     }
 }

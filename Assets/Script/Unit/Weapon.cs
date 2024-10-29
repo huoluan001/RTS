@@ -11,36 +11,33 @@ public class Weapon
     
     [Header("Damage")]
     [Tooltip("伤害类型")] public DamageTypeSO damageType;
-    [Tooltip("单发伤害"), SerializeField] private Vector2 _singleDamage;
+    [Tooltip("单发伤害"), SerializeField] public Vector2 singleDamage;
+    [Tooltip("射程"),SerializeField] public Vector2 range;
     [Tooltip("弹夹大小")] public float magazineSize;
-    [Tooltip("射程"),SerializeField] public Vector2 _range;
 
     [Header("Time")]
-    [Tooltip("弹夹装填时间"), SerializeField] private Vector2 _magazineLoadingTime;
-    [Tooltip("瞄准时间"), SerializeField] private Vector2 _aimingTime;
-    [Tooltip("开火持续时间"), SerializeField] private Vector2 _firingDuration;
+    [Tooltip("弹夹装填时间"), SerializeField] public Vector2 magazineLoadingTime;
+    [Tooltip("瞄准时间"), SerializeField] public Vector2 aimingTime;
+    [Tooltip("开火持续时间"), SerializeField] public Vector2 firingDuration;
 
     [Header("溅射")]
-    [Tooltip("溅射半径"),SerializeField] private Vector2 _sputteringRadius;
-    [Tooltip("溅射伤害"), SerializeField] private Vector2 _sputteringDamage;
+    [Tooltip("溅射半径"),SerializeField] public Vector2 sputteringRadius;
+    [Tooltip("溅射伤害"), SerializeField] public Vector2 sputteringDamage;
 
-    [Header("info")]
-    [Tooltip("一轮攻击时间"), SerializeField] private Vector2 _oneAttackTime;
-    [Tooltip("一轮攻击伤害"), SerializeField] private Vector2 _oneAttackDamage;
-    [Tooltip("DPS"), SerializeField] private Vector2 _DPS;
-
-    public float Range => GetRandomValue(_range);
-    public float SputteringRadius => GetRandomValue(_sputteringRadius);
-    public float SputteringDamage => GetRandomValue(_sputteringDamage);
-    public float SingleDamage => GetRandomValue(_singleDamage);
-    public float AimingTime => GetRandomValue(_aimingTime);
-    public float FiringDuration => GetRandomValue(_firingDuration);
-    public float MagazineLoadingTime => GetRandomValue(_magazineLoadingTime);
-    public float OneAttackTime => GetRandomValue(_oneAttackTime);
-    public float OneAttackDamage => GetRandomValue(_oneAttackDamage);
-    public float DPS => GetRandomValue(_DPS);
+    public float Range => GetRandomValue(range);
+    public float SputteringRadius => GetRandomValue(sputteringRadius);
+    public float SputteringDamage => GetRandomValue(sputteringDamage);
+    public float SingleDamage => GetRandomValue(singleDamage);
+    public float AimingTime => GetRandomValue(aimingTime);
+    public float FiringDuration => GetRandomValue(firingDuration);
+    public float MagazineLoadingTime => GetRandomValue(magazineLoadingTime);
     private float GetRandomValue(Vector2 range)
     {
         return range.x == range.y ? range.x : UnityEngine.Random.Range(range.x, range.y);
+    }
+
+    public void SetWeaponData()
+    {
+
     }
 }
