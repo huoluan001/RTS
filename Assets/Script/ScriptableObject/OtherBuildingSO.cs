@@ -31,7 +31,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
     [Tooltip("用途"), SerializeField] private BuildingLabelSO label;
     [Tooltip("占地面积"), SerializeField] private Vector2Int area;
     [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
-    [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
+    [Tooltip("建造/展开时长"), SerializeField] private Vector2 buildingAndPlacementTime;
     [Tooltip("电力消耗"), SerializeField] private int powerConsume;
 
     [Header("IWeapon")]
@@ -56,7 +56,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
     public int Exp => exp;
     public List<MainBuildingSO> Requirement => requirement;
     public Vector2Int Area => area;
-    public Vector2Int BuildingAndPlacementTime => buildingAndPlacementTime;
+    public Vector2 BuildingAndPlacementTime => buildingAndPlacementTime;
     public Vector2Int ExpandScope => expandScope;
     public int Price => price;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
@@ -66,6 +66,10 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
+    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
+    {
+        requirement = mainBuildingSOs;
+    }
     public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, Troop troop, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
     {
         this.factionSO = factionSO;
@@ -85,7 +89,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
         this.armorType = armorType;
         this.gameObjectPrefab = gameObjectPrefab;
     }
-    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int buildingAndPlacementTime, Vector2Int expandScope, int powerConsume)
+    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int expandScope, Vector2 buildingAndPlacementTime, int powerConsume)
     {
         this.label = label;
         this.area = area;
@@ -133,5 +137,5 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
         weapon.sputteringDamage = sputteringDamage;
     }
 
-   
+
 }

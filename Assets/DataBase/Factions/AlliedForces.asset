@@ -13,50 +13,9 @@ MonoBehaviour:
   m_Name: AlliedForces
   m_EditorClassIdentifier: 
   Faction: 1
-  MainBuildings:
-  - {fileID: 11400000, guid: 6363adfda05134eb1863a3c31a9d9536, type: 2}
-  - {fileID: 11400000, guid: 83aa0d9fd07984258a4bbae549d3ca7e, type: 2}
-  - {fileID: 11400000, guid: 5999706788de84a7abceecd6a8a279e4, type: 2}
-  - {fileID: 11400000, guid: 8d0711455a24745f1ae6aea5331cb783, type: 2}
-  - {fileID: 11400000, guid: 94e8bb725f0ba4f318fe230afc5ca6e2, type: 2}
-  - {fileID: 11400000, guid: 456677c8dbb4548c08ffc2773985b504, type: 2}
-  - {fileID: 11400000, guid: bf0eb9656eeca44e59268397898014f9, type: 2}
-  OtherBuildings:
-  - {fileID: 11400000, guid: b3d26123c6a544c5ebb978862d6545be, type: 2}
-  - {fileID: 11400000, guid: b8ac79c7df2b04694b2a0a15605c0020, type: 2}
-  - {fileID: 11400000, guid: be0c72ea0226c4ca8a5a6c063ad8f106, type: 2}
-  - {fileID: 11400000, guid: 8470df8e4d1944177ac2b81e18321790, type: 2}
-  - {fileID: 11400000, guid: ce66591975cb84f1aa1e1d08194d7e44, type: 2}
-  - {fileID: 11400000, guid: c8c56d714f3574912aa071c0d751bdc9, type: 2}
-  Infantry:
-  - {fileID: 11400000, guid: f3734079f698646e1850391e85d23922, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Vehicle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Aircraft:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Dock:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  MainBuildings: []
+  OtherBuildings: []
+  Infantry: []
+  Vehicle: []
+  Aircraft: []
+  Dock: []

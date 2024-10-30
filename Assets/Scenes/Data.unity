@@ -160,7 +160,7 @@ MonoBehaviour:
   armyLabelPath: /DataBase/ArmyLabel
   buildingLabelPath: /DataBase/BuildingLabel
   FactionDBPath: /FactionDB
-  row: 11
+  row: 4
   col: 2
 --- !u!4 &32866508
 Transform:

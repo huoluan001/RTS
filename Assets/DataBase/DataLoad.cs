@@ -14,7 +14,7 @@ using UnityEditor.Rendering.LookDev;
 
 public class DataLoad : MonoBehaviour
 {
-#region field
+    #region field
     public MainBuildingSOPage mainBuildingSOPage;
     public OtherBuildingSOPage otherBuildingSOPage;
     public ArmySOPage armySOPage;
@@ -32,9 +32,9 @@ public class DataLoad : MonoBehaviour
     public string FactionDBPath;
     public int row;
     public int col;
-#endregion
-    
-#region MB
+    #endregion
+
+    #region MB
     [ContextMenu("MainBuildingData主建筑数据导入")]
     public void LoadMainBuilding()
     {
@@ -48,9 +48,8 @@ public class DataLoad : MonoBehaviour
         List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
         // 得到建筑标签
         var buildingLabelSOs = GetBuildingLabelSOs();
-
+        // tool初始化
         Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOPage);
-
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
@@ -93,14 +92,12 @@ public class DataLoad : MonoBehaviour
                     AssetDatabase.CreateAsset(mainBuildingSO, filePath);
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
-
+                // 配置主建筑的IbaseInfo和Ibuilding
                 currentRow.ReadAndWriteRowToIBaseInfo(mainBuildingSO);
                 currentRow.ReadAndWriteRowToIBuilding(16, mainBuildingSO, buildingLabelSOs);
-
-                Troop troop = currentRow.GetCellString(7).ConvertToTroop();
-                // 盟军的科技，这是一个特殊的存在
-                if (troop != Troop.Technology)
-                    currentRow.ReadAndWriteRowToISkill(21, mainBuildingSO);       
+                // 盟军的科技，这是一个特殊的存在，不可能存在技能，直接跳过
+                if (currentRow.GetCellString(7).ConvertToTroop() != Troop.Technology)
+                    currentRow.ReadAndWriteRowToISkill(21, mainBuildingSO);
                 loadCallBack.Invoke();
                 previousMainBuildingSO = mainBuildingSO;
                 mainBuildingSOPage.mainBuildingSOPageElement[id] = mainBuildingSO;
@@ -125,9 +122,9 @@ public class DataLoad : MonoBehaviour
             Debug.Log("requriement完成");
         }
     }
-#endregion
+    #endregion
 
-#region OB
+    #region OB
     [ContextMenu("OtherBuildingSO")]
     public void LoadOtherBuildingSO()
     {
@@ -146,15 +143,17 @@ public class DataLoad : MonoBehaviour
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
-            ISheet sheet = workbook.GetSheetAt(0);
+            ISheet sheet = workbook.GetSheetAt(1);
             OtherBuildingSO previousOtherBuildingSO = null;
             for (int i = 3; i <= 28; i++)
             {
                 var currentRow = sheet.GetRow(i);
+
                 string idstring = currentRow.GetCellString(2);
                 // 如果ID为null，表示这一行没有信息，只是上一行的另外一个技能
                 if (idstring == "")
                 {
+                    currentRow.ReadAndWriteRowToIWeapon(22, previousOtherBuildingSO, damageTypeSOs);
                     currentRow.ReadAndWriteRowToISkill(33, previousOtherBuildingSO);
                     continue;
                 }
@@ -188,17 +187,27 @@ public class DataLoad : MonoBehaviour
                 currentRow.ReadAndWriteRowToIBuilding(16, otherBuildingSO, buildingLabelSOs);
                 currentRow.ReadAndWriteRowToIWeapon(22, otherBuildingSO, damageTypeSOs);
                 currentRow.ReadAndWriteRowToISkill(33, otherBuildingSO);
-
-
-
+                // 科技前提写入
+                Func<string, MainBuildingSO> GetMainBuildingWithName = (string name) =>
+                {
+                    return mainBuildingSOPage.mainBuildingSOPageElement.Values.ToList().
+                        FirstOrDefault(mainBuilding => mainBuilding.NameChinese == name);
+                };
+                var requriement = currentRow.GetCellString(11);
+                if (requriement != "null")
+                {
+                    var requirements = requriement.Split(',').Select(req => GetMainBuildingWithName(req)).ToList();
+                    otherBuildingSO.SetRequirement(requirements);
+                }
+                loadCallBack.Invoke();
+                previousOtherBuildingSO = otherBuildingSO;
+                otherBuildingSOPage.otherBuildingSOPageElement[id] = otherBuildingSO;
             }
         }
-
-
     }
-#endregion
+    #endregion
 
-#region Armor
+    #region Armor
     [ContextMenu("LoadArmorData")]
     public void LoadArmorData()
     {
@@ -315,11 +324,10 @@ public class DataLoad : MonoBehaviour
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
-            ISheet sheet = workbook.GetSheetAt(0);
+            ISheet sheet = workbook.GetSheetAt(1);
             var currentrow = sheet.GetRow(row);
-            MainBuildingSO mainBuildingSO = new MainBuildingSO();
-            currentrow.ReadAndWriteRowToIBaseInfo(mainBuildingSO);
-            Debug.Log("ddd");
+            string aa = currentrow.GetCell(13).ToString();
+            Debug.Log("ff");
         }
     }
 
@@ -340,7 +348,7 @@ public static class Tool
         AlliedForcesFactionSO = alliedForcesFactionSO;
         EmpireFactionSO = empireFactionSO;
         SovietUnionFactionSO = sovietUnionFactionSO;
-        ArmorSOPage =  armorSOPage;
+        ArmorSOPage = armorSOPage;
     }
     public static List<ActionScope> ConvertToActionScopes(this string value)
     {
@@ -389,7 +397,8 @@ public static class Tool
     }
     public static string GetCellString(this IRow value, int index)
     {
-        return value.Cells[index].ToString().Trim();
+        return value == null ? "" : value.Cells[index].ToString().Trim();
+
     }
     public static FactionSO ConvertToFaction(this string value)
     {
@@ -398,9 +407,9 @@ public static class Tool
 
     public static Vector2 ConvertToVector2(this string value)
     {
-        if(value == "") return Vector2Int.zero;
-        int[] res = value.Split(',').Select(i => int.Parse(i)).ToArray();
-        return res.Length == 2 ? new Vector2(res[0], res[1]) : new Vector2Int(res[0], res[0]);
+        if (value == "") return Vector2Int.zero;
+        var res = value.Split(',').Select(i => float.Parse(i)).ToArray();
+        return res.Length == 2 ? new Vector2(res[0], res[1]) : new Vector2(res[0], res[0]);
     }
     public static void ReadAndWriteRowToIBaseInfo(this IRow current, IBaseInfo baseInfo)
     {
@@ -415,7 +424,6 @@ public static class Tool
         int exp = int.Parse(current.GetCellString(9));
         int hp = int.Parse(current.GetCellString(10));
         int price = int.Parse(current.GetCellString(12));
-
         Vector2Int warningAndClearFogRad = current.GetCellString(13).ConvertToVector2Int();
         ArmorSO armorType = current.GetCellString(14).ConvertToArmorSO();
         baseInfo.SetBaseInfo(factionSO, id, nameChinese, nameEnglish, null, commentChinese, commentEnglish, troop, actionScopes, exp, hp, price, null, warningAndClearFogRad, armorType, null);
@@ -425,15 +433,14 @@ public static class Tool
         BuildingLabelSO buildingLabelSO = current.GetCellString(startIndex) == "" ? null : buildingLabelSOs[current.GetCellString(startIndex)];
         Vector2Int area = current.GetCellString(startIndex + 1).ConvertToVector2Int();
         Vector2Int expandScope = current.GetCellString(startIndex + 2).ConvertToVector2Int();
-        Vector2Int buildingAndPlacementTime = current.GetCellString(startIndex + 3).ConvertToVector2Int();
+        Vector2 buildingAndPlacementTime = current.GetCellString(startIndex + 3).ConvertToVector2();
         int powerConsume = int.Parse(current.GetCellString(startIndex + 4));
-
         building.SetBuilding(buildingLabelSO, area, expandScope, buildingAndPlacementTime, powerConsume);
     }
     public static void ReadAndWriteRowToISkill(this IRow current, int startIndex, ISkill skill)
     {
         string skillNameZH = current.GetCellString(startIndex);
-        if(skillNameZH == "") return;
+        if (skillNameZH == "") return;
         string skillNameEN = current.GetCellString(startIndex + 1);
         string skillComment = current.GetCellString(startIndex + 3);
         int cd = int.Parse(current.GetCellString(startIndex + 4));
@@ -443,21 +450,21 @@ public static class Tool
 
     }
     public static void ReadAndWriteRowToIWeapon(this IRow current, int startIndex, IWeapon weapon, Dictionary<int, DamageTypeSO> damageTypeSOs)
-    {   
+    {
         string weaponNameZH = current.GetCellString(startIndex);
+        if (weaponNameZH == "") return;
         string weaponNameEN = null;
-        DamageTypeSO damageType = current.GetCellString(startIndex + 1) == "" ? null : 
+        DamageTypeSO damageType = current.GetCellString(startIndex + 1) == "" ? null :
                         damageTypeSOs.Values.FirstOrDefault(damageType => damageType.damageTypeZH == current.GetCellString(startIndex + 1));
         Vector2 singleDamage = current.GetCellString(startIndex + 2).ConvertToVector2();
         Vector2 range = current.GetCellString(startIndex + 3).ConvertToVector2();
         float magazineSize = float.Parse(current.GetCellString(startIndex + 4));
-        Vector2 magazineLoadingTime = current.GetCellString(startIndex + 5).ConvertToVector2(); 
+        Vector2 magazineLoadingTime = current.GetCellString(startIndex + 5).ConvertToVector2();
         Vector2 aimingTime = current.GetCellString(startIndex + 6).ConvertToVector2();
         Vector2 firingDuration = current.GetCellString(startIndex + 7).ConvertToVector2();
         Vector2 sputteringRadius = current.GetCellString(startIndex + 8).ConvertToVector2();
         Vector2 sputteringDamage = current.GetCellString(startIndex + 9).ConvertToVector2();
-        weapon.SetWeapon(weaponNameZH, weaponNameEN, damageType,singleDamage, range, magazineSize, magazineLoadingTime,aimingTime, firingDuration, sputteringRadius, sputteringDamage);
-
+        weapon.SetWeapon(weaponNameZH, weaponNameEN, damageType, singleDamage, range, magazineSize, magazineLoadingTime, aimingTime, firingDuration, sputteringRadius, sputteringDamage);
     }
 
 }

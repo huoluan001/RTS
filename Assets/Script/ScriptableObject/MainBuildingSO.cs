@@ -32,7 +32,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     [Tooltip("用途"), SerializeField] private BuildingLabelSO label;
     [Tooltip("占地面积"), SerializeField] private Vector2Int area;
     [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
-    [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
+    [Tooltip("建造/展开时长"), SerializeField] private Vector2 buildingAndPlacementTime;
     [Tooltip("电力消耗"), SerializeField] private int powerConsume;
 
     [Header("ISkill")]
@@ -53,7 +53,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public int Exp => exp;
     public List<MainBuildingSO> Requirement => requirement;
     public Vector2Int Area => area;
-    public Vector2Int BuildingAndPlacementTime => buildingAndPlacementTime;
+    public Vector2 BuildingAndPlacementTime => buildingAndPlacementTime;
     public Vector2Int ExpandScope => expandScope;
     public int Price => price;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
@@ -87,7 +87,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         this.armorType = armorType;
         this.gameObjectPrefab = gameObjectPrefab;
     }
-    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int buildingAndPlacementTime, Vector2Int expandScope, int powerConsume)
+    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int expandScope, Vector2 buildingAndPlacementTime, int powerConsume)
     {
         this.label = label;
         this.area = area;
