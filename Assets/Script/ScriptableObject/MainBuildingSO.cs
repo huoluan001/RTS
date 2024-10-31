@@ -96,7 +96,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         this.powerConsume = powerConsume;
     }
 
-    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, float skillCooling, float skillPre_Swing, float skillPost_Swing)
     {
         if (skills == null)
             skills = new List<Skill>();

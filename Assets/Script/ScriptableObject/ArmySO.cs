@@ -34,7 +34,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
     [Tooltip("碾压等级/被碾压等级"), SerializeField] private CrushList crushingAndCrushedLevel;
     [Tooltip("标签"), SerializeField] private List<ArmyLabelSO> labels;
     [Tooltip("建造时间"), SerializeField] private int buildingTime;
-    [Tooltip("建造设施"), SerializeField] private MainBuildingSO buildFacilities;
+    [Tooltip("建造设施"), SerializeField] private List<MainBuildingSO> buildFacilities;
 
     [Header("IWeapon")]
     [Tooltip("武器组"), SerializeField] private List<Weapon> weapons;
@@ -67,7 +67,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
     public List<MainBuildingSO> Requirement => requirement;
     public int BuildingTime => buildingTime;
     public int Price => price;
-    public MainBuildingSO BuildFacilities => buildFacilities;
+    public List<MainBuildingSO> BuildFacilities => buildFacilities;
     public ArmorSO ArmorType => armorType;
     public int Hp => hp;
     public List<Weapon> Weapons => weapons;
@@ -96,7 +96,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
         this.gameObjectPrefab = gameObjectPrefab;
 
     }
-    public void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious,CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels,int buildingTime, MainBuildingSO buildFacilities)
+    public void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious,CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels,int buildingTime, List<MainBuildingSO> buildFacilities)
     {
         this.moveSpeed = moveSpeed;
         this.isReverseMove = isReverseMove;
@@ -112,7 +112,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
         throw new NotImplementedException();
     }
 
-    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, float skillCooling, float skillPre_Swing, float skillPost_Swing)
     {
         throw new NotImplementedException();
     }
