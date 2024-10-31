@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30335_Naginata
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 30335
+  nameChinese: "\u8599\u5200\u5DE1\u6D0B\u8230"
+  nameEnglish: Naginata
+  icon: {fileID: 0}
+  commentChinese: "\u51F6\u608D\u7684\u6218\u8230\u730E\u6740\u8005,\u6240\u642D\u8F7D\u7684\u9C7C\u96F7\u53D1\u5C04\u7BA1\u80FD\u591F\u671D\u591A\u65B9\u5411\u53D1\u5C04"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 01000000
+  exp: 1800
+  hp: 1200
+  requirement: []
+  price: 1800
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 810ef5c672f2e4729a02d895c4b8ab34, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 0, y: 85, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 1, y: 20}
+  labels:
+  - {fileID: 11400000, guid: 4a5c7c4cb907c4f24a7a3ef93df22b9d, type: 2}
+  buildingTime: 18
+  buildFacilities:
+  - {fileID: 11400000, guid: fbf0b7c57e77348f28a078af8883eef1, type: 2}
+  weapons:
+  - WeaponNameZH: "\u9C7C\u96F7"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: d61b899387f89426fa5a01d7245b505c, type: 2}
+    singleDamage: {x: 60, y: 60}
+    range: {x: 150, y: 150}
+    magazineSize: 2
+    magazineLoadingTime: {x: 0.5, y: 0.5}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.5, y: 0.5}
+    sputteringRadius: {x: 10, y: 10}
+    sputteringDamage: {x: 60, y: 60}
+  - WeaponNameZH: "\u6563\u5C04\u9C7C\u96F7"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: d61b899387f89426fa5a01d7245b505c, type: 2}
+    singleDamage: {x: 15, y: 15}
+    range: {x: 100000, y: 100000}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 1, y: 1}
+    sputteringRadius: {x: 15, y: 15}
+    sputteringDamage: {x: 150, y: 150}
+  skills:
+  - skillNameZH: "\u6740\u624B\u9C7C\u96F7"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u6247\u9762\u53D1\u5C04\u9690\u85CF\u5728\u7B2C\u4E8C\u53D1\u5C04\u7BA1\u5185\u7684\u53CD\u8230\u9C7C\u96F7\u3002"
+    skillCooling: 60
+    skillPre_Swing: 0
+    skillPost_Swing: 0

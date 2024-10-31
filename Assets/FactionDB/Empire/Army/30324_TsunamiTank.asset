@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30324_TsunamiTank
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 30324
+  nameChinese: "\u6D77\u5578\u5766\u514B"
+  nameEnglish: TsunamiTank
+  icon: {fileID: 0}
+  commentChinese: "\u65ED\u65E5\u5E1D\u56FD\u4FB5\u7565\u6027\u5341\u8DB3\u7684\u4E3B\u529B\u5766\u514B,\u80FD\u5728\u6D77\u6D0B\u53CA\u9646\u5730\u4E0A\u7A7F\u68AD"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 0000000001000000
+  exp: 1000
+  hp: 380
+  requirement: []
+  price: 1000
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 790e0ab26a55c4015b31ef6333b6c1b7, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 75, y: 75, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 0000000001000000
+    m_values:
+    - {x: 20, y: 20}
+    - {x: 1, y: 20}
+  labels:
+  - {fileID: 11400000, guid: 4a5c7c4cb907c4f24a7a3ef93df22b9d, type: 2}
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 11400000, guid: 7da6282d6035148628fd30004a264a37, type: 2}
+  weapons:
+  - WeaponNameZH: "\u7A7F\u7532\u70AE"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: fea6ca6468fec418f95099fca8f88c14, type: 2}
+    singleDamage: {x: 20, y: 20}
+    range: {x: 150, y: 150}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.27, y: 0.27}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.27, y: 0.27}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills:
+  - skillNameZH: "\u7EB3\u7C73\u504F\u5BFC\u7F69"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u901A\u8FC7\u4E34\u65F6\u8C03\u7528\u4E3B\u70AE\u7684\u7EB3\u7C73\u673A\u68B0\u6765\u63D0\u9AD8\u9632\u5FA1\u5F3A\u5EA6\u3002\u671F\u95F4\u53D7\u5230\u4F24\u5BB3\u964D\u4E3A\u4E00\u534A,\u4E14\u6BCF\u79D2\u56DE\u590D15\u8840,\u5E76\u4F1A\u589E\u52A025%\u901F\u5EA6"
+    skillCooling: 30
+    skillPre_Swing: 0
+    skillPost_Swing: 0

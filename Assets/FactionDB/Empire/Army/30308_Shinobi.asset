@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30308_Shinobi
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 30308
+  nameChinese: "\u5FCD\u8005"
+  nameEnglish: Shinobi
+  icon: {fileID: 0}
+  commentChinese: "\u80FD\u7528\u4ED6\u4EEC\u7684\u5200\u5203\u6084\u58F0\u6740\u622E,\u5E76\u5728\u654C\u65B9\u5EFA\u7B51\u7269\u5185\u9020\u6210\u4E25\u91CD\u7834\u574F\u7684\u6697\u6740\u5927\u5E08"
+  commentEnglish: null
+  troop: 1
+  actionScopes: 0000000001000000
+  exp: 1000
+  hp: 200
+  requirement: []
+  price: 1000
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 15f662958e72049d498b27c1c30cd992, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 75, y: 75, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 10}
+  labels:
+  - {fileID: 11400000, guid: a51e2d5d8e6cd43d6ac1de707aeea85c, type: 2}
+  - {fileID: 11400000, guid: 26ff89b54381a472e814a611db88c536, type: 2}
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 11400000, guid: 6c42807263d58433493b21290c61fb70, type: 2}
+  weapons:
+  - WeaponNameZH: "\u98DE\u9556"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: a916f73c3fd4f40fb94583527c1c1683, type: 2}
+    singleDamage: {x: 5, y: 5}
+    range: {x: 35, y: 150}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.1, y: 0.1}
+    aimingTime: {x: 0.2, y: 0.2}
+    firingDuration: {x: 0.8, y: 0.8}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  - WeaponNameZH: "\u5FCD\u5200"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 23b462395bdd34483b52941f8662e8f3, type: 2}
+    singleDamage: {x: 500, y: 500}
+    range: {x: 25, y: 25}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.1, y: 0.1}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.9, y: 0.9}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills:
+  - skillNameZH: "\u70DF\u96FE\u5F39"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5728\u4E00\u9635\u70DF\u96FE\u4E2D\u6D88\u5931\u7684\u65E0\u5F71\u65E0\u8E2A,\u7136\u540E\u654C\u4EBA\u4EEC\u56F0\u60D1\u5730\u53D1\u73B0\u81EA\u5DF1\u4E22\u5931\u76EE\u6807\u4E86\u3002\u9690\u533F\u72B6\u6001\u65F6\u4E0D\u4F1A\u88AB\u654C\u65B9\u81EA\u52A8\u653B\u51FB\uFF08\u4F46\u662F\u73A9\u5BB6\u53EF\u4EE5\u624B\u70B9\uFF09,\u6301\u7EED10s,\u5F00\u542F\u6280\u80FD\u4E4B\u540E\u76840.5s\u5185\u514D\u75AB\u4F24\u5BB3\u3002"
+    skillCooling: 120
+    skillPre_Swing: 0
+    skillPost_Swing: 0.5

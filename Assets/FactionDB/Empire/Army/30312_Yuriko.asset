@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30312_Yuriko
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 30312
+  nameChinese: "\u6B27\u7C73\u8304\u767E\u5408\u5B50"
+  nameEnglish: Yuriko
+  icon: {fileID: 0}
+  commentChinese: "\u7EDD\u5BC6\u7684\u51C6\u519B\u4E8B\u9694\u7A7A\u53D6\u7269\u7814\u7A76\u9879\u76EE\u4E0B\u5145\u6EE1\u4EC7\u6068\u7684\u4EC5\u5B58\u7855\u679C\u3002"
+  commentEnglish: null
+  troop: 1
+  actionScopes: 0000000001000000
+  exp: 2000
+  hp: 350
+  requirement: []
+  price: 2000
+  warningAndClearFogRad: {x: 175, y: 500}
+  armorType: {fileID: 11400000, guid: cce6bb50d92964051a90313296d50c82, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 70, y: 70, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 50}
+  labels:
+  - {fileID: 11400000, guid: 5212b2b06a60c4cfeb2890b1e6db0f36, type: 2}
+  buildingTime: 30
+  buildFacilities:
+  - {fileID: 11400000, guid: 6c42807263d58433493b21290c61fb70, type: 2}
+  weapons:
+  - WeaponNameZH: "\u5FC3\u7075\u7C89\u788E"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 447915e811f824ea7892e07888f947af, type: 2}
+    singleDamage: {x: 4, y: 4}
+    range: {x: 150, y: 150}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0.13, y: 0.13}
+    firingDuration: {x: 0.13, y: 0.13}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  - WeaponNameZH: "\u7A7A\u519B\u6740\u624B"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 447915e811f824ea7892e07888f947af, type: 2}
+    singleDamage: {x: 9999999, y: 9999999}
+    range: {x: 150, y: 150}
+    magazineSize: 1
+    magazineLoadingTime: {x: 4, y: 4}
+    aimingTime: {x: 0.13, y: 0.13}
+    firingDuration: {x: 0.1, y: 0.1}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  - WeaponNameZH: "\u5FC3\u7075\u7206\u7834"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: a916f73c3fd4f40fb94583527c1c1683, type: 2}
+    singleDamage: {x: 500, y: 500}
+    range: {x: 250, y: 250}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 1, y: 1}
+    firingDuration: {x: 3, y: 3}
+    sputteringRadius: {x: 250, y: 250}
+    sputteringDamage: {x: 500, y: 500}
+  skills:
+  - skillNameZH: "\u8D85\u80FD\u6CE2\u7206\u7834"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u671D\u56DB\u9762\u516B\u65B9\u5C04\u51FA\u96BE\u4EE5\u8BA1\u91CF\u7684\u5F3A\u5927\u8D85\u80FD\u6CE2,\u538B\u788E\u5FC3\u7075\u4E0E\u8EAF\u4F53\u3002"
+    skillCooling: 30
+    skillPre_Swing: 0
+    skillPost_Swing: 2

@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10316_Multigunner
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10316
+  nameChinese: "\u591A\u529F\u80FD\u6B65\u5175\u6218\u8F66"
+  nameEnglish: Multigunner
+  icon: {fileID: 0}
+  commentChinese: "\u80FD\u591F\u6839\u636E\u6240\u8F7D\u4E58\u5458\u6539\u53D8\u6B66\u5668\u7684\u4E07\u7528\u6218\u8F66"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 00000000
+  exp: 700
+  hp: 360
+  requirement:
+  - {fileID: 11400000, guid: d813f7828588e40ed9a725e0ea37561e, type: 2}
+  price: 800
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 755d8beead2e14f2e88e9ad87cfccd5e, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 120, y: 0, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 20}
+  labels:
+  - {fileID: 11400000, guid: 28305c842c44643d29aa4ca9539c2746, type: 2}
+  - {fileID: 11400000, guid: e155403981c2d4aa5916473dbe6d214a, type: 2}
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 11400000, guid: d813f7828588e40ed9a725e0ea37561e, type: 2}
+  weapons:
+  - WeaponNameZH: "\u5BF9\u5730\u706B\u7BAD"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 1e8873ebd77bb4cbb993f02d3248b4ee, type: 2}
+    singleDamage: {x: 10, y: 10}
+    range: {x: 150, y: 150}
+    magazineSize: 3
+    magazineLoadingTime: {x: 0.5, y: 0.5}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.25, y: 0.25}
+    sputteringRadius: {x: 5, y: 5}
+    sputteringDamage: {x: 0, y: 10}
+  - WeaponNameZH: "\u5BF9\u7A7A\u706B\u7BAD"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 1e8873ebd77bb4cbb993f02d3248b4ee, type: 2}
+    singleDamage: {x: 25, y: 25}
+    range: {x: 300, y: 300}
+    magazineSize: 6
+    magazineLoadingTime: {x: 0.5, y: 0.5}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.25, y: 0.25}
+    sputteringRadius: {x: 10, y: 10}
+    sputteringDamage: {x: 0, y: 25}
+  skills:
+  - skillNameZH: "\u64A4\u79BB\u4E58\u5458"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5378\u4E0BIFV\u4E58\u5458\u5E76\u5C06\u8FD8\u539F\u81F3\u57FA\u672C\u6B66\u5668\u914D\u7F6E"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

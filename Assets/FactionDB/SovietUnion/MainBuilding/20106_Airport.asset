@@ -12,25 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
   m_Name: 20106_Airport
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
-  id: 0
-  nameChinese: 
-  nameEnglish: 
+  factionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 20106
+  nameChinese: "\u673A\u573A"
+  nameEnglish: Airport
   icon: {fileID: 0}
-  commentChinese: 
-  commentEnglish: 
+  commentChinese: "\u968F\u7740\u82CF\u519B\u7A7A\u6B66\u7684\u58EE\u5927,\u8FD9\u4E9B\u8BBE\u65BD\u6210\u7EF4\u62A4\u5404\u5F0F\u98DE\u884C\u5668\u7684\u5FC5\u5907\u5EFA\u7B51\u3002"
+  commentEnglish: null
   troop: 0
-  actionScopes: 
-  exp: 0
-  hp: 0
-  requirement: []
-  price: 0
-  warningAndClearFogRad: {x: 0, y: 0}
-  armorType: {fileID: 0}
+  actionScopes: 0000000001000000
+  exp: 4500
+  hp: 1800
+  requirement:
+  - {fileID: 11400000, guid: 6eea8ebaeedf44a7498045129ca9b764, type: 2}
+  price: 1000
+  warningAndClearFogRad: {x: 150, y: 500}
+  armorType: {fileID: 11400000, guid: 5bb9267ecfd6a4584aee22f5e32250d1, type: 2}
   gameObjectPrefab: {fileID: 0}
-  label: {fileID: 0}
-  area: {x: 0, y: 0}
-  expandScope: {x: 0, y: 0}
-  buildingAndPlacementTime: {x: 0, y: 0}
-  powerConsume: 0
-  skills: []
+  label: {fileID: 11400000, guid: c55558e1ef1d04142bb3fc47e681b4c6, type: 2}
+  area: {x: 4, y: 6}
+  expandScope: {x: 18, y: 18}
+  buildingAndPlacementTime: {x: 0, y: 30}
+  powerConsume: -50
+  skills:
+  - skillNameZH: "\u8FD4\u56DE\u673A\u573A"
+    skillNameEN: ReturnAirport
+    icon: {fileID: 0}
+    commentChinese: "\u4F7F\u6240\u6709\u5F52\u5C5E\u4E8E\u672C\u673A\u573A\u7684\u98DE\u673A\u8FD4\u56DE\u57FA\u5730"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

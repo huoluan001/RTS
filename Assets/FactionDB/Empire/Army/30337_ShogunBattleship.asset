@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30337_ShogunBattleship
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 30337
+  nameChinese: "\u5C06\u519B\u6218\u5217\u8230"
+  nameEnglish: ShogunBattleship
+  icon: {fileID: 0}
+  commentChinese: "\u642D\u8F7D\u516D\u95E8\u4E3B\u70AE\u7684\u5B8F\u4F1F\u5DE8\u5927\u6218\u8230,\u80FD\u591F\u4ECE\u8FDC\u65B9\u91CD\u521B\u76EE\u6807"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 01000000
+  exp: 2200
+  hp: 1500
+  requirement: []
+  price: 2200
+  warningAndClearFogRad: {x: 750, y: 500}
+  armorType: {fileID: 11400000, guid: 6d9fd9954f416411f9ce844c3ce31d80, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 0, y: 50, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 0000000001000000
+    m_values:
+    - {x: 1, y: 30}
+    - {x: 40, y: 30}
+  labels:
+  - {fileID: 11400000, guid: 113718af8d9844a6d879bf98a41393ae, type: 2}
+  buildingTime: 22
+  buildFacilities:
+  - {fileID: 11400000, guid: fbf0b7c57e77348f28a078af8883eef1, type: 2}
+  weapons:
+  - WeaponNameZH: "\u706B\u70AE"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 176ac90b6c9424972ad8bac833b19e0d, type: 2}
+    singleDamage: {x: 150, y: 150}
+    range: {x: 200, y: 750}
+    magazineSize: 3
+    magazineLoadingTime: {x: 7, y: 8}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.27, y: 0.27}
+    sputteringRadius: {x: 15, y: 15}
+    sputteringDamage: {x: 150, y: 150}
+  skills:
+  - skillNameZH: "\u6781\u901F\u51B2\u649E"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5927\u5E45\u63D0\u5347\u5F15\u64CE\u7684\u52A8\u529B,\u80FD\u5C06\u654C\u65B9\u6218\u8230\u649E\u6210\u788E\u7247,\u78BE\u538B\u7B49\u7EA7/\u88AB\u78BE\u538B\u7B49\u7EA7\u53D8\u4E3A40/30"
+    skillCooling: 120
+    skillPre_Swing: 0
+    skillPost_Swing: 0

@@ -12,26 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda795255295f4312af0b7182d87b8ba, type: 3}
   m_Name: 20203_AntiAircraftGun
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
-  id: 0
-  nameChinese: 
-  nameEnglish: 
+  factionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 20203
+  nameChinese: "\u9632\u7A7A\u70AE"
+  nameEnglish: AntiAircraftGun
   icon: {fileID: 0}
-  commentChinese: 
-  commentEnglish: 
+  commentChinese: "\u5C04\u901F\u8D85\u5FEB\u7684\u9632\u7A7A\u70AE,\u80FD\u8BA9\u7A7A\u4E2D\u5145\u65A5\u7740\u91D1\u5C5E\u788E\u7247\u3002"
+  commentEnglish: null
   troop: 0
-  actionScopes: 
-  exp: 0
-  hp: 0
-  requirement: []
-  price: 0
-  warningAndClearFogRad: {x: 0, y: 0}
-  armorType: {fileID: 0}
+  actionScopes: 0000000001000000
+  exp: 500
+  hp: 2000
+  requirement:
+  - {fileID: 11400000, guid: 90a2138b6189847618dca5b71bcc31ca, type: 2}
+  price: 800
+  warningAndClearFogRad: {x: 310, y: 500}
+  armorType: {fileID: 11400000, guid: ff728a28eaadf4b4b904eb1f11e99375, type: 2}
   gameObjectPrefab: {fileID: 0}
-  label: {fileID: 0}
-  area: {x: 0, y: 0}
+  label: {fileID: 11400000, guid: 0aebf1898c7c34e739ee54c95069e2ef, type: 2}
+  area: {x: 1, y: 1}
   expandScope: {x: 0, y: 0}
-  buildingAndPlacementTime: {x: 0, y: 0}
-  powerConsume: 0
-  weapons: []
+  buildingAndPlacementTime: {x: 0, y: 20}
+  powerConsume: -25
+  weapons:
+  - WeaponNameZH: "\u9632\u7A7A\u70AE"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: b57fd4cce5026428eb72a68a9147f5eb, type: 2}
+    singleDamage: {x: 25, y: 25}
+    range: {x: 300, y: 300}
+    magazineSize: 5
+    magazineLoadingTime: {x: 0.25, y: 0.25}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.2, y: 0.2}
+    sputteringRadius: {x: 20, y: 20}
+    sputteringDamage: {x: 25, y: 0}
   skills: []

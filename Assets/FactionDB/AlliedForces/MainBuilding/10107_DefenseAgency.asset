@@ -12,25 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
   m_Name: 10107_DefenseAgency
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
-  id: 0
-  nameChinese: 
-  nameEnglish: 
+  factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10107
+  nameChinese: "\u9632\u536B\u5C40"
+  nameEnglish: DefenseAgency
   icon: {fileID: 0}
-  commentChinese: 
-  commentEnglish: 
+  commentChinese: "\u76DF\u519B\u5229\u7528\u8FD9\u4E9B\u5EFA\u7B51\u7269\u63A7\u7BA1\u4ED6\u4EEC\u6700\u9AD8\u673A\u5BC6\u7684\u9632\u5FA1\u90E8\u7F72\u3002"
+  commentEnglish: null
   troop: 0
-  actionScopes: 
-  exp: 0
-  hp: 0
-  requirement: []
-  price: 0
-  warningAndClearFogRad: {x: 0, y: 0}
-  armorType: {fileID: 0}
+  actionScopes: 0000000001000000
+  exp: 4500
+  hp: 2000
+  requirement:
+  - {fileID: 11400000, guid: b1ca0a33f17be4e8ea23744a5d48ca03, type: 2}
+  - {fileID: 11400000, guid: e30eec7c79d224d25af630d201c3ecb0, type: 2}
+  price: 1500
+  warningAndClearFogRad: {x: 150, y: 500}
+  armorType: {fileID: 11400000, guid: 5bb9267ecfd6a4584aee22f5e32250d1, type: 2}
   gameObjectPrefab: {fileID: 0}
-  label: {fileID: 0}
-  area: {x: 0, y: 0}
+  label: {fileID: 11400000, guid: 758c9267f9ef94e7ba9b1db1fdc0b7aa, type: 2}
+  area: {x: 3, y: 4}
   expandScope: {x: 0, y: 0}
-  buildingAndPlacementTime: {x: 0, y: 0}
-  powerConsume: 0
+  buildingAndPlacementTime: {x: 30, y: 2}
+  powerConsume: -75
   skills: []

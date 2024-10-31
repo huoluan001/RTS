@@ -12,25 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
   m_Name: 30101_InstantlyPowerPlant
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
-  id: 0
-  nameChinese: 
-  nameEnglish: 
+  factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 30101
+  nameChinese: "\u77AC\u606F\u53D1\u7535\u5382"
+  nameEnglish: InstantlyPowerPlant
   icon: {fileID: 0}
-  commentChinese: 
-  commentEnglish: 
+  commentChinese: "\u5E1D\u56FD\u57FA\u5730\u9700\u8981\u8FD9\u4E9B\u5316\u5B66\u71C3\u70E7\u5EFA\u7B51\u7269\u7EF4\u6301\u6709\u6548\u7387\u5730\u8FD0\u4F5C"
+  commentEnglish: null
   troop: 0
-  actionScopes: 
-  exp: 0
-  hp: 0
+  actionScopes: 0000000001000000
+  exp: 1500
+  hp: 1250
   requirement: []
-  price: 0
-  warningAndClearFogRad: {x: 0, y: 0}
-  armorType: {fileID: 0}
+  price: 800
+  warningAndClearFogRad: {x: 150, y: 300}
+  armorType: {fileID: 11400000, guid: 5bb9267ecfd6a4584aee22f5e32250d1, type: 2}
   gameObjectPrefab: {fileID: 0}
-  label: {fileID: 0}
-  area: {x: 0, y: 0}
-  expandScope: {x: 0, y: 0}
-  buildingAndPlacementTime: {x: 0, y: 0}
-  powerConsume: 0
+  label: {fileID: 11400000, guid: ce5103501a038437e93d42f1de859f52, type: 2}
+  area: {x: 3, y: 3}
+  expandScope: {x: 7, y: 7}
+  buildingAndPlacementTime: {x: 5, y: 10}
+  powerConsume: 100
   skills: []

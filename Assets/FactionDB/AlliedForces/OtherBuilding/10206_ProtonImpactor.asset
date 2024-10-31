@@ -12,26 +12,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda795255295f4312af0b7182d87b8ba, type: 3}
   m_Name: 10206_ProtonImpactor
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
-  id: 0
-  nameChinese: 
-  nameEnglish: 
+  factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10206
+  nameChinese: "\u8D28\u5B50\u649E\u51FB\u70AE"
+  nameEnglish: ProtonImpactor
   icon: {fileID: 0}
-  commentChinese: 
-  commentEnglish: 
+  commentChinese: "\u805A\u96C6\u5F3A\u70C8\u7684\u80FD\u91CF\u5149\u675F,\u4F7F\u88AB\u5149\u675F\u51FB\u4E2D\u7684\u533A\u57DF\u4EA7\u751F\u5206\u5B50\u7194\u89E3\u8FDE\u9501\u53CD\u5E94\u3002"
+  commentEnglish: null
   troop: 0
-  actionScopes: 
-  exp: 0
-  hp: 0
-  requirement: []
-  price: 0
-  warningAndClearFogRad: {x: 0, y: 0}
-  armorType: {fileID: 0}
+  actionScopes: 0000000001000000
+  exp: 10000
+  hp: 4000
+  requirement:
+  - {fileID: 11400000, guid: a07d0aa31c4bc404ebc949f14e8c7fc2, type: 2}
+  price: 2500
+  warningAndClearFogRad: {x: 100, y: 100}
+  armorType: {fileID: 11400000, guid: 5bb9267ecfd6a4584aee22f5e32250d1, type: 2}
   gameObjectPrefab: {fileID: 0}
-  label: {fileID: 0}
-  area: {x: 0, y: 0}
+  label: {fileID: 11400000, guid: 3708f2db0861f4d11a28ffc0cfc2416d, type: 2}
+  area: {x: 3, y: 4}
   expandScope: {x: 0, y: 0}
-  buildingAndPlacementTime: {x: 0, y: 0}
-  powerConsume: 0
-  weapons: []
-  skills: []
+  buildingAndPlacementTime: {x: 30, y: 3}
+  powerConsume: -75
+  weapons:
+  - WeaponNameZH: "\u8D28\u5B50\u649E\u51FB\u70AE"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 176ac90b6c9424972ad8bac833b19e0d, type: 2}
+    singleDamage: {x: 400, y: 400}
+    range: {x: 10000, y: 10000}
+    magazineSize: 0
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 250, y: 250}
+    sputteringDamage: {x: 400200, y: 400200}
+  - WeaponNameZH: "\u50AC\u5316\u5EFA\u7B51"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 176ac90b6c9424972ad8bac833b19e0d, type: 2}
+    singleDamage: {x: 200, y: 200}
+    range: {x: 5, y: 5}
+    magazineSize: 0
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 100, y: 100}
+    sputteringDamage: {x: 200100, y: 200100}
+  - WeaponNameZH: "\u50AC\u5316\u90E8\u961F"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: 176ac90b6c9424972ad8bac833b19e0d, type: 2}
+    singleDamage: {x: 200, y: 200}
+    range: {x: 5, y: 5}
+    magazineSize: 0
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 100, y: 100}
+    sputteringDamage: {x: 200100, y: 200100}
+  skills:
+  - skillNameZH: "\u8D28\u5B50\u649E\u51FB\u70AE"
+    skillNameEN: ProtonImpactor
+    icon: {fileID: 0}
+    commentChinese: "\u5C06\u76EE\u6807\u533A\u57DF\u7B3C\u7F69\u5728\u70BD\u70ED\u7684\u80FD\u91CF\u6D2A\u6D41\u4E4B\u4E2D,\u4F7F\u539F\u7206\u70B9\u9644\u8FD1\u7684\u4EFB\u4F55\u76EE\u6807\u4EA7\u751F\u8FDE\u9501\u53CD\u5E94!"
+    skillCooling: 360
+    skillPre_Swing: 3
+    skillPost_Swing: 4

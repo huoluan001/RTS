@@ -12,25 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
   m_Name: 10109_HighestLicense
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
-  id: 0
-  nameChinese: 
-  nameEnglish: 
+  factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10109
+  nameChinese: "\u6700\u9AD8\u8BB8\u53EF"
+  nameEnglish: HighestLicense
   icon: {fileID: 0}
-  commentChinese: 
-  commentEnglish: 
-  troop: 0
+  commentChinese: "\u4E00\u65E6\u83B7\u53D6\u8FD9\u4E9B\u8BB8\u53EF,\u4FBF\u80FD\u591F\u4F7F\u7528\u6240\u6709\u76DF\u519B\u7684\u5F3A\u5927\u6B66\u529B\u3002"
+  commentEnglish: null
+  troop: 3
   actionScopes: 
   exp: 0
   hp: 0
-  requirement: []
-  price: 0
+  requirement:
+  - {fileID: 11400000, guid: 059ecfd9e5a954ee5aa7e75169fe7efb, type: 2}
+  price: 3000
   warningAndClearFogRad: {x: 0, y: 0}
   armorType: {fileID: 0}
   gameObjectPrefab: {fileID: 0}
   label: {fileID: 0}
   area: {x: 0, y: 0}
   expandScope: {x: 0, y: 0}
-  buildingAndPlacementTime: {x: 0, y: 0}
+  buildingAndPlacementTime: {x: 60, y: 0}
   powerConsume: 0
   skills: []

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10318_GuardianTank
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10318
+  nameChinese: "\u5B88\u62A4\u8005\u5766\u514B"
+  nameEnglish: GuardianTank
+  icon: {fileID: 0}
+  commentChinese: "\u575A\u56FA\u7684\u6218\u6597\u5766\u514B,\u80FD\u591F\u6709\u6548\u51FB\u9000\u654C\u65B9\u88C5\u7532\u5E76\u7CBE\u51C6\u91CD\u521B\u654C\u65B9\u5F31\u70B9"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 00000000
+  exp: 900
+  hp: 480
+  requirement:
+  - {fileID: 11400000, guid: 059ecfd9e5a954ee5aa7e75169fe7efb, type: 2}
+  price: 950
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 790e0ab26a55c4015b31ef6333b6c1b7, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 80, y: 0, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 0000000001000000
+    m_values:
+    - {x: 20, y: 20}
+    - {x: 20, y: 20}
+  labels:
+  - {fileID: 11400000, guid: 4a5c7c4cb907c4f24a7a3ef93df22b9d, type: 2}
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 11400000, guid: d813f7828588e40ed9a725e0ea37561e, type: 2}
+  weapons:
+  - WeaponNameZH: "90mm\u6ED1\u819B\u70AE"
+    WeaponNameEN: 
+    damageType: {fileID: 0}
+    singleDamage: {x: 60, y: 60}
+    range: {x: 150, y: 300}
+    magazineSize: 1
+    magazineLoadingTime: {x: 1.8, y: 1.8}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.2, y: 0.2}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills:
+  - skillNameZH: "\u4E3B\u70AE"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5207\u6362\u523090mm\u6ED1\u819B\u70AE,\u80FD\u591F\u6709\u6548\u5BF9\u4ED8\u654C\u4EBA\u88C5\u7532\u90E8\u961F"
+    skillCooling: 2
+    skillPre_Swing: 0
+    skillPost_Swing: 0

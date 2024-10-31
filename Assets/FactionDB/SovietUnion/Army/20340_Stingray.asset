@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 20340_Stingray
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 20340
+  nameChinese: "\u78C1\u66B4\u5FEB\u8247"
+  nameEnglish: Stingray
+  icon: {fileID: 0}
+  commentChinese: "\u7EDD\u7F18\u8F7B\u88C5\u7532\u8230\u8239,\u914D\u5907\u4EE4\u4EBA\u5174\u594B\u7684\u78C1\u7206\u6B66\u5668,\u53EF\u4EE5\u767B\u9646"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 0000000001000000
+  exp: 1000
+  hp: 450
+  requirement: []
+  price: 1000
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 810ef5c672f2e4729a02d895c4b8ab34, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 100, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 10, y: 20}
+  labels:
+  - {fileID: 11400000, guid: a51e2d5d8e6cd43d6ac1de707aeea85c, type: 2}
+  - {fileID: 11400000, guid: 4a5c7c4cb907c4f24a7a3ef93df22b9d, type: 2}
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u78C1\u66B4\u67AA"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: fe901d04e2ede4abf85b72651329d764, type: 2}
+    singleDamage: {x: 40, y: 40}
+    range: {x: 125, y: 125}
+    magazineSize: 2
+    magazineLoadingTime: {x: 1.25, y: 1.3}
+    aimingTime: {x: 0.5, y: 0.7}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  - WeaponNameZH: "\u78C1\u66B4\u65B0\u661F"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: fe901d04e2ede4abf85b72651329d764, type: 2}
+    singleDamage: {x: 200, y: 200}
+    range: {x: 0, y: 0}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 1, y: 1}
+    sputteringRadius: {x: 175, y: 175}
+    sputteringDamage: {x: 200, y: 200}
+  skills:
+  - skillNameZH: "\u78C1\u66B4\u5DE8\u6D6A"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5411\u9644\u8FD1\u6C34\u57DF\u91CA\u653E\u5F3A\u7535\u6D41,\u4F1A\u5BFC\u81F4\u7535\u7476\u7684\u6682\u65F6\u762B\u75EA\u3002\u4EC5\u80FD\u5728\u6C34\u4E0A\u4F7F\u7528\u2026\u2026"
+    skillCooling: 60
+    skillPre_Swing: 1
+    skillPost_Swing: 2

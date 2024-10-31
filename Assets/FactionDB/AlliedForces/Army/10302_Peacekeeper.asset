@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10302_Peacekeeper
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10302
+  nameChinese: "\u7EF4\u548C\u6B65\u5175"
+  nameEnglish: Peacekeeper
+  icon: {fileID: 0}
+  commentChinese: "\u5F3A\u608D\u7684\u524D\u7EBF\u6B65\u5175,\u914D\u6709\u634D\u536B\u81EA\u8EAB\u7684\u9730\u5F39\u67AA\u548C\u9632\u66B4\u76FE\u724C"
+  commentEnglish: null
+  troop: 1
+  actionScopes: 00000000
+  exp: 200
+  hp: 150
+  requirement: []
+  price: 200
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 1fb951c2a0d2c4edda1a853ed1a3dafc, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 0, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 10}
+  labels:
+  - {fileID: 11400000, guid: a51e2d5d8e6cd43d6ac1de707aeea85c, type: 2}
+  - {fileID: 11400000, guid: 5460af6e1fe5d4bbf88e6e924d39cac4, type: 2}
+  buildingTime: 5
+  buildFacilities:
+  - {fileID: 11400000, guid: f405c0070a75347988518b6c00a305c8, type: 2}
+  weapons:
+  - WeaponNameZH: "\u9730\u5F39\u67AA"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: ba9e7a61bf2524edf86ebea62bd24f2a, type: 2}
+    singleDamage: {x: 25, y: 40}
+    range: {x: 150, y: 150}
+    magazineSize: 1
+    magazineLoadingTime: {x: 1, y: 1}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.5, y: 0.5}
+    sputteringRadius: {x: 5, y: 5}
+    sputteringDamage: {x: 25, y: 40}
+  skills:
+  - skillNameZH: "\u9730\u5F39\u67AA"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5207\u6362\u5230\u683C\u8BFA\u8499\u5FB7-8\u578B\u6CF5\u52A8\u557B\u5F39\u67AA,\u5728\u8FD1\u6218\u4E2D\u5341\u5206\u6709\u6548\u3002"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

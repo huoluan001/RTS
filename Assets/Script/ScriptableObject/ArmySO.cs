@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
-using UnityEditor.EditorTools;
 using UnityEngine;
-
 
 [CreateAssetMenu(fileName = "ArmySO", menuName = "ScriptableObjects/Data/ArmySO"), SerializeField]
 public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
@@ -72,9 +69,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
     public int Hp => hp;
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
-    public GameObject GameObjectPrefab { get => gameObjectPrefab; }
-
-
+    public GameObject GameObjectPrefab => gameObjectPrefab;
 
     public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, Troop troop, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
     {
@@ -94,8 +89,9 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
         this.warningAndClearFogRad = warningAndClearFogRad;
         this.armorType = armorType;
         this.gameObjectPrefab = gameObjectPrefab;
-
     }
+
+
     public void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious,CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels,int buildingTime, List<MainBuildingSO> buildFacilities)
     {
         this.moveSpeed = moveSpeed;
@@ -109,11 +105,47 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
 
     public void SetWeapon(string weaponNameZH, string weaponNameEN, DamageTypeSO damageType, Vector2 singleDamage, Vector2 range, float magazineSize, Vector2 magazineLoadingTime, Vector2 aimingTime, Vector2 firingDuration, Vector2 sputteringRadius, Vector2 sputteringDamage)
     {
-        throw new NotImplementedException();
+        if (weapons == null)
+            weapons = new List<Weapon>();
+        var res = weapons.Where(w => w.WeaponNameZH == weaponNameZH).ToList();
+        Weapon weapon;
+        if (res.Count() == 0)
+            weapons.Add(weapon = new Weapon());
+        else
+            weapon = res[0];
+        weapon.WeaponNameZH = weaponNameZH;
+        weapon.WeaponNameEN = weaponNameEN;
+        weapon.damageType = damageType;
+        weapon.singleDamage = singleDamage;
+        weapon.range = range;
+        weapon.magazineSize = magazineSize;
+        weapon.magazineLoadingTime = magazineLoadingTime;
+        weapon.aimingTime = aimingTime;
+        weapon.firingDuration = firingDuration;
+        weapon.sputteringRadius = sputteringRadius;
+        weapon.sputteringDamage = sputteringDamage;
     }
 
+
+    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
+    {
+        requirement = mainBuildingSOs;
+    }
     public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, float skillCooling, float skillPre_Swing, float skillPost_Swing)
     {
-        throw new NotImplementedException();
+        if (skills == null)
+            skills = new List<Skill>();
+        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
+        Skill skill;
+        if (res.Count() == 0)
+            skills.Add(skill = new Skill());
+        else
+            skill = res[0];
+        skill.skillNameZH = skillNameZH;
+        skill.skillNameEN = skillNameEN;
+        skill.commentChinese = commentChinese;
+        skill.skillCooling = skillCooling;
+        skill.skillPre_Swing = skillPre_Swing;
+        skill.skillPost_Swing = skillPost_Swing;
     }
 }

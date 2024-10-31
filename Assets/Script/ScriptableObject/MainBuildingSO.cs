@@ -113,4 +113,6 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         skill.skillPre_Swing = skillPre_Swing;
         skill.skillPost_Swing = skillPost_Swing;
     }
+
+
 }

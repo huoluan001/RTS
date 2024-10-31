@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 8_Frozen
   m_EditorClassIdentifier: 
   elementIndex: 8
-  LableNameZH: "\u51B7\u51BB\uFF08\u7279\u6B8A\uFF09"
-  LabelNameEN: 
+  LableNameZH: "\u51B7\u51BB"
+  LabelNameEN: Frozen

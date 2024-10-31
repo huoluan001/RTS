@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 20318_Sputnik
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 20318
+  nameChinese: "\u53F2\u666E\u5C3C\u514B\u52D8\u63A2\u8F66"
+  nameEnglish: Sputnik
+  icon: {fileID: 0}
+  commentChinese: "\u6BD4MCV\u7684\u89C4\u6A21\u5C0F,\u8FD9\u4E9B\u65E0\u6B66\u88C5\u7684\u8F66\u8F86\u53EF\u4EE5\u7528\u6765\u534F\u52A9\u6269\u5EFA\u519B\u4E8B\u57FA\u5730"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 0000000001000000
+  exp: 1200
+  hp: 5000
+  requirement: []
+  price: 1200
+  warningAndClearFogRad: {x: 200, y: 250}
+  armorType: {fileID: 11400000, guid: 7c694364f7fa943dc93195ee58b995f3, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 50, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 0000000001000000
+    m_values:
+    - {x: 20, y: 20}
+    - {x: 1, y: 20}
+  labels:
+  - {fileID: 11400000, guid: 04c79e5af460e46fa9bffc3e0531822c, type: 2}
+  buildingTime: 20
+  buildFacilities:
+  - {fileID: 11400000, guid: faeba4e8128b14033a1e3f8a55127779, type: 2}
+  - {fileID: 0}
+  weapons: []
+  skills:
+  - skillNameZH: "\u82CF\u8054\u90E8\u7F72"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5F00\u59CB\u5C55\u5F00\u6210\u524D\u54E8\u7AD9,\u53EF\u4EE5\u5728\u5468\u56F4\u5EFA\u8BBE\u5176\u4ED6\u5EFA\u7B51\u3002\u524D\u54E8\u7AD9\u6570\u636E\u8BE6\u89C1"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 20337_MiG
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 20337
+  nameChinese: "\u7C73\u683C\u6218\u6597\u673A"
+  nameEnglish: MiG
+  icon: {fileID: 0}
+  commentChinese: "\u5916\u8868\u5149\u6ED1\u4E14\u795E\u79D8\u7684\u55B7\u6C14\u6218\u6597\u673A,\u80FD\u53D1\u5C04\u7206\u7834\u5BFC\u5F39\u5C06\u654C\u65B9\u90E8\u961F\u5316\u4E3A\u7070\u70EC"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 02000000
+  exp: 1000
+  hp: 240
+  requirement: []
+  price: 1000
+  warningAndClearFogRad: {x: 400, y: 500}
+  armorType: {fileID: 11400000, guid: 38c4e2de30f334f388e10940a17239f0, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 0, y: 0, z: 210}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 10, y: 20}
+  labels:
+  - {fileID: 11400000, guid: 58b206bacdc40464e9e8e4c93528b369, type: 2}
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 11400000, guid: b1ca0a33f17be4e8ea23744a5d48ca03, type: 2}
+  weapons:
+  - WeaponNameZH: "\u7834\u7247\u5BFC\u5F39"
+    WeaponNameEN: 
+    damageType: {fileID: 11400000, guid: b57fd4cce5026428eb72a68a9147f5eb, type: 2}
+    singleDamage: {x: 95, y: 95}
+    range: {x: 10, y: 200}
+    magazineSize: 16
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 1, y: 1}
+    sputteringRadius: {x: 20, y: 20}
+    sputteringDamage: {x: 25, y: 95}
+  skills:
+  - skillNameZH: "\u8FD4\u822A"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u7C73\u683C\u6218\u6597\u673A\u7ACB\u523B\u6389\u5934,\u63D0\u534725%\u901F\u5EA6,\u8FD4\u56DE\u673A\u573A\u91CD\u65B0\u88C5\u5F39\u3002"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

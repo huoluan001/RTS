@@ -12,25 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
   m_Name: 30109_Nanohost
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
-  id: 0
-  nameChinese: 
-  nameEnglish: 
+  factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 30109
+  nameChinese: "\u7EB3\u7C73\u4E3B\u673A"
+  nameEnglish: Nanohost
   icon: {fileID: 0}
-  commentChinese: 
-  commentEnglish: 
+  commentChinese: "\u5E1D\u56FD\u7684\u9AD8\u79D1\u6280\u6B66\u5668\u7814\u53D1\u4E2D\u5FC3\u5C31\u5728\u8FD9\u519B\u4E8B\u5EFA\u7B51\u5185"
+  commentEnglish: null
   troop: 0
-  actionScopes: 
-  exp: 0
-  hp: 0
-  requirement: []
-  price: 0
-  warningAndClearFogRad: {x: 0, y: 0}
-  armorType: {fileID: 0}
+  actionScopes: 0000000001000000
+  exp: 4500
+  hp: 2000
+  requirement:
+  - {fileID: 11400000, guid: d02f11fdfff1b48a493867054eb6a532, type: 2}
+  price: 2500
+  warningAndClearFogRad: {x: 150, y: 300}
+  armorType: {fileID: 11400000, guid: 5bb9267ecfd6a4584aee22f5e32250d1, type: 2}
   gameObjectPrefab: {fileID: 0}
-  label: {fileID: 0}
-  area: {x: 0, y: 0}
-  expandScope: {x: 0, y: 0}
-  buildingAndPlacementTime: {x: 0, y: 0}
-  powerConsume: 0
+  label: {fileID: 11400000, guid: 758c9267f9ef94e7ba9b1db1fdc0b7aa, type: 2}
+  area: {x: 4, y: 3}
+  expandScope: {x: 8, y: 7}
+  buildingAndPlacementTime: {x: 5, y: 30}
+  powerConsume: -75
   skills: []

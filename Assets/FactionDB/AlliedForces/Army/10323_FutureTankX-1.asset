@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10323_FutureTankX-1
+  m_EditorClassIdentifier: 
+  factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10323
+  nameChinese: "\u672A\u6765\u5766\u514BX-1"
+  nameEnglish: FutureTankX-1
+  icon: {fileID: 0}
+  commentChinese: "\u5DE8\u5927\u7B28\u91CD\u65E0\u4EBA\u6218\u4E89\u673A\u5668,\u642D\u8F7D\u4E86\u80FD\u591F\u6B7C\u706D\u6574\u4E2A\u5766\u514B\u6392\u7684\u4E2D\u5B50\u70AE"
+  commentEnglish: null
+  troop: 2
+  actionScopes: 00000000
+  exp: 3000
+  hp: 3000
+  requirement:
+  - {fileID: 11400000, guid: 9b75b2628b06e40ea9e74f1e05135d80, type: 2}
+  - {fileID: 11400000, guid: a07d0aa31c4bc404ebc949f14e8c7fc2, type: 2}
+  price: 3000
+  warningAndClearFogRad: {x: 275, y: 500}
+  armorType: {fileID: 11400000, guid: 76e24d4d4c8bf4b94a7709851bd95cf4, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 45, y: 0, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 20, y: 31}
+  labels:
+  - {fileID: 11400000, guid: d8bf9af71dc204bdea1805335544ece4, type: 2}
+  buildingTime: 30
+  buildFacilities:
+  - {fileID: 11400000, guid: d813f7828588e40ed9a725e0ea37561e, type: 2}
+  weapons:
+  - WeaponNameZH: "\u4E2D\u5B50\u6270\u9891"
+    WeaponNameEN: 
+    damageType: {fileID: 0}
+    singleDamage: {x: 260, y: 260}
+    range: {x: 250, y: 250}
+    magazineSize: 2
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0.1, y: 0.1}
+    firingDuration: {x: 3, y: 3}
+    sputteringRadius: {x: 180, y: 180}
+    sputteringDamage: {x: 260, y: 260}
+  skills:
+  - skillNameZH: "\u66B4\u4E71\u5149\u675F"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u80FD\u5BF9\u76EE\u6807\u533A\u57DF\u53D1\u5C04\u8D85\u9AD8\u80FD\u91CF\u675F,\u51E0\u4E4E\u80FD\u5C06\u4EFB\u4F55\u73A9\u610F\u513F\u70E7\u6BC1\u6B86\u5C3D\u3002\u80FD\u529B\u542F\u52A8\u8303\u56F4\u4E3A250,\u626B\u8FC740\u8DDD\u79BB,\u5BF9\u76EE\u6807\u5730\u5757\uFF08\u7EBF\u5BBD5\uFF09\u9020\u621015x2\u4E2A50\u9AD8\u7206\u4F24\u5BB3\uFF08\u51711500\uFF09,\u540C\u65F6\u53D1\u5C04\u7684\u6FC0\u5149\u7EBF\uFF08\u7EBF\u5BBD5\uFF09\u9020\u621015x2\u4E2A25\u9AD8\u7206\u4F24\u5BB3\uFF08\u5171750\uFF09,\u5747\u5BF9\u6B65\u5175\u9020\u621030%\u4F24\u5BB3"
+    skillCooling: 15
+    skillPre_Swing: 0.5
+    skillPost_Swing: 1
