@@ -10,5 +10,9 @@ public interface IArmy
     CrushList CrushingAndCrushedLevel { get; }
     List<ArmyLabelSO> Labels { get; }
     int BuildingTime { get; }
-    MainBuildingSO BuildFacilities { get; }
+    List<MainBuildingSO> BuildFacilities { get; }
+
+    void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious,
+                    CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels,
+                        int buildingTime, List<MainBuildingSO> buildFacilities);
 }

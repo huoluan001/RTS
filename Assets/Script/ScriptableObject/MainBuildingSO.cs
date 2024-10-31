@@ -11,7 +11,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
 {
     #region SO
     [Header("IBaseInfo")]
-    [Tooltip("派系"), SerializeField] private FactionSO faction;
+    [Tooltip("派系"), SerializeField] private FactionSO factionSO;
     [Tooltip("编号"), SerializeField] private int id;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
@@ -32,7 +32,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     [Tooltip("用途"), SerializeField] private BuildingLabelSO label;
     [Tooltip("占地面积"), SerializeField] private Vector2Int area;
     [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
-    [Tooltip("建造/展开时长"), SerializeField] private Vector2Int buildingAndPlacementTime;
+    [Tooltip("建造/展开时长"), SerializeField] private Vector2 buildingAndPlacementTime;
     [Tooltip("电力消耗"), SerializeField] private int powerConsume;
 
     [Header("ISkill")]
@@ -40,7 +40,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     #endregion
 
     #region Interface
-    public FactionSO FactionSO => faction;
+    public FactionSO FactionSO => factionSO;
     public int Id => id;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
@@ -53,7 +53,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public int Exp => exp;
     public List<MainBuildingSO> Requirement => requirement;
     public Vector2Int Area => area;
-    public Vector2Int BuildingAndPlacementTime => buildingAndPlacementTime;
+    public Vector2 BuildingAndPlacementTime => buildingAndPlacementTime;
     public Vector2Int ExpandScope => expandScope;
     public int Price => price;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
@@ -63,27 +63,31 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
     #endregion
-    public void SetDataBaseInfoNoRequirementAndGameObjectPrefab(FactionSO factionSO, int id, string nameZH, string nameEN,
-                        string commentZH, string commentEN, Troop troop, List<ActionScope> actionScopes,
-                        int exp, int hp, int price, Vector2Int warningAndClearFogRad, ArmorSO armorSO)
+    
+    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
     {
-        faction = factionSO;
+        requirement = mainBuildingSOs;
+    }
+    public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, Troop troop, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
+    {
+        this.factionSO = factionSO;
         this.id = id;
-        nameChinese = nameZH;
-        nameEnglish = nameEN;
-        commentChinese = commentZH;
-        commentEnglish = commentEN;
+        this.nameChinese = nameChinese;
+        this.nameEnglish = nameEnglish;
+        this.icon = icon;
+        this.commentChinese = commentChinese;
+        this.commentEnglish = commentEnglish;
         this.troop = troop;
         this.actionScopes = actionScopes;
         this.exp = exp;
         this.hp = hp;
+        this.requirement = requirement;
         this.price = price;
         this.warningAndClearFogRad = warningAndClearFogRad;
-        armorType = armorSO;
+        this.armorType = armorType;
+        this.gameObjectPrefab = gameObjectPrefab;
     }
-
-    public void SetDataBuildingInfo(BuildingLabelSO label, Vector2Int area,
-        Vector2Int expandScope, Vector2Int buildingAndPlacementTime, int powerConsume)
+    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int expandScope, Vector2 buildingAndPlacementTime, int powerConsume)
     {
         this.label = label;
         this.area = area;
@@ -92,7 +96,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         this.powerConsume = powerConsume;
     }
 
-    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, int skillCooling, int skillPre_Swing, int skillPost_Swing)
+    public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, float skillCooling, float skillPre_Swing, float skillPost_Swing)
     {
         if (skills == null)
             skills = new List<Skill>();
@@ -108,9 +112,5 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         skill.skillCooling = skillCooling;
         skill.skillPre_Swing = skillPre_Swing;
         skill.skillPost_Swing = skillPost_Swing;
-    }
-    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
-    {
-        requirement = mainBuildingSOs;
     }
 }
