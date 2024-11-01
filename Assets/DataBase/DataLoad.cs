@@ -278,7 +278,6 @@ public class DataLoad : MonoBehaviour
             FactionArmyDataLoad();
             AssetDatabase.SaveAssets();
         }
-
     }
     #endregion
 
@@ -652,7 +651,7 @@ public static class Tool
                         damageTypeSOs.Values.FirstOrDefault(damageType => damageType.damageTypeZH == current.GetCellString(startIndex + 1));
         Vector2 singleDamage = current.GetCellString(startIndex + 2).ConvertToVector2();
         Vector2 range = current.GetCellString(startIndex + 3).ConvertToVector2();
-        float magazineSize = float.Parse(current.GetCellString(startIndex + 4));
+        int magazineSize = int.Parse(current.GetCellString(startIndex + 4));
         Vector2 magazineLoadingTime = magazineLoadingTime = current.GetCellString(startIndex + 5).ConvertToVector2();
         Vector2 aimingTime = current.GetCellString(startIndex + 6).ConvertToVector2();
         Vector2 firingDuration = current.GetCellString(startIndex + 7).ConvertToVector2();

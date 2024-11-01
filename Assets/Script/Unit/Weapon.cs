@@ -13,7 +13,7 @@ public class Weapon
     [Tooltip("伤害类型")] public DamageTypeSO damageType;
     [Tooltip("单发伤害"), SerializeField] public Vector2 singleDamage;
     [Tooltip("射程"),SerializeField] public Vector2 range;
-    [Tooltip("弹夹大小")] public float magazineSize;
+    [Tooltip("弹夹大小")] public int magazineSize;
 
     [Header("Time")]
     [Tooltip("弹夹装填时间"), SerializeField] public Vector2 magazineLoadingTime;

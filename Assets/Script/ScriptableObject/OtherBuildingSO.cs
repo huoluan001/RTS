@@ -114,7 +114,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
         skill.skillPre_Swing = skillPre_Swing;
         skill.skillPost_Swing = skillPost_Swing;
     }
-    public void SetWeapon(string weaponNameZH, string weaponNameEN, DamageTypeSO damageType, Vector2 singleDamage, Vector2 range, float magazineSize, Vector2 magazineLoadingTime, Vector2 aimingTime, Vector2 firingDuration, Vector2 sputteringRadius, Vector2 sputteringDamage)
+    public void SetWeapon(string weaponNameZH, string weaponNameEN, DamageTypeSO damageType, Vector2 singleDamage, Vector2 range, int magazineSize, Vector2 magazineLoadingTime, Vector2 aimingTime, Vector2 firingDuration, Vector2 sputteringRadius, Vector2 sputteringDamage)
     {
         if (weapons == null)
             weapons = new List<Weapon>();
