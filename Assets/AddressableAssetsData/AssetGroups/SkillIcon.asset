@@ -13,11 +13,407 @@ MonoBehaviour:
   m_Name: SkillIcon
   m_EditorClassIdentifier: 
   m_GroupName: SkillIcon
-  m_GUID: ab55506de668846a58383550aae73a41
-  m_SerializeEntries: []
+  m_GUID: decb89dfbfc6b497cab1d381bb4c2109
+  m_SerializeEntries:
+  - m_GUID: 0fccfe34be5cf4487a9a5417241c3d28
+    m_Address: "Assets/Art/Empire/Skill/\u9632\u7A7A\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 127ad66fd68d24f1ba13447007c03e93
+    m_Address: "Assets/Art/SovietUnion/Skill/\u6C72\u53D6\u5149\u675F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1549af11e026043c0b6fb17fcbdeabcf
+    m_Address: "Assets/Art/Empire/Skill/\u91CE\u86EE\u51B2\u649E.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 186c527dcba81430682341345c3c5250
+    m_Address: "Assets/Art/Empire/Skill/\u7EB3\u7C73\u866B\u7FA4.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c12fbd684cd14d5ba8db745f98e7acd
+    m_Address: "Assets/Art/SovietUnion/Skill/\u589E\u5E45\u6012\u543C.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 223800ea76ac84e4e9138c8729ac401f
+    m_Address: "Assets/Art/Empire/Skill/\u6253\u51FB\u8005\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23312c44fc3934758be2e8ad6c63c115
+    m_Address: "Assets/Art/Empire/Skill/\u9632\u536B\u8005\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2464098eb16db4f6da6c7456b7b1975a
+    m_Address: "Assets/Art/SovietUnion/Skill/\u87BA\u65CB\u6868\u63A8\u8FDB.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2857d44dee7ab40fb87810a13e51b03d
+    m_Address: "Assets/Art/SovietUnion/Skill/\u71C3\u70E7\u5F39\u6EE1\u5929\u98DE.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 299a5d29bcfea44e499c10a61058a6c7
+    m_Address: "Assets/Art/SovietUnion/Skill/\u94C1\u5E55.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2be24fbb856654fbbb56752c89d33215
+    m_Address: "Assets/Art/SovietUnion/Skill/\u78C1\u96F7.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f6e1dea99a1149bc8f95413a083600a
+    m_Address: "Assets/Art/SovietUnion/Skill/\u727A\u7272\u53D1\u5C04\u5668.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fece6aaaf4a148f8b47353dc549dacb
+    m_Address: "Assets/Art/SovietUnion/Skill/\u8D85\u7EA7\u9C7C\u96F7.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 330950d28ebd9476780ef387304b8e3d
+    m_Address: "Assets/Art/SovietUnion/Skill/\u53CD\u5E94\u88C5\u7532.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a1911c980ea14c14909ba832401d594
+    m_Address: "Assets/Art/SovietUnion/Skill/\u6B7B\u4EA1\u55B7\u96FE\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4131cd79429ad413f868db6a88579b7d
+    m_Address: "Assets/Art/Empire/Skill/\u817E\u7A7A.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42dfc0c7e8b094b38925e58a7fedc9f9
+    m_Address: "Assets/Art/SovietUnion/Skill/\u539F\u578B\u8DF3\u8DC3.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 483a2a39db0ab40209e85277e7fb59b2
+    m_Address: "Assets/Art/SovietUnion/Skill/\u8DF3\u86A4\u8DF3.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48e5ea50e5b5843a19ce96af2964f5c9
+    m_Address: "Assets/Art/SovietUnion/Skill/\u52A0\u519C\u70AE.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e7abef16e89e4a659799c8c2522f955
+    m_Address: "Assets/Art/SovietUnion/Skill/\u6DA1\u8F6E\u589E\u538B.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5022f22dfb3bf4059b203c1cd21823f9
+    m_Address: "Assets/Art/SovietUnion/Skill/\u4E3B\u6B66\u5668.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5280667a3230c48b284038bada7d6a96
+    m_Address: "Assets/Art/SovietUnion/Skill/\u5378\u8F7D.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52c7804df08074ee6aea770d89b0805b
+    m_Address: "Assets/Art/Empire/Skill/\u7EB3\u7C73\u504F\u5BFC\u7F69.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 537b2c60ee31a4c43a97719ffc038e42
+    m_Address: "Assets/Art/SovietUnion/Skill/\u5B89\u5168\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5419946e2659f49c9b281b1cc82adbcd
+    m_Address: "Assets/Art/Empire/Skill/\u7EB3\u7C73\u79D1\u6280\u5347\u7EA7.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b20bc5a1f8a44f46ac186f89d2b1b19
+    m_Address: "Assets/Art/Empire/Skill/\u673A\u7532\u5DE5\u5382\u7EB3\u7C73\u7A81\u7834.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f87878639e4c435491c55dddf258af7
+    m_Address: "Assets/Art/SovietUnion/Skill/\u9AD8\u7CBE\u5EA6\u5F39\u5934.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64e06e85770ef4b1c8673cde288dad14
+    m_Address: "Assets/Art/SovietUnion/Skill/\u62C6\u5378\u722A.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68a100d96f47243d2936671b6022d255
+    m_Address: "Assets/Art/Empire/Skill/\u76F4\u5347\u673A\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71cc0cfce3d6147f7b8fff74a728dde4
+    m_Address: "Assets/Art/Empire/Skill/\u6740\u624B\u9C7C\u96F7.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73cbeba5c924f4d19bc5abdab438012a
+    m_Address: "Assets/Art/SovietUnion/Skill/\u82CF\u8054\u5C55\u5F00.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 794bb79ee9fdd46b89913faf1c7be18e
+    m_Address: "Assets/Art/Empire/Skill/\u6F5C\u6D77.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 812186c89b0bc45f69608216c02dc7dd
+    m_Address: "Assets/Art/SovietUnion/Skill/\u5EFA\u9020\u63A9\u4F53.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81b832f6f2fa645d38129f4b6abc6a42
+    m_Address: "Assets/Art/SovietUnion/Skill/\u4EBA\u95F4\u5927\u70AE.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 851c06a453bdd4d01af6fe2d66933442
+    m_Address: "Assets/Art/Empire/Skill/\u63D0\u524D\u53D1\u5C04.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86d597f3ffe374dd9a9e801722b9c615
+    m_Address: "Assets/Art/Empire/Skill/\u8D85\u80FD\u6CE2\u6BC1\u706D.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a047c4cb75f9479aa5065c635d8f4d7
+    m_Address: "Assets/Art/SovietUnion/Skill/\u6536\u5272\u673A\u7532\u70AE\u53F0.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c8a4a5b0e7534e5db1b048bd0727edb
+    m_Address: "Assets/Art/SovietUnion/Skill/\u8FD4\u56DE\u673A\u573A.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91b9bd8d48c0044238ab9b5d53b4938f
+    m_Address: "Assets/Art/SovietUnion/Skill/\u7535\u78C1\u5E72\u6270\u5668.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 968984e8ae02349db9fdea083ef72781
+    m_Address: "Assets/Art/SovietUnion/Skill/\u505C\u6EDE\u5C04\u7EBF.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96d32f0dae0bb43cbb2ceed317e5fa84
+    m_Address: "Assets/Art/SovietUnion/Skill/\u96C6\u675F\u5F39\u5934.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c2beb8ca923b431b9fb627402fe2726
+    m_Address: "Assets/Art/SovietUnion/Skill/\u83AB\u6D1B\u6258\u592B\u9E21\u5C3E\u9152.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ca9acf4329ae424580f2a72dc3176aa
+    m_Address: "Assets/Art/SovietUnion/Skill/\u6218\u6597\u7889\u5821.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f31010b69b784a219569a5b8007115e
+    m_Address: "Assets/Art/SovietUnion/Skill/\u72D9\u6740\u9A7E\u9A76\u5458.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a39d4b452dd254c1cb7fa68cf7c12d17
+    m_Address: "Assets/Art/Empire/Skill/\u91C7\u77FF.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5b27bdaa96d44b81a7eed36672ef43b
+    m_Address: "Assets/Art/SovietUnion/Skill/\u8FD4\u822A.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abec09cda43ce4d429b4faef7b30ecb5
+    m_Address: "Assets/Art/Empire/Skill/\u6781\u901F\u51B2\u649E.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: addb1d5257d9443e3aa108610aacab4a
+    m_Address: "Assets/Art/Empire/Skill/\u55B7\u6C14\u673A\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b005cf5b8b69340abbbe966ebd737e1e
+    m_Address: "Assets/Art/Empire/Skill/\u6536\u8D77.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba2640f024bdd4e99bd91a06b1d38054
+    m_Address: "Assets/Art/Empire/Skill/\u6700\u540E\u822A\u7A0B.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd475b120f4ae4746b2c4b549a8412a8
+    m_Address: "Assets/Art/SovietUnion/Skill/\u9AD8\u5C04\u70AE.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd57147332ccc49b295e6f98cb68f059
+    m_Address: "Assets/Art/Empire/Skill/\u51B2\u51FB\u6CE2.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c02d8471723ca485db0a8353eb13572e
+    m_Address: "Assets/Art/SovietUnion/Skill/\u6536\u8D77.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf8746f00bc474eb6a6a53cebfa4bd75
+    m_Address: "Assets/Art/SovietUnion/Skill/\u55B7\u5C04\u71C3\u70E7\u5668.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cfb1f83c272784467bed511d4a31847c
+    m_Address: "Assets/Art/SovietUnion/Skill/\u64A4\u51FA.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0358ed962fc54736a6acf74c289466c
+    m_Address: "Assets/Art/SovietUnion/Skill/\u78C1\u66B4\u5DE8\u6D6A.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e038308a0fc9e442aae7139106e103af
+    m_Address: "Assets/Art/SovietUnion/Skill/\u673A\u52A8\u706B\u70AE.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e21c210216e474875ae6fbb84989d7ed
+    m_Address: "Assets/Art/Empire/Skill/\u673A\u7532\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6f36acfd1dea46c3bf531d1af8e407b
+    m_Address: "Assets/Art/Empire/Skill/\u5C55\u5F00.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eef1f17af0be045cdaf57cef2cd3f876
+    m_Address: "Assets/Art/Empire/Skill/\u81EA\u536B\u7CFB\u7EDF.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eff61347c3c5b4445a22be13dd857830
+    m_Address: "Assets/Art/SovietUnion/Skill/\u7A81\u51FB\u6B65\u67AA.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1f41b70357e14554aa8064e15c61843
+    m_Address: "Assets/Art/SovietUnion/Skill/\u6E85\u5C04\u6A21\u5F0F.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6a98aed7e1634834834e1703edc61f1
+    m_Address: "Assets/Art/SovietUnion/Skill/\u771F\u7A7A\u5185\u7206.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9012b4c924fe42e1abaeece3310d624
+    m_Address: "Assets/Art/SovietUnion/Skill/\u78C1\u529B\u9C7C\u53C9.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd1e0a329a1a14cce942a24265116e7e
+    m_Address: "Assets/Art/SovietUnion/Skill/\u78C1\u66B4\u7EBF\u5708\u67AA.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff17cbd0f815a4bf8874d4349cbac354
+    m_Address: "Assets/Art/SovietUnion/Skill/\u8D27\u8231.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4e7b53770dd334abe832499c0f9f724a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: d7309d369184c4d6b99c3c0312c1ed24, type: 2}
-    - {fileID: 11400000, guid: e70c8940eab8e4b998bead0d5ead56ce, type: 2}
+    - {fileID: 11400000, guid: 2ef58afedfff0448fb65fd88fca1c843, type: 2}
+    - {fileID: 11400000, guid: ed7b86c08c20f4f03b89d770d17b6c5d, type: 2}

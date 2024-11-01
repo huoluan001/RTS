@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
   id: 10206
-  nameChinese: "\u8D28\u5B50\u649E\u51FB\u70AE"
+  nameChinese: "\u8D28\u5B50\u649E\u51FB\u70AE\u53D1\u5C04\u4E2D\u5FC3"
   nameEnglish: ProtonImpactor
   icon: {fileID: 0}
   commentChinese: "\u805A\u96C6\u5F3A\u70C8\u7684\u80FD\u91CF\u5149\u675F,\u4F7F\u88AB\u5149\u675F\u51FB\u4E2D\u7684\u533A\u57DF\u4EA7\u751F\u5206\u5B50\u7194\u89E3\u8FDE\u9501\u53CD\u5E94\u3002"

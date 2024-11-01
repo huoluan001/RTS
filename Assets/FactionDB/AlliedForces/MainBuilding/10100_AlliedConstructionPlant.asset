@@ -34,7 +34,7 @@ MonoBehaviour:
   buildingAndPlacementTime: {x: 0, y: 2}
   powerConsume: 50
   skills:
-  - skillNameZH: "\u6536\u8D77"
+  - skillNameZH: "\u6536\u8D77\u76DF\u519B\u57FA\u5730\u8F66"
     skillNameEN: PutAway
     icon: {fileID: 0}
     commentChinese: "\u53D8\u6362\u4E3A\u53EF\u4EE5\u5728\u65B0\u5730\u70B9\u91CD\u65B0\u90E8\u7F72\u7684\u79FB\u52A8\u57FA\u5730\u8F66"

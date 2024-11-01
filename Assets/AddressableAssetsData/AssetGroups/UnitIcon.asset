@@ -1,0 +1,849 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UnitIcon
+  m_EditorClassIdentifier: 
+  m_GroupName: UnitIcon
+  m_GUID: ae42af7a03a3542bdac6fc4ad2b8bfda
+  m_SerializeEntries:
+  - m_GUID: 00860c02d931d43509a8e6ab54da31c5
+    m_Address: "\u5E1D\u56FD\u77FF\u77F3\u7CBE\u70BC\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0122fe60b9cb348469917c56162cfc9d
+    m_Address: "\u9632\u7A7A\u70AE"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - OtherBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 01dadf882fa3d4e4bb69046cad625e3b
+    m_Address: "\u78C1\u66B4\u7EBF\u5708"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - OtherBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05873ea85aff34ab489e027412a485a3
+    m_Address: "\u76DF\u519B\u77FF\u77F3\u7CBE\u70BC\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0747c97f948434ac5889f9b399692d07
+    m_Address: "\u7EF4\u548C\u6B65\u5175"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08bfd154ec2a6478f9ca4b2d0bb4dda8
+    m_Address: "\u6D77\u5578\u5766\u514B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09d064dc4e528416fbdf5145d8bb5561
+    m_Address: "\u6307\u6325\u4E2D\u5FC3"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a98b5a7a3cbf4e238b22f17677d79b9
+    m_Address: "\u6D77\u519B\u9020\u8239\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cf3dda9d81f547eca4dafe027b0992e
+    m_Address: "\u6D77\u6E2F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0efa9159a71f74a27a6e2148b0d5a0b5
+    m_Address: "\u8D28\u5B50\u649E\u51FB\u70AE\u53D1\u5C04\u4E2D\u5FC3"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12c7cf6acc57d4db4af505cb3aa0cd60
+    m_Address: "\u7EB3\u7C73\u866B\u7FA4\u88C5\u7F6E"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 137cc47221ebb4fc0a1fec32a94ef1af
+    m_Address: "\u8D85\u65F6\u7A7A\u4F20\u9001\u4EEA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 167f7bcfb0625490f9b76076482431d5
+    m_Address: "\u95F4\u8C0D"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1785b7c4f06a241589d72dfd7dc703fd
+    m_Address: "\u6C34\u7FFC\u8239"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Dock
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1892e62a75c5a40458a2f8ee45255803
+    m_Address: "\u5766\u514B\u6740\u624B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18c6d34b445f84a6b8ea23e165da0aba
+    m_Address: "\u5F13\u7BAD\u5C11\u5973"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19ac4f117a8444dff8ca07bd112fe071
+    m_Address: "\u82CF\u8054\u56F4\u5899"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - OtherBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1aaac84ead1fb4e8eadf7adfa0d67b08
+    m_Address: "\u5E1D\u56FD\u7801\u5934"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1cf86cf27ea204303ba7c4b98289df3f
+    m_Address: "\u8B66\u72AC"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2008c1eb8d17d41c0a3de44f1dd00e22
+    m_Address: "\u53CC\u5203\u76F4\u5347\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21c25ed7e1ca6435fb6b730c1f001c5c
+    m_Address: "V4\u5BFC\u5F39\u53D1\u5C04\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21cc0a8f4543c428f99c1ea815fb636c
+    m_Address: "\u94C1\u5E55\u88C5\u7F6E"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - OtherBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2424f20fd63b642e4a66de013c81d433
+    m_Address: "\u5B88\u62A4\u8005\u5766\u514B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2802a8f3b234b4f98ad0d3a7d5dd9308
+    m_Address: "\u82CF\u8054\u77FF\u77F3\u7CBE\u70BC\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 293fdc606d5d145648c12370aa11f244
+    m_Address: "\u771F\u7A7A\u5185\u7206\u5F39\u53D1\u5C04\u4E2D\u5FC3"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - OtherBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dba149d00a39441f9b63a0a93026db0
+    m_Address: "\u9B3C\u738B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 321fd2c75176744c8a955ec4f822e291
+    m_Address: "\u4E16\u7EAA\u8F70\u70B8\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - AlliedForces
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3518477cbe6af477bbc12d18e554a1a2
+    m_Address: "\u9632\u7A7A\u6B65\u5175"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3652557d9919f41689d47f3af690c595
+    m_Address: "\u52D8\u63A2\u8005"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37d6fd46a0b4145e8b6e8d311c8463ce
+    m_Address: "\u77AC\u606F\u53D1\u7535\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a6ed52f2164a40ec9f91077c11cd87c
+    m_Address: "\u8599\u5200\u5DE1\u6D0B\u8230"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d615d1dd8efd4087aac34b54adf5658
+    m_Address: "\u5DE5\u7A0B\u5E08"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ea9d360843ad4750b2a8fd4537ea4c8
+    m_Address: "\u591A\u529F\u80FD\u70AE\u5854"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4449e01b617ed4627abc753409f57a14
+    m_Address: "\u5929\u542F\u5766\u514B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 486a1c62546ea481f8a423540cbb9a51
+    m_Address: "\u6B27\u7C73\u8304\u767E\u5408\u5B50"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49d1a6ba2d3ad45e4b19427c76d6d8c3
+    m_Address: "\u65B0\u5175\u8BAD\u7EC3\u8425"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a02dade163d34ba7848a0fb884ea79c
+    m_Address: "\u519B\u8425"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52faad313122840d79fa131a402df6ad
+    m_Address: "\u7EB3\u7C73\u4E3B\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 530aa5e409cf2433e922ff036989633b
+    m_Address: "\u538B\u788E\u8D77\u91CD\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5555a6f439add47ebb85b200ce10b22f
+    m_Address: "\u76DF\u519B\u56F4\u5899"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55773fcd236fa4e9fa8599eefd1a4c31
+    m_Address: "\u672A\u6765\u5766\u514BX-1"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5594e33e2c0b34327bc815b6947dabcd
+    m_Address: "\u7C73\u683C\u6218\u6597\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 562547b6a02d74f5f8b132e81b0668ec
+    m_Address: "\u5FCD\u8005"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5661f8eb2ff1c4e928cb30068ed80142
+    m_Address: "\u524D\u7EBF\u57FA\u5730"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fe3cf0c406b5437fb0ca2c2dc218e8a
+    m_Address: "\u673A\u7532\u5DE5\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 619c0c48517c84f1dba3c5e6071dd7c9
+    m_Address: "\u725B\u86D9"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61ad123b13c00467c81f2b428e0e4bba
+    m_Address: "\u76DF\u519B\u57FA\u5730\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 629e08966202d4e2cb7d3d5cebac4d69
+    m_Address: "\u7C89\u788E\u8005"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6722b5883d1b545ca9433549d143e644
+    m_Address: "\u53F2\u666E\u5C3C\u514B\u52D8\u63A2\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 673647828e96248579cfcd9ec9435129
+    m_Address: "\u88C5\u7532\u5DE5\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a05a696ac92e44ca818c44e00a6bd06
+    m_Address: "\u82CF\u8054\u77FF\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ca41e16a29eb4f0bbfe77bd1031e6a7
+    m_Address: "\u6218\u6597\u5DE5\u5175"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71c8121b51735445fbaeff466b9e3ccd
+    m_Address: "\u822A\u7A7A\u6BCD\u8230"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Dock
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 727c4000d68334f5eaa4e8fcb30d237b
+    m_Address: "\u8D85\u7EA7\u53CD\u5E94\u5806"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78bb1940923924ca489ffae939bdd7c9
+    m_Address: "\u9570\u5200"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 791f964d0ae7c40dcbcb642a41b0bbab
+    m_Address: "\u963F\u6CE2\u7F57\u6218\u6597\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - AlliedForces
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a1730878795b4eaca861565a52ee1e7
+    m_Address: "\u5E1D\u56FD\u56F4\u5899"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b527c0d60a6a4d219ea84eaf2c6eba6
+    m_Address: "\u5E73\u5B9A\u8005"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7cc7f272b135b43cdaa02c81acebb944
+    m_Address: "\u53CD\u5E94\u5806"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d2517e684af84c4e82478913b77f401
+    m_Address: "\u5E1D\u56FD\u77FF\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 826becff08ac64fbd92a1d403e8bb653
+    m_Address: "\u7EF4\u548C\u8F70\u70B8\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - AlliedForces
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 851b5d9bdaa4d4d9c8ce5c958715c54f
+    m_Address: "\u6218\u4E89\u5DE5\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85b0ecf26c366489086139c36a0ba80b
+    m_Address: "\u53D1\u7535\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 874729ace85bb4f269164d623b9dc878
+    m_Address: "\u5E1D\u56FD\u5EFA\u9020\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 880481c718ba34ee6b0382763480a9bc
+    m_Address: "\u9632\u536B\u8005-VX"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ba441c3e7ed84aceb3ea9918315e918
+    m_Address: "\u96C5\u5178\u5A1C\u70AE"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d8195a071982422097c8aca61f72aa8
+    m_Address: "\u94A2\u94C1\u6D6A\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ea5e164fcc2a40ada1d500c4566ac79
+    m_Address: "\u6807\u67AA\u5175"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8efc5e6a72ff54a098818fcdd8877654
+    m_Address: "\u94C1\u9524\u5766\u514B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9343a8dfd9cf843b89d5aa67d0eba988
+    m_Address: "\u6CE2\u80FD\u5854"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96c2c88bf14f34962b2db8e16366dd37
+    m_Address: "\u5E7B\u5F71\u5766\u514B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97b5bd60eea454c10a117d00ce9b6e51
+    m_Address: "\u957F\u67AA\u8FF7\u4F60\u6F5C\u8247"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 981aa5176969b4871bd55cf423ee1c33
+    m_Address: "\u5A1C\u5854\u838E"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98db09ffdc5824b818e76c9440d3ce5b
+    m_Address: "\u76DF\u519B\u5EFA\u9020\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a5146d9b0073424e862861a4e220b71
+    m_Address: "\u5DE5\u5175"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b9f0519e3b0749458c2081c3e9f3e46
+    m_Address: "\u5149\u8C31\u5854"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a104ac3ebdab342e1b7a88d48ea4c6fa
+    m_Address: "\u5316\u5B66\u90E8\u961F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2100f8cd2d904c5785cb45622eab42e
+    m_Address: "\u77AC\u606F\u9053\u573A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2357b94389e246ca9b5d523d65712ed
+    m_Address: "\u52A8\u5458\u5175"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3b4cd51acb484507bc20a6171369fb7
+    m_Address: "\u4F5C\u6218\u5B9E\u9A8C\u5BA4"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4d9d79bbba3e49e3866670d6eddc6d1
+    m_Address: "\u963F\u5E93\u62C9\u6F5C\u8247"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acc19bd19546a4e868f5e7e245ef21e5
+    m_Address: "\u7206\u88C2\u673A\u5668\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ade6a4b7253134443ae11fa943a31072
+    m_Address: "\u8D85\u7EA7\u8981\u585E"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b469cefca26c34825a472157e8e1b4ed
+    m_Address: "\u6700\u9AD8\u8BB8\u53EF"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4dc15d1bc5b847deb0f88a6035e82dd
+    m_Address: "\u9AD8\u7EA7\u8BB8\u53EF"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb396f70e820347889641e7f24dbff2c
+    m_Address: "\u82CF\u8054\u5EFA\u9020\u5382"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb6eb6b37f5b64ffbbe4b6b4126ef627
+    m_Address: "\u706B\u7BAD\u5929\u4F7F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5b71a562a2984125aecb0b260d8914a
+    m_Address: "\u5929\u72D7\u673A\u7532"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6ed2f43d5fa44751950941632c0508e
+    m_Address: "\u8C2D\u96C5"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7a063cbdf7bf4cc5bf80c186575b918
+    m_Address: "\u5E1D\u56FD\u6B66\u58EB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9f1b067602ce41cfbd5a9d21d693c29
+    m_Address: "\u673A\u573A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf7a1240f4506488883e10797aa92a39
+    m_Address: "\u706B\u70AE\u673A\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d50d4475ab894435daee32b595223a35
+    m_Address: "\u6FC0\u6D41ACV"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d62806fbd54d849a7ab247d2e472a685
+    m_Address: "\u6D77\u8C5A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Dock
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc3f3bad1b4e6478ca2f76180d19c88c
+    m_Address: "\u6050\u6016\u673A\u5668\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd185da64c5fb456cb75c5c203249471
+    m_Address: "\u8FC5\u96F7\u8FD0\u8F93\u8247"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dea5bc474c3af459ebbb5a31fd4cfe2c
+    m_Address: "\u6D77\u7FFC"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0b2b4bbb679d4a439f548f486e6a890
+    m_Address: "\u54E8\u5175\u67AA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - OtherBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2850efaa8d2742fdad8ba1be25e5c8b
+    m_Address: "\u8D85\u80FD\u6CE2\u6BC1\u706D\u88C5\u7F6E"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - OtherBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2f9dd66e09a94f4c916315d90bd1820
+    m_Address: "\u57FA\u6D1B\u592B\u98DE\u8247"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3dee2013c18847139a78b708c176830
+    m_Address: "\u78C1\u66B4\u5FEB\u8247"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9785153976694b788a7c8b963c1e051
+    m_Address: "\u6CE2\u80FD\u70AE"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb395cdb0b99f43b3b143f0128637883
+    m_Address: "\u65E0\u754F\u6218\u5217\u8230"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb958f48c23bc41a59d0b91c6e317aea
+    m_Address: "\u5C06\u519B\u6218\u5217\u8230"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dock
+    - Empire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebf39d4a923904e8a9c12aa9065579a7
+    m_Address: "\u6253\u51FB\u8005-VX"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eea8a78cb5e7e4c048efeee508094cd9
+    m_Address: "\u591A\u529F\u80FD\u6B65\u5175\u6218\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0cf0e826c31f4b9f83599b31e76e7e2
+    m_Address: "\u6536\u5272\u8005"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f224871b2244a46ccb341a7dc690a623
+    m_Address: "\u6218\u718A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f330813a22cc2463eaf11d66d30c2f97
+    m_Address: "\u9632\u536B\u5C40"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5d905a5137014457b1c6a300a5a972b
+    m_Address: "\u7A7A\u519B\u57FA\u5730"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - MainBuilding
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f796fe8e499704909998f4fc6e1e78ec
+    m_Address: "\u7A81\u88AD\u9A71\u9010\u8230"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Dock
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8111ad2424c94f46b996dc1ac1894df
+    m_Address: "\u78C1\u66B4\u90E8\u961F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Infantry
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb083c688b92246938a8ab4c9518fcba
+    m_Address: "\u5E1D\u56FD\u57FA\u5730\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Empire
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb27199ae9b6d4c16819f09fbc66d478
+    m_Address: "\u82CF\u8054\u90E8\u7F72"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainBuilding
+    - SovietUnion
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc69b597144cb4dd7ab8262990e326b4
+    m_Address: "\u51B0\u51BB\u90E8\u961F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlliedForces
+    - Infantry
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd647307031544b348d8bb6b5be59639
+    m_Address: "\u82CF\u8054\u57FA\u5730\u8F66"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SovietUnion
+    - Vehicle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: feac74ecd1c234ec9a487cf7f29909aa
+    m_Address: "\u5148\u950B\u6B66\u88C5\u6218\u8247\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - AlliedForces
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff79365c12aa1426b860381cb73e8f02
+    m_Address: "\u51B0\u51BB\u76F4\u5347\u673A"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Aircraft
+    - AlliedForces
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4e7b53770dd334abe832499c0f9f724a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8d49bda643e674958975cda9b63474a3, type: 2}
+    - {fileID: 11400000, guid: 00a99a1ff5dba4653a8a95089a12b6f0, type: 2}

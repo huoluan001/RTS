@@ -136,6 +136,10 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
         weapon.sputteringRadius = sputteringRadius;
         weapon.sputteringDamage = sputteringDamage;
     }
+    public void SetIcon(Sprite sprite)
+    {
+        icon = sprite;
+    }
 
 
 }

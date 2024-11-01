@@ -7,6 +7,9 @@ using UnityEditor;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using Unity.Mathematics;
+using UnityEngine.AddressableAssets;
+using Unity.VisualScripting;
+
 
 public class DataLoad : MonoBehaviour
 {
@@ -89,16 +92,19 @@ public class DataLoad : MonoBehaviour
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
                 // 配置主建筑的IbaseInfo和Ibuilding
-                currentRow.ReadAndWriteRowToIBaseInfo(mainBuildingSO);
+                currentRow.ReadAndWriteRowToIBaseInfoAsync(mainBuildingSO);
                 currentRow.ReadAndWriteRowToIBuilding(16, mainBuildingSO, buildingLabelSOs);
                 // 盟军的科技，这是一个特殊的存在，不可能存在技能，直接跳过
                 if (currentRow.GetCellString(7).ConvertToTroop() != Troop.Technology)
                     currentRow.ReadAndWriteRowToISkill(21, mainBuildingSO);
                 EditorUtility.SetDirty(mainBuildingSO);
+
                 loadCallBack.Invoke();
                 previousMainBuildingSO = mainBuildingSO;
                 mainBuildingSOPage.mainBuildingSOPageElement[id] = mainBuildingSO;
+                EditorUtility.SetDirty(mainBuildingSOPage);
             }
+
 
             // 科技前提写入
             for (int i = 3; i <= 32; i++)
@@ -109,10 +115,14 @@ public class DataLoad : MonoBehaviour
                 var requirements = requriement.Split(',').Select(req => req.ConvertToMainBuildingWithName()).ToList();
                 var name = currentRow.GetCellString(3);
                 if (name == "") continue;
-                name.ConvertToMainBuildingWithName().SetRequirement(requirements);
+                var mainBuildingSO = name.ConvertToMainBuildingWithName();
+                mainBuildingSO.SetRequirement(requirements);
+                EditorUtility.SetDirty(mainBuildingSO);
             }
-            Debug.Log("requriement完成");
             AssetDatabase.SaveAssets();
+            Debug.Log("requriement完成");
+
+
         }
     }
     #endregion
@@ -176,7 +186,7 @@ public class DataLoad : MonoBehaviour
                     AssetDatabase.CreateAsset(otherBuildingSO, filePath);
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
-                currentRow.ReadAndWriteRowToIBaseInfo(otherBuildingSO);
+                currentRow.ReadAndWriteRowToIBaseInfoAsync(otherBuildingSO);
                 currentRow.ReadAndWriteRowToIBuilding(16, otherBuildingSO, buildingLabelSOs);
                 currentRow.ReadAndWriteRowToIWeapon(22, otherBuildingSO, damageTypeSOs);
                 currentRow.ReadAndWriteRowToISkill(33, otherBuildingSO);
@@ -184,6 +194,7 @@ public class DataLoad : MonoBehaviour
                 loadCallBack.Invoke();
                 previousOtherBuildingSO = otherBuildingSO;
                 otherBuildingSOPage.otherBuildingSOPageElement[id] = otherBuildingSO;
+                EditorUtility.SetDirty(otherBuildingSOPage);
             }
             AssetDatabase.SaveAssets();
         }
@@ -247,7 +258,7 @@ public class DataLoad : MonoBehaviour
                     AssetDatabase.CreateAsset(armySO, filePath);
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
-                currentRow.ReadAndWriteRowToIBaseInfo(armySO);
+                currentRow.ReadAndWriteRowToIBaseInfoAsync(armySO);
                 currentRow.ReadAndWriteRowToIArmy(17, armySO, armyLabelSOs);
                 currentRow.ReadAndWriteRowToIWeapon(27, armySO, damageTypeSOs);
                 currentRow.ReadAndWriteRowToISkill(38, armySO);
@@ -262,12 +273,39 @@ public class DataLoad : MonoBehaviour
                 loadCallBack.Invoke();
                 previousArmySO = armySO;
                 armySOPage.armySOPageElement[id] = armySO;
+                EditorUtility.SetDirty(armorSOPage);
             }
+            FactionArmyDataLoad();
             AssetDatabase.SaveAssets();
         }
 
     }
     #endregion
+
+    [ContextMenu("Faction校准")]
+    public void FactionCalibrate()
+    {
+        alliedForcesFactionSO.MainBuildings = alliedForcesFactionSO.MainBuildings.Where(m => m != null).ToList();
+        alliedForcesFactionSO.OtherBuildings = alliedForcesFactionSO.OtherBuildings.Where(m => m != null).ToList();
+        alliedForcesFactionSO.Infantry = alliedForcesFactionSO.Infantry.Where(m => m != null).ToList();
+        alliedForcesFactionSO.Vehicle = alliedForcesFactionSO.Vehicle.Where(m => m != null).ToList();
+        alliedForcesFactionSO.Dock = alliedForcesFactionSO.Dock.Where(m => m != null).ToList();
+        alliedForcesFactionSO.Aircraft = alliedForcesFactionSO.Aircraft.Where(m => m != null).ToList();
+
+        empireFactionSO.MainBuildings = empireFactionSO.MainBuildings.Where(m => m != null).ToList();
+        empireFactionSO.OtherBuildings = empireFactionSO.OtherBuildings.Where(m => m != null).ToList();
+        empireFactionSO.Infantry = empireFactionSO.Infantry.Where(m => m != null).ToList();
+        empireFactionSO.Vehicle = empireFactionSO.Vehicle.Where(m => m != null).ToList();
+        empireFactionSO.Dock = empireFactionSO.Dock.Where(m => m != null).ToList();
+        empireFactionSO.Aircraft = empireFactionSO.Aircraft.Where(m => m != null).ToList();
+
+        sovietUnionFactionSO.MainBuildings = empireFactionSO.MainBuildings.Where(m => m != null).ToList();
+        sovietUnionFactionSO.OtherBuildings = empireFactionSO.OtherBuildings.Where(m => m != null).ToList();
+        sovietUnionFactionSO.Infantry = empireFactionSO.Infantry.Where(m => m != null).ToList();
+        sovietUnionFactionSO.Vehicle = empireFactionSO.Vehicle.Where(m => m != null).ToList();
+        sovietUnionFactionSO.Dock = empireFactionSO.Dock.Where(m => m != null).ToList();
+        sovietUnionFactionSO.Aircraft = empireFactionSO.Aircraft.Where(m => m != null).ToList();
+    }
 
     #region Armor
     [ContextMenu("LoadArmorData护甲数据导入")]
@@ -392,21 +430,80 @@ public class DataLoad : MonoBehaviour
             };
     }
 
+    [ContextMenu("LoadUnitIcon")]
+    public void LoadUnitIcon()
+    {
+        foreach (var m in mainBuildingSOPage.mainBuildingSOPageElement.Values)
+        {
+            Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
+            {
+                m.SetIcon(handle.Result);
+            };
+        }
+        foreach (var m in otherBuildingSOPage.otherBuildingSOPageElement.Values)
+        {
+            Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
+            {
+                m.SetIcon(handle.Result);
+            };
+        }
+        foreach (var m in armySOPage.armySOPageElement.Values)
+        {
+            Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
+            {
+                m.SetIcon(handle.Result);
+            };
+        }
+    }
+
     [ContextMenu("DownloadExcel")]
     void LoadExcelAsync()
     {
-        using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
-        {
-            var workbook = new XSSFWorkbook(fileStream);
-            ISheet sheet = workbook.GetSheetAt(2);
-            var s = sheet.GetRow(6).Cells;
-            Debug.Log("hh");
-        }
+
+
     }
 
     public FactionSO GetFactionSO(string factionName)
     {
         return factionName switch { "盟军" => alliedForcesFactionSO, "帝国" => empireFactionSO, _ => sovietUnionFactionSO };
+    }
+
+    public void FactionArmyDataLoad()
+    {
+        var ArmoredFactory = "装甲工厂".ConvertToMainBuildingWithName();
+        var Harbour = "海港".ConvertToMainBuildingWithName();
+        var AirForceBase = "空军基地".ConvertToMainBuildingWithName();
+
+        var MechaFactory = "机甲工厂".ConvertToMainBuildingWithName();
+        var EmpirePier = "帝国码头".ConvertToMainBuildingWithName();
+
+        var WarFactory = "战争工厂".ConvertToMainBuildingWithName();
+        var NavalShipyard = "海军造船厂".ConvertToMainBuildingWithName();
+        var Airport = "机场".ConvertToMainBuildingWithName();
+        EditorUtility.SetDirty(alliedForcesFactionSO);
+        EditorUtility.SetDirty(empireFactionSO);
+        EditorUtility.SetDirty(sovietUnionFactionSO);
+        foreach (var army in armySOPage.armySOPageElement.Values)
+        {
+            if (army.BuildFacilities.Contains(ArmoredFactory) && !alliedForcesFactionSO.Vehicle.Contains(army))
+                alliedForcesFactionSO.Vehicle.Add(army);
+            if (army.BuildFacilities.Contains(Harbour) && !alliedForcesFactionSO.Dock.Contains(army))
+                alliedForcesFactionSO.Dock.Add(army);
+            if (army.BuildFacilities.Contains(AirForceBase) && !alliedForcesFactionSO.Aircraft.Contains(army))
+                alliedForcesFactionSO.Aircraft.Add(army);
+
+            if (army.BuildFacilities.Contains(MechaFactory) && !empireFactionSO.Vehicle.Contains(army))
+                empireFactionSO.Vehicle.Add(army);
+            if (army.BuildFacilities.Contains(EmpirePier) && !empireFactionSO.Dock.Contains(army))
+                empireFactionSO.Dock.Add(army);
+
+            if (army.BuildFacilities.Contains(WarFactory) && !sovietUnionFactionSO.Vehicle.Contains(army))
+                sovietUnionFactionSO.Vehicle.Add(army);
+            if (army.BuildFacilities.Contains(NavalShipyard) && !sovietUnionFactionSO.Dock.Contains(army))
+                sovietUnionFactionSO.Dock.Add(army);
+            if (army.BuildFacilities.Contains(Airport) && !sovietUnionFactionSO.Aircraft.Contains(army))
+                sovietUnionFactionSO.Aircraft.Add(army);
+        }
     }
 }
 #endregion
@@ -497,25 +594,25 @@ public static class Tool
         var res = value.Split(option).Select(i => float.Parse(i)).ToArray();
         return res.Length == 2 ? new Vector2(res[0], res[1]) : new Vector2(res[0], res[0]);
     }
-    public static void ReadAndWriteRowToIBaseInfo(this IRow current, IBaseInfo baseInfo)
+    public static void ReadAndWriteRowToIBaseInfoAsync(this IRow current, IBaseInfo baseInfo)
     {
         FactionSO factionSO = current.GetCellString(1).ConvertToFaction();
         if (baseInfo is MainBuildingSO && !factionSO.MainBuildings.Contains(baseInfo))
         {
             factionSO.MainBuildings.Add(baseInfo as MainBuildingSO);
         }
-        else if(baseInfo is OtherBuildingSO && !factionSO.OtherBuildings.Contains(baseInfo))
+        else if (baseInfo is OtherBuildingSO && !factionSO.OtherBuildings.Contains(baseInfo))
         {
             factionSO.OtherBuildings.Add(baseInfo as OtherBuildingSO);
         }
-        
+
         int id = int.Parse(current.GetCellString(2));
         string nameChinese = current.GetCellString(3);
         string nameEnglish = current.GetCellString(4);
         string commentChinese = current.GetCellString(6);
         string commentEnglish = "null";
         Troop troop = current.GetCellString(7).ConvertToTroop();
-        if(baseInfo is ArmySO && troop is Troop.Soldier && !factionSO.Infantry.Contains(baseInfo))
+        if (baseInfo is ArmySO && troop is Troop.Soldier && !factionSO.Infantry.Contains(baseInfo))
             factionSO.Infantry.Add(baseInfo as ArmySO);
         List<ActionScope> actionScopes = current.GetCellString(8).ConvertToActionScopes();
         int exp = int.Parse(current.GetCellString(9));

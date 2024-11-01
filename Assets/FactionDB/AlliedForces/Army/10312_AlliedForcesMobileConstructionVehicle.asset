@@ -42,10 +42,12 @@ MonoBehaviour:
   labels:
   - {fileID: 11400000, guid: ce3489373005f4019b58ae0539f46128, type: 2}
   buildingTime: 60
-  buildFacilities: []
+  buildFacilities:
+  - {fileID: 11400000, guid: d813f7828588e40ed9a725e0ea37561e, type: 2}
+  - {fileID: 11400000, guid: f28071fad0a5a4de092093256e608e44, type: 2}
   weapons: []
   skills:
-  - skillNameZH: "\u5C55\u5F00"
+  - skillNameZH: "\u5C55\u5F00\u76DF\u519B\u57FA\u5730\u8F66"
     skillNameEN: 
     icon: {fileID: 0}
     commentChinese: "\u5C55\u5F00\u6210\u5EFA\u9020\u5382,\u53EF\u4EE5\u5EFA\u8BBE\u5404\u79CD\u519B\u7528\u5EFA\u7B51\u3002"

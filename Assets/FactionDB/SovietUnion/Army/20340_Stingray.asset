@@ -43,7 +43,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a5c7c4cb907c4f24a7a3ef93df22b9d, type: 2}
   buildingTime: 10
   buildFacilities:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 98aa194338a5b4cb39aedd2c0ea9f7cc, type: 2}
   weapons:
   - WeaponNameZH: "\u78C1\u66B4\u67AA"
     WeaponNameEN: 

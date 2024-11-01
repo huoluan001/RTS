@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
   id: 10313
-  nameChinese: "\u52D8\u63A2\u77FF\u8F66"
+  nameChinese: "\u52D8\u63A2\u8005"
   nameEnglish: Prospector
   icon: {fileID: 0}
   commentChinese: "\u91C7\u96C6\u73CD\u8D35\u77FF\u77F3\u4EE5\u53CA\u5EFA\u9020\u524D\u7EBF\u57FA\u5730\u7684\u65E0\u6B66\u88C5\u5355\u4F4D"
@@ -43,6 +43,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8710d4374ce7c46e0b1986c548183748, type: 2}
   buildingTime: 20
   buildFacilities:
+  - {fileID: 11400000, guid: e30eec7c79d224d25af630d201c3ecb0, type: 2}
   - {fileID: 11400000, guid: d813f7828588e40ed9a725e0ea37561e, type: 2}
   - {fileID: 11400000, guid: f28071fad0a5a4de092093256e608e44, type: 2}
   weapons: []

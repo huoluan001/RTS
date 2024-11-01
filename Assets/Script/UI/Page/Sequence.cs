@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 public class Sequence
 {
+    
     public int sequenceIndex;
     public Page page;
     public List<IBaseInfo> baseInfos;

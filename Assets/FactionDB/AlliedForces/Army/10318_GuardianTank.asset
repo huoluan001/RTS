@@ -58,7 +58,7 @@ MonoBehaviour:
     sputteringRadius: {x: 0, y: 0}
     sputteringDamage: {x: 0, y: 0}
   skills:
-  - skillNameZH: "\u4E3B\u70AE"
+  - skillNameZH: "\u6ED1\u819B\u70AE"
     skillNameEN: 
     icon: {fileID: 0}
     commentChinese: "\u5207\u6362\u523090mm\u6ED1\u819B\u70AE,\u80FD\u591F\u6709\u6548\u5BF9\u4ED8\u654C\u4EBA\u88C5\u7532\u90E8\u961F"

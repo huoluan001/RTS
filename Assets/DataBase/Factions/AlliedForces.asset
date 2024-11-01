@@ -13,9 +13,53 @@ MonoBehaviour:
   m_Name: AlliedForces
   m_EditorClassIdentifier: 
   Faction: 1
-  MainBuildings: []
-  OtherBuildings: []
-  Infantry: []
-  Vehicle: []
-  Aircraft: []
-  Dock: []
+  MainBuildings:
+  - {fileID: 11400000, guid: d81dbb61d56244afc8963d3e2bb60679, type: 2}
+  - {fileID: 11400000, guid: 657529d363c6f4e188491ea3203734aa, type: 2}
+  - {fileID: 11400000, guid: f405c0070a75347988518b6c00a305c8, type: 2}
+  - {fileID: 11400000, guid: e30eec7c79d224d25af630d201c3ecb0, type: 2}
+  - {fileID: 11400000, guid: d813f7828588e40ed9a725e0ea37561e, type: 2}
+  - {fileID: 11400000, guid: f28071fad0a5a4de092093256e608e44, type: 2}
+  - {fileID: 11400000, guid: 069b2152b3c404606b24ba0d3fb9aaab, type: 2}
+  - {fileID: 11400000, guid: a07d0aa31c4bc404ebc949f14e8c7fc2, type: 2}
+  - {fileID: 11400000, guid: 059ecfd9e5a954ee5aa7e75169fe7efb, type: 2}
+  - {fileID: 11400000, guid: 9b75b2628b06e40ea9e74f1e05135d80, type: 2}
+  OtherBuildings:
+  - {fileID: 11400000, guid: 26ca61d8bc6684c229e4fde2fa541864, type: 2}
+  - {fileID: 11400000, guid: 1aaf97dd839214a2ca1ecbd00a87363e, type: 2}
+  - {fileID: 11400000, guid: 7149fea64f5624954af4df0a5fd3cd8a, type: 2}
+  - {fileID: 11400000, guid: c0f89c1fcfd93456696cf5945b83e893, type: 2}
+  - {fileID: 11400000, guid: bf656abebee43440d942ca3ec9a0bd66, type: 2}
+  - {fileID: 11400000, guid: fc57130f0e4ec43c2b0da3b2da02870b, type: 2}
+  Infantry:
+  - {fileID: 11400000, guid: 9a903cf053320406294cf06ebf906b37, type: 2}
+  - {fileID: 11400000, guid: 9473252d098934082ba10102335498e7, type: 2}
+  - {fileID: 11400000, guid: fcf077df5f18e4281ac6fad8cc82869e, type: 2}
+  - {fileID: 11400000, guid: 358e3991346e64bbe91e500facdda9d7, type: 2}
+  - {fileID: 11400000, guid: b32d37ab614804fc5b3e7eba7dbd7874, type: 2}
+  - {fileID: 11400000, guid: b40911db472d94c25bca72d26e894334, type: 2}
+  - {fileID: 11400000, guid: 32c82308aaadf412a823cc0ba6006ea7, type: 2}
+  Vehicle:
+  - {fileID: 11400000, guid: 5ec68467ad3834f90b56b8a36e3c044b, type: 2}
+  - {fileID: 11400000, guid: d0de80150df50417dbe123fbfbd87881, type: 2}
+  - {fileID: 11400000, guid: ddc48b275afcd47768cc5ecb29511843, type: 2}
+  - {fileID: 11400000, guid: 5894549c353094bd9838eae4c2f245b5, type: 2}
+  - {fileID: 11400000, guid: dd92d5c8afa2d43b0b7d4154e089e905, type: 2}
+  - {fileID: 11400000, guid: 327eeb09429f74220beb4f00ce788928, type: 2}
+  - {fileID: 11400000, guid: a3a5816efd502428e8df52d49631b3e1, type: 2}
+  - {fileID: 11400000, guid: ff4ad7bd8d19e4a3a91ebdb7ad8b4e6f, type: 2}
+  - {fileID: 11400000, guid: 2cd109e9f0f804fc3945b877d2284a3a, type: 2}
+  Aircraft:
+  - {fileID: 11400000, guid: fa2e079a200e546908e121c2ff02c1d6, type: 2}
+  - {fileID: 11400000, guid: c7ac43601cd6f42c883d553c281f913e, type: 2}
+  - {fileID: 11400000, guid: 3b1b6e7883d9941c4a5f094364f2f5fe, type: 2}
+  - {fileID: 11400000, guid: 1a7fae3ee549248358994c4cf166b875, type: 2}
+  - {fileID: 11400000, guid: 8f5ccd8c7937c4cf696f7bb8f153fdf5, type: 2}
+  Dock:
+  - {fileID: 11400000, guid: 5ec68467ad3834f90b56b8a36e3c044b, type: 2}
+  - {fileID: 11400000, guid: d0de80150df50417dbe123fbfbd87881, type: 2}
+  - {fileID: 11400000, guid: ddc48b275afcd47768cc5ecb29511843, type: 2}
+  - {fileID: 11400000, guid: ff60152e1c06d43d9b1b43ac410df055, type: 2}
+  - {fileID: 11400000, guid: b567c85d3336042e4a7edbb1bc1018fc, type: 2}
+  - {fileID: 11400000, guid: 10b80b0772ac244b39e59a66e8659f07, type: 2}
+  - {fileID: 11400000, guid: 9131d242b7892453e93788f9407a5079, type: 2}

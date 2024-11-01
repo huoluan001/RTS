@@ -45,7 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f405c0070a75347988518b6c00a305c8, type: 2}
   weapons: []
   skills:
-  - skillNameZH: "\u6536\u8D77"
+  - skillNameZH: "\u6536\u8D77\u5E10\u7BF7"
     skillNameEN: 
     icon: {fileID: 0}
     commentChinese: "\u628A\u533B\u7597\u7528\u54C1\u585E\u56DE\u516C\u6587\u5305,\u91CD\u65B0\u5C65\u884C\u5DE5\u7A0B\u5E08\u7684\u804C\u8D23\u3002"

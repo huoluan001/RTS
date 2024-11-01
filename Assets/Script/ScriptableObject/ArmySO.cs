@@ -4,7 +4,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ArmySO", menuName = "ScriptableObjects/Data/ArmySO"), SerializeField]
-public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
+public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
 {
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO factionSO;
@@ -92,7 +92,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
     }
 
 
-    public void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious,CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels,int buildingTime, List<MainBuildingSO> buildFacilities)
+    public void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious, CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels, int buildingTime, List<MainBuildingSO> buildFacilities)
     {
         this.moveSpeed = moveSpeed;
         this.isReverseMove = isReverseMove;
@@ -147,5 +147,9 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy , IWeapon , ISkill
         skill.skillCooling = skillCooling;
         skill.skillPre_Swing = skillPre_Swing;
         skill.skillPost_Swing = skillPost_Swing;
+    }
+    public void SetIcon(Sprite sprite)
+    {
+        icon = sprite;
     }
 }

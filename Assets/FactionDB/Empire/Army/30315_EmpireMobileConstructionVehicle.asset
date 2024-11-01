@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
   id: 30315
-  nameChinese: "\u5E1D\u56FDMCV"
+  nameChinese: "\u5E1D\u56FD\u5EFA\u9020\u5382"
   nameEnglish: EmpireMobileConstructionVehicle
   icon: {fileID: 0}
   commentChinese: "\u4ECE\u654C\u65B9\u8F83\u843D\u540E\u7684\u5BF9\u5E94\u5355\u4F4D\u9006\u5411\u5DE5\u7A0B\u800C\u6765\u7684\u81EA\u7ED9\u81EA\u8DB3\u673A\u52A8\u5DE5\u5382"
@@ -47,7 +47,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fbf0b7c57e77348f28a078af8883eef1, type: 2}
   weapons: []
   skills:
-  - skillNameZH: "\u5C55\u5F00"
+  - skillNameZH: "\u5C55\u5F00\u5E1D\u56FD\u57FA\u5730\u8F66"
     skillNameEN: 
     icon: {fileID: 0}
     commentChinese: "\u53D8\u5F62\u6210\u5EFA\u9020\u573A,\u53EF\u4EE5\u751F\u4EA7\u5E1D\u56FD\u7EB3\u7C73\u6838\u5FC3\u3002"

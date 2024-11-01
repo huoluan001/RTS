@@ -23,7 +23,7 @@ public class Page : MonoBehaviour
         if (isShow) Show();
         else Hide();
         UpdateContainImage();
-        AddSequence();
+        
     }
 
     private void Update()
@@ -33,6 +33,7 @@ public class Page : MonoBehaviour
             sequences.ForEach(sequence => sequence.ProductionMovesForward());
         }
     }
+
     private void Show()
     {
         rectTransform.localScale = new Vector3(1, 1, 1);
@@ -52,7 +53,7 @@ public class Page : MonoBehaviour
             images[i].sprite = null;
     }
 
-    public void AddSequence()
+    public void AddSequence(FactionSO factionSO, SequenceType sequenceType)
     { 
         if (sequenceType == SequenceType.MainBuildingSequence)
         {

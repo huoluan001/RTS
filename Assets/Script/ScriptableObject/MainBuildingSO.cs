@@ -114,5 +114,8 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         skill.skillPost_Swing = skillPost_Swing;
     }
 
-
+    public void SetIcon(Sprite sprite)
+    {
+        icon = sprite;
+    }
 }

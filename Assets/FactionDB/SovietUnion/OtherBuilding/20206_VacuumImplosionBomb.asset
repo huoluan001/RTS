@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
   id: 20206
-  nameChinese: "\u771F\u7A7A\u5185\u7206\u5F39"
+  nameChinese: "\u771F\u7A7A\u5185\u7206\u5F39\u53D1\u5C04\u4E2D\u5FC3"
   nameEnglish: VacuumImplosionBomb
   icon: {fileID: 0}
   commentChinese: "\u82CF\u519B\u79D1\u5B66\u5BB6\u5C06\u4F26\u7406\u9053\u5FB7\u629B\u5230\u4E00\u8FB9,\u53D1\u660E\u4E86\u8FD9\u79CD\u9A87\u4EBA\u542C\u95FB\u7684\u5F39\u5934\u3002"

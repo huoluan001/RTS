@@ -6,16 +6,20 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject selectionBoxUI;
-    public GameAsset gameAsset;
+    
     public Page mainBuildingPage;
     public Page otherBuildingPage;
-    // 四个兵种的page。暂时略
-    // public Page<ArmySO> ;
+    public Page InfantryPage;
+    public Page VehiclePage;
+    public Page AircraftPage;
+    public Page DockPage;
 
     public GameObject pageParent;
+    private GameAsset gameAsset;
 
     private void Start()
     {
+        gameAsset = GameManager.gameAsset;
         gameAsset.selectionBoxUI = selectionBoxUI;
         gameAsset.graphicRaycaster = GetComponent<GraphicRaycaster>();
 
