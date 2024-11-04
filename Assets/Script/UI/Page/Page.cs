@@ -11,7 +11,7 @@ public class Page : MonoBehaviour
 {
     public Transform contentPageTransform;
     public Transform contentMenuTransform;
-    public List<TMP_Text> sequenceTMPIndex;
+    public List<TMP_Text> sequenceTMPIndexs;
     public SequenceType sequenceType;
     public List<Sequence> sequences = new List<Sequence>();
 
@@ -20,6 +20,11 @@ public class Page : MonoBehaviour
     public FactionEnum currrntShowFaction;
 
     public bool isShow;
+
+    public int maxSequenceIndex;
+    public GameObject sequenceIndexPrefab;
+    private TMP_Text leftCursor;
+    private TMP_Text rightCursor;
     private int nextSequenceIndex = 1;
     private RectTransform rectTransform;
     void Start()
@@ -28,20 +33,37 @@ public class Page : MonoBehaviour
     }
     public int Init(SequenceType sequenceType, Transform transformParent, bool isShow, FactionSO factionSO)
     {
+        // init Page
         this.sequenceType = sequenceType;
         transform.SetParent(transformParent, false);
         this.isShow = isShow;
-        int index = AddSequence(factionSO);
+
+        // Page默认有一个Sequence
+        var sequence = new Sequence(sequenceType, factionSO, this, 1);
+        sequences.Add(sequence);
+        nextSequenceIndex = 2;
         currentSequenceIndex = 1;
-        currentSequence = GetCurrentSequence();
+        currentSequence = sequence;
+        // 一次不考虑图片是否更新，直接Load
         LoadContainImage();
         currrntShowFaction = factionSO.factionEnum;
-        return index;
+        // sequence的TMPindex init
+        leftCursor = sequenceTMPIndexs[0];
+        rightCursor = sequenceTMPIndexs[0];
+        sequenceTMPIndexs[0].GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(1));
+
+        // 返回序列编号
+        return 1;
     }
     public int AddSequence(FactionSO factionSO)
     {
         var sequence = new Sequence(sequenceType, factionSO, this, nextSequenceIndex);
         sequences.Add(sequence);
+        GameObject sequenceindexTMP = Instantiate(sequenceIndexPrefab);
+        sequenceindexTMP.transform.SetParent(contentMenuTransform, false);
+        sequenceindexTMP.GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(nextSequenceIndex));
+        sequenceTMPIndexs.Add(sequenceindexTMP.GetComponent<TMP_Text>());
+        if(sequenceTMPIndexs.Count < maxSequenceIndex) rightCursor = sequenceindexTMP.GetComponent<TMP_Text>();
         return nextSequenceIndex++;
     }
 
