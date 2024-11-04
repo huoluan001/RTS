@@ -14,7 +14,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     [Tooltip("Icon"), SerializeField] private Sprite icon;
     [Tooltip("中文备注"), TextArea(), SerializeField] private string commentChinese;
     [Tooltip("英文备注"), TextArea(), SerializeField] private string commentEnglish;
-    [Tooltip("兵种"), SerializeField] private Troop troop;
+    [Tooltip("兵种"), SerializeField] private TroopType troopType;
     [Tooltip("活动范围"), SerializeField] private List<ActionScope> actionScopes;
     [Tooltip("经验"), SerializeField] private int exp;
     [Tooltip("生命值"), SerializeField] private int hp;
@@ -52,7 +52,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     public string CommentChinese => commentChinese;
     public string CommentEnglish => commentEnglish;
     public Sprite Icon => icon;
-    public Troop Troop => troop;
+    public TroopType TroopType => troopType;
     public List<ActionScope> ActionScopes => actionScopes;
     public Vector3 MoveSpeed => moveSpeed;
     public int Exp => exp;
@@ -71,7 +71,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
 
-    public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, Troop troop, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
+    public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, TroopType troopType, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
     {
         this.factionSO = factionSO;
         this.id = id;
@@ -80,7 +80,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
         this.icon = icon;
         this.commentChinese = commentChinese;
         this.commentEnglish = commentEnglish;
-        this.troop = troop;
+        this.troopType = troopType;
         this.actionScopes = actionScopes;
         this.exp = exp;
         this.hp = hp;

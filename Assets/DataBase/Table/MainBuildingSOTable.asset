@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b27ac66edb2e04b5391a49c9e6c7b4c8, type: 3}
-  m_Name: MainBuildingSOPage
+  m_Name: MainBuildingSOTable
   m_EditorClassIdentifier: 
-  mainBuildingSOPageElement:
+  mainBuildingSOTableElement:
     m_keys: 7427000075270000762700007727000078270000792700007a2700007b2700007c2700007d270000844e0000854e0000864e0000874e0000884e0000894e00008a4e00008b4e00008c4e00008d4e000094750000957500009675000098750000997500009b7500009d750000
     m_values:
     - {fileID: 11400000, guid: d81dbb61d56244afc8963d3e2bb60679, type: 2}

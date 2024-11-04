@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c433da21c70234252af910dc5d6bb537, type: 3}
-  m_Name: ArmySOPage
+  m_Name: ArmySOTable
   m_EditorClassIdentifier: 
   armySOPageElement:
     m_keys: 

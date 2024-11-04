@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1b2509ee825407db8c3b0fdda7bded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainBuildingSOPage: {fileID: 11400000, guid: a23d3141f834f48f69fabda3214eb0e5, type: 2}
-  otherBuildingSOPage: {fileID: 11400000, guid: 8a65878401c594192bb2f90ceb617b19, type: 2}
-  armySOPage: {fileID: 11400000, guid: 215bf86148bd449878c79ff600cdc5fc, type: 2}
-  armorSOPage: {fileID: 11400000, guid: 2766ec0700a664b3caa1a96d29b9d2d5, type: 2}
+  mainBuildingSOTable: {fileID: 11400000, guid: a23d3141f834f48f69fabda3214eb0e5, type: 2}
+  otherBuildingSOTable: {fileID: 11400000, guid: 8a65878401c594192bb2f90ceb617b19, type: 2}
+  armySOTable: {fileID: 11400000, guid: 215bf86148bd449878c79ff600cdc5fc, type: 2}
+  armorSOTable: {fileID: 11400000, guid: 2766ec0700a664b3caa1a96d29b9d2d5, type: 2}
   alliedForcesFactionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
   empireFactionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
   sovietUnionFactionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}

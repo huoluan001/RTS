@@ -8,11 +8,10 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(StringColorArrayDictionary))]
 [CustomPropertyDrawer(typeof(DamageModifiers))]
 [CustomPropertyDrawer(typeof(CrushList))]
-[CustomPropertyDrawer(typeof(MainBuildingSOPageElement))]
-[CustomPropertyDrawer(typeof(OtherBuildingSOPageElement))]
-[CustomPropertyDrawer(typeof(ArmySOPageElement))]
-[CustomPropertyDrawer(typeof(ArmorSOPageElement))]
-
+[CustomPropertyDrawer(typeof(MainBuildingSOTableElement))]
+[CustomPropertyDrawer(typeof(OtherBuildingSOTableElement))]
+[CustomPropertyDrawer(typeof(ArmySOTableElement))]
+[CustomPropertyDrawer(typeof(ArmorSOTableElement))]
 
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer {}
 

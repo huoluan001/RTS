@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Color color;
     public TeamId teamId = TeamId.None;
     public FactionSO factionSO;
+    public FactionEnum factionEnum;
     #endregion
 
     public Identity identity = Identity.Dependent;
@@ -25,7 +26,6 @@ public class Player : MonoBehaviour
     public GameAsset gameAsset;
     private void Awake()
     {
-        gameAsset.factionSO = factionSO;
         gameAsset.commander = this;
         GameManager.gameAsset = gameAsset;
         

@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   commentChinese: "\u5E1D\u56FD\u7684\u6B65\u5175\u5728\u8FD9\u91CC\u63A5\u53D7\u4E25\u683C\u7684\u6218\u6597\u8BAD\u7EC3"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 00000000
   exp: 1500
   hp: 1000

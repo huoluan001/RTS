@@ -2,67 +2,73 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.Rendering;
 using System.Linq;
 
 public class Page : MonoBehaviour
 {
-    public GameAsset gameAsset;
-    public MainBuilding mainBuilding;
     public Transform contentTransform;
     public SequenceType sequenceType;
+    
     public List<Sequence> sequences = new List<Sequence>();
     public bool isShow;
-    public int currentSequenceIndex;
+    public int currentSequenceIndex = 1;
     private int nextSequenceIndex = 1;
     
     private RectTransform rectTransform;
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        if (isShow) Show();
-        else Hide();
-        UpdateContainImage();
-        
     }
 
     private void Update()
     {
-        if(gameAsset.commander.isRunningProduce)
-        {
-            sequences.ForEach(sequence => sequence.ProductionMovesForward());
-        }
+        // if(gameAsset.commander.isRunningProduce)
+        // {
+        //     sequences.ForEach(sequence => sequence.ProductionMovesForward());
+        // }
     }
 
-    private void Show()
+
+    public void ShowAndHideSwitch()
+    {
+        if(isShow)
+        {   
+            rectTransform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            rectTransform.localScale = new Vector3(1, 0, 1);
+        }
+    }
+    public void Show()
     {
         rectTransform.localScale = new Vector3(1, 1, 1);
+        isShow = true;
     }
-    private void Hide()
+    public void Hide()
     {
         rectTransform.localScale = new Vector3(1, 0, 1);
+        isShow = false;
     }
 
     private void UpdateContainImage()
     {
-        var infos = sequences.Where(sequence => sequence.sequenceIndex == currentSequenceIndex).ToArray().First().baseInfos;
+        var sequence = sequences.First(sequence => sequence.sequenceIndex == currentSequenceIndex);
+        var faction = sequence.factionSO;
+        List<Sprite> Sprites = faction.GetBaseInfos(sequenceType).Select(m => m.Icon).ToList();
+
         List<Image> images = contentTransform.GetComponentsInChildren<Image>().ToList();
-        for (int i = 0; i < infos.Count; i++)
-            images[i].sprite = infos[i].Icon;
-        for (int i = infos.Count; i < images.Count; i++)
+        for (int i = 0; i < Sprites.Count; i++)
+            images[i].sprite = Sprites[i];
+        for (int i = Sprites.Count; i < images.Count; i++)
             images[i].sprite = null;
     }
 
-    public void AddSequence(FactionSO factionSO, SequenceType sequenceType)
+    public int AddSequence(FactionSO factionSO)
     { 
-        if (sequenceType == SequenceType.MainBuildingSequence)
-        {
-            var sequence = new Sequence();
-            sequence.page = this;
-            sequences.Add(sequence);
-            sequence.sequenceIndex = nextSequenceIndex;
-            nextSequenceIndex++;
-        }
+        var sequence = new Sequence(sequenceType, factionSO, this, nextSequenceIndex);
+        sequences.Add(sequence);
+        return nextSequenceIndex++;
     }
 
 }

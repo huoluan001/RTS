@@ -12,7 +12,7 @@ namespace UnityEngine
         Dependent, Suzerain
     }
 
-    public enum Faction
+    public enum FactionEnum
     {
         None, AlliedForces, SovietUnion, Empire
     }
@@ -51,7 +51,7 @@ namespace UnityEngine
         None,
     }
     // 兵种
-    public enum Troop
+    public enum TroopType
     {
         Building,   // 建筑
         Soldier,    // 步兵
@@ -110,16 +110,15 @@ namespace UnityEngine
         Default,
         New
     }
-
     public enum SequenceType
     {
-        None,
-        MainBuildingSequence,
-        OtherBuildingSequence,
-        InfantrySequence,
-        VehicleSequence,
-        DockSequence,
-        AircraftSequence
+        None = 0,
+        MainBuildingSequence = 1,
+        OtherBuildingSequence = 2,
+        InfantrySequence = 3,
+        VehicleSequence = 4,
+        DockSequence = 5,
+        AircraftSequence = 6
     }
     
 

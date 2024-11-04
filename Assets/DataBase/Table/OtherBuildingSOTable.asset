@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a095c86b43ea4fb49b86c9bd11d72c5, type: 3}
-  m_Name: OtherBuildingSOPage
+  m_Name: OtherBuildingSOTable
   m_EditorClassIdentifier: Assembly-CSharp::OtherBuildingSOPage
-  otherBuildingSOPageElement:
+  otherBuildingSOTableElement:
     m_keys: d9270000da270000db270000dd270000de270000e1270000e94e0000ea4e0000eb4e0000ec4e0000ed4e0000ee4e0000f9750000fa750000fc750000fd750000fe750000
     m_values:
     - {fileID: 11400000, guid: 26ca61d8bc6684c229e4fde2fa541864, type: 2}

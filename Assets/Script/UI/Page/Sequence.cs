@@ -6,17 +6,16 @@ using System.Linq;
 using System.Threading.Tasks;
 public class Sequence
 {
-    
+
     public int sequenceIndex;
     public Page page;
-    public List<IBaseInfo> baseInfos;
+    public FactionSO factionSO;
     public Dictionary<IBaseInfo, ProduceTask<IBaseInfo>> produceTasks;
     public int currentSequenceMaxTaskCount = 1;
 
-    public Sequence()
+    public Sequence(SequenceType sequenceType, FactionSO factionSO, Page page, int sequenceIndex)
     {
-        if(page.sequenceType == SequenceType.MainBuildingSequence 
-            || page.sequenceType == SequenceType.OtherBuildingSequence)
+        if (sequenceType == SequenceType.MainBuildingSequence || page.sequenceType == SequenceType.OtherBuildingSequence)
         {
             currentSequenceMaxTaskCount = 1;
         }
@@ -24,6 +23,9 @@ public class Sequence
         {
             currentSequenceMaxTaskCount = 99;
         }
+        this.factionSO = factionSO;
+        this.page = page;
+        this.sequenceIndex = sequenceIndex;
     }
 
     public void ProductionMovesForward()
@@ -41,11 +43,11 @@ public class Sequence
     public void AddTask(IBaseInfo info, bool isPlus)
     {
         // new task
-        if(!produceTasks.ContainsKey(info))
+        if (!produceTasks.ContainsKey(info))
         {
             produceTasks.Add(info, new ProduceTask<IBaseInfo>(info));
         }
-        if(isPlus)
+        if (isPlus)
         {
             produceTasks[info].AddTaskPlus();
         }
@@ -58,7 +60,7 @@ public class Sequence
 
     public void CancalTask(IBaseInfo info)
     {
-        if(produceTasks.ContainsKey(info))
+        if (produceTasks.ContainsKey(info))
         {
             produceTasks[info].ReductionOneTask();
         }
@@ -66,7 +68,7 @@ public class Sequence
 
     public void ClearTask(IBaseInfo info)
     {
-        if(produceTasks.ContainsKey(info))
+        if (produceTasks.ContainsKey(info))
         {
             produceTasks.Remove(info);
         }

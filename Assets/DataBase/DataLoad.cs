@@ -14,10 +14,10 @@ using Unity.VisualScripting;
 public class DataLoad : MonoBehaviour
 {
     #region field
-    public MainBuildingSOPage mainBuildingSOPage;
-    public OtherBuildingSOPage otherBuildingSOPage;
-    public ArmySOPage armySOPage;
-    public ArmorSOPage armorSOPage;
+    public MainBuildingSOTable mainBuildingSOTable;
+    public OtherBuildingSOTable otherBuildingSOTable;
+    public ArmySOTable armySOTable;
+    public ArmorSOTable armorSOTable;
 
     public FactionSO alliedForcesFactionSO;
     public FactionSO empireFactionSO;
@@ -38,9 +38,9 @@ public class DataLoad : MonoBehaviour
     public void LoadMainBuilding()
     {
         // 获得各阵营主建筑SO文件夹路径
-        string alliedForcesMainBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.MainBuildingSequence);
-        string empireMainBuildingPath = GetFactionPath(Faction.Empire, SequenceType.MainBuildingSequence);
-        string sovietUnionMainBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.MainBuildingSequence);
+        string alliedForcesMainBuildingPath = GetFactionPath(FactionEnum.AlliedForces, SequenceType.MainBuildingSequence);
+        string empireMainBuildingPath = GetFactionPath(FactionEnum.Empire, SequenceType.MainBuildingSequence);
+        string sovietUnionMainBuildingPath = GetFactionPath(FactionEnum.SovietUnion, SequenceType.MainBuildingSequence);
         // 获得各阵营主建筑SO文件名
         List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
         List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
@@ -48,7 +48,7 @@ public class DataLoad : MonoBehaviour
         // 得到建筑标签
         var buildingLabelSOs = GetBuildingLabelSOs();
         // tool初始化
-        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOPage, mainBuildingSOPage);
+        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOTable, mainBuildingSOTable);
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
@@ -95,14 +95,14 @@ public class DataLoad : MonoBehaviour
                 currentRow.ReadAndWriteRowToIBaseInfoAsync(mainBuildingSO);
                 currentRow.ReadAndWriteRowToIBuilding(16, mainBuildingSO, buildingLabelSOs);
                 // 盟军的科技，这是一个特殊的存在，不可能存在技能，直接跳过
-                if (currentRow.GetCellString(7).ConvertToTroop() != Troop.Technology)
+                if (currentRow.GetCellString(7).ConvertToTroop() != TroopType.Technology)
                     currentRow.ReadAndWriteRowToISkill(21, mainBuildingSO);
                 EditorUtility.SetDirty(mainBuildingSO);
 
                 loadCallBack.Invoke();
                 previousMainBuildingSO = mainBuildingSO;
-                mainBuildingSOPage.mainBuildingSOPageElement[id] = mainBuildingSO;
-                EditorUtility.SetDirty(mainBuildingSOPage);
+                mainBuildingSOTable.mainBuildingSOTableElement[id] = mainBuildingSO;
+                EditorUtility.SetDirty(mainBuildingSOTable);
             }
 
 
@@ -132,9 +132,9 @@ public class DataLoad : MonoBehaviour
     public void LoadOtherBuildingSO()
     {
         // 获得各阵营其他建筑SO文件夹路径
-        string alliedForcesOtherBuildingPath = GetFactionPath(Faction.AlliedForces, SequenceType.OtherBuildingSequence);
-        string empireOtherBuildingPath = GetFactionPath(Faction.Empire, SequenceType.OtherBuildingSequence);
-        string sovietUnionOtherBuildingPath = GetFactionPath(Faction.SovietUnion, SequenceType.OtherBuildingSequence);
+        string alliedForcesOtherBuildingPath = GetFactionPath(FactionEnum.AlliedForces, SequenceType.OtherBuildingSequence);
+        string empireOtherBuildingPath = GetFactionPath(FactionEnum.Empire, SequenceType.OtherBuildingSequence);
+        string sovietUnionOtherBuildingPath = GetFactionPath(FactionEnum.SovietUnion, SequenceType.OtherBuildingSequence);
         // 获得各阵营其他建筑SO文件名
         List<string> alliedForcesOtherBuildingSOFiles = GetFileNameInPath(alliedForcesOtherBuildingPath);
         List<string> empireOtherBuildingSOFiles = GetFileNameInPath(empireOtherBuildingPath);
@@ -142,7 +142,7 @@ public class DataLoad : MonoBehaviour
         // 得到建筑标签
         var buildingLabelSOs = GetBuildingLabelSOs();
         var damageTypeSOs = GetDamageTypeSOs();
-        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOPage, mainBuildingSOPage);
+        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOTable, mainBuildingSOTable);
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
@@ -193,8 +193,8 @@ public class DataLoad : MonoBehaviour
                 EditorUtility.SetDirty(otherBuildingSO);
                 loadCallBack.Invoke();
                 previousOtherBuildingSO = otherBuildingSO;
-                otherBuildingSOPage.otherBuildingSOPageElement[id] = otherBuildingSO;
-                EditorUtility.SetDirty(otherBuildingSOPage);
+                otherBuildingSOTable.otherBuildingSOTableElement[id] = otherBuildingSO;
+                EditorUtility.SetDirty(otherBuildingSOTable);
             }
             AssetDatabase.SaveAssets();
         }
@@ -206,16 +206,16 @@ public class DataLoad : MonoBehaviour
     public void LoadArmySO()
     {
         // 获得各阵营其他建筑SO文件夹路径
-        string alliedForcesArmyPath = GetFactionPath(Faction.AlliedForces, SequenceType.None);
-        string empireArmyPath = GetFactionPath(Faction.Empire, SequenceType.None);
-        string sovietUnionArmyPath = GetFactionPath(Faction.SovietUnion, SequenceType.None);
+        string alliedForcesArmyPath = GetFactionPath(FactionEnum.AlliedForces, SequenceType.None);
+        string empireArmyPath = GetFactionPath(FactionEnum.Empire, SequenceType.None);
+        string sovietUnionArmyPath = GetFactionPath(FactionEnum.SovietUnion, SequenceType.None);
         // 获得各阵营其他建筑SO文件名
         List<string> alliedForcesArmySOFiles = GetFileNameInPath(alliedForcesArmyPath);
         List<string> empireArmySOFiles = GetFileNameInPath(empireArmyPath);
         List<string> sovietUnionArmySOFiles = GetFileNameInPath(sovietUnionArmyPath);
         var armyLabelSOs = GetArmyLabelSOs();
         var damageTypeSOs = GetDamageTypeSOs();
-        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOPage, mainBuildingSOPage);
+        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOTable, mainBuildingSOTable);
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
@@ -272,8 +272,8 @@ public class DataLoad : MonoBehaviour
                 EditorUtility.SetDirty(armySO);
                 loadCallBack.Invoke();
                 previousArmySO = armySO;
-                armySOPage.armySOPageElement[id] = armySO;
-                EditorUtility.SetDirty(armorSOPage);
+                armySOTable.armySOTableElement[id] = armySO;
+                EditorUtility.SetDirty(armorSOTable);
             }
             FactionArmyDataLoad();
             AssetDatabase.SaveAssets();
@@ -346,11 +346,11 @@ public class DataLoad : MonoBehaviour
                     int value = int.Parse(currentRow.GetCellString(j + 3));
                     armorSO.SetDamageModifiers(damageTypeSOs[j], value);
                 }
-                armorSOPage.armorSOPageElement[index] = armorSO;
+                armorSOTable.armorSOTableElement[index] = armorSO;
                 EditorUtility.SetDirty(armorSO);
                 loadCallBack.Invoke();
             }
-            EditorUtility.SetDirty(armorSOPage);
+            EditorUtility.SetDirty(armorSOTable);
             AssetDatabase.SaveAssets();
         }
     }
@@ -412,13 +412,13 @@ public class DataLoad : MonoBehaviour
         }
         return res;
     }
-    private string GetFactionPath(Faction faction, SequenceType sequenceType)
+    private string GetFactionPath(FactionEnum faction, SequenceType sequenceType)
     {
         return FactionDBPath +
             faction switch
             {
-                Faction.AlliedForces => "/AlliedForces",
-                Faction.Empire => "/Empire",
+                FactionEnum.AlliedForces => "/AlliedForces",
+                FactionEnum.Empire => "/Empire",
                 _ => "/SovietUnion"
             } +
             sequenceType switch
@@ -432,21 +432,21 @@ public class DataLoad : MonoBehaviour
     [ContextMenu("LoadUnitIcon")]
     public void LoadUnitIcon()
     {
-        foreach (var m in mainBuildingSOPage.mainBuildingSOPageElement.Values)
+        foreach (var m in mainBuildingSOTable.mainBuildingSOTableElement.Values)
         {
             Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
             {
                 m.SetIcon(handle.Result);
             };
         }
-        foreach (var m in otherBuildingSOPage.otherBuildingSOPageElement.Values)
+        foreach (var m in otherBuildingSOTable.otherBuildingSOTableElement.Values)
         {
             Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
             {
                 m.SetIcon(handle.Result);
             };
         }
-        foreach (var m in armySOPage.armySOPageElement.Values)
+        foreach (var m in armySOTable.armySOTableElement.Values)
         {
             Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
             {
@@ -482,7 +482,7 @@ public class DataLoad : MonoBehaviour
         EditorUtility.SetDirty(alliedForcesFactionSO);
         EditorUtility.SetDirty(empireFactionSO);
         EditorUtility.SetDirty(sovietUnionFactionSO);
-        foreach (var army in armySOPage.armySOPageElement.Values)
+        foreach (var army in armySOTable.armySOTableElement.Values)
         {
             if (army.BuildFacilities.Contains(ArmoredFactory) && !alliedForcesFactionSO.Vehicle.Contains(army))
                 alliedForcesFactionSO.Vehicle.Add(army);
@@ -512,15 +512,15 @@ public static class Tool
     public static FactionSO AlliedForcesFactionSO;
     public static FactionSO EmpireFactionSO;
     public static FactionSO SovietUnionFactionSO;
-    public static ArmorSOPage ArmorSOPage;
-    public static MainBuildingSOPage MainBuildingSOPage;
-    public static void InitFactionSOConvertTo(FactionSO alliedForcesFactionSO, FactionSO empireFactionSO, FactionSO sovietUnionFactionSO, ArmorSOPage armorSOPage, MainBuildingSOPage mainBuildingSOPage)
+    public static ArmorSOTable ArmorSOTable;
+    public static MainBuildingSOTable MainBuildingSOTable;
+    public static void InitFactionSOConvertTo(FactionSO alliedForcesFactionSO, FactionSO empireFactionSO, FactionSO sovietUnionFactionSO, ArmorSOTable armorSOTable, MainBuildingSOTable mainBuildingSOTable)
     {
         AlliedForcesFactionSO = alliedForcesFactionSO;
         EmpireFactionSO = empireFactionSO;
         SovietUnionFactionSO = sovietUnionFactionSO;
-        ArmorSOPage = armorSOPage;
-        MainBuildingSOPage = mainBuildingSOPage;
+        ArmorSOTable = armorSOTable;
+        MainBuildingSOTable = mainBuildingSOTable;
     }
     public static List<ActionScope> ConvertToActionScopes(this string value)
     {
@@ -536,18 +536,18 @@ public static class Tool
         }).ToList();
 
     }
-    public static Troop ConvertToTroop(this string value)
+    public static TroopType ConvertToTroop(this string value)
     {
         if (value == "建筑")
-            return Troop.Building;
+            return TroopType.Building;
         else if (value == "步兵")
-            return Troop.Soldier;
+            return TroopType.Soldier;
         else if (value == "载具")
-            return Troop.Vehicle;
+            return TroopType.Vehicle;
         else if (value == "科技")
-            return Troop.Technology;
+            return TroopType.Technology;
         else
-            return Troop.None;
+            return TroopType.None;
     }
     public static Vector2Int ConvertToVector2Int(this string value)
     {
@@ -557,7 +557,7 @@ public static class Tool
     }
     public static MainBuildingSO ConvertToMainBuildingWithName(this string name)
     {
-        return MainBuildingSOPage.mainBuildingSOPageElement.Values.ToList().
+        return MainBuildingSOTable.mainBuildingSOTableElement.Values.ToList().
             FirstOrDefault(mainBuilding => mainBuilding.NameChinese == name);
     }
     public static Vector3 ConvertToVector3(this string value)
@@ -569,7 +569,7 @@ public static class Tool
     public static ArmorSO ConvertToArmorSO(this string value)
     {
         if (value == "") return null;
-        foreach (var armor in ArmorSOPage.armorSOPageElement)
+        foreach (var armor in ArmorSOTable.armorSOTableElement)
         {
             if (armor.Value.ArmorNameZH == value)
             {
@@ -610,8 +610,8 @@ public static class Tool
         string nameEnglish = current.GetCellString(4);
         string commentChinese = current.GetCellString(6);
         string commentEnglish = "null";
-        Troop troop = current.GetCellString(7).ConvertToTroop();
-        if (baseInfo is ArmySO && troop is Troop.Soldier && !factionSO.Infantry.Contains(baseInfo))
+        TroopType troopType = current.GetCellString(7).ConvertToTroop();
+        if (baseInfo is ArmySO && troopType is TroopType.Soldier && !factionSO.Infantry.Contains(baseInfo))
             factionSO.Infantry.Add(baseInfo as ArmySO);
         List<ActionScope> actionScopes = current.GetCellString(8).ConvertToActionScopes();
         int exp = int.Parse(current.GetCellString(9));
@@ -620,7 +620,7 @@ public static class Tool
         int price = int.Parse(current.GetCellString(12));
         Vector2Int warningAndClearFogRad = current.GetCellString(13).ConvertToVector2Int();
         ArmorSO armorType = baseInfo is ArmySO ? current.GetCellString(15).ConvertToArmorSO() : current.GetCellString(14).ConvertToArmorSO();
-        baseInfo.SetBaseInfo(factionSO, id, nameChinese, nameEnglish, null, commentChinese, commentEnglish, troop, actionScopes, exp, hp, price, requirements, warningAndClearFogRad, armorType, null);
+        baseInfo.SetBaseInfo(factionSO, id, nameChinese, nameEnglish, null, commentChinese, commentEnglish, troopType, actionScopes, exp, hp, price, requirements, warningAndClearFogRad, armorType, null);
     }
     public static void ReadAndWriteRowToIBuilding(this IRow current, int startIndex, IBuilding building, Dictionary<string, BuildingLabelSO> buildingLabelSOs)
     {
