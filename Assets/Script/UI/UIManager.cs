@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,34 +32,33 @@ public class UIManager : MonoBehaviour
     public Vector2Int AddMCVSequence(FactionSO factionSO)
     {
         if (mainBuildingPage == null)
-            CreateMainAndOtherBuildingPage();
-        int mainID = mainBuildingPage.AddSequence(factionSO);
-        int otherID = otherBuildingPage.AddSequence(factionSO);
-        return new Vector2Int(mainID, otherID);
-
+            return CreateMainAndOtherBuildingPage(factionSO);
+        else
+        {
+            int mbID = mainBuildingPage.AddSequence(factionSO);
+            int obID = otherBuildingPage.AddSequence(factionSO);
+            return new Vector2Int(mbID, obID);
+        }
+           
     }
-    public void CreateMainAndOtherBuildingPage()
+    public Vector2Int CreateMainAndOtherBuildingPage(FactionSO factionSO)
     {
         GameObject mbPageGameObject = Instantiate(mainBuildingPagePrefab);
         GameObject obPageGameObject = Instantiate(otherBuildingPagePrefab);
 
-        var mbpage = mbPageGameObject.AddComponent<Page>();
-        var obPage = obPageGameObject.AddComponent<Page>();
-
-        mbpage.transform.SetParent(pageParent.transform, false);
-        obPage.transform.SetParent(pageParent.transform, false);
-        mbpage.sequenceType = SequenceType.MainBuildingSequence;
-        obPage.sequenceType = SequenceType.OtherBuildingSequence;
-        mbpage.isShow = true;
-        obPage.isShow = false;
+        var mbpage = mbPageGameObject.GetComponent<Page>();
+        var obpage = obPageGameObject.GetComponent<Page>();
+        int mbID = mbpage.Init(SequenceType.MainBuildingSequence, pageParent.transform, true, factionSO);
+        int obID = obpage.Init(SequenceType.OtherBuildingSequence, pageParent.transform, false, factionSO);
         mainBuildingPage = mbpage;
-        otherBuildingPage = obPage;
+        otherBuildingPage = obpage;
+        return new Vector2Int(mbID, obID);
     }
 
     public void PageShowSwitch(int sequenceType)
     {
-        Debug.Log(sequenceType);
         Page currentPage = ConvertToPage((SequenceType)sequenceType);
+        if(currentPage == null) return;
         bool clickingShow = currentPage.isShow;
         HideAllPage();
         currentPage.isShow = !clickingShow;

@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707351846523863637}
   - component: {fileID: 3068762701592717135}
+  - component: {fileID: 1493031044559036793}
   m_Layer: 5
   m_Name: Page
   m_TagString: Untagged
@@ -198,6 +199,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486519808654510009}
   m_CullTransparentMesh: 1
+--- !u!114 &1493031044559036793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486519808654510009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e164ad4bdc0c46069d5ff051bff82a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentPageTransform: {fileID: 4331119508151120484}
+  contentMenuTransform: {fileID: 2973622751110985469}
+  sequenceIndex:
+  - {fileID: 7102753988426858010}
+  sequenceType: 0
+  isShow: 0
+  currentSequenceIndex: 1
+  factionEnum: 0
 --- !u!1 &1733460051766494005
 GameObject:
   m_ObjectHideFlags: 0
