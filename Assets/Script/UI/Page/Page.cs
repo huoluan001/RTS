@@ -11,7 +11,7 @@ public class Page : MonoBehaviour
 {
     public Transform contentPageTransform;
     public Transform contentMenuTransform;
-    public List<TMP_Text> sequenceTMPIndexs;
+
     public SequenceType sequenceType;
     public List<Sequence> sequences = new List<Sequence>();
 
@@ -22,9 +22,10 @@ public class Page : MonoBehaviour
     public bool isShow;
 
     public int maxSequenceIndex;
-    public GameObject sequenceIndexPrefab;
-    private TMP_Text leftCursor;
-    private TMP_Text rightCursor;
+    public LinkedList<GameObject> SeqAvatars;
+    public GameObject SeqAvatarPrefab;
+    private LinkedListNode<GameObject> leftCursor;
+    private LinkedListNode<GameObject> rightCursor;
     private int nextSequenceIndex = 1;
     private RectTransform rectTransform;
     void Start()
@@ -44,13 +45,13 @@ public class Page : MonoBehaviour
         nextSequenceIndex = 2;
         currentSequenceIndex = 1;
         currentSequence = sequence;
-        // 一次不考虑图片是否更新，直接Load
-        LoadContainImage();
+        // 一次不考虑图片是否更新，禁止检查，直接update
+        UpdateContainImageWithCheck(false);
         currrntShowFaction = factionSO.factionEnum;
-        // sequence的TMPindex init
-        leftCursor = sequenceTMPIndexs[0];
-        rightCursor = sequenceTMPIndexs[0];
-        sequenceTMPIndexs[0].GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(1));
+        // SeqAvatar init
+        leftCursor = SeqAvatars.First;
+        rightCursor = SeqAvatars.First;
+        SeqAvatars.First.Value.GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(1));
 
         // 返回序列编号
         return 1;
@@ -59,11 +60,14 @@ public class Page : MonoBehaviour
     {
         var sequence = new Sequence(sequenceType, factionSO, this, nextSequenceIndex);
         sequences.Add(sequence);
-        GameObject sequenceindexTMP = Instantiate(sequenceIndexPrefab);
-        sequenceindexTMP.transform.SetParent(contentMenuTransform, false);
-        sequenceindexTMP.GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(nextSequenceIndex));
-        sequenceTMPIndexs.Add(sequenceindexTMP.GetComponent<TMP_Text>());
-        if(sequenceTMPIndexs.Count < maxSequenceIndex) rightCursor = sequenceindexTMP.GetComponent<TMP_Text>();
+        GameObject seqAvatar = Instantiate(SeqAvatarPrefab);
+        seqAvatar.transform.SetParent(contentMenuTransform, false);
+        seqAvatar.GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(nextSequenceIndex));
+        TMP_Text tMP_Text = seqAvatar.GetComponent<TMP_Text>();
+        tMP_Text.text = nextSequenceIndex.ToString();
+        SeqAvatars.AddLast(seqAvatar);
+        if (SeqAvatars.Count < maxSequenceIndex)
+            rightCursor = SeqAvatars.Last;
         return nextSequenceIndex++;
     }
 
@@ -98,26 +102,16 @@ public class Page : MonoBehaviour
         isShow = false;
     }
 
-    private void UpdateContainImage()
+    private void UpdateContainImageWithCheck(bool shouldCheckFaction = true)
     {
-        if (currrntShowFaction == currentSequence.factionSO.factionEnum) return;
-        List<Sprite> Sprites = currentSequence.factionSO.GetBaseInfos(sequenceType).Select(m => m.Icon).ToList();
+        if (shouldCheckFaction && currrntShowFaction == currentSequence.factionSO.factionEnum) return;
+        List<Sprite> sprites = currentSequence.factionSO.GetBaseInfos(sequenceType).Select(m => m.Icon).ToList();
 
         List<Image> images = contentPageTransform.GetComponentsInChildren<Image>().ToList();
-        for (int i = 0; i < Sprites.Count; i++)
-            images[i].sprite = Sprites[i];
-        for (int i = Sprites.Count; i < images.Count; i++)
-            images[i].sprite = null;
-    }
-    private void LoadContainImage()
-    {
-        List<Sprite> Sprites = currentSequence.factionSO.GetBaseInfos(sequenceType).Select(m => m.Icon).ToList();
-
-        List<Image> images = contentPageTransform.GetComponentsInChildren<Image>().ToList();
-        for (int i = 0; i < Sprites.Count; i++)
-            images[i].sprite = Sprites[i];
-        for (int i = Sprites.Count; i < images.Count; i++)
-            images[i].sprite = null;
+        for (int i = 0; i < images.Count; i++)
+        {
+            images[i].sprite = (i < sprites.Count) ? sprites[i] : null;
+        }
     }
 
 
@@ -131,7 +125,25 @@ public class Page : MonoBehaviour
     {
         currentSequenceIndex = targetIndex;
         currentSequence = GetCurrentSequence();
-        UpdateContainImage();
+        UpdateContainImageWithCheck();
+    }
+
+    public void SeqAvatarLeftMove()
+    {
+        if (SeqAvatars.Count <= 9) return;
+        leftCursor = leftCursor.Previous;
+        leftCursor.Value.SetActive(true);
+        rightCursor.Value.SetActive(false);
+        rightCursor = rightCursor.Previous;
+
+    }
+    public void SeqAvatarRightMove()
+    {
+        if (SeqAvatars.Count <= 9) return;
+        leftCursor.Value.SetActive(false);
+        leftCursor = leftCursor.Next;
+        rightCursor = rightCursor.Next;
+        rightCursor.Value.SetActive(true);
     }
 
 }
