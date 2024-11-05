@@ -6,6 +6,7 @@ public interface IBaseInfo
 {
     FactionSO FactionSO { get; }
     int Id { get; }
+    int Priority { get; }
     string NameChinese { get; }
     string NameEnglish { get; }
     Sprite Icon { get; }

@@ -13,6 +13,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO factionSO;
     [Tooltip("编号"), SerializeField] private int id;
+    [Tooltip("优先级"), SerializeField] private int priority;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
     [Tooltip("Icon"), SerializeField] private Sprite icon;
@@ -42,6 +43,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     #region Interface
     public FactionSO FactionSO => factionSO;
     public int Id => id;
+    public int Priority => priority;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
     public Sprite Icon => icon;
@@ -63,7 +65,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
     #endregion
-    
+
     public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
     {
         requirement = mainBuildingSOs;

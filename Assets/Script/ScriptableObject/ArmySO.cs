@@ -9,6 +9,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO factionSO;
     [Tooltip("编号"), SerializeField] private int id;
+    [Tooltip("优先级"), SerializeField] private int priority;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
     [Tooltip("Icon"), SerializeField] private Sprite icon;
@@ -47,6 +48,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
 
     public FactionSO FactionSO => factionSO;
     public int Id => id;
+    public int Priority => priority;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
     public string CommentChinese => commentChinese;

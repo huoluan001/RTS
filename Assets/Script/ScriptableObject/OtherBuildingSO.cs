@@ -12,6 +12,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
     [Header("IBaseInfo")]
     [Tooltip("派系"), SerializeField] private FactionSO factionSO;
     [Tooltip("编号"), SerializeField] private int id;
+    [Tooltip("优先级"), SerializeField] private int priority;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
     [Tooltip("英文名称"), SerializeField] private string nameEnglish;
     [Tooltip("Icon"), SerializeField] private Sprite icon;
@@ -45,6 +46,7 @@ public class OtherBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IWeapon, 
 
     public FactionSO FactionSO => factionSO;
     public int Id => id;
+    public int Priority => priority;
     public string NameChinese => nameChinese;
     public string NameEnglish => nameEnglish;
     public Sprite Icon => icon;
