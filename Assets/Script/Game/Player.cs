@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public Technology MaxTechnology = Technology.T1;
     public int PowerProduction = 0;
     public int PowerConsumption = 0;
-    public float Fund;
+    public float Fund = 100000;
     public bool isRunningProduce = true;
 
     public CommandModel commandModel = CommandModel.None;

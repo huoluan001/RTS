@@ -14,8 +14,7 @@ public class Sequence
     public FactionSO factionSO;
 
     public int currentSequenceMaxTaskCount = 1;
-
-    private List<IBaseInfo> baseInfos;
+    public int currentSequenceAllTaskCount = 0;
     private Dictionary<IBaseInfo, ProduceTask<IBaseInfo>> produceTasks;
     public Sequence(SequenceType sequenceType, FactionSO factionSO, Page page, int sequenceIndex)
     {
@@ -49,25 +48,44 @@ public class Sequence
     }
 
 
-    public void AddTask(Sprite icon, GameObject item, bool isPlus = false)
+    public void AddTask(GameObject taskAvatarGameObject, bool isPlus = false)
     {
-        var info = page.GetIBaseInfo(icon, factionSO);
+        Image image = taskAvatarGameObject.GetComponent<Image>();
+        var info = page.GetIBaseInfo(image.sprite, factionSO);
+        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
+        Image Coating = taskAvatar.Coating;
+        TMP_Text tMP_Text = taskAvatar.tMP_Text;
+
         // new task
         if (!produceTasks.ContainsKey(info))
         {
-            produceTasks.Add(info, new ProduceTask<IBaseInfo>(info, this));
-            // 图标变为灰色
-            item.transform.GetComponent<Image>().material = GameManager.gameAsset.grayscale;
+            produceTasks.Add(info, new ProduceTask<IBaseInfo>(info, this, taskAvatar));
+            // 图标变为灰色, 涂层打开，数量标记打开
+            taskAvatarGameObject.transform.GetComponent<Image>().material = GameManager.gameAsset.grayscale;
+            Coating.gameObject.SetActive(true);
+            Coating.fillAmount = 1;
+            tMP_Text.gameObject.SetActive(true);
         }
+
         if (isPlus)
         {
             produceTasks[info].AddTaskPlus();
-            item.transform.GetChild(1).GetComponent<TMP_Text>().text = produceTasks[info].Count.ToString();
         }
         else
         {
             produceTasks[info].AddTask();
         }
+
+
+        if (isPlus)
+        {
+            produceTasks[info].AddTaskPlus();
+        }
+        else
+        {
+            produceTasks[info].AddTask();
+        }
+        tMP_Text.text = produceTasks[info].Count.ToString();
 
 
     }

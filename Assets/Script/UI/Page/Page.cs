@@ -19,35 +19,31 @@ public class Page : MonoBehaviour
     public int currentSequenceIndex;
     public Sequence currentSequence;
     public FactionEnum currrntShowFaction;
-
     public bool isShow;
     public int maxSequenceIndex;
     public LinkedList<GameObject> SeqAvatars;
     public List<GameObject> taskAvatarlist;
     public GameObject SeqAvatarPrefab;
     public GameObject TaskAvatarPrefab;
+
     private LinkedListNode<GameObject> leftCursor;
     private LinkedListNode<GameObject> rightCursor;
     private int nextSequenceIndex = 1;
     private RectTransform rectTransform;
     void Start()
     {
-
         rectTransform = GetComponent<RectTransform>();
         this.ShowAndHideSwitch();
     }
-    public int Init(SequenceType sequenceType, Transform transformParent, bool isShow, FactionSO factionSO)
+    public int Init(SequenceType sequenceType, bool isShow, FactionSO factionSO)
     {
         // init Page
         this.sequenceType = sequenceType;
-        transform.SetParent(transformParent, false);
         this.isShow = isShow;
 
-
         // Page默认有一个Sequence
-        var sequence = new Sequence(sequenceType, factionSO, this, 1);
+        var sequence = new Sequence(sequenceType, factionSO, this, nextSequenceIndex++);
         sequences.Add(sequence);
-        nextSequenceIndex = 2;
         currentSequenceIndex = 1;
         currentSequence = sequence;
         // 一次不考虑图片是否更新，禁止检查，直接update
@@ -116,9 +112,11 @@ public class Page : MonoBehaviour
     {
         if (shouldCheckFaction && currrntShowFaction == currentSequence.factionSO.factionEnum) return;
         List<Sprite> sprites = currentSequence.factionSO.GetBaseInfos(sequenceType).Select(m => m.Icon).ToList();
+
         if(taskAvatarlist.Count < sprites.Count)
         {
-            for(int i = 0; i < sprites.Count - taskAvatarlist.Count; i++)
+            int num = sprites.Count - taskAvatarlist.Count;
+            for(int i = 0; i < num; i++)
                 taskAvatarlist.Add(Instantiate(TaskAvatarPrefab, contentPageTransform, false));
         }
         else if(taskAvatarlist.Count > sprites.Count)
@@ -127,9 +125,9 @@ public class Page : MonoBehaviour
         }
         taskAvatarlist.Zip(sprites, (avatar, sprite) => avatar.GetComponent<Image>().sprite = sprite).ToList();
     }
-    public void CurrentSequenceAddTask(Sprite icon, GameObject item, bool isPlus = false)
+    public void CurrentSequenceAddTask(GameObject taskAvatarGameObject, bool isPlus = false)
     {
-        currentSequence.AddTask(icon,item, isPlus);
+        currentSequence.AddTask(taskAvatarGameObject, isPlus);
     }
 
     public Sequence GetCurrentSequence()

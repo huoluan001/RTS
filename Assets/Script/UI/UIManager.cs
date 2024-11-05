@@ -36,17 +36,17 @@ public class UIManager : MonoBehaviour
             int obID = otherBuildingPage.AddSequence(factionSO);
             return new Vector2Int(mbID, obID);
         }
-           
+
     }
     public Vector2Int CreateMainAndOtherBuildingPage(FactionSO factionSO)
     {
-        GameObject mbPageGameObject = Instantiate(mainBuildingPagePrefab);
-        GameObject obPageGameObject = Instantiate(otherBuildingPagePrefab);
+        GameObject mbPageGameObject = Instantiate(mainBuildingPagePrefab, pageParent.transform, false);
+        GameObject obPageGameObject = Instantiate(otherBuildingPagePrefab, pageParent.transform, false);
 
         var mbpage = mbPageGameObject.GetComponent<Page>();
         var obpage = obPageGameObject.GetComponent<Page>();
-        int mbID = mbpage.Init(SequenceType.MainBuildingSequence, pageParent.transform, true, factionSO);
-        int obID = obpage.Init(SequenceType.OtherBuildingSequence, pageParent.transform, false, factionSO);
+        int mbID = mbpage.Init(SequenceType.MainBuildingSequence, true, factionSO);
+        int obID = obpage.Init(SequenceType.OtherBuildingSequence, false, factionSO);
         mainBuildingPage = mbpage;
         otherBuildingPage = obpage;
         return new Vector2Int(mbID, obID);
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
     public void PageShowSwitch(int sequenceType)
     {
         Page currentPage = ConvertToPage((SequenceType)sequenceType);
-        if(currentPage == null) return;
+        if (currentPage == null) return;
         bool clickingShow = currentPage.isShow;
         HideAllPage();
         currentPage.isShow = !clickingShow;

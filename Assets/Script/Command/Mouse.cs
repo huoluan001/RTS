@@ -10,7 +10,6 @@ using UnityEngine.UI;
 
 public class Mouse : MonoBehaviour
 {
-    public LayerMask InteractionUI;
     private GameAsset gameAsset;
     private Vector3 mouseLeftPerformPosition;
     private GameObject selectionBoxUI;
@@ -46,13 +45,33 @@ public class Mouse : MonoBehaviour
     void OnMouseLeftPerformed(InputAction.CallbackContext callbackContext)
     {
         mouseLeftPerformPosition = Input.mousePosition;
-        if (CheckGuiRaycastObjects())
+        
+        PointerEventData eventData = new PointerEventData(gameAsset.eventSystem);
+        eventData.pressPosition = Input.mousePosition;
+        eventData.position = Input.mousePosition;
+
+        List<RaycastResult> list = new List<RaycastResult>();
+        gameAsset.graphicRaycaster.Raycast(eventData, list);
+        if (list.Count != 0)
         {
             Debug.Log("点击到了UI");
         }
         else
         {
             Debug.Log("点击到了场景");
+            return;
+        }
+        GameObject gameObject = list.First().gameObject;
+        if (gameObject.tag == "TaskAvatar") // 添加序列任务
+        {
+            var page = gameObject.transform.parent.parent.GetComponent<Page>();
+            page.CurrentSequenceAddTask(gameObject, false);
+        }
+        else if (gameObject.tag == "SeqAvatar") // 序列转换
+        {
+            var page = gameObject.transform.parent.parent.GetComponent<Page>();
+            int targetIndex = int.Parse(gameObject.transform.GetComponent<TMP_Text>().text);
+            page.SwitchCurrentSequence(targetIndex);
         }
 
     }
@@ -146,32 +165,6 @@ public class Mouse : MonoBehaviour
             selectionBoxUI.SetActive(false);
     }
 
-    // 声明了一个方法，可以返回当前位置上UI还是3D场景
-    bool CheckGuiRaycastObjects()
-    {
-        PointerEventData eventData = new PointerEventData(gameAsset.eventSystem);
-        eventData.pressPosition = Input.mousePosition;
-        eventData.position = Input.mousePosition;
 
-        List<RaycastResult> list = new List<RaycastResult>();
-        gameAsset.graphicRaycaster.Raycast(eventData, list);
-        if (list.Count == 0)
-            return false;
-        GameObject gameObject = list.First().gameObject;
-        if (gameObject.tag == "TaskAvatar") // 添加序列任务
-        {
-            var page = gameObject.transform.parent.parent.GetComponent<Page>();
-            Sprite icon = gameObject.GetComponent<Image>().sprite;
-            page.CurrentSequenceAddTask(icon, gameObject, false);
-        }
-        else if (gameObject.tag == "SeqAvatar") // 序列转换
-        {
-            var page = gameObject.transform.parent.parent.GetComponent<Page>();
-            int targetIndex = int.Parse(gameObject.transform.GetComponent<TMP_Text>().text);
-            page.SwitchCurrentSequence(targetIndex);
-        }
-        return true;
-
-    }
 
 }
