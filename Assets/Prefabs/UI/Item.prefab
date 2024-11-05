@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 8392834125852974613}
   - component: {fileID: 1853295092554815054}
   - component: {fileID: 4131281668852749484}
+  - component: {fileID: 3677532665352394396}
   m_Layer: 5
   m_Name: Item
   m_TagString: TaskAvatar
@@ -197,6 +198,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3677532665352394396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630928638326126444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7d596efe9dd4beab9bc685c440d37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tMP_Text: {fileID: 897311739892529642}
+  imageGameObject: {fileID: 5613283229934061896}
 --- !u!1 &7519895440386253899
 GameObject:
   m_ObjectHideFlags: 0

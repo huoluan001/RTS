@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionEnum: 0
   MainBuildings:
-  - {fileID: 11400000, guid: 84da09da5d2714e9980a1bbf8a7ff536, type: 2}
   - {fileID: 11400000, guid: 0640e4b9def274782a69b6293158f87f, type: 2}
   - {fileID: 11400000, guid: 6c42807263d58433493b21290c61fb70, type: 2}
   - {fileID: 11400000, guid: d02f11fdfff1b48a493867054eb6a532, type: 2}
   - {fileID: 11400000, guid: 7da6282d6035148628fd30004a264a37, type: 2}
   - {fileID: 11400000, guid: fbf0b7c57e77348f28a078af8883eef1, type: 2}
   - {fileID: 11400000, guid: ff4581cb0e2dc4f1c992526e230bf968, type: 2}
+  - {fileID: 11400000, guid: 84da09da5d2714e9980a1bbf8a7ff536, type: 2}
   OtherBuildings:
   - {fileID: 11400000, guid: 3cf9a2043debd426cbbf822e6908f91d, type: 2}
   - {fileID: 11400000, guid: 16adef116c91b4a72b4a2bba19786929, type: 2}

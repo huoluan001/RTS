@@ -22,9 +22,10 @@ public class Page : MonoBehaviour
 
     public bool isShow;
     public int maxSequenceIndex;
-    public GameObject firstAvatar;
     public LinkedList<GameObject> SeqAvatars;
+    public List<GameObject> taskAvatarlist;
     public GameObject SeqAvatarPrefab;
+    public GameObject TaskAvatarPrefab;
     private LinkedListNode<GameObject> leftCursor;
     private LinkedListNode<GameObject> rightCursor;
     private int nextSequenceIndex = 1;
@@ -50,12 +51,14 @@ public class Page : MonoBehaviour
         currentSequenceIndex = 1;
         currentSequence = sequence;
         // 一次不考虑图片是否更新，禁止检查，直接update
+        taskAvatarlist = new List<GameObject>();
         UpdateContainImageWithCheck(false);
         currrntShowFaction = factionSO.factionEnum;
 
         // SeqAvatar init
         SeqAvatars = new LinkedList<GameObject>();
-        SeqAvatars.AddLast(firstAvatar);
+        GameObject firstSeqAvatarGameObject = Instantiate(SeqAvatarPrefab, contentMenuTransform, false);
+        SeqAvatars.AddLast(firstSeqAvatarGameObject);
         leftCursor = SeqAvatars.First;
         rightCursor = SeqAvatars.First;
 
@@ -94,13 +97,9 @@ public class Page : MonoBehaviour
     public void ShowAndHideSwitch()
     {
         if (isShow)
-        {
             rectTransform.localScale = new Vector3(1, 1, 1);
-        }
         else
-        {
             rectTransform.localScale = new Vector3(1, 0, 1);
-        }
     }
     public void Show()
     {
@@ -117,19 +116,21 @@ public class Page : MonoBehaviour
     {
         if (shouldCheckFaction && currrntShowFaction == currentSequence.factionSO.factionEnum) return;
         List<Sprite> sprites = currentSequence.factionSO.GetBaseInfos(sequenceType).Select(m => m.Icon).ToList();
-
-        List<Image> images = contentPageTransform.GetComponentsInChildren<Image>().ToList();
-        for (int i = 0; i < images.Count; i++)
+        if(taskAvatarlist.Count < sprites.Count)
         {
-            images[i].sprite = (i < sprites.Count) ? sprites[i] : null;
+            for(int i = 0; i < sprites.Count - taskAvatarlist.Count; i++)
+                taskAvatarlist.Add(Instantiate(TaskAvatarPrefab, contentPageTransform, false));
         }
+        else if(taskAvatarlist.Count > sprites.Count)
+        {
+                taskAvatarlist.RemoveRange(sprites.Count, taskAvatarlist.Count - sprites.Count);
+        }
+        taskAvatarlist.Zip(sprites, (avatar, sprite) => avatar.GetComponent<Image>().sprite = sprite).ToList();
     }
     public void CurrentSequenceAddTask(Sprite icon, GameObject item, bool isPlus = false)
     {
         currentSequence.AddTask(icon,item, isPlus);
     }
-
-
 
     public Sequence GetCurrentSequence()
     {
@@ -142,8 +143,6 @@ public class Page : MonoBehaviour
         currentSequence = GetCurrentSequence();
         UpdateContainImageWithCheck();
         currentSequence.UpdateProduceTasksUI();
-        
-
     }
 
     public void SeqAvatarLeftMove()
@@ -153,7 +152,6 @@ public class Page : MonoBehaviour
         leftCursor.Value.SetActive(true);
         rightCursor.Value.SetActive(false);
         rightCursor = rightCursor.Previous;
-
     }
     public void SeqAvatarRightMove()
     {
@@ -179,14 +177,6 @@ public class Page : MonoBehaviour
 
     public List<IBaseInfo> GetIBaseInfoListWithSequenceTypeAndFactionSO(SequenceType sequenceType, FactionSO factionSO)
     {
-        return sequenceType switch
-        {
-            SequenceType.MainBuildingSequence => factionSO.MainBuildings.Cast<IBaseInfo>().ToList(),
-            SequenceType.OtherBuildingSequence => factionSO.OtherBuildings.Cast<IBaseInfo>().ToList(),
-            SequenceType.InfantrySequence => factionSO.Infantry.Cast<IBaseInfo>().ToList(),
-            SequenceType.VehicleSequence => factionSO.Vehicle.Cast<IBaseInfo>().ToList(),
-            SequenceType.DockSequence => factionSO.Dock.Cast<IBaseInfo>().ToList(),
-            _ => factionSO.Dock.Cast<IBaseInfo>().ToList()
-        };
+        return factionSO.GetBaseInfos(sequenceType);
     }
 }

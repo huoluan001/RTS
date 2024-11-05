@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
   id: 10104
+  priority: 4
   nameChinese: "\u88C5\u7532\u5DE5\u5382"
   nameEnglish: ArmoredFactory
   icon: {fileID: 21300000, guid: 673647828e96248579cfcd9ec9435129, type: 3}
