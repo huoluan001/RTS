@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "VigilanceMode",
+                    "name": "VigilanceModel",
                     "type": "Button",
                     "id": "8be24c6d-b6a6-48fd-b008-71c7d291e478",
                     "expectedControlType": "",
@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "LeftShiftRightMouse",
+                    "type": "Button",
+                    "id": "e58078cb-b3ac-4976-a0c2-0c02e2db87ce",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -152,7 +161,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "VigilanceMode",
+                    "action": "VigilanceModel",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -163,7 +172,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "VigilanceMode",
+                    "action": "VigilanceModel",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -174,7 +183,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "VigilanceMode",
+                    "action": "VigilanceModel",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -298,6 +307,39 @@
                     "action": "CamareMove",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "fbb37984-40de-4447-b758-c81b64a3821b",
+                    "path": "ButtonWithOneModifier(overrideModifiersNeedToBePressedFirst=true)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftShiftRightMouse",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "231b4651-a7b8-4078-80bd-d02ce3969d96",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "LeftShiftRightMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "5b6bac9b-779a-4649-beaa-b4f1d0bf6e98",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "LeftShiftRightMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -327,7 +369,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "8de61946-a414-4b5b-aa93-9c6f2533c301",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

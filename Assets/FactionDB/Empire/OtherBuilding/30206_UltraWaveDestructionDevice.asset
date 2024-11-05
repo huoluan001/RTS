@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 30206
   nameChinese: "\u8D85\u80FD\u6CE2\u6BC1\u706D\u88C5\u7F6E"
   nameEnglish: UltraWaveDestructionDevice
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e2850efaa8d2742fdad8ba1be25e5c8b, type: 3}
   commentChinese: "\u8BF1\u53D1\u6BD4\u53F2\u4E0A\u4EFB\u4F55\u81EA\u7136\u707E\u5BB3\u8FD8\u8981\u53EF\u6015\u7684\u8D85\u80FD\u6CE2\u5DE8\u53D8\u3002"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 10000
   hp: 4000

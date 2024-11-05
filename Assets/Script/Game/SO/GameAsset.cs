@@ -24,7 +24,9 @@ public class GameAsset : ScriptableObject
     public float cameraMoveSpeed;
     public float cameraRotationSpeed;
 
-    public List<BuildingLabelSO> buildLabel;
-    public List<BuildingLabelSO> ProductionLabel;
+
+    // Mouse And Keyboard
+
+    public Material grayscale;
 
 }

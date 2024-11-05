@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 20202
   nameChinese: "\u54E8\u5175\u67AA"
   nameEnglish: SentinelGun
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e0b2b4bbb679d4a439f548f486e6a890, type: 3}
   commentChinese: "\u7531\u8D1F\u8D23\u5B88\u536B\u7684\u82CF\u519B\u5F81\u53EC\u5175\u64CD\u4F5C\u7684\u91CD\u673A\u67AA\u63A9\u4F53\u3002"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 500
   hp: 625

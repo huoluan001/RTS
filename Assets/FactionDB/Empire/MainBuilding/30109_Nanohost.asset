@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 30109
   nameChinese: "\u7EB3\u7C73\u4E3B\u673A"
   nameEnglish: Nanohost
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 52faad313122840d79fa131a402df6ad, type: 3}
   commentChinese: "\u5E1D\u56FD\u7684\u9AD8\u79D1\u6280\u6B66\u5668\u7814\u53D1\u4E2D\u5FC3\u5C31\u5728\u8FD9\u519B\u4E8B\u5EFA\u7B51\u5185"
   commentEnglish: null
   troopType: 0

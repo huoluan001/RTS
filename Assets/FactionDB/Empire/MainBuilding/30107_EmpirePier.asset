@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 30107
   nameChinese: "\u5E1D\u56FD\u7801\u5934"
   nameEnglish: EmpirePier
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 1aaac84ead1fb4e8eadf7adfa0d67b08, type: 3}
   commentChinese: "\u5E1D\u56FD\u7684\u5F3A\u5927\u8230\u961F\u5C31\u662F\u5728\u8FD9\u4E9B\u534E\u4E3D\u7684\u8BBE\u65BD\u4E2D\u8BDE\u751F\u53CA\u7EF4\u4FEE"
   commentEnglish: null
   troopType: 0

@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 30204
   nameChinese: "\u6CE2\u80FD\u5854"
   nameEnglish: BonengTower
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9343a8dfd9cf843b89d5aa67d0eba988, type: 3}
   commentChinese: "\u80FD\u591F\u4EE5\u8D85\u70ED\u80FD\u91CF\u8F70\u51FB\u6B7C\u706D\u5730\u9762\u5A01\u80C1\u7684\u56FA\u5B9A\u5F0F\u70AE\u5854"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 1500
   hp: 1500

@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 10103
   nameChinese: "\u76DF\u519B\u77FF\u77F3\u7CBE\u70BC\u5382"
   nameEnglish: OreRefinery
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 05873ea85aff34ab489e027412a485a3, type: 3}
   commentChinese: "\u76DF\u519B\u91C7\u77FF\u8F66\u5C06\u5B9D\u8D35\u7684\u77FF\u77F3\u9001\u81F3\u8FD9\u4E9B\u5EFA\u7B51\u7269\u8FDB\u884C\u63D0\u70BC\u4E0E\u4EA7\u751F\u8D44\u91D1\u3002"
   commentEnglish: null
   troopType: 0

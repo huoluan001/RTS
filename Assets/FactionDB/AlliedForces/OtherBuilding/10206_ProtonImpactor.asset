@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 10206
   nameChinese: "\u8D28\u5B50\u649E\u51FB\u70AE\u53D1\u5C04\u4E2D\u5FC3"
   nameEnglish: ProtonImpactor
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0efa9159a71f74a27a6e2148b0d5a0b5, type: 3}
   commentChinese: "\u805A\u96C6\u5F3A\u70C8\u7684\u80FD\u91CF\u5149\u675F,\u4F7F\u88AB\u5149\u675F\u51FB\u4E2D\u7684\u533A\u57DF\u4EA7\u751F\u5206\u5B50\u7194\u89E3\u8FDE\u9501\u53CD\u5E94\u3002"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 10000
   hp: 4000

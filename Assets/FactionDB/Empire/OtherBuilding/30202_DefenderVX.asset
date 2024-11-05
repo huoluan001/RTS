@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 30202
   nameChinese: "\u9632\u536B\u8005-VX"
   nameEnglish: DefenderVX
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 880481c718ba34ee6b0382763480a9bc, type: 3}
   commentChinese: "\u62E5\u6709\u53CD\u6B65\u5175\u548C\u53CD\u98DE\u884C\u5668\u8BBE\u7F6E\u6A21\u5F0F\u7684\u56FA\u5B9A\u5F0F\u70AE\u5EA7"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 500
   hp: 1000

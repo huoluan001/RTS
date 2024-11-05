@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 10209
   nameChinese: "\u6307\u6325\u4E2D\u5FC3"
   nameEnglish: CommandCenter
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 09d064dc4e528416fbdf5145d8bb5561, type: 3}
   commentChinese: "\u7531\u91C7\u77FF\u8F66\u53D8\u6362\u800C\u6210,\u6709\u4E86\u8FD9\u4E9B\u8BBE\u65BD,\u53EF\u5728\u9644\u8FD1\u5EFA\u9020\u5176\u4ED6\u7684\u76DF\u519B\u5EFA\u7B51\u7269"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 1500
   hp: 4000

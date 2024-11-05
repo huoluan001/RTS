@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 30205
   nameChinese: "\u7EB3\u7C73\u866B\u7FA4\u88C5\u7F6E"
   nameEnglish: Nanosomes
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 12c7cf6acc57d4db4af505cb3aa0cd60, type: 3}
   commentChinese: "\u6D3E\u51FA\u6570\u5341\u4EBF\u7EB3\u7C73\u673A\u5668\u4EBA,\u6682\u65F6\u5305\u56F4\u4E2A\u533A\u57DF,\u6709\u6548\u5730\u5C06\u5176\u5C01\u9501\u3002"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 10000
   hp: 4000

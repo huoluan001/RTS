@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 20101
   nameChinese: "\u53CD\u5E94\u5806"
   nameEnglish: Reactor
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7cc7f272b135b43cdaa02c81acebb944, type: 3}
   commentChinese: "\u82CF\u519B\u7684\u8BBE\u65BD\u548C\u57FA\u5730\u9632\u5FA1\u9700\u8981\u53CD\u5E94\u5806\u63D0\u4F9B\u7684\u53EF\u89C2\u7535\u529B\u3002"
   commentEnglish: null
   troopType: 0

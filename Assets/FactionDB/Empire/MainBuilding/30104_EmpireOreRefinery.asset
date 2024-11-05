@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 30104
   nameChinese: "\u5E1D\u56FD\u77FF\u77F3\u7CBE\u70BC\u5382"
   nameEnglish: EmpireOreRefinery
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 00860c02d931d43509a8e6ab54da31c5, type: 3}
   commentChinese: "\u91C7\u77FF\u8F66\u5C06\u8D44\u6E90\u8F7D\u8FD0\u81F3\u8FD9\u4E9B\u5904\u7406\u5382,\u63D0\u4F9B\u5E1D\u56FD\u519B\u65B9\u6240\u9700\u7684\u8D44\u91D1\u3002"
   commentEnglish: null
   troopType: 0

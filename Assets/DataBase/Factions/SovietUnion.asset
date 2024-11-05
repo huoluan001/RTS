@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d2cb4418f894b6f99c29cc80e11ecd, type: 3}
   m_Name: SovietUnion
   m_EditorClassIdentifier: 
-  Faction: 0
+  factionEnum: 0
   MainBuildings:
   - {fileID: 11400000, guid: f32ed4b7eeebe48fe8079815606aa4c1, type: 2}
   - {fileID: 11400000, guid: 90a2138b6189847618dca5b71bcc31ca, type: 2}

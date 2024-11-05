@@ -6,16 +6,16 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
     public dynamic info;
     public Sequence sequence;
     private int _count;
-    private int Count => _count;
+    public int Count => _count;
     public float value = 0;
     private float produceSpeed4Price;
     private float produceSpeed4Value;
     private GameObject gameObjectPrefab;
 
 
-    public ProduceTask(TScriptableObject info)
+    public ProduceTask(TScriptableObject info, Sequence sequence)
     {
-        
+        this.sequence = sequence;
         if(info is MainBuildingSO mainBuildingSO)
         {
             this.info = mainBuildingSO;
@@ -66,7 +66,6 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
             }
         }
     }
-
     public void AddTaskPlus()
     {
         _count += 5;
@@ -79,4 +78,6 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
     {
         _count--;
     }
+
+    
 }

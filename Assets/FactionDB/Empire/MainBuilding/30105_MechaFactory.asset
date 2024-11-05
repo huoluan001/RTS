@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 30105
   nameChinese: "\u673A\u7532\u5DE5\u5382"
   nameEnglish: MechaFactory
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5fe3cf0c406b5437fb0ca2c2dc218e8a, type: 3}
   commentChinese: "\u8FD9\u4E9B\u8BBE\u65BD\u8D1F\u8D23\u7EC4\u88C5\u53CA\u7EF4\u4FEE\u5E1D\u56FD\u519B\u4E8B\u673A\u7532,\u5305\u62EC\u5177\u98DE\u884C\u80FD\u529B\u7684\u673A\u7532"
   commentEnglish: null
   troopType: 0

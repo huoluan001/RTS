@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 10107
   nameChinese: "\u9632\u536B\u5C40"
   nameEnglish: DefenseAgency
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f330813a22cc2463eaf11d66d30c2f97, type: 3}
   commentChinese: "\u76DF\u519B\u5229\u7528\u8FD9\u4E9B\u5EFA\u7B51\u7269\u63A7\u7BA1\u4ED6\u4EEC\u6700\u9AD8\u673A\u5BC6\u7684\u9632\u5FA1\u90E8\u7F72\u3002"
   commentEnglish: null
   troopType: 0

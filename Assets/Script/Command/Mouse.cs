@@ -2,17 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Mouse : MonoBehaviour
 {
-    public GameAsset gameAsset;
+    public LayerMask InteractionUI;
+    private GameAsset gameAsset;
     private Vector3 mouseLeftPerformPosition;
     private GameObject selectionBoxUI;
     void Awake()
     {
+        gameAsset = GameManager.gameAsset;
         gameAsset.inputSystem = new RTSInputSystem();
         gameAsset.inputSystem.Enable();
         gameAsset.player = gameAsset.inputSystem.Player;
@@ -26,9 +30,10 @@ public class Mouse : MonoBehaviour
         gameAsset.player.MouseLeftDoubleClick.performed += MouseLeftDoubleClick;
 
         gameAsset.player.AggressionModel.performed += AggressionModel;
-        gameAsset.player.VigilanceMode.performed += VigilanceMode;
+        gameAsset.player.VigilanceModel.performed += VigilanceMode;
         gameAsset.player.StickingModel.performed += SattingModel;
         gameAsset.player.CeasefireModel.performed += CeasefireModel;
+
 
         selectionBoxUI = gameAsset.selectionBoxUI;
     }
@@ -41,7 +46,7 @@ public class Mouse : MonoBehaviour
     void OnMouseLeftPerformed(InputAction.CallbackContext callbackContext)
     {
         mouseLeftPerformPosition = Input.mousePosition;
-        if(CheckGuiRaycastObjects())
+        if (CheckGuiRaycastObjects())
         {
             Debug.Log("点击到了UI");
         }
@@ -49,7 +54,7 @@ public class Mouse : MonoBehaviour
         {
             Debug.Log("点击到了场景");
         }
-        
+
     }
     void OnMouseLeftCanceled(InputAction.CallbackContext callbackContext)
     {
@@ -120,7 +125,7 @@ public class Mouse : MonoBehaviour
         var leftUpV3 = leftUpHitinfo.point;
         var rightDownV3 = rightDownHitinfo.point;
         var halfExtents = new Vector3(Math.Abs(leftUpV3.x - rightDownV3.x) / 2, 10, Math.Abs(rightDownV3.z - rightDownV3.z) / 2);
-        var colliders =Physics.OverlapBox((leftUpV3 + rightDownV3) / 2, halfExtents);
+        var colliders = Physics.OverlapBox((leftUpV3 + rightDownV3) / 2, halfExtents);
         return colliders.Select(collider => collider.gameObject).ToArray();
     }
 
@@ -150,9 +155,23 @@ public class Mouse : MonoBehaviour
 
         List<RaycastResult> list = new List<RaycastResult>();
         gameAsset.graphicRaycaster.Raycast(eventData, list);
-        return list.Count > 0;
+        if (list.Count == 0)
+            return false;
+        GameObject gameObject = list.First().gameObject;
+        if (gameObject.tag == "TaskAvatar") // 添加序列任务
+        {
+            var page = gameObject.transform.parent.parent.GetComponent<Page>();
+            Sprite icon = gameObject.GetComponent<Image>().sprite;
+            page.CurrentSequenceAddTask(icon, gameObject, false);
+        }
+        else if (gameObject.tag == "SeqAvatar") // 序列转换
+        {
+            var page = gameObject.transform.parent.parent.GetComponent<Page>();
+            int targetIndex = int.Parse(gameObject.transform.GetComponent<TMP_Text>().text);
+            page.SwitchCurrentSequence(targetIndex);
+        }
+        return true;
+
     }
-    
+
 }
-
-

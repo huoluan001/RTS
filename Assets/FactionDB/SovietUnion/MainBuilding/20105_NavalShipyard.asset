@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 20105
   nameChinese: "\u6D77\u519B\u9020\u8239\u5382"
   nameEnglish: NavalShipyard
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0a98b5a7a3cbf4e238b22f17677d79b9, type: 3}
   commentChinese: "\u8FD9\u4E9B\u5EFA\u7B51\u7269\u83B7\u5F97\u8BB8\u53EF\u5EFA\u9020\u53CA\u7EF4\u62A4\u82CF\u8054\u6D77\u519B\u7684\u4EFB\u4F55\u7EA7\u522B\u6218\u8230\u3002"
   commentEnglish: null
   troopType: 0

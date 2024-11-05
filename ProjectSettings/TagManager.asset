@@ -8,6 +8,8 @@ TagManager:
   - Red
   - Blue
   - Orange
+  - TaskAvatar
+  - SeqAvatar
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - InteractionUI
   - 
   - 
   - 

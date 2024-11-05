@@ -17,7 +17,10 @@ public class MVC : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
             Open();
-            Debug.Log("ddd");
+        }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager.gameAsset.UIManager.AddMCVSequence(factionSO);
         }
     }
 

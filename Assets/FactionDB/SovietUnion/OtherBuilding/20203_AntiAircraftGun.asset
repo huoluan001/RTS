@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 20203
   nameChinese: "\u9632\u7A7A\u70AE"
   nameEnglish: AntiAircraftGun
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0122fe60b9cb348469917c56162cfc9d, type: 3}
   commentChinese: "\u5C04\u901F\u8D85\u5FEB\u7684\u9632\u7A7A\u70AE,\u80FD\u8BA9\u7A7A\u4E2D\u5145\u65A5\u7740\u91D1\u5C5E\u788E\u7247\u3002"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 500
   hp: 2000

@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 20108
   nameChinese: "\u4F5C\u6218\u5B9E\u9A8C\u5BA4"
   nameEnglish: BattleLabs
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a3b4cd51acb484507bc20a6171369fb7, type: 3}
   commentChinese: "\u8FD9\u4E9B\u5EFA\u7B51\u53EF\u89E3\u5F00\u82CF\u519B\u6700\u65B0\u5F0F\u7684\u6B66\u5668,\u5E76\u5B89\u9759\u5730\u5206\u6790\u6218\u6597\u8D44\u6599\u4F9B\u672A\u6765\u4F7F\u7528\u3002"
   commentEnglish: null
   troopType: 0

@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 30201
   nameChinese: "\u5E1D\u56FD\u56F4\u5899"
   nameEnglish: ImperialWall
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7a1730878795b4eaca861565a52ee1e7, type: 3}
   commentChinese: "\u5E76\u6392\u5B89\u7F6E\u4E24\u9053\u5899,\u53EF\u4EE5\u7B51\u8D77\u4E00\u9053\u6C34\u6CE5\u969C\u58C1\u963B\u788D\u654C\u65B9\u90E8\u961F"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 00000000
   exp: 0
   hp: 300

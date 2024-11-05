@@ -4,8 +4,6 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
 using TMPro;
-using System;
-
 
 public class Page : MonoBehaviour
 {
@@ -15,13 +13,16 @@ public class Page : MonoBehaviour
     public SequenceType sequenceType;
     public List<Sequence> sequences = new List<Sequence>();
 
+    // 存储各派系的在本序列类型的IBaseInfo, Init会初始化本派系，当需求出现时，在会有其他的派系
+    public Dictionary<FactionEnum, List<IBaseInfo>> ibaseInfos_Dic;
+
     public int currentSequenceIndex;
     public Sequence currentSequence;
     public FactionEnum currrntShowFaction;
 
     public bool isShow;
-
     public int maxSequenceIndex;
+    public GameObject firstAvatar;
     public LinkedList<GameObject> SeqAvatars;
     public GameObject SeqAvatarPrefab;
     private LinkedListNode<GameObject> leftCursor;
@@ -30,7 +31,9 @@ public class Page : MonoBehaviour
     private RectTransform rectTransform;
     void Start()
     {
+
         rectTransform = GetComponent<RectTransform>();
+        this.ShowAndHideSwitch();
     }
     public int Init(SequenceType sequenceType, Transform transformParent, bool isShow, FactionSO factionSO)
     {
@@ -38,6 +41,7 @@ public class Page : MonoBehaviour
         this.sequenceType = sequenceType;
         transform.SetParent(transformParent, false);
         this.isShow = isShow;
+
 
         // Page默认有一个Sequence
         var sequence = new Sequence(sequenceType, factionSO, this, 1);
@@ -48,10 +52,16 @@ public class Page : MonoBehaviour
         // 一次不考虑图片是否更新，禁止检查，直接update
         UpdateContainImageWithCheck(false);
         currrntShowFaction = factionSO.factionEnum;
+
         // SeqAvatar init
+        SeqAvatars = new LinkedList<GameObject>();
+        SeqAvatars.AddLast(firstAvatar);
         leftCursor = SeqAvatars.First;
         rightCursor = SeqAvatars.First;
-        SeqAvatars.First.Value.GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(1));
+
+        // 初始化ibaseInfo_Dic
+        ibaseInfos_Dic = new Dictionary<FactionEnum, List<IBaseInfo>>();
+        ibaseInfos_Dic[factionSO.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSO(sequenceType, factionSO);
 
         // 返回序列编号
         return 1;
@@ -60,11 +70,12 @@ public class Page : MonoBehaviour
     {
         var sequence = new Sequence(sequenceType, factionSO, this, nextSequenceIndex);
         sequences.Add(sequence);
+        // 序列化身初始化
         GameObject seqAvatar = Instantiate(SeqAvatarPrefab);
         seqAvatar.transform.SetParent(contentMenuTransform, false);
-        seqAvatar.GetComponent<Button>().onClick.AddListener(() => SwitchCurrentSequence(nextSequenceIndex));
         TMP_Text tMP_Text = seqAvatar.GetComponent<TMP_Text>();
         tMP_Text.text = nextSequenceIndex.ToString();
+
         SeqAvatars.AddLast(seqAvatar);
         if (SeqAvatars.Count < maxSequenceIndex)
             rightCursor = SeqAvatars.Last;
@@ -73,10 +84,10 @@ public class Page : MonoBehaviour
 
     private void Update()
     {
-        // if(gameAsset.commander.isRunningProduce)
-        // {
-        //     sequences.ForEach(sequence => sequence.ProductionMovesForward());
-        // }
+        if (GameManager.gameAsset.commander.isRunningProduce)
+        {
+            sequences.ForEach(sequence => sequence.ProductionMovesForward());
+        }
     }
 
 
@@ -113,6 +124,10 @@ public class Page : MonoBehaviour
             images[i].sprite = (i < sprites.Count) ? sprites[i] : null;
         }
     }
+    public void CurrentSequenceAddTask(Sprite icon, GameObject item, bool isPlus = false)
+    {
+        currentSequence.AddTask(icon,item, isPlus);
+    }
 
 
 
@@ -126,6 +141,9 @@ public class Page : MonoBehaviour
         currentSequenceIndex = targetIndex;
         currentSequence = GetCurrentSequence();
         UpdateContainImageWithCheck();
+        currentSequence.UpdateProduceTasksUI();
+        
+
     }
 
     public void SeqAvatarLeftMove()
@@ -146,4 +164,29 @@ public class Page : MonoBehaviour
         rightCursor.Value.SetActive(true);
     }
 
+    public IBaseInfo GetIBaseInfo(int index, FactionSO factionSO)
+    {
+        if (!ibaseInfos_Dic.Keys.Contains(factionSO.factionEnum))
+            ibaseInfos_Dic[factionSO.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSO(sequenceType, factionSO);
+        return ibaseInfos_Dic[factionSO.factionEnum][index];
+    }
+    public IBaseInfo GetIBaseInfo(Sprite icon, FactionSO factionSO)
+    {
+        if (!ibaseInfos_Dic.Keys.Contains(factionSO.factionEnum))
+            ibaseInfos_Dic[factionSO.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSO(sequenceType, factionSO);
+        return ibaseInfos_Dic[factionSO.factionEnum].First(ibi => ibi.Icon == icon);
+    }
+
+    public List<IBaseInfo> GetIBaseInfoListWithSequenceTypeAndFactionSO(SequenceType sequenceType, FactionSO factionSO)
+    {
+        return sequenceType switch
+        {
+            SequenceType.MainBuildingSequence => factionSO.MainBuildings.Cast<IBaseInfo>().ToList(),
+            SequenceType.OtherBuildingSequence => factionSO.OtherBuildings.Cast<IBaseInfo>().ToList(),
+            SequenceType.InfantrySequence => factionSO.Infantry.Cast<IBaseInfo>().ToList(),
+            SequenceType.VehicleSequence => factionSO.Vehicle.Cast<IBaseInfo>().ToList(),
+            SequenceType.DockSequence => factionSO.Dock.Cast<IBaseInfo>().ToList(),
+            _ => factionSO.Dock.Cast<IBaseInfo>().ToList()
+        };
+    }
 }

@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 20205
   nameChinese: "\u94C1\u5E55\u88C5\u7F6E"
   nameEnglish: IronCurtain
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 21cc0a8f4543c428f99c1ea815fb636c, type: 3}
   commentChinese: "\u53D1\u5C04\u4E00\u9053\u5947\u7279\u7684\u52A8\u80FD\u969C\u58C1,\u53EF\u4F7F\u76EE\u6807\u6682\u65F6\u5200\u67AA\u4E0D\u5165\u3002\u5BF9\u6B65\u5175\u5F02\u5E38\u81F4\u547D\u3002"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 10000
   hp: 5000

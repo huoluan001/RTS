@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 10102
   nameChinese: "\u65B0\u5175\u8BAD\u7EC3\u8425"
   nameEnglish: BootCamp
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 49d1a6ba2d3ad45e4b19427c76d6d8c3, type: 3}
   commentChinese: "\u76DF\u519B\u6B65\u5175\u5E08\u5DF2\u51C6\u5907\u597D\u7ECF\u7531\u8FD9\u4E9B\u519B\u4E8B\u5EFA\u7B51\u7269\u8FDB\u884C\u90E8\u7F72\u3002"
   commentEnglish: null
   troopType: 0

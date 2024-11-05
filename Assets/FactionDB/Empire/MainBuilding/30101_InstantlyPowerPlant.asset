@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 30101
   nameChinese: "\u77AC\u606F\u53D1\u7535\u5382"
   nameEnglish: InstantlyPowerPlant
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 37d6fd46a0b4145e8b6e8d311c8463ce, type: 3}
   commentChinese: "\u5E1D\u56FD\u57FA\u5730\u9700\u8981\u8FD9\u4E9B\u5316\u5B66\u71C3\u70E7\u5EFA\u7B51\u7269\u7EF4\u6301\u6709\u6548\u7387\u5730\u8FD0\u4F5C"
   commentEnglish: null
   troopType: 0

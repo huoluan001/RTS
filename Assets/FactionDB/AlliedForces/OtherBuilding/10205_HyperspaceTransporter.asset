@@ -16,10 +16,10 @@ MonoBehaviour:
   id: 10205
   nameChinese: "\u8D85\u65F6\u7A7A\u4F20\u9001\u4EEA"
   nameEnglish: HyperspaceTransporter
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 137cc47221ebb4fc0a1fec32a94ef1af, type: 3}
   commentChinese: "\u5229\u7528\u8D85\u65F6\u7A7A\u79D1\u6280,\u901A\u8FC7\u8D28\u91CF\u4F20\u9001\u7684\u65B9\u5F0F,\u5C06\u90E8\u961F\u9001\u5F80\u76EE\u7684\u5730\u3002\u4EE5\u8FD9\u79CD\u65B9\u5F0F\u4F20\u9001\u6B65\u5175,\u4F1A\u5BFC\u81F4\u6B7B\u4EA1\u3002"
   commentEnglish: null
-  troop: 0
+  troopType: 0
   actionScopes: 0000000001000000
   exp: 10000
   hp: 4000

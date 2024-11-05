@@ -65,7 +65,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""VigilanceMode"",
+                    ""name"": ""VigilanceModel"",
                     ""type"": ""Button"",
                     ""id"": ""8be24c6d-b6a6-48fd-b008-71c7d291e478"",
                     ""expectedControlType"": """",
@@ -99,6 +99,15 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeftShiftRightMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""e58078cb-b3ac-4976-a0c2-0c02e2db87ce"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -175,7 +184,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""VigilanceMode"",
+                    ""action"": ""VigilanceModel"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -186,7 +195,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""VigilanceMode"",
+                    ""action"": ""VigilanceModel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -197,7 +206,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""VigilanceMode"",
+                    ""action"": ""VigilanceModel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -321,6 +330,39 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""CamareMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Button With One Modifier"",
+                    ""id"": ""fbb37984-40de-4447-b758-c81b64a3821b"",
+                    ""path"": ""ButtonWithOneModifier(overrideModifiersNeedToBePressedFirst=true)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftShiftRightMouse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""id"": ""231b4651-a7b8-4078-80bd-d02ce3969d96"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""LeftShiftRightMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Button"",
+                    ""id"": ""5b6bac9b-779a-4649-beaa-b4f1d0bf6e98"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""LeftShiftRightMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -350,7 +392,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""8de61946-a414-4b5b-aa93-9c6f2533c301"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -910,10 +952,11 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
         m_Player_MouseLeft = m_Player.FindAction("MouseLeft", throwIfNotFound: true);
         m_Player_MouseLeftDoubleClick = m_Player.FindAction("MouseLeftDoubleClick", throwIfNotFound: true);
         m_Player_AggressionModel = m_Player.FindAction("AggressionModel", throwIfNotFound: true);
-        m_Player_VigilanceMode = m_Player.FindAction("VigilanceMode", throwIfNotFound: true);
+        m_Player_VigilanceModel = m_Player.FindAction("VigilanceModel", throwIfNotFound: true);
         m_Player_StickingModel = m_Player.FindAction("StickingModel", throwIfNotFound: true);
         m_Player_CeasefireModel = m_Player.FindAction("CeasefireModel", throwIfNotFound: true);
         m_Player_CamareMove = m_Player.FindAction("CamareMove", throwIfNotFound: true);
+        m_Player_LeftShiftRightMouse = m_Player.FindAction("LeftShiftRightMouse", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -997,10 +1040,11 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MouseLeft;
     private readonly InputAction m_Player_MouseLeftDoubleClick;
     private readonly InputAction m_Player_AggressionModel;
-    private readonly InputAction m_Player_VigilanceMode;
+    private readonly InputAction m_Player_VigilanceModel;
     private readonly InputAction m_Player_StickingModel;
     private readonly InputAction m_Player_CeasefireModel;
     private readonly InputAction m_Player_CamareMove;
+    private readonly InputAction m_Player_LeftShiftRightMouse;
     public struct PlayerActions
     {
         private @RTSInputSystem m_Wrapper;
@@ -1009,10 +1053,11 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
         public InputAction @MouseLeft => m_Wrapper.m_Player_MouseLeft;
         public InputAction @MouseLeftDoubleClick => m_Wrapper.m_Player_MouseLeftDoubleClick;
         public InputAction @AggressionModel => m_Wrapper.m_Player_AggressionModel;
-        public InputAction @VigilanceMode => m_Wrapper.m_Player_VigilanceMode;
+        public InputAction @VigilanceModel => m_Wrapper.m_Player_VigilanceModel;
         public InputAction @StickingModel => m_Wrapper.m_Player_StickingModel;
         public InputAction @CeasefireModel => m_Wrapper.m_Player_CeasefireModel;
         public InputAction @CamareMove => m_Wrapper.m_Player_CamareMove;
+        public InputAction @LeftShiftRightMouse => m_Wrapper.m_Player_LeftShiftRightMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1034,9 +1079,9 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
             @AggressionModel.started += instance.OnAggressionModel;
             @AggressionModel.performed += instance.OnAggressionModel;
             @AggressionModel.canceled += instance.OnAggressionModel;
-            @VigilanceMode.started += instance.OnVigilanceMode;
-            @VigilanceMode.performed += instance.OnVigilanceMode;
-            @VigilanceMode.canceled += instance.OnVigilanceMode;
+            @VigilanceModel.started += instance.OnVigilanceModel;
+            @VigilanceModel.performed += instance.OnVigilanceModel;
+            @VigilanceModel.canceled += instance.OnVigilanceModel;
             @StickingModel.started += instance.OnStickingModel;
             @StickingModel.performed += instance.OnStickingModel;
             @StickingModel.canceled += instance.OnStickingModel;
@@ -1046,6 +1091,9 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
             @CamareMove.started += instance.OnCamareMove;
             @CamareMove.performed += instance.OnCamareMove;
             @CamareMove.canceled += instance.OnCamareMove;
+            @LeftShiftRightMouse.started += instance.OnLeftShiftRightMouse;
+            @LeftShiftRightMouse.performed += instance.OnLeftShiftRightMouse;
+            @LeftShiftRightMouse.canceled += instance.OnLeftShiftRightMouse;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1062,9 +1110,9 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
             @AggressionModel.started -= instance.OnAggressionModel;
             @AggressionModel.performed -= instance.OnAggressionModel;
             @AggressionModel.canceled -= instance.OnAggressionModel;
-            @VigilanceMode.started -= instance.OnVigilanceMode;
-            @VigilanceMode.performed -= instance.OnVigilanceMode;
-            @VigilanceMode.canceled -= instance.OnVigilanceMode;
+            @VigilanceModel.started -= instance.OnVigilanceModel;
+            @VigilanceModel.performed -= instance.OnVigilanceModel;
+            @VigilanceModel.canceled -= instance.OnVigilanceModel;
             @StickingModel.started -= instance.OnStickingModel;
             @StickingModel.performed -= instance.OnStickingModel;
             @StickingModel.canceled -= instance.OnStickingModel;
@@ -1074,6 +1122,9 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
             @CamareMove.started -= instance.OnCamareMove;
             @CamareMove.performed -= instance.OnCamareMove;
             @CamareMove.canceled -= instance.OnCamareMove;
+            @LeftShiftRightMouse.started -= instance.OnLeftShiftRightMouse;
+            @LeftShiftRightMouse.performed -= instance.OnLeftShiftRightMouse;
+            @LeftShiftRightMouse.canceled -= instance.OnLeftShiftRightMouse;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1260,10 +1311,11 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
         void OnMouseLeft(InputAction.CallbackContext context);
         void OnMouseLeftDoubleClick(InputAction.CallbackContext context);
         void OnAggressionModel(InputAction.CallbackContext context);
-        void OnVigilanceMode(InputAction.CallbackContext context);
+        void OnVigilanceModel(InputAction.CallbackContext context);
         void OnStickingModel(InputAction.CallbackContext context);
         void OnCeasefireModel(InputAction.CallbackContext context);
         void OnCamareMove(InputAction.CallbackContext context);
+        void OnLeftShiftRightMouse(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9622922921f1467383678a213c3e1dc, type: 3}
   m_Name: GameAsset
   m_EditorClassIdentifier: 
-  factionSO: {fileID: 0}
+  commander: {fileID: 0}
+  UIManager: {fileID: 0}
   selectionBoxUI: {fileID: 0}
   eventSystem: {fileID: 0}
   graphicRaycaster: {fileID: 0}
-  sequencePagePrefab: {fileID: 0}
+  mainBuildingSequencePagePrefab: {fileID: 0}
   cameraMoveVector2: {x: 0, y: 0}
   cameraMoveSpeed: 20
   cameraRotationSpeed: 0
-  buildLabel:
-  - {fileID: 11400000, guid: 26d9ab9b5093b43e0a83dd9f9e4dd04d, type: 2}
-  - {fileID: 11400000, guid: 8fe0d0b338bef480ab8a04bc96416b8b, type: 2}
-  ProductionLabel: []
+  grayscale: {fileID: 2100000, guid: 1aa5c2faa34f14b7d99b2644f0b893e6, type: 2}

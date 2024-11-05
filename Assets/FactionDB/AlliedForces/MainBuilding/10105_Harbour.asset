@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 10105
   nameChinese: "\u6D77\u6E2F"
   nameEnglish: Harbour
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0cf3dda9d81f547eca4dafe027b0992e, type: 3}
   commentChinese: "\u901A\u8FC7\u8FD9\u4E9B\u5EFA\u7B51\u7269\u53EF\u4EE5\u5F81\u7528\u76DF\u519B\u4E16\u754C\u9A70\u540D\u7684\u6D77\u519B\u3002"
   commentEnglish: null
   troopType: 0

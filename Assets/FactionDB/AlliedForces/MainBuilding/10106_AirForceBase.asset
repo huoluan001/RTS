@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 10106
   nameChinese: "\u7A7A\u519B\u57FA\u5730"
   nameEnglish: AirForceBase
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f5d905a5137014457b1c6a300a5a972b, type: 3}
   commentChinese: "\u76DF\u519B\u9760\u8FD9\u4E9B\u5EFA\u7B51\u7269\u5EFA\u9020\u53CA\u7EF4\u62A4\u5404\u5F0F\u5404\u6837\u7684\u98DE\u884C\u5668\u3002"
   commentEnglish: null
   troopType: 0

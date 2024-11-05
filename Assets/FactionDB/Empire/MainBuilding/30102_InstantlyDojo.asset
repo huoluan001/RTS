@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 30102
   nameChinese: "\u77AC\u606F\u9053\u573A"
   nameEnglish: InstantlyDojo
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a2100f8cd2d904c5785cb45622eab42e, type: 3}
   commentChinese: "\u5E1D\u56FD\u7684\u6B65\u5175\u5728\u8FD9\u91CC\u63A5\u53D7\u4E25\u683C\u7684\u6218\u6597\u8BAD\u7EC3"
   commentEnglish: null
   troopType: 0

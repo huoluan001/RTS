@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 20103
   nameChinese: "\u82CF\u8054\u77FF\u77F3\u7CBE\u70BC\u5382"
   nameEnglish: SovietOreRefineries
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2802a8f3b234b4f98ad0d3a7d5dd9308, type: 3}
   commentChinese: "\u91C7\u77FF\u8F66\u5728\u6B64\u5EFA\u7B51\u7269\u4E0E\u77FF\u77F3\u91C7\u96C6\u573A\u4E4B\u95F4\u5FD9\u788C\u7A7F\u68AD,\u4E3A\u82CF\u519B\u6CE8\u5165\u8D44\u91D1\u3002"
   commentEnglish: null
   troopType: 0

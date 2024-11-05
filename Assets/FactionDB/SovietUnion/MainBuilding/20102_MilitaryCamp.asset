@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 20102
   nameChinese: "\u519B\u8425"
   nameEnglish: MilitaryCamp
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4a02dade163d34ba7848a0fb884ea79c, type: 3}
   commentChinese: "\u6240\u6709\u7C7B\u578B\u7684\u82CF\u8054\u6B65\u5175\u7684\u8BAD\u7EC3,\u90FD\u662F\u5728\u8FD9\u79CD\u5178\u578B\u7684\u8BBE\u65BD\u8FDB\u884C\u3002"
   commentEnglish: null
   troopType: 0
