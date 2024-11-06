@@ -83,10 +83,11 @@ public class Page : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameAsset.commander.isRunningProduce)
-        {
-            sequences.ForEach(sequence => sequence.ProductionMovesForward());
-        }
+        // if (GameManager.gameAsset.commander.isRunningProduce)
+        // {
+            
+        // }
+        sequences.ForEach(sequence => sequence.ProductionMovesForward());
     }
 
 

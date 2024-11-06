@@ -48,7 +48,7 @@ public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
         // {
             // commander.Pay(produceSpeed4Price * Time.deltaTime);
             taskAvatar.Coating.fillAmount -= produceSpeed4Value * Time.deltaTime;
-            if(value <= 1)
+            if(value <= 0)
             {
                 // end 完成一次生产
                 // var gameObject = GameObject.Instantiate(gameObjectPrefab);
