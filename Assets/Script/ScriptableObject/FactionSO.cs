@@ -20,7 +20,7 @@ public class FactionSO : ScriptableObject
     public List<IBaseInfo> GetBaseInfos(SequenceType sequenceType)
     {
         if (sequenceType == SequenceType.MainBuildingSequence)
-            return MainBuildings.Skip(1).Cast<IBaseInfo>().ToList();
+            return MainBuildings.Cast<IBaseInfo>().ToList();
         if (sequenceType == SequenceType.OtherBuildingSequence)
             return OtherBuildings.Cast<IBaseInfo>().ToList();
         if (sequenceType == SequenceType.InfantrySequence)

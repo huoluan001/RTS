@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d2cb4418f894b6f99c29cc80e11ecd, type: 3}
   m_Name: AlliedForces
   m_EditorClassIdentifier: 
-  factionEnum: 0
+  factionEnum: 1
   MainBuildings:
   - {fileID: 11400000, guid: d81dbb61d56244afc8963d3e2bb60679, type: 2}
   - {fileID: 11400000, guid: 657529d363c6f4e188491ea3203734aa, type: 2}

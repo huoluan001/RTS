@@ -67,7 +67,7 @@ public class Sequence
         
 
         Image icon = taskAvatarGameObject.GetComponent<Image>();
-        var info = page.GetIBaseInfo(icon.sprite, factionSO);
+        var info = page.GetIBaseInfoWithIcon(icon.sprite, factionSO);
         TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
         Image Coating = taskAvatar.Coating;
         TMP_Text tMP_Text = taskAvatar.tMP_Text;

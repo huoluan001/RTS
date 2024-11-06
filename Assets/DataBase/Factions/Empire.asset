@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d2cb4418f894b6f99c29cc80e11ecd, type: 3}
   m_Name: Empire
   m_EditorClassIdentifier: 
-  factionEnum: 0
+  factionEnum: 2
   MainBuildings:
   - {fileID: 11400000, guid: 0640e4b9def274782a69b6293158f87f, type: 2}
   - {fileID: 11400000, guid: 6c42807263d58433493b21290c61fb70, type: 2}
