@@ -1317,9 +1317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0235133a10a442d59dd586361affb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionUI:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &318214860
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ MonoBehaviour:
   maxSequenceIndex: 9
   taskAvatarlist: []
   SeqAvatarPrefab: {fileID: 5606290298373393369, guid: 23ecf669beb4e4f4c8c2235433d7e7dc, type: 3}
-  TaskAvatarPrefab: {fileID: 6630928638326126444, guid: 76f53f9de9352466687ed7e08fcaf417, type: 3}
+  TaskAvatarPrefab: {fileID: 1539638357652154781, guid: 76f53f9de9352466687ed7e08fcaf417, type: 3}
 --- !u!1 &4869067631915587198
 GameObject:
   m_ObjectHideFlags: 0
