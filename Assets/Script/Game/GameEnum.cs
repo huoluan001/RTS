@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace UnityEngine
 {
     public enum TeamId
@@ -61,11 +59,11 @@ namespace UnityEngine
     }
 
     // 军队行为模式
-    public enum ArmyBehaviorModel
+    public enum ActionModelEnum
     {
-        Aggression,     // 侵略
-        Vigilance,      // 警戒
-        Sticking,       // 固守
+        Invade,     // 侵略
+        Alert,      // 警戒
+        Defend,       // 固守
         Ceasefire,      // 停火
     }
 

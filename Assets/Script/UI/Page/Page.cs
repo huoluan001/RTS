@@ -147,7 +147,6 @@ public class Page : MonoBehaviour
         {
             sprites = sprites.Skip(1).SkipLast(1).ToList();
         }
-        Debug.Log("ddd");
 
         if (taskAvatarlist.Count < sprites.Count)
         {

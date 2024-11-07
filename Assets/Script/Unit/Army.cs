@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 public class Army : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class Army : MonoBehaviour
     private int CurrentUpgradeExp;
     private int CurrentExp;
     private Level Level;
-    private ArmyBehaviorModel ArmyBehaviorModel;
 #endregion
     
 #region Move
@@ -38,9 +38,12 @@ public class Army : MonoBehaviour
 
     private GameObject SkillTarget;
 
+    public IActionModel currentActionModel;
+    
+
     private void Awake()
     {
-
+        currentActionModel.SwitchAcionModel(currentActionModel, ActionModelEnum.Alert);
     }
     private void Start()
     {
