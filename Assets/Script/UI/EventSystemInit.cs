@@ -4,9 +4,8 @@ using UnityEngine.EventSystems;
 
 public class EventSystemInit : MonoBehaviour
 {
-    public GameAsset gameAsset;
-    private void Start()
+    private void Awake()
     {
-        gameAsset.eventSystem = GetComponent<EventSystem>();
+        GameManager.gameAsset.eventSystem = GetComponent<EventSystem>();
     }
 }
