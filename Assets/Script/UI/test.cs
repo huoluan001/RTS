@@ -4,6 +4,7 @@ public class test : MonoBehaviour
 {
 
     public GameObject gameObject;
+    public GameObject mask;
     public Vector3Int pos;
     public int l;
     public int w;
@@ -16,10 +17,20 @@ public class test : MonoBehaviour
         {
             for (int j = 0; j < w; j++)
             {
-                GameObject go = Instantiate(gameObject);
-                go.transform.position = new Vector3(i + ox, 0, oz + j);
+                GameObject go = Instantiate(gameObject, mask.transform, false);
+                go.transform.position = new Vector3(i + ox, 0.001f, oz + j);
             }
         }
 
     }
-}
+    [ContextMenu("clear")]
+    public void Clear()
+    {
+        int count = mask.transform.childCount;
+        for (int i = 0; i < count; i++)
+        {
+            var c = mask.transform.GetChild(i);
+            Destroy(c);
+        }
+    }
+}   
