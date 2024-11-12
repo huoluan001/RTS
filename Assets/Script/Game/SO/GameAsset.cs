@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -28,7 +28,10 @@ public class GameAsset : ScriptableObject
 
 
     // Mouse And Keyboard
-
+    
+    // Event
+    public Action MouseLeftClick;
+    
     public Material grayscale;
 
 }

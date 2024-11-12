@@ -42,44 +42,45 @@ public class Mouse : MonoBehaviour
 
     void OnMouseLeftPerformed(InputAction.CallbackContext callbackContext)
     {
-        mouseLeftPerformPosition = Input.mousePosition;
-        
-        PointerEventData eventData = new PointerEventData(GameManager.gameAsset.eventSystem);
-        eventData.pressPosition = Input.mousePosition;
-        eventData.position = Input.mousePosition;
-
-        List<RaycastResult> list = new List<RaycastResult>();
-        GameManager.gameAsset.graphicRaycaster.Raycast(eventData, list);
-        if (list.Count != 0)
-        {
-            Debug.Log("点击到了UI");
-        }
-        else
-        {
-            Debug.Log("点击到了场景");
-            return;
-        }
-        GameObject gameObject = list.First().gameObject;
-        if (gameObject.tag == "TaskAvatar") // 添加序列任务
-        {
-            var page = gameObject.transform.parent.parent.GetComponent<Page>();
-            page.CurrentSequenceAddTask(gameObject, false);
-        }
-        else if (gameObject.tag == "SeqAvatar") // 序列转换
-        {
-            var page = gameObject.transform.parent.parent.GetComponent<Page>();
-            int targetIndex = int.Parse(gameObject.transform.GetComponent<TMP_Text>().text);
-            page.SwitchCurrentSequence(targetIndex);
-        }
+        GameManager.gameAsset.MouseLeftClick?.Invoke();
+        // mouseLeftPerformPosition = Input.mousePosition;
+        //
+        // PointerEventData eventData = new PointerEventData(GameManager.gameAsset.eventSystem);
+        // eventData.pressPosition = Input.mousePosition;
+        // eventData.position = Input.mousePosition;
+        //
+        // List<RaycastResult> list = new List<RaycastResult>();
+        // GameManager.gameAsset.graphicRaycaster.Raycast(eventData, list);
+        // if (list.Count != 0)
+        // {
+        //     Debug.Log("点击到了UI");
+        // }
+        // else
+        // {
+        //     Debug.Log("点击到了场景");
+        //     return;
+        // }
+        // GameObject gameObject = list.First().gameObject;
+        // if (gameObject.tag == "TaskAvatar") // 添加序列任务
+        // {
+        //     var page = gameObject.transform.parent.parent.GetComponent<Page>();
+        //     page.CurrentSequenceAddTask(gameObject, false);
+        // }
+        // else if (gameObject.tag == "SeqAvatar") // 序列转换
+        // {
+        //     var page = gameObject.transform.parent.parent.GetComponent<Page>();
+        //     int targetIndex = int.Parse(gameObject.transform.GetComponent<TMP_Text>().text);
+        //     page.SwitchCurrentSequence(targetIndex);
+        // }
 
     }
     void OnMouseLeftCanceled(InputAction.CallbackContext callbackContext)
     {
-        var currentMousePosition = Input.mousePosition;
-        if (mouseLeftPerformPosition != currentMousePosition)
-        {
-            var gameObjects = MarqueeSelect(mouseLeftPerformPosition, currentMousePosition);
-        }
+        // var currentMousePosition = Input.mousePosition;
+        // if (mouseLeftPerformPosition != currentMousePosition)
+        // {
+        //     var gameObjects = MarqueeSelect(mouseLeftPerformPosition, currentMousePosition);
+        // }
     }
     public void OnMouseRightPerformed(InputAction.CallbackContext callbackContext)
     {

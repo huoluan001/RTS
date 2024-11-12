@@ -2043,7 +2043,7 @@ GameObject:
   - component: {fileID: 501399670}
   - component: {fileID: 501399669}
   - component: {fileID: 501399668}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2094,7 +2094,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 927a78b137b8f4e95992167b8adfbd88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2421,8 +2421,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  tilePrefab: {fileID: 3727140321169358480, guid: dd53155b956a1e640ac1e7588c6724a8, type: 3}
+  tileNoScriptPrefab: {fileID: 3727140321169358480, guid: dd53155b956a1e640ac1e7588c6724a8, type: 3}
+  tileWithScriptPrefab: {fileID: 7472066398290276052, guid: 4ac79c30bb1961c4da342979e1113f6c, type: 3}
   mark: {fileID: 1405082547}
+  tileMapTests: []
 --- !u!1 &592841430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,11 +3591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e2734eaa5048e46b14efcb56d48b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 3727140321169358480, guid: dd53155b956a1e640ac1e7588c6724a8, type: 3}
-  mask: {fileID: 1405082547}
-  pos: {x: 0, y: 0, z: 0}
-  l: 11
-  w: 11
 --- !u!1 &1455073286
 GameObject:
   m_ObjectHideFlags: 0
