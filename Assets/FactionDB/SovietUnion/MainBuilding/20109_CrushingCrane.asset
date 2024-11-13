@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
   id: 20109
+  priority: 0
   nameChinese: "\u538B\u788E\u8D77\u91CD\u673A"
   nameEnglish: CrushingCrane
   icon: {fileID: 21300000, guid: 530aa5e409cf2433e922ff036989633b, type: 3}
