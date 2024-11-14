@@ -2,5 +2,6 @@ using UnityEngine;
 
 public static class GameManager
 {
-    public static GameAsset gameAsset;
+    public static GameAsset GameAsset;
+    public static EventAsset EventAsset;
 }

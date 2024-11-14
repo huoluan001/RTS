@@ -78,7 +78,7 @@ public class Sequence
             
             produceTasks.Add(info, new ProduceTask<IBaseInfo>(info, this, taskAvatar));
             // 图标变为灰色, 涂层打开，数量标记打开
-            icon.material = GameManager.gameAsset.grayscale;
+            icon.material = GameManager.GameAsset.grayscale;
             Coating.gameObject.SetActive(true);
             Coating.fillAmount = 1f;
             tMP_Text.gameObject.SetActive(true);

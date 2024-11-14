@@ -60,20 +60,20 @@ public class BuildingManager : MonoBehaviour
 
         _currentUpdateAction = OnBuildingAndTileMapMoveByMousePos;
 
-        GameManager.gameAsset.MouseLeftClickPerformed = () =>
+        GameManager.EventAsset.MouseLeftClickPerformed = () =>
         {
             _currentUpdateAction = OnBuildingAndTileMapRotationByMousePos;
             _currentUpdateAction += () =>
             {
                 _allowBuild = tileMapTests.All(tileMapTest => tileMapTest.gameObjects.Count == 0);
                 if (_allowBuild)
-                    GameManager.gameAsset.MouseLeftClickCanceled = () =>
+                    GameManager.EventAsset.MouseLeftClickCanceled = () =>
                     {
                         BuildingManagerEnd();
                         Debug.Log("success build");
                     };
                 else
-                    GameManager.gameAsset.MouseLeftClickCanceled =
+                    GameManager.EventAsset.MouseLeftClickCanceled =
                         () => _currentUpdateAction = OnBuildingAndTileMapMoveByMousePos;
             };
         };
@@ -82,7 +82,7 @@ public class BuildingManager : MonoBehaviour
 
     public void Awake()
     {
-        GameManager.gameAsset.buildingManager = this;
+        GameManager.GameAsset.buildingManager = this;
         BuildingManagerEnd();
     }
 

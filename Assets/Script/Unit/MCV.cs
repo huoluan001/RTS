@@ -20,13 +20,13 @@ public class MVC : MainBuilding
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
-            GameManager.gameAsset.UIManager.AddMCVSequence(factionSo);
+            GameManager.GameAsset.UIManager.AddMCVSequence(factionSo);
         }
     }
 
     public virtual void Open()
     {
-        var id = GameManager.gameAsset.UIManager.AddMCVSequence(factionSo);
+        var id = GameManager.GameAsset.UIManager.AddMCVSequence(factionSo);
         mainBuildingSequenceID = id.x;
         OtherBuildingSequenceID = id.y;
     }

@@ -29,10 +29,6 @@ public class GameAsset : ScriptableObject
 
     // Mouse And Keyboard
     
-    // Event
-    public Action MouseLeftClickPerformed;
-    
-    public Action MouseLeftClickCanceled;
     
     
     public Material grayscale;

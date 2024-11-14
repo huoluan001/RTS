@@ -14,25 +14,25 @@ public class Mouse : MonoBehaviour
     private GameObject selectionBoxUI;
     private void Awake()
     {
-        GameManager.gameAsset.inputSystem = new RTSInputSystem();
-        GameManager.gameAsset.inputSystem.Enable();
-        GameManager.gameAsset.player = GameManager.gameAsset.inputSystem.Player;
+        GameManager.GameAsset.inputSystem = new RTSInputSystem();
+        GameManager.GameAsset.inputSystem.Enable();
+        GameManager.GameAsset.player = GameManager.GameAsset.inputSystem.Player;
     }
     private void Start()
     {
-        GameManager.gameAsset.player.MouseLeft.performed += OnMouseLeftPerformed;
-        GameManager.gameAsset.player.MouseLeft.canceled += OnMouseLeftCanceled;
+        GameManager.GameAsset.player.MouseLeft.performed += OnMouseLeftPerformed;
+        GameManager.GameAsset.player.MouseLeft.canceled += OnMouseLeftCanceled;
 
-        GameManager.gameAsset.player.MouseRight.performed += OnMouseRightPerformed;
-        GameManager.gameAsset.player.MouseLeftDoubleClick.performed += MouseLeftDoubleClick;
+        GameManager.GameAsset.player.MouseRight.performed += OnMouseRightPerformed;
+        GameManager.GameAsset.player.MouseLeftDoubleClick.performed += MouseLeftDoubleClick;
 
-        GameManager.gameAsset.player.AggressionModel.performed += AggressionModel;
-        GameManager.gameAsset.player.VigilanceModel.performed += VigilanceMode;
-        GameManager.gameAsset.player.StickingModel.performed += SattingModel;
-        GameManager.gameAsset.player.CeasefireModel.performed += CeasefireModel;
+        GameManager.GameAsset.player.AggressionModel.performed += AggressionModel;
+        GameManager.GameAsset.player.VigilanceModel.performed += VigilanceMode;
+        GameManager.GameAsset.player.StickingModel.performed += SattingModel;
+        GameManager.GameAsset.player.CeasefireModel.performed += CeasefireModel;
 
 
-        selectionBoxUI = GameManager.gameAsset.selectionBoxUI;
+        selectionBoxUI = GameManager.GameAsset.selectionBoxUI;
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class Mouse : MonoBehaviour
 
     void OnMouseLeftPerformed(InputAction.CallbackContext callbackContext)
     {
-        GameManager.gameAsset.MouseLeftClickPerformed?.Invoke();
+        GameManager.EventAsset.MouseLeftClickPerformed?.Invoke();
         // mouseLeftPerformPosition = Input.mousePosition;
         //
         // PointerEventData eventData = new PointerEventData(GameManager.gameAsset.eventSystem);
@@ -76,7 +76,7 @@ public class Mouse : MonoBehaviour
     }
     void OnMouseLeftCanceled(InputAction.CallbackContext callbackContext)
     {
-        GameManager.gameAsset.MouseLeftClickCanceled?.Invoke();
+        GameManager.EventAsset.MouseLeftClickCanceled?.Invoke();
         // var currentMousePosition = Input.mousePosition;
         // if (mouseLeftPerformPosition != currentMousePosition)
         // {
@@ -153,7 +153,7 @@ public class Mouse : MonoBehaviour
     /// </summary>
     private void SelectionBoxUIUpdate()
     {
-        if (GameManager.gameAsset.inputSystem.Player.MouseLeft.IsInProgress())
+        if (GameManager.GameAsset.inputSystem.Player.MouseLeft.IsInProgress())
         {
             var leftUp = mouseLeftPerformPosition;
             var rightDown = Input.mousePosition;

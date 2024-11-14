@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         gameAsset.commander = this;
-        GameManager.gameAsset = gameAsset;
+        GameManager.GameAsset = gameAsset;
         
     }
 

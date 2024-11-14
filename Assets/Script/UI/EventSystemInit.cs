@@ -6,6 +6,6 @@ public class EventSystemInit : MonoBehaviour
 {
     private void Awake()
     {
-        GameManager.gameAsset.eventSystem = GetComponent<EventSystem>();
+        GameManager.GameAsset.eventSystem = GetComponent<EventSystem>();
     }
 }

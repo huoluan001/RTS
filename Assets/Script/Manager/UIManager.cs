@@ -20,9 +20,9 @@ public class UIManager : MonoBehaviour
     public GameObject MCV;
     private void Awake()
     {
-        GameManager.gameAsset.UIManager = this;
-        GameManager.gameAsset.selectionBoxUI = selectionBoxUI;
-        GameManager.gameAsset.graphicRaycaster = GetComponent<GraphicRaycaster>();
+        GameManager.GameAsset.UIManager = this;
+        GameManager.GameAsset.selectionBoxUI = selectionBoxUI;
+        GameManager.GameAsset.graphicRaycaster = GetComponent<GraphicRaycaster>();
     }
 
     private void Start()
@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            GameManager.gameAsset.buildingManager.StartBuilding(MCV);
+            GameManager.GameAsset.buildingManager.StartBuilding(MCV);
         }
     }
     public Vector2Int CreateMainAndOtherBuildingPage(FactionSO factionSO)

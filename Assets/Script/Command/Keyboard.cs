@@ -10,7 +10,7 @@ public class Keyboard : MonoBehaviour
     }
     private void Start()
     {
-        gameAsset = GameManager.gameAsset;
+        gameAsset = GameManager.GameAsset;
         gameAsset.player.CamareMove.performed += GetArrow;
         gameAsset.player.CamareMove.canceled += CameraMoveVector2Clear;
         gameAsset.player.LeftShiftRightMouse.performed += Click;
