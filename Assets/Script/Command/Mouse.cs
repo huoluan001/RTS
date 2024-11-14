@@ -42,7 +42,7 @@ public class Mouse : MonoBehaviour
 
     void OnMouseLeftPerformed(InputAction.CallbackContext callbackContext)
     {
-        GameManager.gameAsset.MouseLeftClick?.Invoke();
+        GameManager.gameAsset.MouseLeftClickPerformed?.Invoke();
         // mouseLeftPerformPosition = Input.mousePosition;
         //
         // PointerEventData eventData = new PointerEventData(GameManager.gameAsset.eventSystem);
@@ -76,6 +76,7 @@ public class Mouse : MonoBehaviour
     }
     void OnMouseLeftCanceled(InputAction.CallbackContext callbackContext)
     {
+        GameManager.gameAsset.MouseLeftClickCanceled?.Invoke();
         // var currentMousePosition = Input.mousePosition;
         // if (mouseLeftPerformPosition != currentMousePosition)
         // {

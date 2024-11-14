@@ -1,13 +1,13 @@
 using NodeCanvas.StateMachines;
 using UnityEngine;
 
-public class MVC : MonoBehaviour
+public class MVC : MainBuilding
 {
-    public Player command;
+    public ArmySO armySo;
+    
     public TroopType currentState = TroopType.Vehicle;
 
-    public FactionEnum factionEnum;
-    public FactionSO factionSO;
+    
 
     public int mainBuildingSequenceID;
     public int OtherBuildingSequenceID;
@@ -20,13 +20,13 @@ public class MVC : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
-            GameManager.gameAsset.UIManager.AddMCVSequence(factionSO);
+            GameManager.gameAsset.UIManager.AddMCVSequence(factionSo);
         }
     }
 
     public virtual void Open()
     {
-        var id = GameManager.gameAsset.UIManager.AddMCVSequence(factionSO);
+        var id = GameManager.gameAsset.UIManager.AddMCVSequence(factionSo);
         mainBuildingSequenceID = id.x;
         OtherBuildingSequenceID = id.y;
     }
