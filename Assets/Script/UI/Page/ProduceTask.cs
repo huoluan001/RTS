@@ -1,70 +1,75 @@
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class ProduceTask<TScriptableObject> where TScriptableObject : IBaseInfo
+public class ProduceTask
 {
-    public dynamic info;
-    public Sequence sequence;
-    public int count;
-    private float produceSpeed4Price;
-    private float produceSpeed4Value;
-    private GameObject gameObjectPrefab;
-    private TaskAvatar taskAvatar;
+    public IBaseInfo Info;
+    public int Count;
+    public float Value;
+    public Sequence Sequence;
+    public TaskState CurrentTaskState;
 
-    public ProduceTask(TScriptableObject info, Sequence sequence, TaskAvatar taskAvatar)
-    {
-        this.sequence = sequence;
-        this.taskAvatar = taskAvatar;
-        this.count = 0;
-        if(info is MainBuildingSO mainBuildingSO)
-        {
-            this.info = mainBuildingSO;
-            produceSpeed4Price = info.Price / mainBuildingSO.BuildingAndPlacementTime.x;
-            produceSpeed4Value = 1 / mainBuildingSO.BuildingAndPlacementTime.x;
-        }
-        else if (info is OtherBuildingSO otherBuildingSO)
-        {
-            this.info = otherBuildingSO;
-            produceSpeed4Price = info.Price / otherBuildingSO.BuildingAndPlacementTime.x;
-            produceSpeed4Value = 1 / otherBuildingSO.BuildingAndPlacementTime.x;
-        }
-        else if (info is ArmySO armySO)
-        {
-            this.info = armySO;
-            produceSpeed4Price = info.Price / armySO.BuildingTime;
-            produceSpeed4Value = 1 / armySO.BuildingTime;
-        }
-    }
-
-    public void ProductionMovesForward()
-    {
-        // var commander = GameManager.gameAsset.commander;
-        // if(commander.Fund < produceSpeed4Price * Time.deltaTime)
-        // {
-        //     commander.ProduceStop();
-        // }
-        // else
-        // {
-            // commander.Pay(produceSpeed4Price * Time.deltaTime);
-            taskAvatar.Coating.fillAmount -= produceSpeed4Value * Time.deltaTime;
-            if(taskAvatar.Coating.fillAmount <= 0)
-            {
-                // end 完成一次生产
-                // var gameObject = GameObject.Instantiate(gameObjectPrefab);
-                Debug.Log("success");
-                count--;
-                sequence.currentSequenceAllTaskCount--;
-                if(count <= 0)
-                {
-                    sequence.EndCurrentTaskCallBack(taskAvatar);
-                }
-                else
-                {
-                    taskAvatar.Coating.fillAmount = 1;
-                }
-            }
-        // }
-    }
-
+    private float _produceSpeed4Price;
+    private float _produceSpeed4Value;
+    private TaskAvatar _taskAvatar;
     
+
+    public ProduceTask(IBaseInfo info, int count, Sequence sequence, TaskAvatar taskAvatar)
+    {
+        Info = info;
+        Count = count;
+        Value = 1f;
+        Sequence = sequence;
+        this._taskAvatar = taskAvatar;
+        CurrentTaskState = TaskState.Waiting;
+        taskAvatar.Tasks.Add(this);
+
+        int price = info.Price;
+        float time;
+        if (info is MainBuildingSO || info is OtherBuildingSO)
+        {
+            time = ((MainBuildingSO)info).BuildingAndPlacementTime.x;
+        }
+        else
+        {
+            time = ((ArmySO)info).BuildingTime;
+        }
+
+        _produceSpeed4Price = price / time;
+        _produceSpeed4Value = 1 / time;
+    }
+
+    public void Forward()
+    {
+        if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price) return;
+        GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
+        Value -= _produceSpeed4Value;
+        _taskAvatar.UpdateValue(Value);
+        if (_taskAvatar.Completed())
+        {
+            // success
+            // Instantiate(info.GameObjectPrefab);
+            if (Count == 1)
+            {
+                _taskAvatar.Coating.fillAmount = 1;
+                _taskAvatar.Tasks.Remove(this);
+                _taskAvatar.UpdateState();
+            }
+            else
+            {
+                Count--;
+                Value = 1f;
+                _taskAvatar.UpdateValue(Value);
+                _taskAvatar.UpdateCount(Count);
+            }
+            
+        }
+    }
+    
+    public enum TaskState
+    {
+        Running,
+        Waiting,
+        Paused,
+    }
 }

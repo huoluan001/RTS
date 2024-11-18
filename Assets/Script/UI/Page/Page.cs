@@ -104,10 +104,7 @@ public class Page : MonoBehaviour
         {
             lll.Add(int.Parse(i.transform.GetComponent<TMP_Text>().text));
         }
-
-
-
-
+        
         return nextSequenceIndex++;
     }
 
@@ -167,7 +164,7 @@ public class Page : MonoBehaviour
 
     public Sequence GetCurrentSequence()
     {
-        return sequences.First(sequence => sequence.sequenceIndex == currentSequenceIndex);
+        return sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
     }
 
     public void SwitchCurrentSequence(int targetIndex)

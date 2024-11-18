@@ -5,6 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject selectionBoxUI;
 
+    // save page info
     public Page mainBuildingPage;
     public Page otherBuildingPage;
     public Page infantryPage;
