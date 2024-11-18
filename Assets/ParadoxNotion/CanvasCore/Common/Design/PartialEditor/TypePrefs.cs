@@ -214,7 +214,7 @@ namespace ParadoxNotion.Design
             var absPath = SyncFilePath();
             if ( !string.IsNullOrEmpty(absPath) ) {
                 var json = System.IO.File.ReadAllText(absPath);
-                var temp = JSONSerializer.Deserialize<List<Type>>(json);
+                var temp = JSoNSerializer.Deserialize<List<Type>>(json);
                 if ( temp != null ) {
                     result = temp;
                     return true;
@@ -227,7 +227,7 @@ namespace ParadoxNotion.Design
         static void TrySaveSyncFile(List<Type> types) {
             var absPath = SyncFilePath();
             if ( !string.IsNullOrEmpty(absPath) ) {
-                var json = JSONSerializer.Serialize(typeof(List<Type>), types, null, true);
+                var json = JSoNSerializer.Serialize(typeof(List<Type>), types, null, true);
                 System.IO.File.WriteAllText(absPath, json);
             }
         }

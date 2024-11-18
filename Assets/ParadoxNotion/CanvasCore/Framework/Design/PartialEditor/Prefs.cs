@@ -61,7 +61,7 @@ namespace NodeCanvas.Editor
         [InitializeOnLoadMethod]
         static void LoadData() {
             var pref = EditorPrefs.GetString(PREFS_KEY_NAME);
-            if ( !string.IsNullOrEmpty(pref) ) { _data = JSONSerializer.Deserialize<SerializedData>(pref); }
+            if ( !string.IsNullOrEmpty(pref) ) { _data = JSoNSerializer.Deserialize<SerializedData>(pref); }
             if ( _data == null ) { _data = new SerializedData(); }
         }
 
@@ -236,7 +236,7 @@ namespace NodeCanvas.Editor
 
         //Save the prefs
         static void Save() {
-            EditorPrefs.SetString(PREFS_KEY_NAME, JSONSerializer.Serialize(typeof(SerializedData), data));
+            EditorPrefs.SetString(PREFS_KEY_NAME, JSoNSerializer.Serialize(typeof(SerializedData), data));
         }
     }
 }

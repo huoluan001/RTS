@@ -38,7 +38,7 @@ namespace ParadoxNotion.Serialization.FullSerializer
                 if ( _value is string ) return fsDataType.String;
                 if ( _value is Dictionary<string, fsData> ) return fsDataType.Object;
                 if ( _value is List<fsData> ) return fsDataType.Array;
-                throw new InvalidOperationException("unknown JSON data type");
+                throw new InvalidOperationException("unknown JSoN data type");
             }
         }
 

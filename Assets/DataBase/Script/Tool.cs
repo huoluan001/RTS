@@ -6,18 +6,18 @@ using NPOI.SS.UserModel;
 using Unity.Mathematics;
 public static class Tool
 {
-    public static FactionSO AlliedForcesFactionSO;
-    public static FactionSO EmpireFactionSO;
-    public static FactionSO SovietUnionFactionSO;
-    public static ArmorSOTable ArmorSOTable;
-    public static MainBuildingSOTable MainBuildingSOTable;
-    public static void InitFactionSOConvertTo(FactionSO alliedForcesFactionSO, FactionSO empireFactionSO, FactionSO sovietUnionFactionSO, ArmorSOTable armorSOTable, MainBuildingSOTable mainBuildingSOTable)
+    public static FactionSo AlliedForcesFactionSo;
+    public static FactionSo EmpireFactionSo;
+    public static FactionSo SovietUnionFactionSo;
+    public static ArmorSoTable ArmorSoTable;
+    public static MainBuildingSoTable MainBuildingSoTable;
+    public static void InitFactionSoConvertTo(FactionSo alliedForcesFactionSo, FactionSo empireFactionSo, FactionSo sovietUnionFactionSo, ArmorSoTable armorSoTable, MainBuildingSoTable mainBuildingSoTable)
     {
-        AlliedForcesFactionSO = alliedForcesFactionSO;
-        EmpireFactionSO = empireFactionSO;
-        SovietUnionFactionSO = sovietUnionFactionSO;
-        ArmorSOTable = armorSOTable;
-        MainBuildingSOTable = mainBuildingSOTable;
+        AlliedForcesFactionSo = alliedForcesFactionSo;
+        EmpireFactionSo = empireFactionSo;
+        SovietUnionFactionSo = sovietUnionFactionSo;
+        ArmorSoTable = armorSoTable;
+        MainBuildingSoTable = mainBuildingSoTable;
     }
     public static List<ActionScope> ConvertToActionScopes(this string value)
     {
@@ -52,9 +52,9 @@ public static class Tool
         int[] res = value.Split(',').Select(i => int.Parse(i)).ToArray();
         return new Vector2Int(res[0], res[1]);
     }
-    public static MainBuildingSO ConvertToMainBuildingWithName(this string name)
+    public static MainBuildingSo ConvertToMainBuildingWithName(this string name)
     {
-        return MainBuildingSOTable.mainBuildingSOTableElement.Values.ToList().
+        return MainBuildingSoTable.mainBuildingSoTableElement.Values.ToList().
             FirstOrDefault(mainBuilding => mainBuilding.NameChinese == name);
     }
     public static Vector3 ConvertToVector3(this string value)
@@ -63,10 +63,10 @@ public static class Tool
         float[] res = value.Split(',').Select(i => float.Parse(i)).ToArray();
         return new Vector3(res[0], res[1], res[2]);
     }
-    public static ArmorSO ConvertToArmorSO(this string value)
+    public static ArmorSo ConvertToArmorSo(this string value)
     {
         if (value == "") return null;
-        foreach (var armor in ArmorSOTable.armorSOTableElement)
+        foreach (var armor in ArmorSoTable.armorSoTableElement)
         {
             if (armor.Value.ArmorNameZH == value)
             {
@@ -80,9 +80,9 @@ public static class Tool
         return value == null ? "" : value.Cells[index].ToString().Trim();
 
     }
-    public static FactionSO ConvertToFaction(this string value)
+    public static FactionSo ConvertToFaction(this string value)
     {
-        return value switch { "盟军" => AlliedForcesFactionSO, "帝国" => EmpireFactionSO, _ => SovietUnionFactionSO };
+        return value switch { "盟军" => AlliedForcesFactionSo, "帝国" => EmpireFactionSo, _ => SovietUnionFactionSo };
     }
     public static Vector2 ConvertToVector2(this string value, char option = ',')
     {
@@ -92,14 +92,14 @@ public static class Tool
     }
     public static void ReadAndWriteRowToIBaseInfoAsync(this IRow current, IBaseInfo baseInfo)
     {
-        FactionSO factionSO = current.GetCellString(1).ConvertToFaction();
-        if (baseInfo is MainBuildingSO && !factionSO.MainBuildings.Contains(baseInfo))
+        FactionSo factionSo = current.GetCellString(1).ConvertToFaction();
+        if (baseInfo is MainBuildingSo && !factionSo.MainBuildings.Contains(baseInfo))
         {
-            factionSO.MainBuildings.Add(baseInfo as MainBuildingSO);
+            factionSo.MainBuildings.Add(baseInfo as MainBuildingSo);
         }
-        else if (baseInfo is OtherBuildingSO && !factionSO.OtherBuildings.Contains(baseInfo))
+        else if (baseInfo is OtherBuildingSo && !factionSo.OtherBuildings.Contains(baseInfo))
         {
-            factionSO.OtherBuildings.Add(baseInfo as OtherBuildingSO);
+            factionSo.OtherBuildings.Add(baseInfo as OtherBuildingSo);
         }
 
         int id = int.Parse(current.GetCellString(2));
@@ -108,25 +108,25 @@ public static class Tool
         string commentChinese = current.GetCellString(6);
         string commentEnglish = "null";
         TroopType troopType = current.GetCellString(7).ConvertToTroop();
-        if (baseInfo is ArmySO && troopType is TroopType.Soldier && !factionSO.Infantry.Contains(baseInfo))
-            factionSO.Infantry.Add(baseInfo as ArmySO);
+        if (baseInfo is ArmySo && troopType is TroopType.Soldier && !factionSo.Infantry.Contains(baseInfo))
+            factionSo.Infantry.Add(baseInfo as ArmySo);
         List<ActionScope> actionScopes = current.GetCellString(8).ConvertToActionScopes();
         int exp = int.Parse(current.GetCellString(9));
         int hp = int.Parse(current.GetCellString(10));
-        List<MainBuildingSO> requirements = baseInfo is MainBuildingSO || current.GetCellString(11) == "null" ? null : current.GetCellString(11).Split(',').Select(req => req.ConvertToMainBuildingWithName()).ToList();
+        List<MainBuildingSo> requirements = baseInfo is MainBuildingSo || current.GetCellString(11) == "null" ? null : current.GetCellString(11).Split(',').Select(req => req.ConvertToMainBuildingWithName()).ToList();
         int price = int.Parse(current.GetCellString(12));
         Vector2Int warningAndClearFogRad = current.GetCellString(13).ConvertToVector2Int();
-        ArmorSO armorType = baseInfo is ArmySO ? current.GetCellString(15).ConvertToArmorSO() : current.GetCellString(14).ConvertToArmorSO();
-        baseInfo.SetBaseInfo(factionSO, id, nameChinese, nameEnglish, null, commentChinese, commentEnglish, troopType, actionScopes, exp, hp, price, requirements, warningAndClearFogRad, armorType, null);
+        ArmorSo armorType = baseInfo is ArmySo ? current.GetCellString(15).ConvertToArmorSo() : current.GetCellString(14).ConvertToArmorSo();
+        baseInfo.SetBaseInfo(factionSo, id, nameChinese, nameEnglish, null, commentChinese, commentEnglish, troopType, actionScopes, exp, hp, price, requirements, warningAndClearFogRad, armorType, null);
     }
-    public static void ReadAndWriteRowToIBuilding(this IRow current, int startIndex, IBuilding building, Dictionary<string, BuildingLabelSO> buildingLabelSOs)
+    public static void ReadAndWriteRowToIBuilding(this IRow current, int startIndex, IBuilding building, Dictionary<string, BuildingLabelSo> buildingLabelSos)
     {
-        BuildingLabelSO buildingLabelSO = current.GetCellString(startIndex) == "" ? null : buildingLabelSOs[current.GetCellString(startIndex)];
+        BuildingLabelSo buildingLabelSo = current.GetCellString(startIndex) == "" ? null : buildingLabelSos[current.GetCellString(startIndex)];
         Vector2Int area = current.GetCellString(startIndex + 1).ConvertToVector2Int();
         Vector2Int expandScope = current.GetCellString(startIndex + 2).ConvertToVector2Int();
         Vector2 buildingAndPlacementTime = current.GetCellString(startIndex + 3).ConvertToVector2();
         int powerConsume = int.Parse(current.GetCellString(startIndex + 4));
-        building.SetBuilding(buildingLabelSO, area, expandScope, buildingAndPlacementTime, powerConsume);
+        building.SetBuilding(buildingLabelSo, area, expandScope, buildingAndPlacementTime, powerConsume);
     }
     public static void ReadAndWriteRowToISkill(this IRow current, int startIndex, ISkill skill)
     {
@@ -139,13 +139,13 @@ public static class Tool
         float postTime = float.Parse(current.GetCellString(startIndex + 6));
         skill.SetSkill(skillNameZH, skillNameEN, skillComment, cd, preTime, postTime);
     }
-    public static void ReadAndWriteRowToIWeapon(this IRow current, int startIndex, IWeapon weapon, Dictionary<int, DamageTypeSO> damageTypeSOs)
+    public static void ReadAndWriteRowToIWeapon(this IRow current, int startIndex, IWeapon weapon, Dictionary<int, DamageTypeSo> damageTypeSos)
     {
         string weaponNameZH = current.GetCellString(startIndex);
         if (weaponNameZH == "") return;
         string weaponNameEN = null;
-        DamageTypeSO damageType = current.GetCellString(startIndex + 1) == "" ? null :
-                        damageTypeSOs.Values.FirstOrDefault(damageType => damageType.damageTypeZH == current.GetCellString(startIndex + 1));
+        DamageTypeSo damageType = current.GetCellString(startIndex + 1) == "" ? null :
+                        damageTypeSos.Values.FirstOrDefault(damageType => damageType.damageTypeZH == current.GetCellString(startIndex + 1));
         Vector2 singleDamage = current.GetCellString(startIndex + 2).ConvertToVector2();
         Vector2 range = current.GetCellString(startIndex + 3).ConvertToVector2();
         int magazineSize = int.Parse(current.GetCellString(startIndex + 4));
@@ -156,7 +156,7 @@ public static class Tool
         Vector2 sputteringDamage = sputteringDamage = current.GetCellString(startIndex + 9).ConvertToVector2();
         weapon.SetWeapon(weaponNameZH, weaponNameEN, damageType, singleDamage, range, magazineSize, magazineLoadingTime, aimingTime, firingDuration, sputteringRadius, sputteringDamage);
     }
-    public static void ReadAndWriteRowToIArmy(this IRow current, int startIndex, IArmy army, Dictionary<string, ArmyLabelSO> armyLabelSOs)
+    public static void ReadAndWriteRowToIArmy(this IRow current, int startIndex, IArmy army, Dictionary<string, ArmyLabelSo> armyLabelSos)
     {
         Vector3 moveSpeed = current.GetCellString(startIndex).ConvertToVector3();
         bool3 isReverseMove = new bool3(current.GetCellString(startIndex + 1) == "F" ? false : true,
@@ -170,9 +170,9 @@ public static class Tool
         {
             crushingAndCrushedLevel[CrushLabel.New] = newvalue;
         }
-        List<ArmyLabelSO> labels = current.GetCellString(startIndex + 7).Split(',').Select(l => armyLabelSOs[l]).ToList();
+        List<ArmyLabelSo> labels = current.GetCellString(startIndex + 7).Split(',').Select(l => armyLabelSos[l]).ToList();
         int buildingTime = int.Parse(current.GetCellString(startIndex + 8));
-        List<MainBuildingSO> buildFacilities = current.GetCellString(startIndex + 9).Split(',').Select(m => m.ConvertToMainBuildingWithName()).ToList();
+        List<MainBuildingSo> buildFacilities = current.GetCellString(startIndex + 9).Split(',').Select(m => m.ConvertToMainBuildingWithName()).ToList();
         army.SetArmy(moveSpeed, isReverseMove, isAmphibious, crushingAndCrushedLevel, labels, buildingTime, buildFacilities);
     }
 }

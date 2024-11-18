@@ -110,7 +110,7 @@ namespace ParadoxNotion.Design
             if ( GUILayout.Button("Save Preset", EditorStyles.miniButtonMid) ) {
                 var path = EditorUtility.SaveFilePanelInProject("Save Types Preset", "PreferredTypes", "typePrefs", "");
                 if ( !string.IsNullOrEmpty(path) ) {
-                    System.IO.File.WriteAllText(path, JSONSerializer.Serialize(typeof(List<System.Type>), typeList, null, true));
+                    System.IO.File.WriteAllText(path, JSoNSerializer.Serialize(typeof(List<System.Type>), typeList, null, true));
                     AssetDatabase.Refresh();
                 }
             }
@@ -119,7 +119,7 @@ namespace ParadoxNotion.Design
                 var path = EditorUtility.OpenFilePanel("Load Types Preset", "Assets", "typePrefs");
                 if ( !string.IsNullOrEmpty(path) ) {
                     var json = System.IO.File.ReadAllText(path);
-                    typeList = JSONSerializer.Deserialize<List<System.Type>>(json);
+                    typeList = JSoNSerializer.Deserialize<List<System.Type>>(json);
                     Save();
                 }
             }

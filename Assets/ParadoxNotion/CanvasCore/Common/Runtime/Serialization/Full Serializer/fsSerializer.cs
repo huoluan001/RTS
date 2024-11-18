@@ -16,7 +16,7 @@ namespace ParadoxNotion.Serialization.FullSerializer
         public const string KEY_VERSION = "$version";
         public const string KEY_CONTENT = "$content";
 
-        ///<summary> Returns true if the given key is a special keyword that full serializer uses to add additional metadata on top of the emitted JSON.</summary>
+        ///<summary> Returns true if the given key is a special keyword that full serializer uses to add additional metadata on top of the emitted JSoN.</summary>
         public static bool IsReservedKeyword(string key) {
             switch ( key ) {
                 case ( KEY_OBJECT_REFERENCE ): return true;

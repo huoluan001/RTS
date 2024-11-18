@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     public string PlayerName;
     public Color color;
     public TeamId teamId = TeamId.None;
-    public FactionSO factionSO;
+    public FactionSo factionSo;
     public FactionEnum factionEnum;
     #endregion
 

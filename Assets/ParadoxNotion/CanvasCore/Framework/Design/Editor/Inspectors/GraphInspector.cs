@@ -25,7 +25,7 @@ namespace NodeCanvas.Editor
                 if ( GUILayout.Button("Create External Serialization Text Asset") ) {
                     var path = EditorUtility.SaveFilePanelInProject("Create Text Asset", target.name, "txt", "");
                     if ( !string.IsNullOrEmpty(path) ) {
-                        System.IO.File.WriteAllText(path, ParadoxNotion.Serialization.JSONSerializer.PrettifyJson(graph.GetSerializedJsonData()));
+                        System.IO.File.WriteAllText(path, ParadoxNotion.Serialization.JSoNSerializer.PrettifyJson(graph.GetSerializedJsonData()));
                         AssetDatabase.Refresh();
                         graph.externalSerializationFile = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
                     }

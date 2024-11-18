@@ -225,12 +225,12 @@ namespace ParadoxNotion.Serialization.FullSerializer
             return CompressedJson(data);
         }
 
-        ///<summary> Writes the pretty JSON output data to the given stream.</summary>
+        ///<summary> Writes the pretty JSoN output data to the given stream.</summary>
         public static void PrettyJson(fsData data, TextWriter outputStream) {
             BuildPrettyString(data, outputStream, 0);
         }
 
-        ///<summary> Returns the data in a pretty printed JSON format.</summary>
+        ///<summary> Returns the data in a pretty printed JSoN format.</summary>
         public static string PrettyJson(fsData data) {
             var sb = new StringBuilder();
             using ( var writer = new StringWriter(sb) ) {
@@ -239,12 +239,12 @@ namespace ParadoxNotion.Serialization.FullSerializer
             }
         }
 
-        ///<summary> Writes the compressed JSON output data to the given stream.</summary>
+        ///<summary> Writes the compressed JSoN output data to the given stream.</summary>
         public static void CompressedJson(fsData data, StreamWriter outputStream) {
             BuildCompressedString(data, outputStream);
         }
 
-        ///<summary> Returns the data in a relatively compressed JSON format.</summary>
+        ///<summary> Returns the data in a relatively compressed JSoN format.</summary>
         public static string CompressedJson(fsData data) {
             var sb = new StringBuilder();
             using ( var writer = new StringWriter(sb) ) {

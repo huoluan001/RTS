@@ -9,7 +9,7 @@ namespace ParadoxNotion.Serialization.FullSerializer
 
         ///<summary> Internal handle to the reflected member.</summary>
         public FieldInfo Field { get; private set; }
-        ///<summary> The serialized name of the property, as it should appear in JSON.</summary>
+        ///<summary> The serialized name of the property, as it should appear in JSoN.</summary>
         public string JsonName { get; private set; }
         ///<summary> The type of value that is stored inside of the property.</summary>
         public Type StorageType { get { return Field.FieldType; } }

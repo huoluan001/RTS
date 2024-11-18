@@ -8,11 +8,11 @@ public interface IArmy
     bool3 IsReverseMove { get; }
     bool IsAmphibious { get; }
     CrushList CrushingAndCrushedLevel { get; }
-    List<ArmyLabelSO> Labels { get; }
+    List<ArmyLabelSo> Labels { get; }
     int BuildingTime { get; }
-    List<MainBuildingSO> BuildFacilities { get; }
+    List<MainBuildingSo> BuildFacilities { get; }
 
     void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious,
-                    CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels,
-                        int buildingTime, List<MainBuildingSO> buildFacilities);
+                    CrushList crushingAndCrushedLevel, List<ArmyLabelSo> labels,
+                        int buildingTime, List<MainBuildingSo> buildFacilities);
 }

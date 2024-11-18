@@ -57,7 +57,7 @@ namespace NodeCanvas.DialogueTrees
 
         ///<summary>Replace the text of the statement found in brackets, with blackboard variables ToString and returns a Statement copy</summary>
         public IStatement BlackboardReplace(IBlackboard bb) {
-            var copy = ParadoxNotion.Serialization.JSONSerializer.Clone<Statement>(this);
+            var copy = ParadoxNotion.Serialization.JSoNSerializer.Clone<Statement>(this);
 
             copy.text = copy.text.ReplaceWithin('[', ']', (input) =>
             {

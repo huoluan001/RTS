@@ -105,7 +105,7 @@ namespace NodeCanvas.Framework
             }
 
             //deep clone
-            var newConnection = JSONSerializer.Clone<Connection>(this);
+            var newConnection = JSoNSerializer.Clone<Connection>(this);
 
             UndoUtility.RecordObject(newSource.graph, "Duplicate Connection");
 

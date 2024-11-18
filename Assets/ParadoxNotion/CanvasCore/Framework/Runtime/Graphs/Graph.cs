@@ -88,7 +88,7 @@ namespace NodeCanvas.Framework
 
                 if ( _externalSerializationFile != null ) {
                     var externalSerializationFilePath = ParadoxNotion.Design.EditorUtils.AssetToSystemPath(UnityEditor.AssetDatabase.GetAssetPath(_externalSerializationFile));
-                    System.IO.File.WriteAllText(externalSerializationFilePath, JSONSerializer.PrettifyJson(newSerialization));
+                    System.IO.File.WriteAllText(externalSerializationFilePath, JSoNSerializer.PrettifyJson(newSerialization));
                 }
 
                 //notify owner (this is basically used for bound graphs)
@@ -133,7 +133,7 @@ namespace NodeCanvas.Framework
         public string Serialize(List<UnityEngine.Object> references) {
             if ( references == null ) { references = new List<Object>(); }
             UpdateNodeIDs(true);
-            var result = JSONSerializer.Serialize(typeof(GraphSource), graphSource.Pack(this), references);
+            var result = JSoNSerializer.Serialize(typeof(GraphSource), graphSource.Pack(this), references);
             return result;
         }
 
@@ -144,7 +144,7 @@ namespace NodeCanvas.Framework
         //Otherwise, Validate can also be called separately.
         public bool Deserialize(string serializedGraph, List<UnityEngine.Object> references, bool validate) {
             if ( string.IsNullOrEmpty(serializedGraph) ) {
-                Logger.LogWarning("JSON is null or empty on graph when deserializing.", LogTag.SERIALIZATION, this);
+                Logger.LogWarning("JSoN is null or empty on graph when deserializing.", LogTag.SERIALIZATION, this);
                 return false;
             }
 
@@ -153,7 +153,7 @@ namespace NodeCanvas.Framework
 
             try {
                 //deserialize provided serialized graph into a new GraphSerializationData object and load it
-                JSONSerializer.TryDeserializeOverwrite<GraphSource>(graphSource, serializedGraph, references);
+                JSoNSerializer.TryDeserializeOverwrite<GraphSource>(graphSource, serializedGraph, references);
                 if ( graphSource.type != this.GetType().FullName ) {
                     Logger.LogError("Can't Load graph because of different Graph type serialized and required.", LogTag.SERIALIZATION, this);
                     _haltSerialization = true;
@@ -191,12 +191,12 @@ namespace NodeCanvas.Framework
         ///<summary>Serialize the local blackboard of the graph alone. The provided references list will be cleared and populated anew.</summary>
         public string SerializeLocalBlackboard(ref List<UnityEngine.Object> references) {
             if ( references != null ) { references.Clear(); }
-            return JSONSerializer.Serialize(typeof(BlackboardSource), localBlackboard, references);
+            return JSoNSerializer.Serialize(typeof(BlackboardSource), localBlackboard, references);
         }
 
         ///<summary>Deserialize the local blackboard of the graph alone.</summary>
         public bool DeserializeLocalBlackboard(string json, List<UnityEngine.Object> references) {
-            localBlackboard = JSONSerializer.TryDeserializeOverwrite<BlackboardSource>(localBlackboard, json, references);
+            localBlackboard = JSoNSerializer.TryDeserializeOverwrite<BlackboardSource>(localBlackboard, json, references);
             return true;
         }
 
@@ -968,7 +968,7 @@ namespace NodeCanvas.Framework
             HierarchyTree.Element parentElement = null;
             var stack = new Stack<HierarchyTree.Element>();
 
-            JSONSerializer.SerializeAndExecuteNoCycles(obj.GetType(), obj, (o) =>
+            JSoNSerializer.SerializeAndExecuteNoCycles(obj.GetType(), obj, (o) =>
             {
                 if ( o is ISerializationCollectable ) {
                     var e = new HierarchyTree.Element(o);
@@ -1002,7 +1002,7 @@ namespace NodeCanvas.Framework
         ///<summary>Get all Tasks found in target</summary>
         public static IEnumerable<Task> GetTasksInElement(IGraphElement target) {
             var result = new List<Task>();
-            JSONSerializer.SerializeAndExecuteNoCycles(target.GetType(), target, (o, d) =>
+            JSoNSerializer.SerializeAndExecuteNoCycles(target.GetType(), target, (o, d) =>
             {
                 if ( o is Task ) { result.Add((Task)o); }
             });
@@ -1012,7 +1012,7 @@ namespace NodeCanvas.Framework
         ///<summary>Get all BBParameters found in target</summary>
         public static IEnumerable<BBParameter> GetParametersInElement(IGraphElement target) {
             var result = new List<BBParameter>();
-            JSONSerializer.SerializeAndExecuteNoCycles(target.GetType(), target, (o, d) =>
+            JSoNSerializer.SerializeAndExecuteNoCycles(target.GetType(), target, (o, d) =>
             {
                 if ( o is BBParameter ) { result.Add((BBParameter)o); }
             });
@@ -1163,7 +1163,7 @@ namespace NodeCanvas.Framework
 
             //duplicate all nodes first
             foreach ( var original in originalNodes ) {
-                var newNode = targetGraph != null ? original.Duplicate(targetGraph) : JSONSerializer.Clone<Node>(original);
+                var newNode = targetGraph != null ? original.Duplicate(targetGraph) : JSoNSerializer.Clone<Node>(original);
                 newNodes.Add(newNode);
                 //store the out connections that need dulpicate along with the indeces of source and target
                 foreach ( var c in original.outConnections ) {

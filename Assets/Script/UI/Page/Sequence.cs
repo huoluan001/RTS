@@ -12,14 +12,16 @@ public class Sequence
     public readonly int SequenceIndex;
     public readonly Page Page;
     public SequenceType SequenceType;
-    public readonly FactionSO FactionSo;
+    public readonly FactionSo FactionSo;
 
     public readonly int CurrentSequenceMaxTaskCount;
     public int CurrentSequenceAllTaskCount;
 
     private LinkedList<ProduceTask> _taskList;
 
-    public Sequence(SequenceType sequenceType, FactionSO factionSo, Page page, int sequenceIndex)
+    private bool _stopAddTask;
+
+    public Sequence(SequenceType sequenceType, FactionSo factionSo, Page page, int sequenceIndex)
     {
         this.SequenceType = sequenceType;
         if (sequenceType == SequenceType.MainBuildingSequence ||
@@ -47,6 +49,11 @@ public class Sequence
         if (CurrentSequenceAllTaskCount >= CurrentSequenceMaxTaskCount) return;
         count = Math.Min(CurrentSequenceMaxTaskCount - CurrentSequenceAllTaskCount, count);
         CurrentSequenceAllTaskCount += count;
+        if (CurrentSequenceAllTaskCount == CurrentSequenceMaxTaskCount)
+        {
+            Page.taskAvatarlist.ForEach(ta => ta.Icon.material = GameManager.GameAsset.grayscale);
+            _stopAddTask = true;
+        }
 
         if (_taskList.Count == 0 || _taskList.Last.Value.Info != info)
         {
@@ -64,15 +71,29 @@ public class Sequence
         if (_taskList.Count == 0)
             return;
         _taskList.First(t => t.CurrentTaskState != ProduceTask.TaskState.Paused).Forward();
+        
     }
 
 
-    // // 使用SeqTask同步UI
+    // Sequence into Page.TaskAvatar
     // public void UpdateProduceTasksUI()
     // {
-    //     foreach (var kv in produceTasks)
+    //     foreach (var  in _taskList)
     //     {
-    //         page.contentPageTransform.FindChild()
+    //         
     //     }
     // }
+
+    public void EndTaskCallBack()
+    {
+        if (_stopAddTask)
+        {
+            _stopAddTask = false;
+            if (this == Page.GetCurrentSequence())
+            {
+                Page.taskAvatarlist.ForEach(ta => ta.Icon.material = null);
+            }
+            
+        }
+    }
 }

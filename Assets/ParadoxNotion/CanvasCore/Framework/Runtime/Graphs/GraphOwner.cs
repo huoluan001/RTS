@@ -47,7 +47,7 @@ namespace NodeCanvas.Framework
             _serializedExposedParameters = new SerializationPair[exposedParameters.Count];
             for ( var i = 0; i < _serializedExposedParameters.Length; i++ ) {
                 var serializedParam = new SerializationPair();
-                serializedParam._json = JSONSerializer.Serialize(typeof(ExposedParameter), exposedParameters[i], serializedParam._references);
+                serializedParam._json = JSoNSerializer.Serialize(typeof(ExposedParameter), exposedParameters[i], serializedParam._references);
                 _serializedExposedParameters[i] = serializedParam;
             }
         }
@@ -57,7 +57,7 @@ namespace NodeCanvas.Framework
             if ( _serializedExposedParameters != null ) {
                 if ( exposedParameters == null ) { exposedParameters = new List<ExposedParameter>(); } else { exposedParameters.Clear(); }
                 for ( var i = 0; i < _serializedExposedParameters.Length; i++ ) {
-                    var exposedParam = JSONSerializer.Deserialize<ExposedParameter>(_serializedExposedParameters[i]._json, _serializedExposedParameters[i]._references);
+                    var exposedParam = JSoNSerializer.Deserialize<ExposedParameter>(_serializedExposedParameters[i]._json, _serializedExposedParameters[i]._references);
                     exposedParameters.Add(exposedParam);
                 }
             }

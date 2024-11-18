@@ -30,14 +30,14 @@ public class UIManager : MonoBehaviour
     {
         // CreatePage(SequenceType.MainBuildingSequence);
     }
-    public Vector2Int AddMCVSequence(FactionSO factionSO)
+    public Vector2Int AddMCVSequence(FactionSo factionSo)
     {
         if (mainBuildingPage is null)
-            return CreateMainAndOtherBuildingPage(factionSO);
+            return CreateMainAndOtherBuildingPage(factionSo);
         else
         {
-            int mbID = mainBuildingPage.AddSequence(factionSO);
-            int obID = otherBuildingPage.AddSequence(factionSO);
+            int mbID = mainBuildingPage.AddSequence(factionSo);
+            int obID = otherBuildingPage.AddSequence(factionSo);
             return new Vector2Int(mbID, obID);
         }
 
@@ -50,15 +50,15 @@ public class UIManager : MonoBehaviour
             GameManager.GameAsset.buildingManager.StartBuilding(MCV);
         }
     }
-    public Vector2Int CreateMainAndOtherBuildingPage(FactionSO factionSO)
+    public Vector2Int CreateMainAndOtherBuildingPage(FactionSo factionSo)
     {
         GameObject mbPageGameObject = Instantiate(mainBuildingPagePrefab, pageParent.transform, false);
         GameObject obPageGameObject = Instantiate(otherBuildingPagePrefab, pageParent.transform, false);
 
         var mbpage = mbPageGameObject.GetComponent<Page>();
         var obpage = obPageGameObject.GetComponent<Page>();
-        int mbID = mbpage.Init(SequenceType.MainBuildingSequence, true, factionSO);
-        int obID = obpage.Init(SequenceType.OtherBuildingSequence, false, factionSO);
+        int mbID = mbpage.Init(SequenceType.MainBuildingSequence, true, factionSo);
+        int obID = obpage.Init(SequenceType.OtherBuildingSequence, false, factionSo);
         mainBuildingPage = mbpage;
         otherBuildingPage = obpage;
         return new Vector2Int(mbID, obID);

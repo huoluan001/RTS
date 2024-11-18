@@ -6,12 +6,12 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-[CreateAssetMenu(fileName = "MainBuildingSO", menuName = "ScriptableObjects/Data/MainBuildingSO")]
-public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, ISkill
+[CreateAssetMenu(fileName = "MainBuildingSo", menuName = "ScriptableObjects/Data/MainBuildingSo")]
+public partial class MainBuildingSo : ScriptableObject, IBaseInfo, IBuilding, ISkill
 {
-    #region SO
+    #region So
     [Header("IBaseInfo")]
-    [Tooltip("派系"), SerializeField] private FactionSO factionSO;
+    [Tooltip("派系"), SerializeField] private FactionSo factionSo;
     [Tooltip("编号"), SerializeField] private int id;
     [Tooltip("优先级"), SerializeField] private int priority;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
@@ -23,14 +23,14 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     [Tooltip("活动范围"), SerializeField] private List<ActionScope> actionScopes;
     [Tooltip("经验"), SerializeField] private int exp;
     [Tooltip("生命值"), SerializeField] private int hp;
-    [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
+    [Tooltip("科技前提"), SerializeField] private List<MainBuildingSo> requirement;
     [Tooltip("建造价格"), SerializeField] private int price;
     [Tooltip("警戒/清雾半径"), SerializeField] private Vector2Int warningAndClearFogRad;
-    [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
+    [Tooltip("护甲类型"), SerializeField] private ArmorSo armorType;
     [Tooltip("预制体"), SerializeField] private GameObject gameObjectPrefab;
 
     [Header("IBuilding")]
-    [Tooltip("用途"), SerializeField] private BuildingLabelSO label;
+    [Tooltip("用途"), SerializeField] private BuildingLabelSo label;
     [Tooltip("占地面积"), SerializeField] private Vector2Int area;
     [Tooltip("拓展范围"), SerializeField] private Vector2Int expandScope;
     [Tooltip("建造/展开时长"), SerializeField] private Vector2 buildingAndPlacementTime;
@@ -41,7 +41,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     #endregion
 
     #region Interface
-    public FactionSO FactionSO => factionSO;
+    public FactionSo FactionSo => factionSo;
     public int Id => id;
     public int Priority => priority;
     public string NameChinese => nameChinese;
@@ -51,28 +51,28 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
     public string CommentEnglish => commentEnglish;
     public TroopType TroopType => troopType;
     public List<ActionScope> ActionScopes => actionScopes;
-    public BuildingLabelSO Label => label;
+    public BuildingLabelSo Label => label;
     public int Exp => exp;
-    public List<MainBuildingSO> Requirement => requirement;
+    public List<MainBuildingSo> Requirement => requirement;
     public Vector2Int Area => area;
     public Vector2 BuildingAndPlacementTime => buildingAndPlacementTime;
     public Vector2Int ExpandScope => expandScope;
     public int Price => price;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
     public int PowerConsume => powerConsume;
-    public ArmorSO ArmorType => armorType;
+    public ArmorSo ArmorType => armorType;
     public int Hp => hp;
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
     #endregion
 
-    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
+    public void SetRequirement(List<MainBuildingSo> mainBuildingSos)
     {
-        requirement = mainBuildingSOs;
+        requirement = mainBuildingSos;
     }
-    public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, TroopType troopType, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
+    public void SetBaseInfo(FactionSo factionSo, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, TroopType troopType, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSo> requirement, Vector2Int warningAndClearFogRad, ArmorSo armorType, GameObject gameObjectPrefab)
     {
-        this.factionSO = factionSO;
+        this.factionSo = factionSo;
         this.id = id;
         this.nameChinese = nameChinese;
         this.nameEnglish = nameEnglish;
@@ -89,7 +89,7 @@ public partial class MainBuildingSO : ScriptableObject, IBaseInfo, IBuilding, IS
         this.armorType = armorType;
         this.gameObjectPrefab = gameObjectPrefab;
     }
-    public void SetBuilding(BuildingLabelSO label, Vector2Int area, Vector2Int expandScope, Vector2 buildingAndPlacementTime, int powerConsume)
+    public void SetBuilding(BuildingLabelSo label, Vector2Int area, Vector2Int expandScope, Vector2 buildingAndPlacementTime, int powerConsume)
     {
         this.label = label;
         this.area = area;

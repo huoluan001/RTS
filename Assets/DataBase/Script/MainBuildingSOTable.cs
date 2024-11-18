@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MainBuildingSOTable", menuName = "ScriptableObjects/Data/MainBuildingSOTable")]
-public class MainBuildingSOTable : ScriptableObject
+[CreateAssetMenu(fileName = "MainBuildingSoTable", menuName = "ScriptableObjects/Data/MainBuildingSoTable")]
+public class MainBuildingSoTable : ScriptableObject
 {
-    public MainBuildingSOTableElement mainBuildingSOTableElement;
+    public MainBuildingSoTableElement mainBuildingSoTableElement;
 }

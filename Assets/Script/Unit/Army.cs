@@ -4,7 +4,7 @@ using UnityEngine;
 public class Army : MonoBehaviour
 {
     public UnitComponent unitComponent;
-    public ArmySO ArmySO;
+    public ArmySo ArmySo;
 #region 公开控制信息
     public Player commander;
     private int CurrentMaxHP;

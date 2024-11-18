@@ -82,7 +82,7 @@ namespace ParadoxNotion.Serialization.FullSerializer.Internal
                 return fsResult.Success;
             }
 
-            return fsResult.Fail("EnumConverter encountered an unknown JSON data type");
+            return fsResult.Fail("EnumConverter encountered an unknown JSoN data type");
         }
 
         ///<summary> Returns true if the given value is contained within the specified array.</summary>

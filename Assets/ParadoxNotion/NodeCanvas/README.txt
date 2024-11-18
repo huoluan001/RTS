@@ -23,7 +23,7 @@ https://nodecanvas.paradoxnotion.com/change-log/
 
 
 -------------------------------------------------------------
-RESOURCES
+RESoURCES
 -------------------------------------------------------------
 For 3rd Party Integrations, Examples, and other Resources:
 https://nodecanvas.paradoxnotion.com/downloads/

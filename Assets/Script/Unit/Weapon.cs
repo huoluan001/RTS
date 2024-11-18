@@ -10,7 +10,7 @@ public class Weapon
     public string WeaponNameEN;
     
     [Header("Damage")]
-    [Tooltip("伤害类型")] public DamageTypeSO damageType;
+    [Tooltip("伤害类型")] public DamageTypeSo damageType;
     [Tooltip("单发伤害"), SerializeField] public Vector2 singleDamage;
     [Tooltip("射程"),SerializeField] public Vector2 range;
     [Tooltip("弹夹大小")] public int magazineSize;

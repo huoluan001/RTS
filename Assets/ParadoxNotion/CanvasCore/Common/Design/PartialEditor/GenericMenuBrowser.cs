@@ -233,7 +233,7 @@ namespace ParadoxNotion.Design
         void LoadPrefs() {
             if ( data == null ) {
                 var json = EditorPrefs.GetString(PREFERENCES_KEY);
-                if ( !string.IsNullOrEmpty(json) ) { data = JSONSerializer.Deserialize<SerializationData>(json); }
+                if ( !string.IsNullOrEmpty(json) ) { data = JSoNSerializer.Deserialize<SerializationData>(json); }
                 if ( data == null ) { data = new SerializationData(); }
 
                 filterFavorites = data.filterFavorites;
@@ -253,7 +253,7 @@ namespace ParadoxNotion.Design
             if ( currentKeyType != null ) {
                 data.allFavorites[currentKeyType.Name] = favorites;
             }
-            EditorPrefs.SetString(PREFERENCES_KEY, JSONSerializer.Serialize(typeof(SerializationData), data));
+            EditorPrefs.SetString(PREFERENCES_KEY, JSoNSerializer.Serialize(typeof(SerializationData), data));
         }
 
         //...

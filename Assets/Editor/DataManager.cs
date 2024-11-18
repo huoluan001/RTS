@@ -35,8 +35,8 @@ public class DataManager : EditorWindow
         VisualElement labelFromUxml = visualTree.CloneTree();
         rootVisualElement.Add(labelFromUxml);
 
-        _listView = rootVisualElement.Q<ListView>("SOList");
-        _scrollView = rootVisualElement.Q<ScrollView>("SOInfo");
+        _listView = rootVisualElement.Q<ListView>("SoList");
+        _scrollView = rootVisualElement.Q<ScrollView>("SoInfo");
         _listView.makeItem = () => new Label();
         _listView.fixedItemHeight = 16f;
         _listView.selectionType = SelectionType.Single;
@@ -62,10 +62,10 @@ public class DataManager : EditorWindow
         _armyButton = rootVisualElement.Q<Button>("ArmyBTN");
         _armorButton = rootVisualElement.Q<Button>("ArmorBTN");
 
-        _factionButton.clickable.clicked += () => OnClickFactionSO(_factionButton);
-        _mBButton.clickable.clicked += () => OnClick<MainBuildingSO>(_mBButton);
-        _oBButton.clickable.clicked += () => OnClick<OtherBuildingSO>(_oBButton);
-        _armyButton.clickable.clicked += () => OnClick<ArmySO>(_armyButton);
+        _factionButton.clickable.clicked += () => OnClickFactionSo(_factionButton);
+        _mBButton.clickable.clicked += () => OnClick<MainBuildingSo>(_mBButton);
+        _oBButton.clickable.clicked += () => OnClick<OtherBuildingSo>(_oBButton);
+        _armyButton.clickable.clicked += () => OnClick<ArmySo>(_armyButton);
         _armorButton.clickable.clicked += () =>
         {
             _listView.style.scale = new Vector2(0f, 0f);
@@ -100,11 +100,11 @@ public class DataManager : EditorWindow
         _clickCallback = () => button.SetEnabled(true);
     }
 
-    private void OnClickFactionSO(Button button)
+    private void OnClickFactionSo(Button button)
     {
         _clickCallback?.Invoke();
         button.SetEnabled(false);
-        List<FactionSO> assets = GetAsset<FactionSO>();
+        List<FactionSo> assets = GetAsset<FactionSo>();
         _listView.Clear();
         _listView.bindItem = null;
         _listView.itemsSource = assets;

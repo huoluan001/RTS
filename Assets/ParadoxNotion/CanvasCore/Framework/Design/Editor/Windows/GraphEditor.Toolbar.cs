@@ -137,13 +137,13 @@ namespace NodeCanvas.Editor
                }
            });
 
-            menu.AddItem(new GUIContent("Import JSON"), false, () =>
+            menu.AddItem(new GUIContent("Import JSoN"), false, () =>
           {
               if ( graph.allNodes.Count > 0 && !EditorUtility.DisplayDialog("Import Graph", "All current graph information will be lost. Are you sure?", "YES", "NO") ) {
                   return;
               }
 
-              var path = EditorUtility.OpenFilePanel(string.Format("Import '{0}' Graph", graph.GetType().Name), "Assets", graph.GetGraphJSONFileExtension());
+              var path = EditorUtility.OpenFilePanel(string.Format("Import '{0}' Graph", graph.GetType().Name), "Assets", graph.GetGraphJSoNFileExtension());
               if ( !string.IsNullOrEmpty(path) ) {
                   if ( graph.Deserialize(System.IO.File.ReadAllText(path), null, true) == false ) { //true: validate, null: graph._objectReferences
                       EditorUtility.DisplayDialog("Import Failure", "Please read the logs for more information", "OK", string.Empty);
@@ -151,34 +151,34 @@ namespace NodeCanvas.Editor
               }
           });
 
-            menu.AddItem(new GUIContent("Export JSON"), false, () =>
+            menu.AddItem(new GUIContent("Export JSoN"), false, () =>
           {
-              var path = EditorUtility.SaveFilePanelInProject(string.Format("Export '{0}' Graph", graph.GetType().Name), graph.name, graph.GetGraphJSONFileExtension(), string.Empty);
+              var path = EditorUtility.SaveFilePanelInProject(string.Format("Export '{0}' Graph", graph.GetType().Name), graph.name, graph.GetGraphJSoNFileExtension(), string.Empty);
               if ( !string.IsNullOrEmpty(path) ) {
                   var json = graph.Serialize(null);
-                  json = ParadoxNotion.Serialization.JSONSerializer.PrettifyJson(json);
+                  json = ParadoxNotion.Serialization.JSoNSerializer.PrettifyJson(json);
                   System.IO.File.WriteAllText(path, json);
                   AssetDatabase.Refresh();
               }
           });
 
-            menu.AddItem(new GUIContent("Export JSON (Include SubGraphs)"), false, () =>
+            menu.AddItem(new GUIContent("Export JSoN (Include SubGraphs)"), false, () =>
             {
                 foreach ( var subgraph in graph.GetAllNestedGraphs<Graph>(true).Prepend(graph) ) {
-                    var subpath = EditorUtility.SaveFilePanelInProject(string.Format("Export '{0}' Graph", subgraph.GetType().Name), subgraph.name, subgraph.GetGraphJSONFileExtension(), string.Empty);
+                    var subpath = EditorUtility.SaveFilePanelInProject(string.Format("Export '{0}' Graph", subgraph.GetType().Name), subgraph.name, subgraph.GetGraphJSoNFileExtension(), string.Empty);
                     if ( !string.IsNullOrEmpty(subpath) ) {
                         var subjson = subgraph.Serialize(null);
-                        subjson = ParadoxNotion.Serialization.JSONSerializer.PrettifyJson(subjson);
+                        subjson = ParadoxNotion.Serialization.JSoNSerializer.PrettifyJson(subjson);
                         System.IO.File.WriteAllText(subpath, subjson);
                     }
                 }
                 AssetDatabase.Refresh();
             });
 
-            menu.AddItem(new GUIContent("Show JSON"), false, () =>
+            menu.AddItem(new GUIContent("Show JSoN"), false, () =>
            {
                graph.SelfSerialize();
-               ParadoxNotion.Serialization.JSONSerializer.ShowData(graph.GetSerializedJsonData(), graph.name);
+               ParadoxNotion.Serialization.JSoNSerializer.ShowData(graph.GetSerializedJsonData(), graph.name);
            });
 
             return menu;

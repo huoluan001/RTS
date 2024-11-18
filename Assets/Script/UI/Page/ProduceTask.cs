@@ -12,7 +12,7 @@ public class ProduceTask
     private float _produceSpeed4Price;
     private float _produceSpeed4Value;
     private TaskAvatar _taskAvatar;
-    
+
 
     public ProduceTask(IBaseInfo info, int count, Sequence sequence, TaskAvatar taskAvatar)
     {
@@ -26,13 +26,13 @@ public class ProduceTask
 
         int price = info.Price;
         float time;
-        if (info is MainBuildingSO || info is OtherBuildingSO)
+        if (info is MainBuildingSo || info is OtherBuildingSo)
         {
-            time = ((MainBuildingSO)info).BuildingAndPlacementTime.x;
+            time = ((MainBuildingSo)info).BuildingAndPlacementTime.x;
         }
         else
         {
-            time = ((ArmySO)info).BuildingTime;
+            time = ((ArmySo)info).BuildingTime;
         }
 
         _produceSpeed4Price = price / time;
@@ -41,19 +41,22 @@ public class ProduceTask
 
     public void Forward()
     {
-        if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price) return;
+        if (CurrentTaskState == TaskState.Ready)
+            return;
+        if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price)
+            return;
         GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
         Value -= _produceSpeed4Value;
         _taskAvatar.UpdateValue(Value);
         if (_taskAvatar.Completed())
         {
+            Sequence.EndTaskCallBack();
             // success
             // Instantiate(info.GameObjectPrefab);
             if (Count == 1)
             {
                 _taskAvatar.Coating.fillAmount = 1;
                 _taskAvatar.Tasks.Remove(this);
-                _taskAvatar.UpdateState();
             }
             else
             {
@@ -62,14 +65,14 @@ public class ProduceTask
                 _taskAvatar.UpdateValue(Value);
                 _taskAvatar.UpdateCount(Count);
             }
-            
         }
     }
-    
+
     public enum TaskState
     {
         Running,
         Waiting,
         Paused,
+        Ready
     }
 }

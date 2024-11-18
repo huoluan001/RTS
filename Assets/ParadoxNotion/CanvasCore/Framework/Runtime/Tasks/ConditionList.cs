@@ -232,7 +232,7 @@ namespace NodeCanvas.Framework
         void DoSavePreset() {
             var path = EditorUtility.SaveFilePanelInProject("Save Preset", "", "conditionList", "");
             if ( !string.IsNullOrEmpty(path) ) {
-                System.IO.File.WriteAllText(path, JSONSerializer.Serialize(typeof(ConditionList), this, null, true)); //true for pretyJson
+                System.IO.File.WriteAllText(path, JSoNSerializer.Serialize(typeof(ConditionList), this, null, true)); //true for pretyJson
                 AssetDatabase.Refresh();
             }
         }
@@ -242,7 +242,7 @@ namespace NodeCanvas.Framework
             var path = EditorUtility.OpenFilePanel("Load Preset", "Assets", "conditionList");
             if ( !string.IsNullOrEmpty(path) ) {
                 var json = System.IO.File.ReadAllText(path);
-                var list = JSONSerializer.TryDeserializeOverwrite<ConditionList>(this, json);
+                var list = JSoNSerializer.TryDeserializeOverwrite<ConditionList>(this, json);
                 this.conditions = list.conditions;
                 this.checkMode = list.checkMode;
                 this.currentViewCondition = null;

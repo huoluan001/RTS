@@ -7,7 +7,7 @@ namespace ParadoxNotion.Serialization.FullSerializer
     // struct Wrapper {
     //   public int[] Values;
     // }
-    // Then `Wrapper` will be serialized into a JSON array of integers. It will be as if `Wrapper` doesn't exist.
+    // Then `Wrapper` will be serialized into a JSoN array of integers. It will be as if `Wrapper` doesn't exist.
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct)]
     public sealed class fsForwardAttribute : Attribute
     {

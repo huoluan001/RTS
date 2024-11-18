@@ -33,14 +33,14 @@ namespace ParadoxNotion.Design
         ///<summary>Returns a copy</summary>
         public static T Get<T>() {
             if ( cachedCopies.TryGetValue(typeof(T), out string json) ) {
-                return JSONSerializer.Deserialize<T>(json);
+                return JSoNSerializer.Deserialize<T>(json);
             }
             return default(T);
         }
 
         ///<summary>Sets a copy</summary>
         public static void Set<T>(T obj) {
-            cachedCopies[typeof(T)] = JSONSerializer.Serialize(typeof(T), obj); ;
+            cachedCopies[typeof(T)] = JSoNSerializer.Serialize(typeof(T), obj); ;
         }
 
         ///----------------------------------------------------------------------------------------------

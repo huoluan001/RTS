@@ -75,7 +75,7 @@ namespace NodeCanvas.Editor
             reflectedMap = new Dictionary<string, List<ISerializedReflectedInfo>>();
             reflectedChangesMap = new Dictionary<string, fsData>();
             var graph = GraphEditor.currentGraph;
-            JSONSerializer.SerializeAndExecuteNoCycles(typeof(NodeCanvas.Framework.Internal.GraphSource), graph.GetGraphSource(), DoCollect);
+            JSoNSerializer.SerializeAndExecuteNoCycles(typeof(NodeCanvas.Framework.Internal.GraphSource), graph.GetGraphSource(), DoCollect);
         }
 
         //...
@@ -156,7 +156,7 @@ namespace NodeCanvas.Editor
             foreach ( var pair in reflectedMap ) {
                 foreach ( var reflect in pair.Value ) {
                     var data = reflectedChangesMap[pair.Key];
-                    JSONSerializer.TryDeserializeOverwrite(reflect, data.ToString(), null);
+                    JSoNSerializer.TryDeserializeOverwrite(reflect, data.ToString(), null);
                 }
             }
         }

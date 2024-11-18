@@ -221,7 +221,7 @@ namespace ParadoxNotion.Design
             sb.AppendLine("\t</assembly>");
 
             //get assembly from a common paradoxnotion *runtime* type
-            var paradoxAsmName = typeof(ParadoxNotion.Serialization.JSONSerializer).Assembly.GetName().Name;
+            var paradoxAsmName = typeof(ParadoxNotion.Serialization.JSoNSerializer).Assembly.GetName().Name;
             sb.AppendLine(string.Format("\t<assembly fullname=\"{0}\" preserve=\"all\">", paradoxAsmName));
             sb.AppendLine("\t</assembly>");
 

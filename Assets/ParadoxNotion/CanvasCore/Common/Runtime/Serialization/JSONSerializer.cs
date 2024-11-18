@@ -9,15 +9,15 @@ using ParadoxNotion.Services;
 namespace ParadoxNotion.Serialization
 {
 
-    ///<summary>High-Level API. Serializes/Deserializes to/from JSON with a heavily modified 'FullSerializer'</summary>
-    public static class JSONSerializer
+    ///<summary>High-Level API. Serializes/Deserializes to/from JSoN with a heavily modified 'FullSerializer'</summary>
+    public static class JSoNSerializer
     {
 
         private static object serializerLock;
         private static fsSerializer serializer;
         private static Dictionary<string, fsData> dataCache;
 
-        static JSONSerializer() {
+        static JSoNSerializer() {
             serializerLock = new object();
             FlushMem();
         }

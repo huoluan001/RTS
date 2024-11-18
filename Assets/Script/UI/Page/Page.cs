@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
@@ -12,28 +11,28 @@ public class Page : MonoBehaviour
 
 
 
-    // 存储各派系的在本序列类型的IBaseInfo, Init会初始化本派系，当需求出现时，在会有其他的派系
-    public Dictionary<FactionEnum, List<IBaseInfo>> ibaseInfos_Dic;
+    // 存储各派系的在本序列类型的IBaseInfo, Init会初始化本派系，当需求出现时，在添加其他的派系
+    private Dictionary<FactionEnum, List<IBaseInfo>> _iBaseInfosDic;
 
     // 控制信息，必须在初始化时赋值
     public SequenceType sequenceType;
-    public List<Sequence> sequences;
+    private List<Sequence> _sequences;
     public int currentSequenceIndex;
-    public Sequence currentSequence;
+    private Sequence _currentSequence;
     public FactionEnum currrntShowFactionEnum;
     public bool isShow;
 
     // 最多显示的序列数量
-    public int maxSequenceShowCount;
-    public LinkedList<GameObject> SeqAvatars;
-    public List<GameObject> taskAvatarlist;
+    private int _maxSequenceShowCount;
+    private LinkedList<GameObject> _seqAvatars;
+    public List<TaskAvatar> taskAvatarlist;
     public GameObject SeqAvatarPrefab;
     public GameObject TaskAvatarPrefab;
 
-    private LinkedListNode<GameObject> leftCursor;
-    private LinkedListNode<GameObject> rightCursor;
-    private int nextSequenceIndex = 1;
-    private RectTransform rectTransform;
+    private LinkedListNode<GameObject> _leftCursor;
+    private LinkedListNode<GameObject> _rightCursor;
+    private int _nextSequenceIndex = 1;
+    private RectTransform _rectTransform;
 
     public List<int> lll = new List<int>();
 
@@ -41,71 +40,71 @@ public class Page : MonoBehaviour
     public int tail;
     void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
+        _rectTransform = GetComponent<RectTransform>();
         this.ShowAndHideSwitch();
     }
-    public int Init(SequenceType sequenceType, bool isShow, FactionSO factionSO)
+    public int Init(SequenceType sequenceType, bool isShow, FactionSo factionSo)
     {
         // init Page
         this.sequenceType = sequenceType;
-        sequences = new List<Sequence>();
+        _sequences = new List<Sequence>();
         // Page默认有一个Sequence
-        var sequence = new Sequence(sequenceType, factionSO, this, nextSequenceIndex++);
-        sequences.Add(sequence);
+        var sequence = new Sequence(sequenceType, factionSo, this, _nextSequenceIndex++);
+        _sequences.Add(sequence);
         currentSequenceIndex = 1;
-        currentSequence = sequence;
-        currrntShowFactionEnum = factionSO.factionEnum;
+        _currentSequence = sequence;
+        currrntShowFactionEnum = factionSo.factionEnum;
         this.isShow = isShow;
 
         // 初始化ibaseInfo_Dic
-        ibaseInfos_Dic = new Dictionary<FactionEnum, List<IBaseInfo>>();
-        ibaseInfos_Dic[factionSO.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSO(sequenceType, factionSO);
+        _iBaseInfosDic = new Dictionary<FactionEnum, List<IBaseInfo>>();
+        _iBaseInfosDic[factionSo.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSo(sequenceType, factionSo);
 
         // 一次不考虑图片是否更新，禁止检查，直接update
-        taskAvatarlist = new List<GameObject>();
+        taskAvatarlist = new List<TaskAvatar>();
         UpdateContainImageWithCheck(false);
 
         // SeqAvatar init
-        SeqAvatars = new LinkedList<GameObject>();
+        _seqAvatars = new LinkedList<GameObject>();
         GameObject firstSeqAvatarGameObject = Instantiate(SeqAvatarPrefab, contentMenuTransform, false);
         firstSeqAvatarGameObject.GetComponent<TMP_Text>().text = currentSequenceIndex.ToString();
-        SeqAvatars.AddLast(firstSeqAvatarGameObject);
-        leftCursor = SeqAvatars.First;
-        rightCursor = SeqAvatars.First;
-        maxSequenceShowCount = 9;
+        _seqAvatars.AddLast(firstSeqAvatarGameObject);
+        _leftCursor = _seqAvatars.First;
+        _rightCursor = _seqAvatars.First;
+        _maxSequenceShowCount = 9;
 
 
         // 返回序列编号
         return 1;
     }
-    public int AddSequence(FactionSO factionSO)
+    public int AddSequence(FactionSo factionSo)
     {
-        var sequence = new Sequence(sequenceType, factionSO, this, nextSequenceIndex);
-        sequences.Add(sequence);
+        var sequence = new Sequence(sequenceType, factionSo, this, _nextSequenceIndex);
+        _sequences.Add(sequence);
         // 序列化身初始化
         GameObject seqAvatar = Instantiate(SeqAvatarPrefab);
         seqAvatar.transform.SetParent(contentMenuTransform, false);
         TMP_Text tMP_Text = seqAvatar.GetComponent<TMP_Text>();
-        tMP_Text.text = nextSequenceIndex.ToString();
+        tMP_Text.text = _nextSequenceIndex.ToString();
 
-        SeqAvatars.AddLast(seqAvatar);
-        if (SeqAvatars.Count <= maxSequenceShowCount)
-            rightCursor = SeqAvatars.Last;
+        _seqAvatars.AddLast(seqAvatar);
+        if (_seqAvatars.Count <= _maxSequenceShowCount)
+            _rightCursor = _seqAvatars.Last;
         else
             seqAvatar.SetActive(false);
 
 
 
-        head = int.Parse(leftCursor.Value.transform.GetComponent<TMP_Text>().text);
-        tail = int.Parse(rightCursor.Value.transform.GetComponent<TMP_Text>().text);
+        head = int.Parse(_leftCursor.Value.transform.GetComponent<TMP_Text>().text);
+        tail = int.Parse(_rightCursor.Value.transform.GetComponent<TMP_Text>().text);
 
         lll.Clear();
-        foreach (var i in SeqAvatars)
+        foreach (var i in _seqAvatars)
         {
             lll.Add(int.Parse(i.transform.GetComponent<TMP_Text>().text));
         }
         
-        return nextSequenceIndex++;
+        return _nextSequenceIndex++;
     }
 
     private void Update()
@@ -114,33 +113,33 @@ public class Page : MonoBehaviour
         // {
 
         // }
-        sequences.ForEach(sequence => sequence.ProductionMovesForward());
+        _sequences.ForEach(sequence => sequence.ProductionMovesForward());
     }
 
     public void ShowAndHideSwitch()
     {
         if (isShow)
-            rectTransform.localScale = new Vector3(1, 1, 1);
+            _rectTransform.localScale = new Vector3(1, 1, 1);
         else
-            rectTransform.localScale = new Vector3(1, 0, 1);
+            _rectTransform.localScale = new Vector3(1, 0, 1);
     }
     public void Show()
     {
-        rectTransform.localScale = new Vector3(1, 1, 1);
+        _rectTransform.localScale = new Vector3(1, 1, 1);
         isShow = true;
     }
     public void Hide()
     {
-        rectTransform.localScale = new Vector3(1, 0, 1);
+        _rectTransform.localScale = new Vector3(1, 0, 1);
         isShow = false;
     }
 
     private void UpdateContainImageWithCheck(bool shouldCheckFaction = true)
     {
-        if (shouldCheckFaction && currrntShowFactionEnum == currentSequence.factionSO.factionEnum)
+        if (shouldCheckFaction && currrntShowFactionEnum == _currentSequence.FactionSo.factionEnum)
             return;
-        List<Sprite> sprites = ibaseInfos_Dic[currentSequence.factionSO.factionEnum].Select(x => x.Icon).ToList();
-        if(currentSequence.factionSO.factionEnum == FactionEnum.AlliedForces && sequenceType == SequenceType.MainBuildingSequence)
+        List<Sprite> sprites = _iBaseInfosDic[_currentSequence.FactionSo.factionEnum].Select(x => x.Icon).ToList();
+        if(_currentSequence.FactionSo.factionEnum == FactionEnum.AlliedForces && sequenceType == SequenceType.MainBuildingSequence)
         {
             sprites = sprites.Skip(1).SkipLast(1).ToList();
         }
@@ -149,71 +148,72 @@ public class Page : MonoBehaviour
         {
             int num = sprites.Count - taskAvatarlist.Count;
             for (int i = 0; i < num; i++)
-                taskAvatarlist.Add(Instantiate(TaskAvatarPrefab, contentPageTransform, false));
+                taskAvatarlist.Add(Instantiate(TaskAvatarPrefab, contentPageTransform, false).GetComponent<TaskAvatar>());
         }
         else if (taskAvatarlist.Count > sprites.Count)
         {
             taskAvatarlist.RemoveRange(sprites.Count, taskAvatarlist.Count - sprites.Count);
         }
-        taskAvatarlist.Zip(sprites, (avatar, sprite) => avatar.GetComponent<Image>().sprite = sprite).ToList();
+        taskAvatarlist.Zip(sprites, (avatar, sprite) => avatar.GetComponent<Image>().sprite = sprite);
     }
     public void CurrentSequenceAddTask(GameObject taskAvatarGameObject, bool isPlus = false)
     {
-        currentSequence.AddTask(taskAvatarGameObject, isPlus);
+        _currentSequence.AddTask(taskAvatarGameObject, isPlus ? 5 : 1);
     }
 
     public Sequence GetCurrentSequence()
     {
-        return sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
+        return _sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
     }
 
     public void SwitchCurrentSequence(int targetIndex)
     {
         currentSequenceIndex = targetIndex;
-        currentSequence = GetCurrentSequence();
+        _currentSequence = GetCurrentSequence();
         UpdateContainImageWithCheck();
-        currentSequence.UpdateProduceTasksUI();
+        // 更新新的sequence数据面板
+        // _currentSequence.UpdateProduceTasksUI();
     }
 
     public void SeqAvatarLeftMove()
     {
-        if (SeqAvatars.Count <= 9)
+        if (_seqAvatars.Count <= 9)
             return;
-        if (leftCursor == SeqAvatars.First)
+        if (_leftCursor == _seqAvatars.First)
             return;
-        leftCursor = leftCursor.Previous;
-        leftCursor.Value.SetActive(true);
-        rightCursor.Value.SetActive(false);
-        rightCursor = rightCursor.Previous;
+        _leftCursor = _leftCursor.Previous;
+        _leftCursor.Value.SetActive(true);
+        _rightCursor.Value.SetActive(false);
+        _rightCursor = _rightCursor.Previous;
     }
     public void SeqAvatarRightMove()
     {
-        if (SeqAvatars.Count <= 9)
+        if (_seqAvatars.Count <= 9)
             return;
-        if (rightCursor == SeqAvatars.Last)
+        if (_rightCursor == _seqAvatars.Last)
             return;
-        leftCursor.Value.SetActive(false);
-        leftCursor = leftCursor.Next;
-        rightCursor = rightCursor.Next;
-        rightCursor.Value.SetActive(true);
+        _leftCursor.Value.SetActive(false);
+        _leftCursor = _leftCursor.Next;
+        _rightCursor = _rightCursor.Next;
+        _rightCursor.Value.SetActive(true);
     }
 
-    public IBaseInfo GetIBaseInfoWithIndex(int index, FactionSO factionSO)
+    public IBaseInfo GetIBaseInfoWithIndex(int index, FactionSo factionSo)
     {
-        if (!ibaseInfos_Dic.Keys.Contains(factionSO.factionEnum))
-            ibaseInfos_Dic[factionSO.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSO(sequenceType, factionSO);
-        return ibaseInfos_Dic[factionSO.factionEnum][index];
+        if (!_iBaseInfosDic.Keys.Contains(factionSo.factionEnum))
+            _iBaseInfosDic[factionSo.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSo(sequenceType, factionSo);
+        return _iBaseInfosDic[factionSo.factionEnum][index];
     }
-    public IBaseInfo GetIBaseInfoWithIcon(Sprite icon, FactionSO factionSO)
+    public IBaseInfo GetIBaseInfoWithIcon(Sprite icon, FactionSo factionSo)
     {
-        if (!ibaseInfos_Dic.Keys.Contains(factionSO.factionEnum))
-            ibaseInfos_Dic[factionSO.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSO(sequenceType, factionSO);
-        return ibaseInfos_Dic[factionSO.factionEnum].First(ibi => ibi.Icon == icon);
+        if (!_iBaseInfosDic.Keys.Contains(factionSo.factionEnum))
+            _iBaseInfosDic[factionSo.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSo(sequenceType, factionSo);
+        return _iBaseInfosDic[factionSo.factionEnum].First(ibi => ibi.Icon == icon);
     }
 
-    public List<IBaseInfo> GetIBaseInfoListWithSequenceTypeAndFactionSO(SequenceType sequenceType, FactionSO factionSO)
+    public List<IBaseInfo> GetIBaseInfoListWithSequenceTypeAndFactionSo(SequenceType sequenceType, FactionSo factionSo)
     {
-        return factionSO.GetBaseInfos(sequenceType);
+        return factionSo.GetBaseInfos(sequenceType);
 
 
     }

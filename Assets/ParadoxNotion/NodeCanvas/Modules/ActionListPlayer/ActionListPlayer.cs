@@ -24,11 +24,11 @@ namespace NodeCanvas
         void ISerializationCallbackReceiver.OnBeforeSerialize() {
             // if ( ParadoxNotion.Services.Threader.applicationIsPlaying ) { return; }
             _objectReferences = new List<UnityEngine.Object>();
-            _serializedList = JSONSerializer.Serialize(typeof(ActionList), _actionList, _objectReferences);
+            _serializedList = JSoNSerializer.Serialize(typeof(ActionList), _actionList, _objectReferences);
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize() {
-            _actionList = JSONSerializer.Deserialize<ActionList>(_serializedList, _objectReferences);
+            _actionList = JSoNSerializer.Deserialize<ActionList>(_serializedList, _objectReferences);
             if ( _actionList == null ) _actionList = (ActionList)Task.Create(typeof(ActionList), this);
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MVC : MainBuilding
 {
-    public ArmySO armySo;
+    public ArmySo armySo;
     
     public TroopType currentState = TroopType.Vehicle;
 

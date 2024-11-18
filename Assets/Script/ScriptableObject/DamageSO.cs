@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-[CreateAssetMenu(fileName = "DamageTypeSO", menuName = "ScriptableObjects/Data/DamageTypeSO")]
-public class DamageTypeSO : ScriptableObject
+[CreateAssetMenu(fileName = "DamageTypeSo", menuName = "ScriptableObjects/Data/DamageTypeSo")]
+public class DamageTypeSo : ScriptableObject
 {
     public int index;
     public string damageTypeZH;

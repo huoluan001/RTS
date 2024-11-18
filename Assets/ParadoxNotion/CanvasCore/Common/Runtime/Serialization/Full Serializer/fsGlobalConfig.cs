@@ -8,7 +8,7 @@
         ///<summary> Serialize default values?</summary>
         public static bool SerializeDefaultValues = false;
 
-        ///<summary> Should deserialization be case sensitive? If this is false and the JSON has multiple members with the same keys only separated by case, then this results in undefined behavior.</summary>
+        ///<summary> Should deserialization be case sensitive? If this is false and the JSoN has multiple members with the same keys only separated by case, then this results in undefined behavior.</summary>
         public static bool IsCaseSensitive = false;
 
         ///<summary> The attributes that will force a field or property to *not* be serialized. Ignore attribute take predecence.</summary>

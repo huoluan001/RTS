@@ -297,7 +297,7 @@ namespace NodeCanvas.Framework
         void DoSavePreset() {
             var path = EditorUtility.SaveFilePanelInProject("Save Preset", "", "actionList", "");
             if ( !string.IsNullOrEmpty(path) ) {
-                System.IO.File.WriteAllText(path, JSONSerializer.Serialize(typeof(ActionList), this, null, true)); //true for pretyJson
+                System.IO.File.WriteAllText(path, JSoNSerializer.Serialize(typeof(ActionList), this, null, true)); //true for pretyJson
                 AssetDatabase.Refresh();
             }
         }
@@ -307,7 +307,7 @@ namespace NodeCanvas.Framework
             var path = EditorUtility.OpenFilePanel("Load Preset", "Assets", "actionList");
             if ( !string.IsNullOrEmpty(path) ) {
                 var json = System.IO.File.ReadAllText(path);
-                var list = JSONSerializer.TryDeserializeOverwrite<ActionList>(this, json);
+                var list = JSoNSerializer.TryDeserializeOverwrite<ActionList>(this, json);
                 this.actions = list.actions;
                 this.executionMode = list.executionMode;
                 this.currentViewAction = null;

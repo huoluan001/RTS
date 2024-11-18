@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IBaseInfo
 {
-    FactionSO FactionSO { get; }
+    FactionSo FactionSo { get; }
     int Id { get; }
     int Priority { get; }
     string NameChinese { get; }
@@ -17,14 +17,14 @@ public interface IBaseInfo
     int Exp { get; }
     int Hp { get; }
     int Price { get; }
-    List<MainBuildingSO> Requirement { get; }
+    List<MainBuildingSo> Requirement { get; }
     Vector2Int WarningAndClearFogRad { get; }
-    ArmorSO ArmorType { get; }
+    ArmorSo ArmorType { get; }
     GameObject GameObjectPrefab { get; }
 
-    void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon,
+    void SetBaseInfo(FactionSo factionSo, int id, string nameChinese, string nameEnglish, Sprite icon,
                         string commentChinese, string commentEnglish, TroopType troopType,
                             List<ActionScope> actionScopes, int exp, int hp, int price,
-                                List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad,
-                                ArmorSO armorType, GameObject gameObjectPrefab);
+                                List<MainBuildingSo> requirement, Vector2Int warningAndClearFogRad,
+                                ArmorSo armorType, GameObject gameObjectPrefab);
 }

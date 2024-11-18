@@ -7,8 +7,8 @@ using System.Collections;
 using System.Linq;
 
 [Serializable]
-[CreateAssetMenu(fileName = "ArmorSO", menuName = "ScriptableObjects/Data/ArmorSO")]
-public class ArmorSO : ScriptableObject
+[CreateAssetMenu(fileName = "ArmorSo", menuName = "ScriptableObjects/Data/ArmorSo")]
+public class ArmorSo : ScriptableObject
 {
     [SerializeField] private int elementIndex;
     [SerializeField] private string armorNameZH;
@@ -24,7 +24,7 @@ public class ArmorSO : ScriptableObject
     public void SetArmorNameZH(string newName) => armorNameZH = newName;
     public void SetArmorNameEN(string newName) => armorNameEN = newName;
 
-    public void SetDamageModifiers(DamageTypeSO damage, int value) => damageModifiers[damage] = value;
+    public void SetDamageModifiers(DamageTypeSo damage, int value) => damageModifiers[damage] = value;
 
 
 

@@ -53,7 +53,7 @@ namespace NodeCanvas.Framework
         ///<summary>Set the blackboard reference provided for all BBParameters fields found in target</summary>
         public static void SetBBFields(object target, IBlackboard bb) {
             if ( target == null ) { return; }
-            ParadoxNotion.Serialization.JSONSerializer.SerializeAndExecuteNoCycles(target.GetType(), target, (o, d) =>
+            ParadoxNotion.Serialization.JSoNSerializer.SerializeAndExecuteNoCycles(target.GetType(), target, (o, d) =>
             {
                 if ( o is BBParameter ) { ( o as BBParameter ).bb = bb; }
             });

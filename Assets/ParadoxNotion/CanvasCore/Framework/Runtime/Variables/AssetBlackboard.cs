@@ -27,11 +27,11 @@ namespace NodeCanvas.Framework
 
         void SelfSerialize() {
             _objectReferences = new List<UnityEngine.Object>();
-            _serializedBlackboard = JSONSerializer.Serialize(typeof(BlackboardSource), _blackboard, _objectReferences);
+            _serializedBlackboard = JSoNSerializer.Serialize(typeof(BlackboardSource), _blackboard, _objectReferences);
         }
 
         void SelfDeserialize() {
-            _blackboard = JSONSerializer.Deserialize<BlackboardSource>(_serializedBlackboard, _objectReferences);
+            _blackboard = JSoNSerializer.Deserialize<BlackboardSource>(_serializedBlackboard, _objectReferences);
             if ( _blackboard == null ) { _blackboard = new BlackboardSource(); }
         }
 
@@ -50,7 +50,7 @@ namespace NodeCanvas.Framework
         public string UID => _UID;
 
         [ContextMenu("Show Json")]
-        void ShowJson() { JSONSerializer.ShowData(_serializedBlackboard, this.name); }
+        void ShowJson() { JSoNSerializer.ShowData(_serializedBlackboard, this.name); }
 
         public override string ToString() { return identifier; }
         void OnValidate() { _identifier = this.name; }

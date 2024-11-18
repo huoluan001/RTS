@@ -17,11 +17,14 @@ public class TaskAvatar : MonoBehaviour
     [SerializeField] private GameObject coatingGameObject;
 
     public List<ProduceTask> Tasks;
+    private Material _grayscaleMaterial;
 
     public void Start()
     {
+        Tasks = new List<ProduceTask>();
         Icon = GetComponent<Image>();
         Coating = coatingGameObject.GetComponent<Image>();
+        _grayscaleMaterial = GameManager.GameAsset.grayscale;
     }
 
 
@@ -40,33 +43,8 @@ public class TaskAvatar : MonoBehaviour
         TMPText.text = count.ToString();
     }
 
-    // 只负责更新底图和涂层
-    public void UpdateState()
+    public void IconMaterialChanged()
     {
-        ProduceTask task = Tasks.First();
-        if (task == null)
-        {
-            Icon.material = null;
-            Coating.gameObject.SetActive(false);
-            TMPText.gameObject.SetActive(false);
-        }
-        else if (task.CurrentTaskState == ProduceTask.TaskState.Running)
-        {
-            Icon.material = GameManager.GameAsset.grayscale;
-            Coating.gameObject.SetActive(true);
-            TMPText.gameObject.SetActive(true);
-        }
-        else if (task.CurrentTaskState == ProduceTask.TaskState.Waiting)
-        {
-            Icon.material = null;
-            Coating.gameObject.SetActive(false);
-            TMPText.gameObject.SetActive(true);
-        }
-        else if (task.CurrentTaskState == ProduceTask.TaskState.Paused)
-        {
-            Icon.material = null;
-            Coating.gameObject.SetActive(true);
-            TMPText.gameObject.SetActive(true);
-        }
+        Icon.material = Icon.material == null ? _grayscaleMaterial : null;
     }
 }

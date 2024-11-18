@@ -3,11 +3,11 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ArmySO", menuName = "ScriptableObjects/Data/ArmySO"), SerializeField]
-public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
+[CreateAssetMenu(fileName = "ArmySo", menuName = "ScriptableObjects/Data/ArmySo"), SerializeField]
+public class ArmySo : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
 {
     [Header("IBaseInfo")]
-    [Tooltip("派系"), SerializeField] private FactionSO factionSO;
+    [Tooltip("派系"), SerializeField] private FactionSo factionSo;
     [Tooltip("编号"), SerializeField] private int id;
     [Tooltip("优先级"), SerializeField] private int priority;
     [Tooltip("中文名称"), SerializeField] private string nameChinese;
@@ -19,10 +19,10 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     [Tooltip("活动范围"), SerializeField] private List<ActionScope> actionScopes;
     [Tooltip("经验"), SerializeField] private int exp;
     [Tooltip("生命值"), SerializeField] private int hp;
-    [Tooltip("科技前提"), SerializeField] private List<MainBuildingSO> requirement;
+    [Tooltip("科技前提"), SerializeField] private List<MainBuildingSo> requirement;
     [Tooltip("建造价格"), SerializeField] private int price;
     [Tooltip("警戒/清雾半径"), SerializeField] private Vector2Int warningAndClearFogRad;
-    [Tooltip("护甲类型"), SerializeField] private ArmorSO armorType;
+    [Tooltip("护甲类型"), SerializeField] private ArmorSo armorType;
     [Tooltip("预制体"), SerializeField] private GameObject gameObjectPrefab;
 
     [Header("IArmy")]
@@ -30,9 +30,9 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     [Tooltip("能否倒退移动"), SerializeField] private bool3 isReverseMove;
     [Tooltip("是否两栖"), SerializeField] private bool isAmphibious;
     [Tooltip("碾压等级/被碾压等级"), SerializeField] private CrushList crushingAndCrushedLevel;
-    [Tooltip("标签"), SerializeField] private List<ArmyLabelSO> labels;
+    [Tooltip("标签"), SerializeField] private List<ArmyLabelSo> labels;
     [Tooltip("建造时间"), SerializeField] private int buildingTime;
-    [Tooltip("建造设施"), SerializeField] private List<MainBuildingSO> buildFacilities;
+    [Tooltip("建造设施"), SerializeField] private List<MainBuildingSo> buildFacilities;
 
     [Header("IWeapon")]
     [Tooltip("武器组"), SerializeField] private List<Weapon> weapons;
@@ -46,7 +46,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
 
 
 
-    public FactionSO FactionSO => factionSO;
+    public FactionSo FactionSo => factionSo;
     public int Id => id;
     public int Priority => priority;
     public string NameChinese => nameChinese;
@@ -62,20 +62,20 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     public bool3 IsReverseMove => isReverseMove;
     public CrushList CrushingAndCrushedLevel => crushingAndCrushedLevel;
     public Vector2Int WarningAndClearFogRad => warningAndClearFogRad;
-    public List<ArmyLabelSO> Labels => labels;
-    public List<MainBuildingSO> Requirement => requirement;
+    public List<ArmyLabelSo> Labels => labels;
+    public List<MainBuildingSo> Requirement => requirement;
     public int BuildingTime => buildingTime;
     public int Price => price;
-    public List<MainBuildingSO> BuildFacilities => buildFacilities;
-    public ArmorSO ArmorType => armorType;
+    public List<MainBuildingSo> BuildFacilities => buildFacilities;
+    public ArmorSo ArmorType => armorType;
     public int Hp => hp;
     public List<Weapon> Weapons => weapons;
     public List<Skill> Skills => skills;
     public GameObject GameObjectPrefab => gameObjectPrefab;
 
-    public void SetBaseInfo(FactionSO factionSO, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, TroopType troopType, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSO> requirement, Vector2Int warningAndClearFogRad, ArmorSO armorType, GameObject gameObjectPrefab)
+    public void SetBaseInfo(FactionSo factionSo, int id, string nameChinese, string nameEnglish, Sprite icon, string commentChinese, string commentEnglish, TroopType troopType, List<ActionScope> actionScopes, int exp, int hp, int price, List<MainBuildingSo> requirement, Vector2Int warningAndClearFogRad, ArmorSo armorType, GameObject gameObjectPrefab)
     {
-        this.factionSO = factionSO;
+        this.factionSo = factionSo;
         this.id = id;
         this.nameChinese = nameChinese;
         this.nameEnglish = nameEnglish;
@@ -94,7 +94,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     }
 
 
-    public void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious, CrushList crushingAndCrushedLevel, List<ArmyLabelSO> labels, int buildingTime, List<MainBuildingSO> buildFacilities)
+    public void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious, CrushList crushingAndCrushedLevel, List<ArmyLabelSo> labels, int buildingTime, List<MainBuildingSo> buildFacilities)
     {
         this.moveSpeed = moveSpeed;
         this.isReverseMove = isReverseMove;
@@ -105,7 +105,7 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
         this.buildFacilities = buildFacilities;
     }
 
-    public void SetWeapon(string weaponNameZH, string weaponNameEN, DamageTypeSO damageType, Vector2 singleDamage, Vector2 range, int magazineSize, Vector2 magazineLoadingTime, Vector2 aimingTime, Vector2 firingDuration, Vector2 sputteringRadius, Vector2 sputteringDamage)
+    public void SetWeapon(string weaponNameZH, string weaponNameEN, DamageTypeSo damageType, Vector2 singleDamage, Vector2 range, int magazineSize, Vector2 magazineLoadingTime, Vector2 aimingTime, Vector2 firingDuration, Vector2 sputteringRadius, Vector2 sputteringDamage)
     {
         if (weapons == null)
             weapons = new List<Weapon>();
@@ -129,9 +129,9 @@ public class ArmySO : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     }
 
 
-    public void SetRequirement(List<MainBuildingSO> mainBuildingSOs)
+    public void SetRequirement(List<MainBuildingSo> mainBuildingSos)
     {
-        requirement = mainBuildingSOs;
+        requirement = mainBuildingSos;
     }
     public void SetSkill(string skillNameZH, string skillNameEN, string commentChinese, float skillCooling, float skillPre_Swing, float skillPost_Swing)
     {

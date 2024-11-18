@@ -5,17 +5,17 @@ using System.Linq;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "FactionSO", menuName = "ScriptableObjects/Data/FactionSO")]
-public class FactionSO : ScriptableObject
+[CreateAssetMenu(fileName = "FactionSo", menuName = "ScriptableObjects/Data/FactionSo")]
+public class FactionSo : ScriptableObject
 {
     public FactionEnum factionEnum;
-    public List<MainBuildingSO> MainBuildings;
-    public List<OtherBuildingSO> OtherBuildings;
+    public List<MainBuildingSo> MainBuildings;
+    public List<OtherBuildingSo> OtherBuildings;
 
-    public List<ArmySO> Infantry;
-    public List<ArmySO> Vehicle;
-    public List<ArmySO> Aircraft;
-    public List<ArmySO> Dock;
+    public List<ArmySo> Infantry;
+    public List<ArmySo> Vehicle;
+    public List<ArmySo> Aircraft;
+    public List<ArmySo> Dock;
 
     public List<IBaseInfo> GetBaseInfos(SequenceType sequenceType)
     {

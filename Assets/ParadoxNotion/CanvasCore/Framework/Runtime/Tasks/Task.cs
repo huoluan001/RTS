@@ -14,7 +14,7 @@ using Logger = ParadoxNotion.Services.Logger;
 namespace NodeCanvas.Framework
 {
 
-    //*RECOVERY PROCESSOR IS INSTEAD APPLIED RESPECTIVELY IN ACTIONTASK - CONDITIONTASK*//
+    //*RECOVERY PROCESSoR IS INSTEAD APPLIED RESPECTIVELY IN ACTIONTASK - CONDITIONTASK*//
 
     ///<summary>The base class for all Actions and Conditions. You dont actually use or derive this class. Instead derive from ActionTask and ConditionTask</summary>
     [Serializable, fsDeserializeOverwrite, SpoofAOT]
@@ -73,7 +73,7 @@ namespace NodeCanvas.Framework
 
         ///<summary>Duplicate the task for the target ITaskSystem</summary>
         virtual public Task Duplicate(ITaskSystem newOwnerSystem) {
-            var newTask = JSONSerializer.Clone<Task>(this);
+            var newTask = JSoNSerializer.Clone<Task>(this);
             UndoUtility.RecordObject(newOwnerSystem.contextObject, "Duplicate Task");
             BBParameter.SetBBFields(newTask, newOwnerSystem.blackboard);
             newTask.Validate(newOwnerSystem);

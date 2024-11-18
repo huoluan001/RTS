@@ -12,14 +12,14 @@ using UnityEngine.AddressableAssets;
 public class DataLoad : MonoBehaviour
 {
     #region field
-    public MainBuildingSOTable mainBuildingSOTable;
-    public OtherBuildingSOTable otherBuildingSOTable;
-    public ArmySOTable armySOTable;
-    public ArmorSOTable armorSOTable;
+    public MainBuildingSoTable mainBuildingSoTable;
+    public OtherBuildingSoTable otherBuildingSoTable;
+    public ArmySoTable armySoTable;
+    public ArmorSoTable armorSoTable;
 
-    public FactionSO alliedForcesFactionSO;
-    public FactionSO empireFactionSO;
-    public FactionSO sovietUnionFactionSO;
+    public FactionSo alliedForcesFactionSo;
+    public FactionSo empireFactionSo;
+    public FactionSo sovietUnionFactionSo;
 
     public string excelFilePath;
     public string armorTypePath;
@@ -35,26 +35,26 @@ public class DataLoad : MonoBehaviour
     [ContextMenu("MainBuildingData主建筑数据导入")]
     public void LoadMainBuilding()
     {
-        // 获得各阵营主建筑SO文件夹路径
+        // 获得各阵营主建筑So文件夹路径
         string alliedForcesMainBuildingPath = GetFactionPath(FactionEnum.AlliedForces, SequenceType.MainBuildingSequence);
         string empireMainBuildingPath = GetFactionPath(FactionEnum.Empire, SequenceType.MainBuildingSequence);
         string sovietUnionMainBuildingPath = GetFactionPath(FactionEnum.SovietUnion, SequenceType.MainBuildingSequence);
-        // 获得各阵营主建筑SO文件名
-        List<string> alliedForcesMainBuildingSOFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
-        List<string> empireMainBuildingSOFiles = GetFileNameInPath(empireMainBuildingPath);
-        List<string> sovietUnionMainBuildingSOFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
+        // 获得各阵营主建筑So文件名
+        List<string> alliedForcesMainBuildingSoFiles = GetFileNameInPath(alliedForcesMainBuildingPath);
+        List<string> empireMainBuildingSoFiles = GetFileNameInPath(empireMainBuildingPath);
+        List<string> sovietUnionMainBuildingSoFiles = GetFileNameInPath(sovietUnionMainBuildingPath);
         // 得到建筑标签
-        var buildingLabelSOs = GetBuildingLabelSOs();
+        var buildingLabelSos = GetBuildingLabelSos();
 
-        EditorUtility.SetDirty(mainBuildingSOTable);
+        EditorUtility.SetDirty(mainBuildingSoTable);
         
         // tool初始化
-        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOTable, mainBuildingSOTable);
+        Tool.InitFactionSoConvertTo(alliedForcesFactionSo, empireFactionSo, sovietUnionFactionSo, armorSoTable, mainBuildingSoTable);
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
             ISheet sheet = workbook.GetSheetAt(0);
-            MainBuildingSO previousMainBuildingSO = null;
+            MainBuildingSo previousMainBuildingSo = null;
             for (int i = 3; i <= 32; i++)
             {
                 var currentRow = sheet.GetRow(i);
@@ -63,46 +63,46 @@ public class DataLoad : MonoBehaviour
                 // 如果ID为null，表示这一行没有信息，只是上一行的另外一个技能
                 if (idstring == "")
                 {
-                    currentRow.ReadAndWriteRowToISkill(21, previousMainBuildingSO);
+                    currentRow.ReadAndWriteRowToISkill(21, previousMainBuildingSo);
                     continue;
                 }
                 int id = int.Parse(idstring);
                 string nameEN = currentRow.GetCellString(4);
                 string factionName = currentRow.GetCellString(1);
 
-                // 判断SO文件是否已经存在, 并得到MainBuildingSO
+                // 判断So文件是否已经存在, 并得到MainBuildingSo
                 string fileName = $"{id}_{nameEN}.asset";
-                MainBuildingSO mainBuildingSO;
+                MainBuildingSo mainBuildingSo;
                 Action loadCallBack;
                 (string folderPath, List<string> exitsFileNames) = factionName switch
                 {
-                    "盟军" => (alliedForcesMainBuildingPath, alliedForcesMainBuildingSOFiles),
-                    "帝国" => (empireMainBuildingPath, empireMainBuildingSOFiles),
-                    _ => (sovietUnionMainBuildingPath, sovietUnionMainBuildingSOFiles)
+                    "盟军" => (alliedForcesMainBuildingPath, alliedForcesMainBuildingSoFiles),
+                    "帝国" => (empireMainBuildingPath, empireMainBuildingSoFiles),
+                    _ => (sovietUnionMainBuildingPath, sovietUnionMainBuildingSoFiles)
                 };
                 string filePath = $"Assets{folderPath}/{fileName}";
                 if (exitsFileNames.Contains(fileName))  // get
                 {
-                    mainBuildingSO = AssetDatabase.LoadAssetAtPath<MainBuildingSO>(filePath);
+                    mainBuildingSo = AssetDatabase.LoadAssetAtPath<MainBuildingSo>(filePath);
                     loadCallBack = () => Debug.Log(fileName + "---同步完成");
                 }
                 else    //create
                 {
-                    mainBuildingSO = ScriptableObject.CreateInstance<MainBuildingSO>();
-                    AssetDatabase.CreateAsset(mainBuildingSO, filePath);
+                    mainBuildingSo = ScriptableObject.CreateInstance<MainBuildingSo>();
+                    AssetDatabase.CreateAsset(mainBuildingSo, filePath);
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
                 // 配置主建筑的IbaseInfo和Ibuilding
-                currentRow.ReadAndWriteRowToIBaseInfoAsync(mainBuildingSO);
-                currentRow.ReadAndWriteRowToIBuilding(16, mainBuildingSO, buildingLabelSOs);
+                currentRow.ReadAndWriteRowToIBaseInfoAsync(mainBuildingSo);
+                currentRow.ReadAndWriteRowToIBuilding(16, mainBuildingSo, buildingLabelSos);
                 // 盟军的科技，这是一个特殊的存在，不可能存在技能，直接跳过
                 if (currentRow.GetCellString(7).ConvertToTroop() != TroopType.Technology)
-                    currentRow.ReadAndWriteRowToISkill(21, mainBuildingSO);
-                EditorUtility.SetDirty(mainBuildingSO);
+                    currentRow.ReadAndWriteRowToISkill(21, mainBuildingSo);
+                EditorUtility.SetDirty(mainBuildingSo);
 
                 loadCallBack.Invoke();
-                previousMainBuildingSO = mainBuildingSO;
-                mainBuildingSOTable.mainBuildingSOTableElement[id] = mainBuildingSO;
+                previousMainBuildingSo = mainBuildingSo;
+                mainBuildingSoTable.mainBuildingSoTableElement[id] = mainBuildingSo;
                 
             }
 
@@ -116,9 +116,9 @@ public class DataLoad : MonoBehaviour
                 var requirements = requriement.Split(',').Select(req => req.ConvertToMainBuildingWithName()).ToList();
                 var name = currentRow.GetCellString(3);
                 if (name == "") continue;
-                var mainBuildingSO = name.ConvertToMainBuildingWithName();
-                mainBuildingSO.SetRequirement(requirements);
-                EditorUtility.SetDirty(mainBuildingSO);
+                var mainBuildingSo = name.ConvertToMainBuildingWithName();
+                mainBuildingSo.SetRequirement(requirements);
+                EditorUtility.SetDirty(mainBuildingSo);
             }
             AssetDatabase.SaveAssets();
             Debug.Log("requriement完成");
@@ -129,27 +129,27 @@ public class DataLoad : MonoBehaviour
     #endregion
 
     #region OB
-    [ContextMenu("OtherBuildingSO其他建筑数据导入")]
-    public void LoadOtherBuildingSO()
+    [ContextMenu("OtherBuildingSo其他建筑数据导入")]
+    public void LoadOtherBuildingSo()
     {
-        // 获得各阵营其他建筑SO文件夹路径
+        // 获得各阵营其他建筑So文件夹路径
         string alliedForcesOtherBuildingPath = GetFactionPath(FactionEnum.AlliedForces, SequenceType.OtherBuildingSequence);
         string empireOtherBuildingPath = GetFactionPath(FactionEnum.Empire, SequenceType.OtherBuildingSequence);
         string sovietUnionOtherBuildingPath = GetFactionPath(FactionEnum.SovietUnion, SequenceType.OtherBuildingSequence);
-        // 获得各阵营其他建筑SO文件名
-        List<string> alliedForcesOtherBuildingSOFiles = GetFileNameInPath(alliedForcesOtherBuildingPath);
-        List<string> empireOtherBuildingSOFiles = GetFileNameInPath(empireOtherBuildingPath);
-        List<string> sovietUnionOtherBuildingSOFiles = GetFileNameInPath(sovietUnionOtherBuildingPath);
+        // 获得各阵营其他建筑So文件名
+        List<string> alliedForcesOtherBuildingSoFiles = GetFileNameInPath(alliedForcesOtherBuildingPath);
+        List<string> empireOtherBuildingSoFiles = GetFileNameInPath(empireOtherBuildingPath);
+        List<string> sovietUnionOtherBuildingSoFiles = GetFileNameInPath(sovietUnionOtherBuildingPath);
         // 得到建筑标签
-        var buildingLabelSOs = GetBuildingLabelSOs();
-        var damageTypeSOs = GetDamageTypeSOs();
-        EditorUtility.SetDirty(otherBuildingSOTable);
-        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOTable, mainBuildingSOTable);
+        var buildingLabelSos = GetBuildingLabelSos();
+        var damageTypeSos = GetDamageTypeSos();
+        EditorUtility.SetDirty(otherBuildingSoTable);
+        Tool.InitFactionSoConvertTo(alliedForcesFactionSo, empireFactionSo, sovietUnionFactionSo, armorSoTable, mainBuildingSoTable);
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
             ISheet sheet = workbook.GetSheetAt(1);
-            OtherBuildingSO previousOtherBuildingSO = null;
+            OtherBuildingSo previousOtherBuildingSo = null;
             for (int i = 3; i <= 28; i++)
             {
                 var currentRow = sheet.GetRow(i);
@@ -158,44 +158,44 @@ public class DataLoad : MonoBehaviour
                 // 如果ID为null，表示这一行没有信息，只是上一行的另外一个技能
                 if (idstring == "")
                 {
-                    currentRow.ReadAndWriteRowToIWeapon(22, previousOtherBuildingSO, damageTypeSOs);
-                    currentRow.ReadAndWriteRowToISkill(33, previousOtherBuildingSO);
+                    currentRow.ReadAndWriteRowToIWeapon(22, previousOtherBuildingSo, damageTypeSos);
+                    currentRow.ReadAndWriteRowToISkill(33, previousOtherBuildingSo);
                     continue;
                 }
                 int id = int.Parse(idstring);
                 string nameEN = currentRow.GetCellString(4);
                 string factionName = currentRow.GetCellString(1);
 
-                // 判断SO文件是否已经存在, 并得到OtherBuildingSO
+                // 判断So文件是否已经存在, 并得到OtherBuildingSo
                 string fileName = $"{id}_{nameEN}.asset";
-                OtherBuildingSO otherBuildingSO;
+                OtherBuildingSo otherBuildingSo;
                 Action loadCallBack;
                 (string folderPath, List<string> exitsFileNames) = factionName switch
                 {
-                    "盟军" => (alliedForcesOtherBuildingPath, alliedForcesOtherBuildingSOFiles),
-                    "帝国" => (empireOtherBuildingPath, empireOtherBuildingSOFiles),
-                    _ => (sovietUnionOtherBuildingPath, sovietUnionOtherBuildingSOFiles)
+                    "盟军" => (alliedForcesOtherBuildingPath, alliedForcesOtherBuildingSoFiles),
+                    "帝国" => (empireOtherBuildingPath, empireOtherBuildingSoFiles),
+                    _ => (sovietUnionOtherBuildingPath, sovietUnionOtherBuildingSoFiles)
                 };
                 string filePath = $"Assets{folderPath}/{fileName}";
                 if (exitsFileNames.Contains(fileName))  // get
                 {
-                    otherBuildingSO = AssetDatabase.LoadAssetAtPath<OtherBuildingSO>(filePath);
+                    otherBuildingSo = AssetDatabase.LoadAssetAtPath<OtherBuildingSo>(filePath);
                     loadCallBack = () => Debug.Log(fileName + "---同步完成");
                 }
                 else    //create
                 {
-                    otherBuildingSO = ScriptableObject.CreateInstance<OtherBuildingSO>();
-                    AssetDatabase.CreateAsset(otherBuildingSO, filePath);
+                    otherBuildingSo = ScriptableObject.CreateInstance<OtherBuildingSo>();
+                    AssetDatabase.CreateAsset(otherBuildingSo, filePath);
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
-                currentRow.ReadAndWriteRowToIBaseInfoAsync(otherBuildingSO);
-                currentRow.ReadAndWriteRowToIBuilding(16, otherBuildingSO, buildingLabelSOs);
-                currentRow.ReadAndWriteRowToIWeapon(22, otherBuildingSO, damageTypeSOs);
-                currentRow.ReadAndWriteRowToISkill(33, otherBuildingSO);
-                EditorUtility.SetDirty(otherBuildingSO);
+                currentRow.ReadAndWriteRowToIBaseInfoAsync(otherBuildingSo);
+                currentRow.ReadAndWriteRowToIBuilding(16, otherBuildingSo, buildingLabelSos);
+                currentRow.ReadAndWriteRowToIWeapon(22, otherBuildingSo, damageTypeSos);
+                currentRow.ReadAndWriteRowToISkill(33, otherBuildingSo);
+                EditorUtility.SetDirty(otherBuildingSo);
                 loadCallBack.Invoke();
-                previousOtherBuildingSO = otherBuildingSO;
-                otherBuildingSOTable.otherBuildingSOTableElement[id] = otherBuildingSO;
+                previousOtherBuildingSo = otherBuildingSo;
+                otherBuildingSoTable.otherBuildingSoTableElement[id] = otherBuildingSo;
                 
             }
             AssetDatabase.SaveAssets();
@@ -204,26 +204,26 @@ public class DataLoad : MonoBehaviour
     #endregion
 
     #region Army
-    [ContextMenu("ArmySO军队数据导入")]
-    public void LoadArmySO()
+    [ContextMenu("ArmySo军队数据导入")]
+    public void LoadArmySo()
     {
-        // 获得各阵营其他建筑SO文件夹路径
+        // 获得各阵营其他建筑So文件夹路径
         string alliedForcesArmyPath = GetFactionPath(FactionEnum.AlliedForces, SequenceType.None);
         string empireArmyPath = GetFactionPath(FactionEnum.Empire, SequenceType.None);
         string sovietUnionArmyPath = GetFactionPath(FactionEnum.SovietUnion, SequenceType.None);
-        // 获得各阵营其他建筑SO文件名
-        List<string> alliedForcesArmySOFiles = GetFileNameInPath(alliedForcesArmyPath);
-        List<string> empireArmySOFiles = GetFileNameInPath(empireArmyPath);
-        List<string> sovietUnionArmySOFiles = GetFileNameInPath(sovietUnionArmyPath);
-        var armyLabelSOs = GetArmyLabelSOs();
-        var damageTypeSOs = GetDamageTypeSOs();
-        Tool.InitFactionSOConvertTo(alliedForcesFactionSO, empireFactionSO, sovietUnionFactionSO, armorSOTable, mainBuildingSOTable);
+        // 获得各阵营其他建筑So文件名
+        List<string> alliedForcesArmySoFiles = GetFileNameInPath(alliedForcesArmyPath);
+        List<string> empireArmySoFiles = GetFileNameInPath(empireArmyPath);
+        List<string> sovietUnionArmySoFiles = GetFileNameInPath(sovietUnionArmyPath);
+        var armyLabelSos = GetArmyLabelSos();
+        var damageTypeSos = GetDamageTypeSos();
+        Tool.InitFactionSoConvertTo(alliedForcesFactionSo, empireFactionSo, sovietUnionFactionSo, armorSoTable, mainBuildingSoTable);
         using (FileStream fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
         {
             var workbook = new XSSFWorkbook(fileStream);
             ISheet sheet = workbook.GetSheetAt(2);
-            ArmySO previousArmySO = null;
-            EditorUtility.SetDirty(armySOTable);
+            ArmySo previousArmySo = null;
+            EditorUtility.SetDirty(armySoTable);
             for (int i = 3; i <= 123; i++)
             {
                 var currentRow = sheet.GetRow(i);
@@ -231,51 +231,51 @@ public class DataLoad : MonoBehaviour
                 // 如果ID为null，表示这一行没有信息，只是上一行的另外一个技能或武器
                 if (idstring == "")
                 {
-                    currentRow.ReadAndWriteRowToIWeapon(27, previousArmySO, damageTypeSOs);
-                    currentRow.ReadAndWriteRowToISkill(38, previousArmySO);
+                    currentRow.ReadAndWriteRowToIWeapon(27, previousArmySo, damageTypeSos);
+                    currentRow.ReadAndWriteRowToISkill(38, previousArmySo);
                     continue;
                 }
                 int id = int.Parse(idstring);
                 string nameEN = currentRow.GetCellString(4);
                 string factionName = currentRow.GetCellString(1);
 
-                // 判断SO文件是否已经存在, 并得到MainBuildingSO
+                // 判断So文件是否已经存在, 并得到MainBuildingSo
                 string fileName = $"{id}_{nameEN}.asset";
-                ArmySO armySO;
+                ArmySo armySo;
                 Action loadCallBack;
                 (string folderPath, List<string> exitsFileNames) = factionName switch
                 {
-                    "盟军" => (alliedForcesArmyPath, alliedForcesArmySOFiles),
-                    "帝国" => (empireArmyPath, empireArmySOFiles),
-                    _ => (sovietUnionArmyPath, sovietUnionArmySOFiles)
+                    "盟军" => (alliedForcesArmyPath, alliedForcesArmySoFiles),
+                    "帝国" => (empireArmyPath, empireArmySoFiles),
+                    _ => (sovietUnionArmyPath, sovietUnionArmySoFiles)
                 };
                 string filePath = $"Assets{folderPath}/{fileName}";
                 if (exitsFileNames.Contains(fileName))  // get
                 {
-                    armySO = AssetDatabase.LoadAssetAtPath<ArmySO>(filePath);
+                    armySo = AssetDatabase.LoadAssetAtPath<ArmySo>(filePath);
                     loadCallBack = () => Debug.Log(fileName + "---同步完成");
                 }
                 else    //create
                 {
-                    armySO = ScriptableObject.CreateInstance<ArmySO>();
-                    AssetDatabase.CreateAsset(armySO, filePath);
+                    armySo = ScriptableObject.CreateInstance<ArmySo>();
+                    AssetDatabase.CreateAsset(armySo, filePath);
                     loadCallBack = () => Debug.Log(fileName + "---创建并同步完成");
                 }
-                currentRow.ReadAndWriteRowToIBaseInfoAsync(armySO);
-                currentRow.ReadAndWriteRowToIArmy(17, armySO, armyLabelSOs);
-                currentRow.ReadAndWriteRowToIWeapon(27, armySO, damageTypeSOs);
-                currentRow.ReadAndWriteRowToISkill(38, armySO);
+                currentRow.ReadAndWriteRowToIBaseInfoAsync(armySo);
+                currentRow.ReadAndWriteRowToIArmy(17, armySo, armyLabelSos);
+                currentRow.ReadAndWriteRowToIWeapon(27, armySo, damageTypeSos);
+                currentRow.ReadAndWriteRowToISkill(38, armySo);
                 // 科技前提写入
                 var requriement = currentRow.GetCellString(11);
                 if (requriement != "null")
                 {
                     var requirements = requriement.Split(',').Select(req => req.ConvertToMainBuildingWithName()).ToList();
-                    armySO.SetRequirement(requirements);
+                    armySo.SetRequirement(requirements);
                 }
-                EditorUtility.SetDirty(armySO);
+                EditorUtility.SetDirty(armySo);
                 loadCallBack.Invoke();
-                previousArmySO = armySO;
-                armySOTable.armySOTableElement[id] = armySO;
+                previousArmySo = armySo;
+                armySoTable.armySoTableElement[id] = armySo;
                 
             }
             FactionArmyDataLoad();
@@ -287,26 +287,26 @@ public class DataLoad : MonoBehaviour
     [ContextMenu("Faction校准")]
     public void FactionCalibrate()
     {
-        alliedForcesFactionSO.MainBuildings = alliedForcesFactionSO.MainBuildings.Where(m => m != null).ToList();
-        alliedForcesFactionSO.OtherBuildings = alliedForcesFactionSO.OtherBuildings.Where(m => m != null).ToList();
-        alliedForcesFactionSO.Infantry = alliedForcesFactionSO.Infantry.Where(m => m != null).ToList();
-        alliedForcesFactionSO.Vehicle = alliedForcesFactionSO.Vehicle.Where(m => m != null).ToList();
-        alliedForcesFactionSO.Dock = alliedForcesFactionSO.Dock.Where(m => m != null).ToList();
-        alliedForcesFactionSO.Aircraft = alliedForcesFactionSO.Aircraft.Where(m => m != null).ToList();
+        alliedForcesFactionSo.MainBuildings = alliedForcesFactionSo.MainBuildings.Where(m => m != null).ToList();
+        alliedForcesFactionSo.OtherBuildings = alliedForcesFactionSo.OtherBuildings.Where(m => m != null).ToList();
+        alliedForcesFactionSo.Infantry = alliedForcesFactionSo.Infantry.Where(m => m != null).ToList();
+        alliedForcesFactionSo.Vehicle = alliedForcesFactionSo.Vehicle.Where(m => m != null).ToList();
+        alliedForcesFactionSo.Dock = alliedForcesFactionSo.Dock.Where(m => m != null).ToList();
+        alliedForcesFactionSo.Aircraft = alliedForcesFactionSo.Aircraft.Where(m => m != null).ToList();
 
-        empireFactionSO.MainBuildings = empireFactionSO.MainBuildings.Where(m => m != null).ToList();
-        empireFactionSO.OtherBuildings = empireFactionSO.OtherBuildings.Where(m => m != null).ToList();
-        empireFactionSO.Infantry = empireFactionSO.Infantry.Where(m => m != null).ToList();
-        empireFactionSO.Vehicle = empireFactionSO.Vehicle.Where(m => m != null).ToList();
-        empireFactionSO.Dock = empireFactionSO.Dock.Where(m => m != null).ToList();
-        empireFactionSO.Aircraft = empireFactionSO.Aircraft.Where(m => m != null).ToList();
+        empireFactionSo.MainBuildings = empireFactionSo.MainBuildings.Where(m => m != null).ToList();
+        empireFactionSo.OtherBuildings = empireFactionSo.OtherBuildings.Where(m => m != null).ToList();
+        empireFactionSo.Infantry = empireFactionSo.Infantry.Where(m => m != null).ToList();
+        empireFactionSo.Vehicle = empireFactionSo.Vehicle.Where(m => m != null).ToList();
+        empireFactionSo.Dock = empireFactionSo.Dock.Where(m => m != null).ToList();
+        empireFactionSo.Aircraft = empireFactionSo.Aircraft.Where(m => m != null).ToList();
 
-        sovietUnionFactionSO.MainBuildings = empireFactionSO.MainBuildings.Where(m => m != null).ToList();
-        sovietUnionFactionSO.OtherBuildings = empireFactionSO.OtherBuildings.Where(m => m != null).ToList();
-        sovietUnionFactionSO.Infantry = empireFactionSO.Infantry.Where(m => m != null).ToList();
-        sovietUnionFactionSO.Vehicle = empireFactionSO.Vehicle.Where(m => m != null).ToList();
-        sovietUnionFactionSO.Dock = empireFactionSO.Dock.Where(m => m != null).ToList();
-        sovietUnionFactionSO.Aircraft = empireFactionSO.Aircraft.Where(m => m != null).ToList();
+        sovietUnionFactionSo.MainBuildings = empireFactionSo.MainBuildings.Where(m => m != null).ToList();
+        sovietUnionFactionSo.OtherBuildings = empireFactionSo.OtherBuildings.Where(m => m != null).ToList();
+        sovietUnionFactionSo.Infantry = empireFactionSo.Infantry.Where(m => m != null).ToList();
+        sovietUnionFactionSo.Vehicle = empireFactionSo.Vehicle.Where(m => m != null).ToList();
+        sovietUnionFactionSo.Dock = empireFactionSo.Dock.Where(m => m != null).ToList();
+        sovietUnionFactionSo.Aircraft = empireFactionSo.Aircraft.Where(m => m != null).ToList();
     }
 
     #region Armor
@@ -319,7 +319,7 @@ public class DataLoad : MonoBehaviour
         {
             var workbook = new XSSFWorkbook(fileStream);
             ISheet sheet = workbook.GetSheetAt(3);
-            var damageTypeSOs = GetDamageTypeSOs();
+            var damageTypeSos = GetDamageTypeSos();
             for (int i = 1; i <= 35; i++)
             {
                 var currentRow = sheet.GetRow(i);
@@ -329,31 +329,31 @@ public class DataLoad : MonoBehaviour
                 string fileName = $"{index}_{armorNameEN}.asset";
                 string filePath = "Assets" + folderPath + "/" + fileName;
                 Action loadCallBack;
-                ArmorSO armorSO;
+                ArmorSo armorSo;
                 if (existedFileName.Contains(fileName))
                 {
-                    armorSO = AssetDatabase.LoadAssetAtPath<ArmorSO>(filePath);
+                    armorSo = AssetDatabase.LoadAssetAtPath<ArmorSo>(filePath);
                     loadCallBack = () => Debug.Log(armorNameZH + "---同步完成");
                 }
                 else
                 {
-                    armorSO = ScriptableObject.CreateInstance<ArmorSO>();
-                    AssetDatabase.CreateAsset(armorSO, filePath);
+                    armorSo = ScriptableObject.CreateInstance<ArmorSo>();
+                    AssetDatabase.CreateAsset(armorSo, filePath);
                     loadCallBack = () => Debug.Log(armorNameZH + "---创建并同步完成");
                 }
-                armorSO.SetIndex(index);
-                armorSO.SetArmorNameZH(armorNameZH);
-                armorSO.SetArmorNameEN(armorNameEN);
+                armorSo.SetIndex(index);
+                armorSo.SetArmorNameZH(armorNameZH);
+                armorSo.SetArmorNameEN(armorNameEN);
                 for (int j = 1; j <= 15; j++)
                 {
                     int value = int.Parse(currentRow.GetCellString(j + 3));
-                    armorSO.SetDamageModifiers(damageTypeSOs[j], value);
+                    armorSo.SetDamageModifiers(damageTypeSos[j], value);
                 }
-                armorSOTable.armorSOTableElement[index] = armorSO;
-                EditorUtility.SetDirty(armorSO);
+                armorSoTable.armorSoTableElement[index] = armorSo;
+                EditorUtility.SetDirty(armorSo);
                 loadCallBack.Invoke();
             }
-            EditorUtility.SetDirty(armorSOTable);
+            EditorUtility.SetDirty(armorSoTable);
             AssetDatabase.SaveAssets();
         }
     }
@@ -379,39 +379,39 @@ public class DataLoad : MonoBehaviour
     /// <summary>
     /// 得到游戏伤害类型
     /// </summary>
-    /// <returns>返回一个字典，key为伤害编号，value为DamageTypeSO</returns>
-    private Dictionary<int, DamageTypeSO> GetDamageTypeSOs()
+    /// <returns>返回一个字典，key为伤害编号，value为DamageTypeSo</returns>
+    private Dictionary<int, DamageTypeSo> GetDamageTypeSos()
     {
         var fileNames = GetFileNameInPath(damageTypePath);
-        Dictionary<int, DamageTypeSO> res = new Dictionary<int, DamageTypeSO>();
+        Dictionary<int, DamageTypeSo> res = new Dictionary<int, DamageTypeSo>();
         foreach (var fileName in fileNames)
         {
-            var damageTypeSO = AssetDatabase.LoadAssetAtPath<DamageTypeSO>("Assets" + damageTypePath + "/" + fileName);
-            res[damageTypeSO.index] = damageTypeSO;
+            var damageTypeSo = AssetDatabase.LoadAssetAtPath<DamageTypeSo>("Assets" + damageTypePath + "/" + fileName);
+            res[damageTypeSo.index] = damageTypeSo;
         }
         return res;
     }
 
-    private Dictionary<string, BuildingLabelSO> GetBuildingLabelSOs()
+    private Dictionary<string, BuildingLabelSo> GetBuildingLabelSos()
     {
         var fileNames = GetFileNameInPath(buildingLabelPath);
-        Dictionary<string, BuildingLabelSO> res = new Dictionary<string, BuildingLabelSO>();
+        Dictionary<string, BuildingLabelSo> res = new Dictionary<string, BuildingLabelSo>();
         foreach (var fileName in fileNames)
         {
-            var buildingLabelSO = AssetDatabase.LoadAssetAtPath<BuildingLabelSO>("Assets" + buildingLabelPath + "/" + fileName);
-            res[buildingLabelSO.LableNameZH] = buildingLabelSO;
+            var buildingLabelSo = AssetDatabase.LoadAssetAtPath<BuildingLabelSo>("Assets" + buildingLabelPath + "/" + fileName);
+            res[buildingLabelSo.LableNameZH] = buildingLabelSo;
         }
         return res;
     }
 
-    private Dictionary<string, ArmyLabelSO> GetArmyLabelSOs()
+    private Dictionary<string, ArmyLabelSo> GetArmyLabelSos()
     {
         var fileNames = GetFileNameInPath(armyLabelPath);
-        Dictionary<string, ArmyLabelSO> res = new Dictionary<string, ArmyLabelSO>();
+        Dictionary<string, ArmyLabelSo> res = new Dictionary<string, ArmyLabelSo>();
         foreach (var fileName in fileNames)
         {
-            var armyLabelSO = AssetDatabase.LoadAssetAtPath<ArmyLabelSO>("Assets" + armyLabelPath + "/" + fileName);
-            res[armyLabelSO.LableNameZH] = armyLabelSO;
+            var armyLabelSo = AssetDatabase.LoadAssetAtPath<ArmyLabelSo>("Assets" + armyLabelPath + "/" + fileName);
+            res[armyLabelSo.LableNameZH] = armyLabelSo;
         }
         return res;
     }
@@ -435,7 +435,7 @@ public class DataLoad : MonoBehaviour
     [ContextMenu("LoadUnitIcon")]
     public void LoadUnitIcon()
     {
-        foreach (var m in mainBuildingSOTable.mainBuildingSOTableElement.Values)
+        foreach (var m in mainBuildingSoTable.mainBuildingSoTableElement.Values)
         {
             Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
             {
@@ -444,7 +444,7 @@ public class DataLoad : MonoBehaviour
             EditorUtility.SetDirty(m);
             
         }
-        foreach (var m in otherBuildingSOTable.otherBuildingSOTableElement.Values)
+        foreach (var m in otherBuildingSoTable.otherBuildingSoTableElement.Values)
         {
             Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
             {
@@ -452,7 +452,7 @@ public class DataLoad : MonoBehaviour
             };
             EditorUtility.SetDirty(m);
         }
-        foreach (var m in armySOTable.armySOTableElement.Values)
+        foreach (var m in armySoTable.armySoTableElement.Values)
         {
             Addressables.LoadAssetAsync<Sprite>(m.NameChinese).Completed += (handle) =>
             {
@@ -470,9 +470,9 @@ public class DataLoad : MonoBehaviour
 
     }
 
-    public FactionSO GetFactionSO(string factionName)
+    public FactionSo GetFactionSo(string factionName)
     {
-        return factionName switch { "盟军" => alliedForcesFactionSO, "帝国" => empireFactionSO, _ => sovietUnionFactionSO };
+        return factionName switch { "盟军" => alliedForcesFactionSo, "帝国" => empireFactionSo, _ => sovietUnionFactionSo };
     }
 
     public void FactionArmyDataLoad()
@@ -487,29 +487,29 @@ public class DataLoad : MonoBehaviour
         var WarFactory = "战争工厂".ConvertToMainBuildingWithName();
         var NavalShipyard = "海军造船厂".ConvertToMainBuildingWithName();
         var Airport = "机场".ConvertToMainBuildingWithName();
-        EditorUtility.SetDirty(alliedForcesFactionSO);
-        EditorUtility.SetDirty(empireFactionSO);
-        EditorUtility.SetDirty(sovietUnionFactionSO);
-        foreach (var army in armySOTable.armySOTableElement.Values)
+        EditorUtility.SetDirty(alliedForcesFactionSo);
+        EditorUtility.SetDirty(empireFactionSo);
+        EditorUtility.SetDirty(sovietUnionFactionSo);
+        foreach (var army in armySoTable.armySoTableElement.Values)
         {
-            if (army.BuildFacilities.Contains(ArmoredFactory) && !alliedForcesFactionSO.Vehicle.Contains(army))
-                alliedForcesFactionSO.Vehicle.Add(army);
-            if (army.BuildFacilities.Contains(Harbour) && !alliedForcesFactionSO.Dock.Contains(army))
-                alliedForcesFactionSO.Dock.Add(army);
-            if (army.BuildFacilities.Contains(AirForceBase) && !alliedForcesFactionSO.Aircraft.Contains(army))
-                alliedForcesFactionSO.Aircraft.Add(army);
+            if (army.BuildFacilities.Contains(ArmoredFactory) && !alliedForcesFactionSo.Vehicle.Contains(army))
+                alliedForcesFactionSo.Vehicle.Add(army);
+            if (army.BuildFacilities.Contains(Harbour) && !alliedForcesFactionSo.Dock.Contains(army))
+                alliedForcesFactionSo.Dock.Add(army);
+            if (army.BuildFacilities.Contains(AirForceBase) && !alliedForcesFactionSo.Aircraft.Contains(army))
+                alliedForcesFactionSo.Aircraft.Add(army);
 
-            if (army.BuildFacilities.Contains(MechaFactory) && !empireFactionSO.Vehicle.Contains(army))
-                empireFactionSO.Vehicle.Add(army);
-            if (army.BuildFacilities.Contains(EmpirePier) && !empireFactionSO.Dock.Contains(army))
-                empireFactionSO.Dock.Add(army);
+            if (army.BuildFacilities.Contains(MechaFactory) && !empireFactionSo.Vehicle.Contains(army))
+                empireFactionSo.Vehicle.Add(army);
+            if (army.BuildFacilities.Contains(EmpirePier) && !empireFactionSo.Dock.Contains(army))
+                empireFactionSo.Dock.Add(army);
 
-            if (army.BuildFacilities.Contains(WarFactory) && !sovietUnionFactionSO.Vehicle.Contains(army))
-                sovietUnionFactionSO.Vehicle.Add(army);
-            if (army.BuildFacilities.Contains(NavalShipyard) && !sovietUnionFactionSO.Dock.Contains(army))
-                sovietUnionFactionSO.Dock.Add(army);
-            if (army.BuildFacilities.Contains(Airport) && !sovietUnionFactionSO.Aircraft.Contains(army))
-                sovietUnionFactionSO.Aircraft.Add(army);
+            if (army.BuildFacilities.Contains(WarFactory) && !sovietUnionFactionSo.Vehicle.Contains(army))
+                sovietUnionFactionSo.Vehicle.Add(army);
+            if (army.BuildFacilities.Contains(NavalShipyard) && !sovietUnionFactionSo.Dock.Contains(army))
+                sovietUnionFactionSo.Dock.Add(army);
+            if (army.BuildFacilities.Contains(Airport) && !sovietUnionFactionSo.Aircraft.Contains(army))
+                sovietUnionFactionSo.Aircraft.Add(army);
         }
     }
 }

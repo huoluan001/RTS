@@ -8,7 +8,7 @@ namespace ParadoxNotion.Serialization.FullSerializer
 
     // TODO: properly propagate warnings/etc for fsResult states
 
-    ///<summary> A simple recursive descent parser for JSON.</summary>
+    ///<summary> A simple recursive descent parser for JSoN.</summary>
     public class fsJsonParser
     {
         private int _start;

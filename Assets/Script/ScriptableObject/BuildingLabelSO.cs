@@ -5,8 +5,8 @@ using Unity.Mathematics;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "BuildingLabelSO", menuName = "ScriptableObjects/Data/BuildingLabelSO")]
-public class BuildingLabelSO : ScriptableObject
+[CreateAssetMenu(fileName = "BuildingLabelSo", menuName = "ScriptableObjects/Data/BuildingLabelSo")]
+public class BuildingLabelSo : ScriptableObject
 {
     [SerializeField] private int elementIndex;
     public string LableNameZH;

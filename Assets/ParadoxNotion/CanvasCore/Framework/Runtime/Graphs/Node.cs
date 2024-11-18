@@ -234,7 +234,7 @@ namespace NodeCanvas.Framework
             }
 
             //deep clone
-            var newNode = JSONSerializer.Clone<Node>(this);
+            var newNode = JSoNSerializer.Clone<Node>(this);
 
             UndoUtility.RecordObject(targetGraph, "Duplicate Node");
 

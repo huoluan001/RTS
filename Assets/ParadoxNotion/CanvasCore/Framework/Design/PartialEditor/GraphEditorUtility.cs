@@ -124,8 +124,8 @@ namespace NodeCanvas.Editor
 
         ///----------------------------------------------------------------------------------------------
 
-        ///<summary>Returns the extension at which the graph will be saved with if exported to JSON</summary>
-        public static string GetGraphJSONFileExtension(this Graph graph) {
+        ///<summary>Returns the extension at which the graph will be saved with if exported to JSoN</summary>
+        public static string GetGraphJSoNFileExtension(this Graph graph) {
             return graph.GetType().Name.GetCapitals();
         }
 
@@ -140,7 +140,7 @@ namespace NodeCanvas.Editor
         public static void ScanForStructTypesAndAppendThem(Graph graph) {
 
             var serializedTypes = new List<Type>();
-            JSONSerializer.SerializeAndExecuteNoCycles(typeof(NodeCanvas.Framework.Internal.GraphSource), graph.GetGraphSource(), (o, d) =>
+            JSoNSerializer.SerializeAndExecuteNoCycles(typeof(NodeCanvas.Framework.Internal.GraphSource), graph.GetGraphSource(), (o, d) =>
             {
                 if ( o != null ) { serializedTypes.Add(o.GetType()); }
             });
