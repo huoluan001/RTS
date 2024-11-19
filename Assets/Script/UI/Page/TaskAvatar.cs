@@ -1,20 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using TMPro;
-using UnityEditor.VersionControl;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class TaskAvatar : MonoBehaviour
 {
-    public enum TaskAvatarState
-    {
-        HaveTask,
-        NoTask,
-    }
-
     // count label
     public TMP_Text TMPText;
     public Image Coating;

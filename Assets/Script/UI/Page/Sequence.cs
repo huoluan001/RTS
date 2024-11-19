@@ -1,21 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
-using System.Threading.Tasks;
-using TMPro;
 using System;
 
 public class Sequence
 {
     public readonly int SequenceIndex;
-    public readonly Page Page;
-    public SequenceType SequenceType;
+    private readonly Page _page;
+    //public SequenceType SequenceType;
     public readonly FactionSo FactionSo;
 
-    public readonly int CurrentSequenceMaxTaskCount;
-    public int CurrentSequenceAllTaskCount;
+    private readonly int _currentSequenceMaxTaskCount;
+    private int _currentSequenceAllTaskCount;
 
     public LinkedList<ProduceTask> TaskList;
     public Dictionary<TaskAvatar, LinkedList<ProduceTask>> TaskMap;
@@ -24,36 +21,65 @@ public class Sequence
 
     public Sequence(SequenceType sequenceType, FactionSo factionSo, Page page, int sequenceIndex)
     {
-        this.SequenceType = sequenceType;
+        //this.SequenceType = sequenceType;
         if (sequenceType == SequenceType.MainBuildingSequence ||
             page.sequenceType == SequenceType.OtherBuildingSequence)
         {
-            CurrentSequenceMaxTaskCount = 1;
+            _currentSequenceMaxTaskCount = 1;
         }
         else
         {
-            CurrentSequenceMaxTaskCount = 99;
+            _currentSequenceMaxTaskCount = 99;
         }
 
-        CurrentSequenceAllTaskCount = 0;
-        this.FactionSo = factionSo;
-        this.Page = page;
-        this.SequenceIndex = sequenceIndex;
+        _currentSequenceAllTaskCount = 0;
+        FactionSo = factionSo;
+        _page = page;
+        SequenceIndex = sequenceIndex;
         TaskList = new LinkedList<ProduceTask>();
         TaskMap = new Dictionary<TaskAvatar, LinkedList<ProduceTask>>();
     }
 
-    public void AddTask(GameObject taskAvatarGameObject, int count)
+    public void OnClickMouseLeft(GameObject taskAvatarGameObject, int count = 1)
     {
-        Image icon = taskAvatarGameObject.GetComponent<Image>();
-        var info = Page.GetIBaseInfoWithIcon(icon.sprite, FactionSo);
         TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
-        if (CurrentSequenceAllTaskCount >= CurrentSequenceMaxTaskCount) return;
-        count = Math.Min(CurrentSequenceMaxTaskCount - CurrentSequenceAllTaskCount, count);
-        CurrentSequenceAllTaskCount += count;
-        if (CurrentSequenceAllTaskCount == CurrentSequenceMaxTaskCount)
+        TaskState currentState = TaskMap[taskAvatar].First.Value.CurrentTaskState;
+        if (currentState == TaskState.Paused)
         {
-            Page.taskAvatarlist.ForEach(ta => ta.Icon.material = GameManager.GameAsset.grayscale);
+            StartTask(taskAvatar);
+        }
+        else if (currentState == TaskState.Ready)
+        {
+            BuildingTask(taskAvatar);
+        }
+        else if (currentState == TaskState.Waiting)
+        {
+            AddTask(taskAvatar, count);
+        }
+    }
+
+    private void StartTask(TaskAvatar taskAvatar)
+    {
+        foreach (var task in TaskMap[taskAvatar])
+            task.CurrentTaskState = TaskState.Waiting;
+    }
+
+    private void BuildingTask(TaskAvatar taskAvatar)
+    {
+        
+    }
+
+    private void AddTask(TaskAvatar taskAvatar, int count)
+    {
+        if (_currentSequenceAllTaskCount >= _currentSequenceMaxTaskCount)
+            return;
+        var info = _page.GetIBaseInfoWithIcon(taskAvatar.Icon.sprite, FactionSo);
+
+        count = Math.Min(_currentSequenceMaxTaskCount - _currentSequenceAllTaskCount, count);
+        _currentSequenceAllTaskCount += count;
+        if (_currentSequenceAllTaskCount == _currentSequenceMaxTaskCount)
+        {
+            _page.taskAvatarlist.ForEach(ta => ta.Icon.material = GameManager.GameAsset.grayscale);
             _stopAddTask = true;
         }
 
@@ -61,36 +87,132 @@ public class Sequence
         if (TaskList.Count == 0 || TaskList.Last.Value.Info != info)
         {
             var task = new ProduceTask(info, count, this, taskAvatar);
-            taskAvatar.currentState = TaskAvatar.TaskAvatarState.HaveTask;
+            taskAvatar.currentState = TaskAvatarState.HaveTask;
             TaskMap[taskAvatar].AddLast(task);
             TaskList.AddLast(task);
         }
         else
-        {
             TaskList.Last.Value.Count += count;
-        }
+
         taskAvatar.AddCount(count);
+    }
+
+
+    public void CancelTask(GameObject taskAvatarGameObject)
+    {
+        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
+        if (TaskMap[taskAvatar].First.Value.CurrentTaskState == TaskState.Paused)
+        {
+            foreach (var task in TaskMap[taskAvatar])
+            {
+                TaskList.Remove(task);
+            }
+        }
+
+        TaskMap[taskAvatar].Clear();
+    }
+
+    public void PauseTask(GameObject taskAvatarGameObject)
+    {
+        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
+        if (TaskMap[taskAvatar].First.Value.CurrentTaskState != TaskState.Paused)
+        {
+            foreach (var task in TaskMap[taskAvatar])
+            {
+                task.CurrentTaskState = TaskState.Paused;
+            }
+        }
     }
 
     public void ProductionMovesForward()
     {
         if (TaskList.Count == 0)
             return;
-        TaskList.First(t => t.CurrentTaskState != ProduceTask.TaskState.Paused).Forward();
-        
+        TaskList.First(t => t.CurrentTaskState != TaskState.Paused).Forward();
     }
-    
+
 
     public void EndTaskCallBack()
     {
         if (_stopAddTask)
         {
             _stopAddTask = false;
-            if (this == Page.GetCurrentSequence())
+            if (this == _page.GetCurrentSequence())
             {
-                Page.taskAvatarlist.ForEach(ta => ta.Icon.material = null);
+                _page.taskAvatarlist.ForEach(ta => ta.Icon.material = null);
             }
-            
+        }
+    }
+}
+
+public class ProduceTask
+{
+    public readonly IBaseInfo Info;
+    public int Count;
+    public float Value;
+    private readonly Sequence _sequence;
+    public readonly TaskAvatar TaskAvatar;
+    public TaskState CurrentTaskState;
+    private readonly float _produceSpeed4Price;
+    private readonly float _produceSpeed4Value;
+
+    public ProduceTask(IBaseInfo info, int count, Sequence sequence, TaskAvatar taskAvatar)
+    {
+        Info = info;
+        Count = count;
+        Value = 1f;
+        _sequence = sequence;
+        this.TaskAvatar = taskAvatar;
+        CurrentTaskState = TaskState.Waiting;
+
+        int price = info.Price;
+        float time;
+        if (info is MainBuildingSo || info is OtherBuildingSo)
+        {
+            time = ((MainBuildingSo)info).BuildingAndPlacementTime.x;
+        }
+        else
+        {
+            time = ((ArmySo)info).BuildingTime;
+        }
+
+        _produceSpeed4Price = price / time;
+        _produceSpeed4Value = 1 / time;
+    }
+
+    public void Forward()
+    {
+        if (CurrentTaskState == TaskState.Ready)
+            return;
+        if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price)
+            return;
+        GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
+        Value -= _produceSpeed4Value;
+        TaskAvatar.UpdateValue(Value);
+        if (Value <= 0f)
+        {
+            _sequence.EndTaskCallBack();
+            // success
+            // Instantiate(info.GameObjectPrefab);
+            if (Count == 1) // 最后一个单位，本任务结束
+            {
+                _sequence.TaskList.Remove(this);
+                _sequence.TaskMap[TaskAvatar].Remove(this);
+                if (_sequence.TaskMap[TaskAvatar].Count == 0)
+                {
+                    TaskAvatar.SwitchTaskAvatar(TaskAvatarState.NoTask);
+                    return;
+                }
+
+                TaskAvatar.UpdateValue(1f);
+            }
+            else
+            {
+                Count--;
+                Value = 1f;
+                TaskAvatar.UpdateValue(Value);
+                TaskAvatar.AddCount(-Count);
+            }
         }
     }
 }

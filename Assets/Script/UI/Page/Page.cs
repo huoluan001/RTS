@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
 using TMPro;
-using UnityEngine.Serialization;
 
 public class Page : MonoBehaviour
 {
@@ -153,7 +152,7 @@ public class Page : MonoBehaviour
     }
     public void CurrentSequenceAddTask(GameObject taskAvatarGameObject, bool isPlus = false)
     {
-        _currentSequence.AddTask(taskAvatarGameObject, isPlus ? 5 : 1);
+        // _currentSequence.AddTask(taskAvatarGameObject, isPlus ? 5 : 1);
     }
 
     public Sequence GetCurrentSequence() => _sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
@@ -164,14 +163,14 @@ public class Page : MonoBehaviour
         currentSequenceIndex = targetIndex;
         _currentSequence = GetCurrentSequence();
         UpdateContainImageWithCheck();
-        taskAvatarlist.ForEach(ta => ta.SwitchTaskAvatar(TaskAvatar.TaskAvatarState.NoTask));
+        taskAvatarlist.ForEach(ta => ta.SwitchTaskAvatar(TaskAvatarState.NoTask));
         foreach (var currtask in _currentSequence.TaskList)
         {
             var taskAvatar = currtask.TaskAvatar;
             
             if (_currentSequence.TaskMap[taskAvatar].First.Value == currtask)
             {
-                taskAvatar.SwitchTaskAvatar(TaskAvatar.TaskAvatarState.HaveTask);
+                taskAvatar.SwitchTaskAvatar(TaskAvatarState.HaveTask);
                 taskAvatar.UpdateValue(currtask.Value);
             }
             

@@ -118,6 +118,17 @@ namespace UnityEngine
         DockSequence = 5,
         AircraftSequence = 6
     }
+    public enum TaskState
+    {
+        Waiting,
+        Paused,
+        Ready
+    }
+    public enum TaskAvatarState
+    {
+        HaveTask,
+        NoTask,
+    }
     
 
 }
