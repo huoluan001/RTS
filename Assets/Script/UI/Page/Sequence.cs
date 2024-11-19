@@ -17,7 +17,8 @@ public class Sequence
     public readonly int CurrentSequenceMaxTaskCount;
     public int CurrentSequenceAllTaskCount;
 
-    private LinkedList<ProduceTask> _taskList;
+    public LinkedList<ProduceTask> TaskList;
+    public Dictionary<TaskAvatar, LinkedList<ProduceTask>> TaskMap;
 
     private bool _stopAddTask;
 
@@ -38,7 +39,8 @@ public class Sequence
         this.FactionSo = factionSo;
         this.Page = page;
         this.SequenceIndex = sequenceIndex;
-        _taskList = new LinkedList<ProduceTask>();
+        TaskList = new LinkedList<ProduceTask>();
+        TaskMap = new Dictionary<TaskAvatar, LinkedList<ProduceTask>>();
     }
 
     public void AddTask(GameObject taskAvatarGameObject, int count)
@@ -55,34 +57,29 @@ public class Sequence
             _stopAddTask = true;
         }
 
-        if (_taskList.Count == 0 || _taskList.Last.Value.Info != info)
+        // 如果task队列为空，或者最后一个任务不是本次添加任务的同一个任务，则创建一个新的任务
+        if (TaskList.Count == 0 || TaskList.Last.Value.Info != info)
         {
             var task = new ProduceTask(info, count, this, taskAvatar);
-            _taskList.AddLast(task);
+            taskAvatar.currentState = TaskAvatar.TaskAvatarState.HaveTask;
+            TaskMap[taskAvatar].AddLast(task);
+            TaskList.AddLast(task);
         }
         else
         {
-            _taskList.Last.Value.Count += count;
+            TaskList.Last.Value.Count += count;
         }
+        taskAvatar.AddCount(count);
     }
 
     public void ProductionMovesForward()
     {
-        if (_taskList.Count == 0)
+        if (TaskList.Count == 0)
             return;
-        _taskList.First(t => t.CurrentTaskState != ProduceTask.TaskState.Paused).Forward();
+        TaskList.First(t => t.CurrentTaskState != ProduceTask.TaskState.Paused).Forward();
         
     }
-
-
-    // Sequence into Page.TaskAvatar
-    // public void UpdateProduceTasksUI()
-    // {
-    //     foreach (var  in _taskList)
-    //     {
-    //         
-    //     }
-    // }
+    
 
     public void EndTaskCallBack()
     {

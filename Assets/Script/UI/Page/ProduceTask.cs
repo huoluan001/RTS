@@ -7,11 +7,13 @@ public class ProduceTask
     public int Count;
     public float Value;
     public Sequence Sequence;
+    public TaskAvatar TaskAvatar;
     public TaskState CurrentTaskState;
+    
 
     private float _produceSpeed4Price;
     private float _produceSpeed4Value;
-    private TaskAvatar _taskAvatar;
+    
 
 
     public ProduceTask(IBaseInfo info, int count, Sequence sequence, TaskAvatar taskAvatar)
@@ -20,9 +22,8 @@ public class ProduceTask
         Count = count;
         Value = 1f;
         Sequence = sequence;
-        this._taskAvatar = taskAvatar;
+        this.TaskAvatar = taskAvatar;
         CurrentTaskState = TaskState.Waiting;
-        taskAvatar.Tasks.Add(this);
 
         int price = info.Price;
         float time;
@@ -47,23 +48,29 @@ public class ProduceTask
             return;
         GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
         Value -= _produceSpeed4Value;
-        _taskAvatar.UpdateValue(Value);
-        if (_taskAvatar.Completed())
+        TaskAvatar.UpdateValue(Value);
+        if (Value <= 0f)
         {
             Sequence.EndTaskCallBack();
             // success
             // Instantiate(info.GameObjectPrefab);
-            if (Count == 1)
+            if (Count == 1) // 最后一个单位，本任务结束
             {
-                _taskAvatar.Coating.fillAmount = 1;
-                _taskAvatar.Tasks.Remove(this);
+                Sequence.TaskList.Remove(this);
+                Sequence.TaskMap[TaskAvatar].Remove(this);
+                if (Sequence.TaskMap[TaskAvatar].Count == 0)
+                {
+                    TaskAvatar.SwitchTaskAvatar(TaskAvatar.TaskAvatarState.NoTask);
+                    return;
+                }
+                TaskAvatar.UpdateValue(1f);
             }
             else
             {
                 Count--;
                 Value = 1f;
-                _taskAvatar.UpdateValue(Value);
-                _taskAvatar.UpdateCount(Count);
+                TaskAvatar.UpdateValue(Value);
+                TaskAvatar.AddCount(-Count);
             }
         }
     }

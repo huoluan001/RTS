@@ -3,14 +3,13 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class Page : MonoBehaviour
 {
     public Transform contentPageTransform;
     public Transform contentMenuTransform;
-
-
-
+    
     // 存储各派系的在本序列类型的IBaseInfo, Init会初始化本派系，当需求出现时，在添加其他的派系
     private Dictionary<FactionEnum, List<IBaseInfo>> _iBaseInfosDic;
 
@@ -19,7 +18,7 @@ public class Page : MonoBehaviour
     private List<Sequence> _sequences;
     public int currentSequenceIndex;
     private Sequence _currentSequence;
-    public FactionEnum currrntShowFactionEnum;
+    public FactionEnum currentShowFactionEnum;
     public bool isShow;
 
     // 最多显示的序列数量
@@ -53,7 +52,7 @@ public class Page : MonoBehaviour
         _sequences.Add(sequence);
         currentSequenceIndex = 1;
         _currentSequence = sequence;
-        currrntShowFactionEnum = factionSo.factionEnum;
+        currentShowFactionEnum = factionSo.factionEnum;
         this.isShow = isShow;
 
         // 初始化ibaseInfo_Dic
@@ -109,10 +108,6 @@ public class Page : MonoBehaviour
 
     private void Update()
     {
-        // if (GameManager.gameAsset.commander.isRunningProduce)
-        // {
-
-        // }
         _sequences.ForEach(sequence => sequence.ProductionMovesForward());
     }
 
@@ -136,7 +131,7 @@ public class Page : MonoBehaviour
 
     private void UpdateContainImageWithCheck(bool shouldCheckFaction = true)
     {
-        if (shouldCheckFaction && currrntShowFactionEnum == _currentSequence.FactionSo.factionEnum)
+        if (shouldCheckFaction && currentShowFactionEnum == _currentSequence.FactionSo.factionEnum)
             return;
         List<Sprite> sprites = _iBaseInfosDic[_currentSequence.FactionSo.factionEnum].Select(x => x.Icon).ToList();
         if(_currentSequence.FactionSo.factionEnum == FactionEnum.AlliedForces && sequenceType == SequenceType.MainBuildingSequence)
@@ -161,18 +156,28 @@ public class Page : MonoBehaviour
         _currentSequence.AddTask(taskAvatarGameObject, isPlus ? 5 : 1);
     }
 
-    public Sequence GetCurrentSequence()
-    {
-        return _sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
-    }
+    public Sequence GetCurrentSequence() => _sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
+    
 
     public void SwitchCurrentSequence(int targetIndex)
     {
         currentSequenceIndex = targetIndex;
         _currentSequence = GetCurrentSequence();
         UpdateContainImageWithCheck();
-        // 更新新的sequence数据面板
-        // _currentSequence.UpdateProduceTasksUI();
+        taskAvatarlist.ForEach(ta => ta.SwitchTaskAvatar(TaskAvatar.TaskAvatarState.NoTask));
+        foreach (var currtask in _currentSequence.TaskList)
+        {
+            var taskAvatar = currtask.TaskAvatar;
+            
+            if (_currentSequence.TaskMap[taskAvatar].First.Value == currtask)
+            {
+                taskAvatar.SwitchTaskAvatar(TaskAvatar.TaskAvatarState.HaveTask);
+                taskAvatar.UpdateValue(currtask.Value);
+            }
+            
+            taskAvatar.AddCount(currtask.Count);
+        }
+
     }
 
     public void SeqAvatarLeftMove()
@@ -197,13 +202,7 @@ public class Page : MonoBehaviour
         _rightCursor = _rightCursor.Next;
         _rightCursor.Value.SetActive(true);
     }
-
-    public IBaseInfo GetIBaseInfoWithIndex(int index, FactionSo factionSo)
-    {
-        if (!_iBaseInfosDic.Keys.Contains(factionSo.factionEnum))
-            _iBaseInfosDic[factionSo.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSo(sequenceType, factionSo);
-        return _iBaseInfosDic[factionSo.factionEnum][index];
-    }
+    
     public IBaseInfo GetIBaseInfoWithIcon(Sprite icon, FactionSo factionSo)
     {
         if (!_iBaseInfosDic.Keys.Contains(factionSo.factionEnum))
@@ -214,7 +213,5 @@ public class Page : MonoBehaviour
     public List<IBaseInfo> GetIBaseInfoListWithSequenceTypeAndFactionSo(SequenceType sequenceType, FactionSo factionSo)
     {
         return factionSo.GetBaseInfos(sequenceType);
-
-
     }
 }
