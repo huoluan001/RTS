@@ -4,19 +4,35 @@ public class Keyboard : MonoBehaviour
 {
     private GameAsset gameAsset;
 
+    private RTSInputSystem.PlayerActions player;
+
     private void Awake()
     {
-       
+
     }
     private void Start()
     {
+        this.player = GameManager.InputAsset.player;
         gameAsset = GameManager.GameAsset;
-        gameAsset.player.CamareMove.performed += GetArrow;
-        gameAsset.player.CamareMove.canceled += CameraMoveVector2Clear;
-        gameAsset.player.LeftShiftRightMouse.performed += Click;
-        
+        player.CamareMove.performed += GetArrow;
+        player.CamareMove.canceled += CameraMoveVector2Clear;
+        player.LeftShiftRightMouse.performed += Click;
 
-    
+        player.LeftShift.performed += OnLeftShiftPerformed;
+        player.LeftShift.canceled += OnRightShiftCanceled;
+
+
+
+    }
+    private void OnLeftShiftPerformed(InputAction.CallbackContext callbackContext)
+    {
+        GameManager.InputAsset.LeftShiftDown = true;
+        Debug.Log("f");
+    }
+
+    private void OnRightShiftCanceled(InputAction.CallbackContext callbackContext)
+    {
+        GameManager.InputAsset.LeftShiftDown = false;
     }
     private void GetArrow(InputAction.CallbackContext callbackContext)
     {

@@ -25,11 +25,13 @@ public class Player : MonoBehaviour
 
     public GameAsset gameAsset;
     public EventAsset eventAsset;
+    public InputAsset inputAsset;
     private void Awake()
     {
         gameAsset.commander = this;
         GameManager.GameAsset = gameAsset;
         GameManager.EventAsset = eventAsset;
+        GameManager.InputAsset = inputAsset;
     }
 
 

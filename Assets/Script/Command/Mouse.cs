@@ -35,9 +35,8 @@ public class Mouse : MonoBehaviour
         player.StickingModel.performed += SattingModel;
         player.CeasefireModel.performed += CeasefireModel;
 
-        player.LeftShift.performed += OnLeftShiftPerformed;
-        player.LeftShift.canceled += OnRightShiftCanceled;
-    
+
+
 
 
         selectionBoxUI = GameManager.GameAsset.selectionBoxUI;
@@ -45,28 +44,20 @@ public class Mouse : MonoBehaviour
 
     private void Update()
     {
- //        SelectionBoxUIUpdate();
+        //        SelectionBoxUIUpdate();
     }
 
-    private void OnLeftShiftPerformed(InputAction.CallbackContext callbackContext)
-    {
-        GameManager.InputAsset.LeftShiftDown = true;
-    }
 
-    private void OnRightShiftCanceled(InputAction.CallbackContext callbackContext)
-    {
-        GameManager.InputAsset.LeftShiftDown = false;
-    }
 
     void OnMouseLeftPerformed(InputAction.CallbackContext callbackContext)
     {
         GameManager.EventAsset.MouseLeftClickPerformed?.Invoke();
         mouseLeftPerformPosition = Input.mousePosition;
-        
+
         PointerEventData eventData = new PointerEventData(eventSystem);
         eventData.pressPosition = Input.mousePosition;
         eventData.position = Input.mousePosition;
-        
+
         List<RaycastResult> list = new List<RaycastResult>();
         GameManager.GameAsset.graphicRaycaster.Raycast(eventData, list);
         if (list.Count != 0)
@@ -82,7 +73,7 @@ public class Mouse : MonoBehaviour
         if (gameObject.tag == "TaskAvatar") // 添加序列任务
         {
             var page = gameObject.transform.parent.parent.GetComponent<Page>();
-            page.CurrentSequenceAddTask(gameObject, false);
+            page.CurrentSequenceAddTask(gameObject);
         }
         else if (gameObject.tag == "SeqAvatar") // 序列转换
         {

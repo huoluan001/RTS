@@ -1121,7 +1121,7 @@ MonoBehaviour:
   PlayerName: huoluan
   color: {r: 1, g: 0, b: 0, a: 0}
   teamId: 1
-  factionSo: {fileID: 0}
+  factionSo: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
   factionEnum: 0
   identity: 0
   MaxTechnology: 0
@@ -1134,6 +1134,7 @@ MonoBehaviour:
   armies: []
   gameAsset: {fileID: 11400000, guid: ab3e9d0cc6dd94799a0b6e469f681c10, type: 2}
   eventAsset: {fileID: 11400000, guid: 0a5f02cc4be11ea4b8bc62ff3fc531cb, type: 2}
+  inputAsset: {fileID: 11400000, guid: 5be2486c60e81478b9b35164c5fb884e, type: 2}
 --- !u!114 &318214857
 MonoBehaviour:
   m_ObjectHideFlags: 0
