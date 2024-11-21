@@ -8,7 +8,7 @@ public class Page : MonoBehaviour
 {
     public Transform contentPageTransform;
     public Transform contentMenuTransform;
-    
+
     // 存储各派系的在本序列类型的IBaseInfo, Init会初始化本派系，当需求出现时，在添加其他的派系
     private Dictionary<FactionEnum, List<IBaseInfo>> _iBaseInfosDic;
 
@@ -32,9 +32,7 @@ public class Page : MonoBehaviour
     private LinkedListNode<GameObject> _rightCursor;
     private int _nextSequenceIndex = 1;
     private RectTransform _rectTransform;
-
     public List<int> lll = new List<int>();
-
     public int head;
     public int tail;
     void Start()
@@ -81,7 +79,7 @@ public class Page : MonoBehaviour
         var sequence = new Sequence(sequenceType, factionSo, this, _nextSequenceIndex);
         _sequences.Add(sequence);
         // 序列化身初始化
-        GameObject seqAvatar = Instantiate(SeqAvatarPrefab,contentMenuTransform, false);
+        GameObject seqAvatar = Instantiate(SeqAvatarPrefab, contentMenuTransform, false);
         TMP_Text tMP_Text = seqAvatar.GetComponent<TMP_Text>();
         tMP_Text.text = _nextSequenceIndex.ToString();
 
@@ -99,7 +97,6 @@ public class Page : MonoBehaviour
         {
             lll.Add(int.Parse(i.transform.GetComponent<TMP_Text>().text));
         }
-        
         return _nextSequenceIndex++;
     }
 
@@ -115,21 +112,24 @@ public class Page : MonoBehaviour
         if (shouldCheckFaction && currentShowFactionEnum == _currentSequence.FactionSo.factionEnum)
             return;
         List<Sprite> sprites = _iBaseInfosDic[_currentSequence.FactionSo.factionEnum].Select(x => x.Icon).ToList();
-        if(_currentSequence.FactionSo.factionEnum == FactionEnum.AlliedForces && sequenceType == SequenceType.MainBuildingSequence)
+        if (_currentSequence.FactionSo.factionEnum == FactionEnum.AlliedForces && sequenceType == SequenceType.MainBuildingSequence)
         {
             sprites = sprites.Skip(1).SkipLast(1).ToList();
         }
+        int spritesCount = sprites.Count;
+        int taskAvatarsCount = taskAvatarlist.Count;
 
-        if (taskAvatarlist.Count < sprites.Count)
+
+        for (int i = taskAvatarsCount; i < spritesCount; i++)
+            taskAvatarlist.Add(Instantiate(TaskAvatarPrefab, contentPageTransform, false).GetComponent<TaskAvatar>());
+
+        for (int i = 0; i < taskAvatarsCount; i++)
         {
-            int num = sprites.Count - taskAvatarlist.Count;
-            for (int i = 0; i < num; i++)
-                taskAvatarlist.Add(Instantiate(TaskAvatarPrefab, contentPageTransform, false).GetComponent<TaskAvatar>());
+            taskAvatarlist[i].gameObject.SetActive(i < spritesCount);
         }
-        else if (taskAvatarlist.Count > sprites.Count)
-        {
-            taskAvatarlist.RemoveRange(sprites.Count, taskAvatarlist.Count - sprites.Count);
-        }
+
+
+
         sprites.Zip(taskAvatarlist, (sprite, taskAvatar) => taskAvatar.Icon.sprite = sprite).ToArray();
     }
     public void CurrentSequenceAddTask(GameObject taskAvatarGameObject, bool isPlus = false)
@@ -143,7 +143,7 @@ public class Page : MonoBehaviour
     }
 
     public Sequence GetCurrentSequence() => _sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
-    
+
 
     public void SwitchCurrentSequence(int targetIndex)
     {
@@ -154,16 +154,15 @@ public class Page : MonoBehaviour
         foreach (var currtask in _currentSequence.TaskList)
         {
             var taskAvatar = currtask.TaskAvatar;
-            
-            if (_currentSequence.TaskMap[taskAvatar].First.Value == currtask)
+
+            if (_currentSequence.TaskMap[taskAvatar].First() == currtask)
             {
                 taskAvatar.SwitchTaskAvatar(TaskAvatarState.HaveTask);
                 taskAvatar.UpdateValue(currtask.Value);
             }
-            
+
             taskAvatar.AddCount(currtask.Count);
         }
-
         if (_currentSequence.StopAddTask)
         {
             taskAvatarlist.ForEach(ta => ta.Icon.material = GameManager.GameAsset.grayscale);
@@ -193,7 +192,7 @@ public class Page : MonoBehaviour
         _rightCursor = _rightCursor.Next;
         _rightCursor.Value.SetActive(true);
     }
-    
+
     public IBaseInfo GetIBaseInfoWithIcon(Sprite icon, FactionSo factionSo)
     {
         if (!_iBaseInfosDic.Keys.Contains(factionSo.factionEnum))
@@ -205,7 +204,7 @@ public class Page : MonoBehaviour
     {
         return factionSo.GetBaseInfos(sequenceType);
     }
-        public void ShowAndHideSwitch()
+    public void ShowAndHideSwitch()
     {
         if (isShow)
             _rectTransform.localScale = new Vector3(1, 1, 1);

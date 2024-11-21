@@ -16,7 +16,7 @@ public class Sequence
     [SerializeField]
     private int _currentSequenceAllTaskCount;
     public List<ProduceTask> TaskList;
-    public Dictionary<TaskAvatar, LinkedList<ProduceTask>> TaskMap;
+    public SerializableDictionary<TaskAvatar, List<ProduceTask>> TaskMap;
     public bool StopAddTask;
     private HashSet<SequenceType> buildingSequenceTypeHashMap = new HashSet<SequenceType>() { SequenceType.MainBuildingSequence, SequenceType.OtherBuildingSequence };
 
@@ -26,7 +26,7 @@ public class Sequence
         _currentSequenceMaxTaskCount = buildingSequenceTypeHashMap.Contains(sequenceType) ? 10 : 99;
         _currentSequenceAllTaskCount = 0;
         TaskList = new List<ProduceTask>();
-        TaskMap = new Dictionary<TaskAvatar, LinkedList<ProduceTask>>();
+        TaskMap = new SerializableDictionary<TaskAvatar, List<ProduceTask>>();
         StopAddTask = false;
     }
 
@@ -38,7 +38,7 @@ public class Sequence
             AddTask(taskAvatar);
             return;
         }
-        TaskState currentState = TaskMap[taskAvatar].First.Value.CurrentTaskState;
+        TaskState currentState = TaskMap[taskAvatar].First().CurrentTaskState;
         if (currentState == TaskState.Paused)
         {
             StartTask(taskAvatar);
@@ -60,25 +60,15 @@ public class Sequence
         {
             return;
         }
-        TaskState currentState = TaskMap[taskAvatar].First.Value.CurrentTaskState;
-        if (currentState == TaskState.Waiting)
-        {
-            if (GameManager.InputAsset.LeftShiftDown)
-            {
-                CancelTask(taskAvatar);
-            }
-            else
-            {
-                PauseTask(taskAvatar);
-            }
-        }
-        else if (currentState == TaskState.Paused)
+        TaskState currentState = TaskMap[taskAvatar].First().CurrentTaskState;
+        if ((currentState == TaskState.Waiting && GameManager.InputAsset.LeftShiftDown)
+                    || currentState == TaskState.Paused || currentState == TaskState.Ready)
         {
             CancelTask(taskAvatar);
         }
-        else if (currentState == TaskState.Ready)
+        else
         {
-            CancelTask(taskAvatar);
+            PauseTask(taskAvatar);
         }
 
     }
@@ -115,9 +105,9 @@ public class Sequence
             taskAvatar.SwitchTaskAvatar(TaskAvatarState.HaveTask);
             if (!TaskMap.ContainsKey(taskAvatar))
             {
-                TaskMap[taskAvatar] = new LinkedList<ProduceTask>();
+                TaskMap[taskAvatar] = new List<ProduceTask>();
             }
-            TaskMap[taskAvatar].AddLast(task);
+            TaskMap[taskAvatar].Add(task);
             TaskList.Add(task);
         }
         else
@@ -161,72 +151,3 @@ public class Sequence
         }
     }
 }
-
-[Serializable]
-public class ProduceTask
-{
-    public readonly IBaseInfo Info;
-    public int Count;
-    public float Value;
-    private readonly Sequence _sequence;
-    public readonly TaskAvatar TaskAvatar;
-    public TaskState CurrentTaskState;
-    private readonly float _produceSpeed4Price;
-    private readonly float _produceSpeed4Value;
-
-    public ProduceTask(IBaseInfo info, int count, Sequence sequence, TaskAvatar taskAvatar)
-    {
-        (this.Info, this.Count, this._sequence, this.TaskAvatar, Value, CurrentTaskState) =
-                (info, count, sequence, taskAvatar, 1f, TaskState.Waiting);
-
-        int price = info.Price;
-        float time;
-        if (info is MainBuildingSo || info is OtherBuildingSo)
-        {
-            time = ((MainBuildingSo)info).BuildingAndPlacementTime.x;
-        }
-        else
-        {
-            time = ((ArmySo)info).BuildingTime;
-        }
-
-        _produceSpeed4Price = price / time;
-        _produceSpeed4Value = 1 / time;
-    }
-
-    public void Forward()
-    {
-        if (CurrentTaskState == TaskState.Ready)
-            return;
-        // if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price)
-        //return;
-        //GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
-        Value -= _produceSpeed4Value * Time.deltaTime;
-        TaskAvatar.UpdateValue(Value);
-        if (Value <= 0f)
-        {
-            _sequence.EndTaskCallBack();
-            // success
-            // Instantiate(info.GameObjectPrefab);
-            if (Count == 1) // 最后一个单位，本任务结束
-            {
-                _sequence.TaskList.Remove(this);
-                _sequence.TaskMap[TaskAvatar].Remove(this);
-                if (_sequence.TaskMap[TaskAvatar].Count == 0)
-                {
-                    TaskAvatar.SwitchTaskAvatar(TaskAvatarState.NoTask);
-                    return;
-                }
-                TaskAvatar.AddCount(-Count);
-            }
-            else
-            {
-                Count--;
-                Value = 1f;
-                TaskAvatar.AddCount(-1);
-            }
-        }
-    }
-
-}
-
