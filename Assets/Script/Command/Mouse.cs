@@ -12,24 +12,32 @@ public class Mouse : MonoBehaviour
 {
     private Vector3 mouseLeftPerformPosition;
     private GameObject selectionBoxUI;
+    private EventSystem eventSystem;
+    private RTSInputSystem.PlayerActions player;
     private void Awake()
     {
-        GameManager.GameAsset.inputSystem = new RTSInputSystem();
-        GameManager.GameAsset.inputSystem.Enable();
-        GameManager.GameAsset.player = GameManager.GameAsset.inputSystem.Player;
+        GameManager.InputAsset.inputSystem = new RTSInputSystem();
+        GameManager.InputAsset.inputSystem.Enable();
+        GameManager.InputAsset.player = GameManager.InputAsset.inputSystem.Player;
+        this.player = GameManager.InputAsset.player;
     }
     private void Start()
     {
-        GameManager.GameAsset.player.MouseLeft.performed += OnMouseLeftPerformed;
-        GameManager.GameAsset.player.MouseLeft.canceled += OnMouseLeftCanceled;
+        eventSystem = GameManager.GameAsset.eventSystem;
+        player.MouseLeft.performed += OnMouseLeftPerformed;
+        player.MouseLeft.canceled += OnMouseLeftCanceled;
 
-        GameManager.GameAsset.player.MouseRight.performed += OnMouseRightPerformed;
-        GameManager.GameAsset.player.MouseLeftDoubleClick.performed += MouseLeftDoubleClick;
+        player.MouseRight.performed += OnMouseRightPerformed;
+        player.MouseLeftDoubleClick.performed += MouseLeftDoubleClick;
 
-        GameManager.GameAsset.player.AggressionModel.performed += AggressionModel;
-        GameManager.GameAsset.player.VigilanceModel.performed += VigilanceMode;
-        GameManager.GameAsset.player.StickingModel.performed += SattingModel;
-        GameManager.GameAsset.player.CeasefireModel.performed += CeasefireModel;
+        player.AggressionModel.performed += AggressionModel;
+        player.VigilanceModel.performed += VigilanceMode;
+        player.StickingModel.performed += SattingModel;
+        player.CeasefireModel.performed += CeasefireModel;
+
+        player.LeftShift.performed += OnLeftShiftPerformed;
+        player.LeftShift.canceled += OnRightShiftCanceled;
+    
 
 
         selectionBoxUI = GameManager.GameAsset.selectionBoxUI;
@@ -40,38 +48,48 @@ public class Mouse : MonoBehaviour
  //        SelectionBoxUIUpdate();
     }
 
+    private void OnLeftShiftPerformed(InputAction.CallbackContext callbackContext)
+    {
+        GameManager.InputAsset.LeftShiftDown = true;
+    }
+
+    private void OnRightShiftCanceled(InputAction.CallbackContext callbackContext)
+    {
+        GameManager.InputAsset.LeftShiftDown = false;
+    }
+
     void OnMouseLeftPerformed(InputAction.CallbackContext callbackContext)
     {
         GameManager.EventAsset.MouseLeftClickPerformed?.Invoke();
-        // mouseLeftPerformPosition = Input.mousePosition;
-        //
-        // PointerEventData eventData = new PointerEventData(GameManager.gameAsset.eventSystem);
-        // eventData.pressPosition = Input.mousePosition;
-        // eventData.position = Input.mousePosition;
-        //
-        // List<RaycastResult> list = new List<RaycastResult>();
-        // GameManager.gameAsset.graphicRaycaster.Raycast(eventData, list);
-        // if (list.Count != 0)
-        // {
-        //     Debug.Log("点击到了UI");
-        // }
-        // else
-        // {
-        //     Debug.Log("点击到了场景");
-        //     return;
-        // }
-        // GameObject gameObject = list.First().gameObject;
-        // if (gameObject.tag == "TaskAvatar") // 添加序列任务
-        // {
-        //     var page = gameObject.transform.parent.parent.GetComponent<Page>();
-        //     page.CurrentSequenceAddTask(gameObject, false);
-        // }
-        // else if (gameObject.tag == "SeqAvatar") // 序列转换
-        // {
-        //     var page = gameObject.transform.parent.parent.GetComponent<Page>();
-        //     int targetIndex = int.Parse(gameObject.transform.GetComponent<TMP_Text>().text);
-        //     page.SwitchCurrentSequence(targetIndex);
-        // }
+        mouseLeftPerformPosition = Input.mousePosition;
+        
+        PointerEventData eventData = new PointerEventData(eventSystem);
+        eventData.pressPosition = Input.mousePosition;
+        eventData.position = Input.mousePosition;
+        
+        List<RaycastResult> list = new List<RaycastResult>();
+        GameManager.GameAsset.graphicRaycaster.Raycast(eventData, list);
+        if (list.Count != 0)
+        {
+            Debug.Log("点击到了UI");
+        }
+        else
+        {
+            Debug.Log("点击到了场景");
+            return;
+        }
+        GameObject gameObject = list.First().gameObject;
+        if (gameObject.tag == "TaskAvatar") // 添加序列任务
+        {
+            var page = gameObject.transform.parent.parent.GetComponent<Page>();
+            page.CurrentSequenceAddTask(gameObject, false);
+        }
+        else if (gameObject.tag == "SeqAvatar") // 序列转换
+        {
+            var page = gameObject.transform.parent.parent.GetComponent<Page>();
+            int targetIndex = int.Parse(gameObject.transform.GetComponent<TMP_Text>().text);
+            page.SwitchCurrentSequence(targetIndex);
+        }
 
     }
     void OnMouseLeftCanceled(InputAction.CallbackContext callbackContext)
@@ -85,6 +103,18 @@ public class Mouse : MonoBehaviour
     }
     public void OnMouseRightPerformed(InputAction.CallbackContext callbackContext)
     {
+        PointerEventData eventData = new PointerEventData(eventSystem);
+        eventData.pressPosition = Input.mousePosition;
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> list = new List<RaycastResult>();
+        GameManager.GameAsset.graphicRaycaster.Raycast(eventData, list);
+
+        GameObject gameObject = list.First().gameObject;
+        if (gameObject.tag == "TaskAvatar") // 添加序列任务
+        {
+            var page = gameObject.transform.parent.parent.GetComponent<Page>();
+            page.CurrentSequencePauseOrCancelTask(gameObject);
+        }
         if (callbackContext.performed)
         {
             Debug.Log("RightClick");
@@ -153,7 +183,7 @@ public class Mouse : MonoBehaviour
     /// </summary>
     private void SelectionBoxUIUpdate()
     {
-        if (GameManager.GameAsset.inputSystem.Player.MouseLeft.IsInProgress())
+        if (this.player.MouseLeft.IsInProgress())
         {
             var leftUp = mouseLeftPerformPosition;
             var rightDown = Input.mousePosition;

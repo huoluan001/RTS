@@ -14,7 +14,8 @@ public class Page : MonoBehaviour
 
     // 控制信息，必须在初始化时赋值
     public SequenceType sequenceType;
-    private List<Sequence> _sequences;
+    [SerializeField]
+    public List<Sequence> _sequences;
     public int currentSequenceIndex;
     private Sequence _currentSequence;
     public FactionEnum currentShowFactionEnum;
@@ -46,18 +47,18 @@ public class Page : MonoBehaviour
         // init Page
         this.sequenceType = sequenceType;
         _sequences = new List<Sequence>();
-        // Page默认有一个Sequence
-        var sequence = new Sequence(sequenceType, factionSo, this, _nextSequenceIndex++);
-        _sequences.Add(sequence);
-        currentSequenceIndex = 1;
-        _currentSequence = sequence;
-        currentShowFactionEnum = factionSo.factionEnum;
-        this.isShow = isShow;
 
         // 初始化ibaseInfo_Dic
         _iBaseInfosDic = new Dictionary<FactionEnum, List<IBaseInfo>>();
         _iBaseInfosDic[factionSo.factionEnum] = GetIBaseInfoListWithSequenceTypeAndFactionSo(sequenceType, factionSo);
 
+        // Page默认有一个Sequence
+        var sequence = new Sequence(sequenceType, factionSo, this, _nextSequenceIndex);
+        _sequences.Add(sequence);
+        currentSequenceIndex = _nextSequenceIndex;
+        _currentSequence = sequence;
+        currentShowFactionEnum = factionSo.factionEnum;
+        this.isShow = isShow;
         // 一次不考虑图片是否更新，禁止检查，直接update
         taskAvatarlist = new List<TaskAvatar>();
         UpdateContainImageWithCheck(false);
@@ -73,15 +74,14 @@ public class Page : MonoBehaviour
 
 
         // 返回序列编号
-        return 1;
+        return _nextSequenceIndex++;
     }
     public int AddSequence(FactionSo factionSo)
     {
         var sequence = new Sequence(sequenceType, factionSo, this, _nextSequenceIndex);
         _sequences.Add(sequence);
         // 序列化身初始化
-        GameObject seqAvatar = Instantiate(SeqAvatarPrefab);
-        seqAvatar.transform.SetParent(contentMenuTransform, false);
+        GameObject seqAvatar = Instantiate(SeqAvatarPrefab,contentMenuTransform, false);
         TMP_Text tMP_Text = seqAvatar.GetComponent<TMP_Text>();
         tMP_Text.text = _nextSequenceIndex.ToString();
 
@@ -90,8 +90,6 @@ public class Page : MonoBehaviour
             _rightCursor = _seqAvatars.Last;
         else
             seqAvatar.SetActive(false);
-
-
 
         head = int.Parse(_leftCursor.Value.transform.GetComponent<TMP_Text>().text);
         tail = int.Parse(_rightCursor.Value.transform.GetComponent<TMP_Text>().text);
@@ -110,23 +108,7 @@ public class Page : MonoBehaviour
         _sequences.ForEach(sequence => sequence.ProductionMovesForward());
     }
 
-    public void ShowAndHideSwitch()
-    {
-        if (isShow)
-            _rectTransform.localScale = new Vector3(1, 1, 1);
-        else
-            _rectTransform.localScale = new Vector3(1, 0, 1);
-    }
-    public void Show()
-    {
-        _rectTransform.localScale = new Vector3(1, 1, 1);
-        isShow = true;
-    }
-    public void Hide()
-    {
-        _rectTransform.localScale = new Vector3(1, 0, 1);
-        isShow = false;
-    }
+
 
     private void UpdateContainImageWithCheck(bool shouldCheckFaction = true)
     {
@@ -148,11 +130,16 @@ public class Page : MonoBehaviour
         {
             taskAvatarlist.RemoveRange(sprites.Count, taskAvatarlist.Count - sprites.Count);
         }
-        taskAvatarlist.Zip(sprites, (avatar, sprite) => avatar.GetComponent<Image>().sprite = sprite);
+        sprites.Zip(taskAvatarlist, (sprite, taskAvatar) => taskAvatar.Icon.sprite = sprite).ToArray();
     }
     public void CurrentSequenceAddTask(GameObject taskAvatarGameObject, bool isPlus = false)
     {
-        // _currentSequence.AddTask(taskAvatarGameObject, isPlus ? 5 : 1);
+        _currentSequence.OnClickMouseLeft(taskAvatarGameObject);
+    }
+
+    public void CurrentSequencePauseOrCancelTask(GameObject taskAvatarGameObject)
+    {
+        _currentSequence.OnClickMouseRight(taskAvatarGameObject);
     }
 
     public Sequence GetCurrentSequence() => _sequences.First(sequence => sequence.SequenceIndex == currentSequenceIndex);
@@ -175,6 +162,11 @@ public class Page : MonoBehaviour
             }
             
             taskAvatar.AddCount(currtask.Count);
+        }
+
+        if (_currentSequence.StopAddTask)
+        {
+            taskAvatarlist.ForEach(ta => ta.Icon.material = GameManager.GameAsset.grayscale);
         }
 
     }
@@ -212,5 +204,22 @@ public class Page : MonoBehaviour
     public List<IBaseInfo> GetIBaseInfoListWithSequenceTypeAndFactionSo(SequenceType sequenceType, FactionSo factionSo)
     {
         return factionSo.GetBaseInfos(sequenceType);
+    }
+        public void ShowAndHideSwitch()
+    {
+        if (isShow)
+            _rectTransform.localScale = new Vector3(1, 1, 1);
+        else
+            _rectTransform.localScale = new Vector3(1, 0, 1);
+    }
+    public void Show()
+    {
+        _rectTransform.localScale = new Vector3(1, 1, 1);
+        isShow = true;
+    }
+    public void Hide()
+    {
+        _rectTransform.localScale = new Vector3(1, 0, 1);
+        isShow = false;
     }
 }

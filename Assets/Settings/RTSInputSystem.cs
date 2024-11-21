@@ -108,6 +108,15 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftShift"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9ad6b0d-fac4-48ec-b8a9-bfd0989236f4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -363,6 +372,17 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""LeftShiftRightMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""611e186a-0249-4a65-b9ed-3bea54907764"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""LeftShift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -957,6 +977,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
         m_Player_CeasefireModel = m_Player.FindAction("CeasefireModel", throwIfNotFound: true);
         m_Player_CamareMove = m_Player.FindAction("CamareMove", throwIfNotFound: true);
         m_Player_LeftShiftRightMouse = m_Player.FindAction("LeftShiftRightMouse", throwIfNotFound: true);
+        m_Player_LeftShift = m_Player.FindAction("LeftShift", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1045,6 +1066,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CeasefireModel;
     private readonly InputAction m_Player_CamareMove;
     private readonly InputAction m_Player_LeftShiftRightMouse;
+    private readonly InputAction m_Player_LeftShift;
     public struct PlayerActions
     {
         private @RTSInputSystem m_Wrapper;
@@ -1058,6 +1080,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
         public InputAction @CeasefireModel => m_Wrapper.m_Player_CeasefireModel;
         public InputAction @CamareMove => m_Wrapper.m_Player_CamareMove;
         public InputAction @LeftShiftRightMouse => m_Wrapper.m_Player_LeftShiftRightMouse;
+        public InputAction @LeftShift => m_Wrapper.m_Player_LeftShift;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1094,6 +1117,9 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
             @LeftShiftRightMouse.started += instance.OnLeftShiftRightMouse;
             @LeftShiftRightMouse.performed += instance.OnLeftShiftRightMouse;
             @LeftShiftRightMouse.canceled += instance.OnLeftShiftRightMouse;
+            @LeftShift.started += instance.OnLeftShift;
+            @LeftShift.performed += instance.OnLeftShift;
+            @LeftShift.canceled += instance.OnLeftShift;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1125,6 +1151,9 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
             @LeftShiftRightMouse.started -= instance.OnLeftShiftRightMouse;
             @LeftShiftRightMouse.performed -= instance.OnLeftShiftRightMouse;
             @LeftShiftRightMouse.canceled -= instance.OnLeftShiftRightMouse;
+            @LeftShift.started -= instance.OnLeftShift;
+            @LeftShift.performed -= instance.OnLeftShift;
+            @LeftShift.canceled -= instance.OnLeftShift;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1316,6 +1345,7 @@ public partial class @RTSInputSystem: IInputActionCollection2, IDisposable
         void OnCeasefireModel(InputAction.CallbackContext context);
         void OnCamareMove(InputAction.CallbackContext context);
         void OnLeftShiftRightMouse(InputAction.CallbackContext context);
+        void OnLeftShift(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

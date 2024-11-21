@@ -9,16 +9,12 @@ public class TaskAvatar : MonoBehaviour
     public Image Coating;
     public Image Icon;
     public TaskAvatarState currentState;
-    [SerializeField] private GameObject coatingGameObject;
 
     private Material _grayscaleMaterial;
     private int _count;
 
     public void Start()
     {
-        currentState = TaskAvatarState.NoTask;
-        Icon = GetComponent<Image>();
-        Coating = coatingGameObject.GetComponent<Image>();
         _grayscaleMaterial = GameManager.GameAsset.grayscale;
     }
 
@@ -32,19 +28,15 @@ public class TaskAvatar : MonoBehaviour
 
     public void SwitchTaskAvatar(TaskAvatarState newState)
     {
-        if(currentState == newState)
-            return;
         if (newState == TaskAvatarState.NoTask)
         {
             ResetTaskAvatar();
         }
         else
         {
-            newState = TaskAvatarState.HaveTask;
+            currentState = TaskAvatarState.HaveTask;
             Coating.enabled = true;
             TMPText.enabled = true;
-            Coating.fillAmount = 1f;
-            _count = 0;
         }
     }
 

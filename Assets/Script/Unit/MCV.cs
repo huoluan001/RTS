@@ -10,7 +10,7 @@ public class MVC : MainBuilding
     
 
     public int mainBuildingSequenceID;
-    public int OtherBuildingSequenceID;
+    public int otherBuildingSequenceID;
 
     private void Update()
     {
@@ -28,7 +28,7 @@ public class MVC : MainBuilding
     {
         var id = GameManager.GameAsset.UIManager.AddMCVSequence(factionSo);
         mainBuildingSequenceID = id.x;
-        OtherBuildingSequenceID = id.y;
+        otherBuildingSequenceID = id.y;
     }
 
     public virtual void Pack()

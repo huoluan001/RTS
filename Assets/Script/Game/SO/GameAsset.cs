@@ -10,9 +10,7 @@ public class GameAsset : ScriptableObject
 
     public BuildingManager buildingManager;
 
-    // inputSystem
-    public RTSInputSystem inputSystem;
-    public RTSInputSystem.PlayerActions player;
+    
 
     [Header("UI")]
     [HideInInspector] public UIManager UIManager;

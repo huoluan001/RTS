@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
 using System;
+using System.Threading.Tasks;
 
+[Serializable]
 public class Sequence
 {
     public readonly int SequenceIndex;
@@ -12,12 +14,13 @@ public class Sequence
     public readonly FactionSo FactionSo;
 
     private readonly int _currentSequenceMaxTaskCount;
+    [SerializeField]
     private int _currentSequenceAllTaskCount;
 
-    public LinkedList<ProduceTask> TaskList;
+    public List<ProduceTask> TaskList;
     public Dictionary<TaskAvatar, LinkedList<ProduceTask>> TaskMap;
 
-    private bool _stopAddTask;
+    public bool StopAddTask;
 
     public Sequence(SequenceType sequenceType, FactionSo factionSo, Page page, int sequenceIndex)
     {
@@ -25,7 +28,7 @@ public class Sequence
         if (sequenceType == SequenceType.MainBuildingSequence ||
             page.sequenceType == SequenceType.OtherBuildingSequence)
         {
-            _currentSequenceMaxTaskCount = 1;
+            _currentSequenceMaxTaskCount = 10;
         }
         else
         {
@@ -36,13 +39,20 @@ public class Sequence
         FactionSo = factionSo;
         _page = page;
         SequenceIndex = sequenceIndex;
-        TaskList = new LinkedList<ProduceTask>();
+        TaskList = new List<ProduceTask>();
         TaskMap = new Dictionary<TaskAvatar, LinkedList<ProduceTask>>();
+        StopAddTask = false;
     }
 
     public void OnClickMouseLeft(GameObject taskAvatarGameObject, int count = 1)
     {
-        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
+        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();       
+        if(!TaskMap.ContainsKey(taskAvatar) || TaskMap[taskAvatar].Count == 0)
+        {
+            AddTask(taskAvatar, count);
+            Debug.Log("ddd");
+            return;
+        }
         TaskState currentState = TaskMap[taskAvatar].First.Value.CurrentTaskState;
         if (currentState == TaskState.Paused)
         {
@@ -58,6 +68,11 @@ public class Sequence
         }
     }
 
+    public void OnClickMouseRight(GameObject taskAvatarGameObject)
+    {
+        PauseTask(taskAvatarGameObject);
+    }
+
     private void StartTask(TaskAvatar taskAvatar)
     {
         foreach (var task in TaskMap[taskAvatar])
@@ -71,28 +86,31 @@ public class Sequence
 
     private void AddTask(TaskAvatar taskAvatar, int count)
     {
+        // 已经达到上限
         if (_currentSequenceAllTaskCount >= _currentSequenceMaxTaskCount)
             return;
-        var info = _page.GetIBaseInfoWithIcon(taskAvatar.Icon.sprite, FactionSo);
-
         count = Math.Min(_currentSequenceMaxTaskCount - _currentSequenceAllTaskCount, count);
         _currentSequenceAllTaskCount += count;
         if (_currentSequenceAllTaskCount == _currentSequenceMaxTaskCount)
         {
             _page.taskAvatarlist.ForEach(ta => ta.Icon.material = GameManager.GameAsset.grayscale);
-            _stopAddTask = true;
+            StopAddTask = true;
         }
-
+        var info = _page.GetIBaseInfoWithIcon(taskAvatar.Icon.sprite, FactionSo);
         // 如果task队列为空，或者最后一个任务不是本次添加任务的同一个任务，则创建一个新的任务
-        if (TaskList.Count == 0 || TaskList.Last.Value.Info != info)
+        if (TaskList.Count == 0 || TaskList[TaskList.Count - 1].Info != info)
         {
             var task = new ProduceTask(info, count, this, taskAvatar);
-            taskAvatar.currentState = TaskAvatarState.HaveTask;
+            taskAvatar.SwitchTaskAvatar(TaskAvatarState.HaveTask);
+            if(!TaskMap.ContainsKey(taskAvatar))
+            {
+                TaskMap[taskAvatar] = new LinkedList<ProduceTask>();
+            }
             TaskMap[taskAvatar].AddLast(task);
-            TaskList.AddLast(task);
+            TaskList.Add(task);
         }
         else
-            TaskList.Last.Value.Count += count;
+            TaskList[TaskList.Count - 1].Count += count;
 
         taskAvatar.AddCount(count);
     }
@@ -128,15 +146,16 @@ public class Sequence
     {
         if (TaskList.Count == 0)
             return;
-        TaskList.First(t => t.CurrentTaskState != TaskState.Paused).Forward();
+        TaskList.FirstOrDefault(t => t.CurrentTaskState != TaskState.Paused)?.Forward();
     }
 
 
     public void EndTaskCallBack()
     {
-        if (_stopAddTask)
+        _currentSequenceAllTaskCount--;
+        if (StopAddTask)
         {
-            _stopAddTask = false;
+            StopAddTask = false;
             if (this == _page.GetCurrentSequence())
             {
                 _page.taskAvatarlist.ForEach(ta => ta.Icon.material = null);
@@ -145,6 +164,7 @@ public class Sequence
     }
 }
 
+[Serializable]
 public class ProduceTask
 {
     public readonly IBaseInfo Info;
@@ -184,10 +204,10 @@ public class ProduceTask
     {
         if (CurrentTaskState == TaskState.Ready)
             return;
-        if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price)
-            return;
-        GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
-        Value -= _produceSpeed4Value;
+        // if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price)
+            //return;
+        //GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
+        Value -= _produceSpeed4Value * Time.deltaTime;
         TaskAvatar.UpdateValue(Value);
         if (Value <= 0f)
         {
@@ -203,15 +223,13 @@ public class ProduceTask
                     TaskAvatar.SwitchTaskAvatar(TaskAvatarState.NoTask);
                     return;
                 }
-
-                TaskAvatar.UpdateValue(1f);
+                TaskAvatar.AddCount(-Count);
             }
             else
             {
                 Count--;
                 Value = 1f;
-                TaskAvatar.UpdateValue(Value);
-                TaskAvatar.AddCount(-Count);
+                TaskAvatar.AddCount(-1);
             }
         }
     }

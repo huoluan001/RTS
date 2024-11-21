@@ -24,11 +24,12 @@ public class Player : MonoBehaviour
     public List<Army> armies = new List<Army>();
 
     public GameAsset gameAsset;
+    public EventAsset eventAsset;
     private void Awake()
     {
         gameAsset.commander = this;
         GameManager.GameAsset = gameAsset;
-        
+        GameManager.EventAsset = eventAsset;
     }
 
 
