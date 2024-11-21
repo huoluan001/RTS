@@ -10,47 +10,32 @@ public class Sequence
 {
     public readonly int SequenceIndex;
     private readonly Page _page;
-    //public SequenceType SequenceType;
+    public SequenceType SequenceType;
     public readonly FactionSo FactionSo;
-
     private readonly int _currentSequenceMaxTaskCount;
     [SerializeField]
     private int _currentSequenceAllTaskCount;
-
     public List<ProduceTask> TaskList;
     public Dictionary<TaskAvatar, LinkedList<ProduceTask>> TaskMap;
-
     public bool StopAddTask;
+    private HashSet<SequenceType> buildingSequenceTypeHashMap = new HashSet<SequenceType>() { SequenceType.MainBuildingSequence, SequenceType.OtherBuildingSequence };
 
     public Sequence(SequenceType sequenceType, FactionSo factionSo, Page page, int sequenceIndex)
     {
-        //this.SequenceType = sequenceType;
-        if (sequenceType == SequenceType.MainBuildingSequence ||
-            page.sequenceType == SequenceType.OtherBuildingSequence)
-        {
-            _currentSequenceMaxTaskCount = 10;
-        }
-        else
-        {
-            _currentSequenceMaxTaskCount = 99;
-        }
-
+        (this.SequenceType, this.FactionSo, this._page, this.SequenceIndex) = (sequenceType, factionSo, page, sequenceIndex);
+        _currentSequenceMaxTaskCount = buildingSequenceTypeHashMap.Contains(sequenceType) ? 10 : 99;
         _currentSequenceAllTaskCount = 0;
-        FactionSo = factionSo;
-        _page = page;
-        SequenceIndex = sequenceIndex;
         TaskList = new List<ProduceTask>();
         TaskMap = new Dictionary<TaskAvatar, LinkedList<ProduceTask>>();
         StopAddTask = false;
     }
 
-    public void OnClickMouseLeft(GameObject taskAvatarGameObject, int count = 1)
+    public void OnClickMouseLeft(GameObject taskAvatarGameObject)
     {
-        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();       
-        if(!TaskMap.ContainsKey(taskAvatar) || TaskMap[taskAvatar].Count == 0)
+        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
+        if (!TaskMap.ContainsKey(taskAvatar) || TaskMap[taskAvatar].Count == 0)
         {
-            AddTask(taskAvatar, count);
-            Debug.Log("ddd");
+            AddTask(taskAvatar);
             return;
         }
         TaskState currentState = TaskMap[taskAvatar].First.Value.CurrentTaskState;
@@ -64,14 +49,44 @@ public class Sequence
         }
         else if (currentState == TaskState.Waiting)
         {
-            AddTask(taskAvatar, count);
+            AddTask(taskAvatar);
         }
     }
 
     public void OnClickMouseRight(GameObject taskAvatarGameObject)
     {
-        PauseTask(taskAvatarGameObject);
+        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
+        if (!TaskMap.ContainsKey(taskAvatar) || TaskMap[taskAvatar].Count == 0)
+        {
+            return;
+        }
+        TaskState currentState = TaskMap[taskAvatar].First.Value.CurrentTaskState;
+        if (currentState == TaskState.Waiting)
+        {
+            if (GameManager.InputAsset.LeftShiftDown)
+            {
+                CancelTask(taskAvatar);
+            }
+            else
+            {
+                PauseTask(taskAvatar);
+            }
+        }
+        else if (currentState == TaskState.Paused)
+        {
+            CancelTask(taskAvatar);
+        }
+        else if (currentState == TaskState.Ready)
+        {
+            CancelTask(taskAvatar);
+        }
+
     }
+    private void BuildingTask(TaskAvatar taskAvatar)
+    {
+
+    }
+
 
     private void StartTask(TaskAvatar taskAvatar)
     {
@@ -79,16 +94,12 @@ public class Sequence
             task.CurrentTaskState = TaskState.Waiting;
     }
 
-    private void BuildingTask(TaskAvatar taskAvatar)
-    {
-        
-    }
-
-    private void AddTask(TaskAvatar taskAvatar, int count)
+    private void AddTask(TaskAvatar taskAvatar)
     {
         // 已经达到上限
         if (_currentSequenceAllTaskCount >= _currentSequenceMaxTaskCount)
             return;
+        int count = GameManager.InputAsset.LeftShiftDown ? 5 : 1;
         count = Math.Min(_currentSequenceMaxTaskCount - _currentSequenceAllTaskCount, count);
         _currentSequenceAllTaskCount += count;
         if (_currentSequenceAllTaskCount == _currentSequenceMaxTaskCount)
@@ -98,11 +109,11 @@ public class Sequence
         }
         var info = _page.GetIBaseInfoWithIcon(taskAvatar.Icon.sprite, FactionSo);
         // 如果task队列为空，或者最后一个任务不是本次添加任务的同一个任务，则创建一个新的任务
-        if (TaskList.Count == 0 || TaskList[TaskList.Count - 1].Info != info)
+        if (TaskList.Count == 0 || TaskList.Last().Info != info)
         {
             var task = new ProduceTask(info, count, this, taskAvatar);
             taskAvatar.SwitchTaskAvatar(TaskAvatarState.HaveTask);
-            if(!TaskMap.ContainsKey(taskAvatar))
+            if (!TaskMap.ContainsKey(taskAvatar))
             {
                 TaskMap[taskAvatar] = new LinkedList<ProduceTask>();
             }
@@ -110,36 +121,23 @@ public class Sequence
             TaskList.Add(task);
         }
         else
-            TaskList[TaskList.Count - 1].Count += count;
+            TaskList.Last().Count += count;
 
         taskAvatar.AddCount(count);
     }
 
 
-    public void CancelTask(GameObject taskAvatarGameObject)
+    public void CancelTask(TaskAvatar taskAvatar)
     {
-        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
-        if (TaskMap[taskAvatar].First.Value.CurrentTaskState == TaskState.Paused)
-        {
-            foreach (var task in TaskMap[taskAvatar])
-            {
-                TaskList.Remove(task);
-            }
-        }
-
+        foreach (var task in TaskMap[taskAvatar])
+            TaskList.Remove(task);
         TaskMap[taskAvatar].Clear();
     }
 
-    public void PauseTask(GameObject taskAvatarGameObject)
+    public void PauseTask(TaskAvatar taskAvatar)
     {
-        TaskAvatar taskAvatar = taskAvatarGameObject.GetComponent<TaskAvatar>();
-        if (TaskMap[taskAvatar].First.Value.CurrentTaskState != TaskState.Paused)
-        {
-            foreach (var task in TaskMap[taskAvatar])
-            {
-                task.CurrentTaskState = TaskState.Paused;
-            }
-        }
+        foreach (var task in TaskMap[taskAvatar])
+            task.CurrentTaskState = TaskState.Paused;
     }
 
     public void ProductionMovesForward()
@@ -178,12 +176,8 @@ public class ProduceTask
 
     public ProduceTask(IBaseInfo info, int count, Sequence sequence, TaskAvatar taskAvatar)
     {
-        Info = info;
-        Count = count;
-        Value = 1f;
-        _sequence = sequence;
-        this.TaskAvatar = taskAvatar;
-        CurrentTaskState = TaskState.Waiting;
+        (this.Info, this.Count, this._sequence, this.TaskAvatar, Value, CurrentTaskState) =
+                (info, count, sequence, taskAvatar, 1f, TaskState.Waiting);
 
         int price = info.Price;
         float time;
@@ -205,7 +199,7 @@ public class ProduceTask
         if (CurrentTaskState == TaskState.Ready)
             return;
         // if (GameManager.GameAsset.commander.Fund < _produceSpeed4Price)
-            //return;
+        //return;
         //GameManager.GameAsset.commander.Fund -= _produceSpeed4Price;
         Value -= _produceSpeed4Value * Time.deltaTime;
         TaskAvatar.UpdateValue(Value);
@@ -233,4 +227,6 @@ public class ProduceTask
             }
         }
     }
+
 }
+

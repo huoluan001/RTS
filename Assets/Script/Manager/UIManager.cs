@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject selectionBoxUI;
-
     // save page info
     public Page mainBuildingPage;
     public Page otherBuildingPage;
@@ -29,6 +28,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         // CreatePage(SequenceType.MainBuildingSequence);
+
     }
     public Vector2Int AddMCVSequence(FactionSo factionSo)
     {

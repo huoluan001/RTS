@@ -43,35 +43,14 @@ public class TaskAvatar : MonoBehaviour
 
     public void UpdateValue(float value)
     {
-        if (currentState == TaskAvatarState.NoTask)
-            return;
         Coating.fillAmount = value;
     }
 
     public void AddCount(int count)
     {
-        if (currentState == TaskAvatarState.NoTask)
-            return;
         if (TMPText.enabled == false)
             TMPText.enabled = true;
         _count += count;
         TMPText.text = _count.ToString();
-    }
-
-    public void UpdateCount(int count)
-    {
-        if (currentState == TaskAvatarState.NoTask || count <= 0)
-            return;
-        _count = count;
-        if (_count <= 0)
-        {
-            TMPText.enabled = false;
-            TMPText.text = "";
-        }
-        else
-        {
-            TMPText.enabled = true;
-            TMPText.text = _count.ToString();
-        }
     }
 }
