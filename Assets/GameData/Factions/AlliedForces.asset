@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d2cb4418f894b6f99c29cc80e11ecd, type: 3}
+  m_Name: AlliedForces
+  m_EditorClassIdentifier: 
+  factionEnum: 1
+  mainBuildings:
+  - {fileID: 11400000, guid: 891763775c29f754b96660913bb9ac2a, type: 2}
+  - {fileID: 11400000, guid: c8d8c5365400b1b45b4bcba964ffac3f, type: 2}
+  - {fileID: 11400000, guid: ced68e205a71cba43995255811d11e86, type: 2}
+  - {fileID: 11400000, guid: 344d77675c70cec4d8de67cd9150ecb1, type: 2}
+  - {fileID: 11400000, guid: 2a10af02d6b830b479f93d02ff05498a, type: 2}
+  - {fileID: 11400000, guid: 3a69dcc1e451445488babc9865b01e69, type: 2}
+  - {fileID: 11400000, guid: 4c4487475430b3b4f886e67395bf069e, type: 2}
+  - {fileID: 11400000, guid: 2d6e863191b4ac94e8ed6c7951c951ec, type: 2}
+  - {fileID: 11400000, guid: 24463400a849b3f499ab19280ccc3892, type: 2}
+  - {fileID: 11400000, guid: b90ef300b7312314a80c97916d7c09e4, type: 2}
+  otherBuildings:
+  - {fileID: 11400000, guid: 2c5d8a0f473046f4cb6d09730a1a69bb, type: 2}
+  - {fileID: 11400000, guid: c12cffbe3125a5f4ca1b96587dfbf78b, type: 2}
+  - {fileID: 11400000, guid: d206e3c6df3026548b870ffef1179d76, type: 2}
+  - {fileID: 11400000, guid: 38818bd7789d82e4aac8eb86019c92dc, type: 2}
+  - {fileID: 11400000, guid: 55ddee21903902f4dabc301adb9d2978, type: 2}
+  - {fileID: 11400000, guid: 1e739e5be6826674ab355e995cf7a3b1, type: 2}
+  army:
+  - {fileID: 11400000, guid: 2b75b6ac66cd4fe4e90ef03550d3770d, type: 2}
+  - {fileID: 11400000, guid: d7c6c688089392f4c881168df476c25a, type: 2}
+  - {fileID: 11400000, guid: 9d94d3a93f035564ea804295ce93ac52, type: 2}
+  - {fileID: 11400000, guid: 3cd37efdea74f114da37346a5d4a8deb, type: 2}
+  - {fileID: 11400000, guid: 2653b8c2500e2324ca5c7e4c6722588f, type: 2}
+  - {fileID: 11400000, guid: cb15c7607b525d9448b248e2812c6ad8, type: 2}
+  - {fileID: 11400000, guid: 7d3839c231bae184abc7742228beb3bd, type: 2}
+  - {fileID: 11400000, guid: d2a6a7ecbe3c6ed49a1c0018cef265e2, type: 2}
+  - {fileID: 11400000, guid: 10795de93bab89145ae97e2045394ff3, type: 2}
+  - {fileID: 11400000, guid: 758f932a92dca9f4c9ce5adf93f06689, type: 2}
+  - {fileID: 11400000, guid: 71dc8b0b6af7f4847b0e82e0adffa537, type: 2}
+  - {fileID: 11400000, guid: 086a2dc18ed0aca498a2a0f3b6edf477, type: 2}
+  - {fileID: 11400000, guid: 6be122d36bc966243ae3a1ccc06abc2a, type: 2}
+  - {fileID: 11400000, guid: fea75f5f3c42f7c428b150d6796f8b2c, type: 2}
+  - {fileID: 11400000, guid: 0d5594013aedc8641ba00de56ac34565, type: 2}
+  - {fileID: 11400000, guid: 51c1d0719df07494ab0c4748d2ed5fed, type: 2}
+  - {fileID: 11400000, guid: ff9324c19314ed14785a1322995630fd, type: 2}
+  - {fileID: 11400000, guid: 914a5209b6ba0744a9062fd78d116291, type: 2}
+  - {fileID: 11400000, guid: fff98c53868a4a842b54eb2f64befe7d, type: 2}
+  - {fileID: 11400000, guid: fae79dde574817242ade43439946ba90, type: 2}
+  - {fileID: 11400000, guid: 8a72134f3979aee4d818254427d79cb0, type: 2}
+  - {fileID: 11400000, guid: 2d1bc047334bd944e8ffce6584e8154e, type: 2}
+  - {fileID: 11400000, guid: 3e77a1800945b6c48ad110593b9cc5dc, type: 2}
+  - {fileID: 11400000, guid: 0356e8c15ce4a074e91e6be14eba6945, type: 2}
+  - {fileID: 11400000, guid: 88867c2e2d52a844382764f2f4f9ea5e, type: 2}
+  infantry:
+  - {fileID: 11400000, guid: 2b75b6ac66cd4fe4e90ef03550d3770d, type: 2}
+  - {fileID: 11400000, guid: d7c6c688089392f4c881168df476c25a, type: 2}
+  - {fileID: 11400000, guid: 9d94d3a93f035564ea804295ce93ac52, type: 2}
+  - {fileID: 11400000, guid: 3cd37efdea74f114da37346a5d4a8deb, type: 2}
+  - {fileID: 11400000, guid: 2653b8c2500e2324ca5c7e4c6722588f, type: 2}
+  - {fileID: 11400000, guid: cb15c7607b525d9448b248e2812c6ad8, type: 2}
+  - {fileID: 11400000, guid: 7d3839c231bae184abc7742228beb3bd, type: 2}
+  vehicle: []
+  aircraft: []
+  dock: []

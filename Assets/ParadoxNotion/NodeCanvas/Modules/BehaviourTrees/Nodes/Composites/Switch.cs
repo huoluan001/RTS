@@ -9,7 +9,7 @@ namespace NodeCanvas.BehaviourTrees
 {
 
     [Category("Composites")]
-    [Description("Executes one child based on the provided int or enum case and returns its status.")]
+    [Description("Executes one child based on the provided int or Enum case and returns its status.")]
     [ParadoxNotion.Design.Icon("IndexSwitcher")]
     [Color("b3ff7f")]
     public class Switch : BTComposite

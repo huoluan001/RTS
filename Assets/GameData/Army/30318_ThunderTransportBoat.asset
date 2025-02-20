@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30318_ThunderTransportBoat
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 30318
+  priority: 0
+  nameChinese: "\u8FC5\u96F7\u8FD0\u8F93\u8247"
+  nameEnglish: ThunderTransportBoat
+  icon: {fileID: 0}
+  commentChinese: "\u80FD\u591F\u4F2A\u88C5\u6210\u5176\u4ED6\u673A\u52A8\u5355\u4F4D,\u85CF\u8EAB\u4E8E\u654C\u540E\u7684\u6C14\u57AB\u8239"
+  commentEnglish: null
+  troopType: 3
+  actionScopes: 0000000001000000
+  exp: 500
+  hp: 400
+  requirement: []
+  price: 500
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: dab245c6822e9402082c4d5f7a657596, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 100, y: 100, z: 0}
+  isReverseMove:
+    x: 1
+    y: 1
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 20}
+  labels: 0a00000007000000
+  buildingTime: 5
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u4F2A\u88C5"
+    WeaponNameEN: 
+    damageType: 0
+    singleDamage: {x: 0, y: 0}
+    range: {x: 999999, y: 999999}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 5.01, y: 5.01}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  - WeaponNameZH: "\u81EA\u7206"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 250, y: 250}
+    range: {x: 0, y: 0}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 250}
+  skills:
+  - skillNameZH: "\u64A4\u79BB\u4E58\u5BA2"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u653E\u51FA\u91CC\u9762\u7684\u58EB\u5175,\u540C\u65F6\u4F1A\u53BB\u9664\u8FC5\u96F7\u8F7D\u5177\u7684\u4F2A\u88C5\u3002"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 1

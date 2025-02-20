@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30307_Eminence
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 30307
+  priority: 0
+  nameChinese: "\u5DE5\u5175"
+  nameEnglish: Eminence
+  icon: {fileID: 0}
+  commentChinese: "\u8BA9\u4EBA\u4E0D\u723D\u7684\u7537\u4EBA,\u4EF7\u503C\u5728\u4E8E\u80FD\u591F\u5360\u9886\u6216\u4FEE\u7406\u5EFA\u7B51\u3002"
+  commentEnglish: null
+  troopType: 2
+  actionScopes: 0000000001000000
+  exp: 500
+  hp: 50
+  requirement: []
+  price: 500
+  warningAndClearFogRad: {x: 100, y: 100}
+  armorType: {fileID: 11400000, guid: 15f662958e72049d498b27c1c30cd992, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 40, y: 40, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 10}
+  labels: 09000000
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 0}
+  weapons: []
+  skills:
+  - skillNameZH: "\u6025\u5954"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5F00\u59CB\u6BB5\u72FC\u72C8\u4E0D\u582A\u7684\u72C2\u5954\u3002\u63D0\u901F50%,\u6301\u7EED10s,\u7136\u540E\u4F1A\u65E0\u6CD5\u884C\u52A8\u4E00\u6BB5\u65F6\u95F4,\u770B\u4ED6\u90A3\u7D2F\u5982\u72D7\u7684\u6837\u5B50,\u54C8\u54C8\u3002"
+    skillCooling: 60
+    skillPre_Swing: 0
+    skillPost_Swing: 0

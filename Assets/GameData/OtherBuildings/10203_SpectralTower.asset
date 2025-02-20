@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda795255295f4312af0b7182d87b8ba, type: 3}
+  m_Name: 10203_SpectralTower
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10203
+  priority: 0
+  nameChinese: "\u5149\u8C31\u5854"
+  nameEnglish: SpectralTower
+  icon: {fileID: 0}
+  commentChinese: "\u9AD8\u79D1\u6280\u9632\u5FA1\u7CFB\u7EDF,\u5229\u7528\u589E\u5F3A\u7684\u5149\u675F\u904F\u6B62\u654C\u65B9\u5730\u9762\u90E8\u961F"
+  commentEnglish: null
+  troopType: 1
+  actionScopes: 0000000001000000
+  exp: 1500
+  hp: 1500
+  requirement:
+  - {fileID: 0}
+  - {fileID: 0}
+  price: 1200
+  warningAndClearFogRad: {x: 360, y: 500}
+  armorType: {fileID: 11400000, guid: a04aaeaf6e0314b9987fd6e49b3a350f, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  label: 17
+  area: {x: 1, y: 1}
+  expandScope: {x: 0, y: 0}
+  buildingAndPlacementTime: {x: 30, y: 1.5}
+  powerConsume: -75
+  weapons:
+  - WeaponNameZH: "\u5149\u8C31\u70AE"
+    WeaponNameEN: 
+    damageType: 8
+    singleDamage: {x: 300, y: 300}
+    range: {x: 350, y: 350}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.5, y: 0.5}
+    aimingTime: {x: 1, y: 1}
+    firingDuration: {x: 1.5, y: 1.5}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  - WeaponNameZH: "\u5149\u8C31\u94FE\u63A5"
+    WeaponNameEN: 
+    damageType: 0
+    singleDamage: {x: 0, y: 0}
+    range: {x: 350, y: 350}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.8, y: 0.8}
+    aimingTime: {x: 0.2, y: 0.2}
+    firingDuration: {x: 1, y: 1}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills: []

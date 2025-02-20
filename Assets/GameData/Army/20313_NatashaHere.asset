@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 20313_NatashaHere
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 20313
+  priority: 0
+  nameChinese: "\u5A1C\u5854\u838E"
+  nameEnglish: NatashaHere
+  icon: {fileID: 0}
+  commentChinese: "\u51B7\u9177\u8457\u540D\u795E\u5C04\u5973\u5B50\u7684\u7FFB\u7248\u3002\u80FD\u591F\u8BF7\u6C42\u7A7A\u88AD\u652F\u63F4"
+  commentEnglish: null
+  troopType: 2
+  actionScopes: 0000000001000000
+  exp: 2000
+  hp: 300
+  requirement:
+  - {fileID: 0}
+  price: 200
+  warningAndClearFogRad: {x: 325, y: 500}
+  armorType: {fileID: 11400000, guid: cce6bb50d92964051a90313296d50c82, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 60, y: 60, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 50}
+  labels: 0e000000
+  buildingTime: 30
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u72D9\u51FB\u6B65\u67AA"
+    WeaponNameEN: 
+    damageType: 2
+    singleDamage: {x: 1000, y: 1000}
+    range: {x: 300, y: 300}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.25, y: 0.25}
+    aimingTime: {x: 0.25, y: 0.25}
+    firingDuration: {x: 1.5, y: 1.5}
+    sputteringRadius: {x: 5, y: 5}
+    sputteringDamage: {x: 1000, y: 1000}
+  - WeaponNameZH: "\u547C\u53EB\u7A7A\u88AD"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 999999, y: 999999}
+    range: {x: 50, y: 300}
+    magazineSize: 1
+    magazineLoadingTime: {x: 1, y: 1.2}
+    aimingTime: {x: 0.25, y: 0.25}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 5, y: 5}
+    sputteringDamage: {x: 999999, y: 999999}
+  skills:
+  - skillNameZH: "\u72D9\u6740\u9A7E\u9A76\u5458"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5E72\u51C0\u5229\u843D\u5730\u89E3\u51B3\u6389\u654C\u4EBA\u8F66\u8F86\u7684\u64CD\u4F5C\u624B\u3002\u6B65\u5175\u53EF\u4EE5\u593A\u53D6\u8BE5\u7A7A\u8F66\u3002"
+    skillCooling: 60
+    skillPre_Swing: 2
+    skillPost_Swing: 0

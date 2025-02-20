@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f3e25e395ec4ec188056256baa55c2, type: 3}
+  m_Name: 8_Anti_VehicleInfantryArmor
+  m_EditorClassIdentifier: 
+  elementIndex: 8
+  armorNameZh: "\u53CD\u8F7D\u5177\u6B65\u5175\u62A4\u7532"
+  armorNameEn: Anti_VehicleInfantryArmor
+  damageModifiers:
+    m_keys: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000
+    m_values: 64000000640000009600000096000000140000000a0000000a00000064000000e8030000640000006400000064000000640000006400000064000000

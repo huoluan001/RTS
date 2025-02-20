@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10306_Spy
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10306
+  priority: 0
+  nameChinese: "\u95F4\u8C0D"
+  nameEnglish: Spy
+  icon: {fileID: 0}
+  commentChinese: "\u65E0\u6B66\u88C5\u4F46\u5371\u9669\u7684\u7834\u574F\u4E4B\u5F92,\u4F2A\u88C5\u6210\u5176\u4ED6\u6B65\u5175\u56DB\u5904\u7AA5\u63A2"
+  commentEnglish: null
+  troopType: 2
+  actionScopes: 0000000001000000
+  exp: 1000
+  hp: 75
+  requirement:
+  - {fileID: 0}
+  price: 1000
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 15f662958e72049d498b27c1c30cd992, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 50, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 10}
+  labels: 07000000
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 0}
+  weapons: []
+  skills:
+  - skillNameZH: "\u8D3F\u8D42"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u4EE5\u8D85\u4F4E\u8D39\u7528\uFF081000$\uFF09\u8BF4\u670D\u9644\u8FD165\u8303\u56F4\u5185\u7684\u654C\u4EBA\u53DB\u53D8\u3002\u8C01\u8BF4\u5FE0\u8BDA\u4E0D\u80FD\u6536\u4E70\uFF1F"
+    skillCooling: 10
+    skillPre_Swing: 0
+    skillPost_Swing: 3.66

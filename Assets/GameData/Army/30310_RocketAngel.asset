@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30310_RocketAngel
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 30310
+  priority: 0
+  nameChinese: "\u706B\u7BAD\u5929\u4F7F"
+  nameEnglish: RocketAngel
+  icon: {fileID: 0}
+  commentChinese: "\u81F4\u547D\u7684\u5973\u6027\u6218\u58EB,\u8EAB\u7A7F\u55B7\u6C14\u52A8\u529B\u7A81\u51FB\u88C5,\u643A\u5E26\u5149\u5B50\u5BFC\u5F39\u9635\u5217"
+  commentEnglish: null
+  troopType: 2
+  actionScopes: 02000000
+  exp: 900
+  hp: 400
+  requirement: []
+  price: 900
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 15f662958e72049d498b27c1c30cd992, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 0, y: 0, z: 100}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 10}
+  labels: 030000000500000009000000
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u706B\u7BAD"
+    WeaponNameEN: 
+    damageType: 6
+    singleDamage: {x: 20, y: 20}
+    range: {x: 150, y: 150}
+    magazineSize: 12
+    magazineLoadingTime: {x: 1.45, y: 1.65}
+    aimingTime: {x: 0.25, y: 0.25}
+    firingDuration: {x: 0.07, y: 0.07}
+    sputteringRadius: {x: 10, y: 10}
+    sputteringDamage: {x: 20, y: 20}
+  - WeaponNameZH: "\u762B\u75EA\u97AD"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 0, y: 0}
+    range: {x: 250, y: 250}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.1, y: 0.1}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills:
+  - skillNameZH: "\u6218\u6597\u6A21\u5F0F"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u4ECE\u5207\u6362\u5230\u5149\u5B50\u706B\u7BAD\u53D1\u5C04\u67B6,\u80FD\u7528\u65E0\u6570\u5F39\u5934\u6DF9\u6CA1\u76EE\u6807\u3002"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 1

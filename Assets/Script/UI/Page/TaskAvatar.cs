@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class TaskAvatar : MonoBehaviour
 {
-    // count label
+    // count labelNameZh
     public TMP_Text TMPText;
     public Image Coating;
     public Image Icon;

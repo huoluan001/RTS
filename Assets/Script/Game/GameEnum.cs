@@ -48,15 +48,7 @@ namespace UnityEngine
         Aviation,   // 航空
         None,
     }
-    // 兵种
-    public enum TroopType
-    {
-        Building,   // 建筑
-        Soldier,    // 步兵
-        Vehicle,    // 载具
-        Technology,
-        None
-    }
+
 
     // 军队行为模式
     public enum ActionModelEnum

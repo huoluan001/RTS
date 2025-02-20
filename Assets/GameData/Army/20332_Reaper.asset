@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 20332_Reaper
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 20332
+  priority: 0
+  nameChinese: "\u6536\u5272\u8005"
+  nameEnglish: Reaper
+  icon: {fileID: 0}
+  commentChinese: "\u6BD4\u9570\u5200\u673A\u7532\u66F4\u5927\u3001\u66F4\u5F3A\u608D,\u80FD\u591F\u4E3E\u8D77\u706B\u7BAD\u4E0E\u624B\u69B4\u5F39"
+  commentEnglish: null
+  troopType: 3
+  actionScopes: 00000000
+  exp: 1200
+  hp: 600
+  requirement:
+  - {fileID: 0}
+  price: 1200
+  warningAndClearFogRad: {x: 250, y: 500}
+  armorType: {fileID: 11400000, guid: 755d8beead2e14f2e88e9ad87cfccd5e, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 80, y: 0, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 20}
+  labels: 0300000005000000
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u69B4\u5F39\u6B66\u5668"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 15, y: 15}
+    range: {x: 20, y: 225}
+    magazineSize: 3
+    magazineLoadingTime: {x: 2.5, y: 2.5}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.2, y: 0.2}
+    sputteringRadius: {x: 20, y: 20}
+    sputteringDamage: {x: 15, y: 15}
+  - WeaponNameZH: "\u706B\u7BAD"
+    WeaponNameEN: 
+    damageType: 6
+    singleDamage: {x: 7, y: 7}
+    range: {x: 20, y: 225}
+    magazineSize: 10
+    magazineLoadingTime: {x: 8, y: 8}
+    aimingTime: {x: 1, y: 1}
+    firingDuration: {x: 0.1, y: 0.1}
+    sputteringRadius: {x: 10, y: 10}
+    sputteringDamage: {x: 7, y: 0}
+  skills:
+  - skillNameZH: "\u539F\u578B\u8DF3\u8DC3"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: 
+    skillCooling: 10
+    skillPre_Swing: 0
+    skillPost_Swing: 3

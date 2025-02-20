@@ -1,14 +1,13 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/Editor/DataManager.uss?fileID=7433441132597879392&amp;guid=8e282912e94da4949a57dccdc32943a1&amp;type=3#DataManager" />
-    <engine:TabView name="TabTool" style="height: 25px; flex-direction: row; align-items: auto; align-content: flex-start;">
-        <engine:VisualElement style="flex-grow: 1; flex-direction: row; border-top-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 1px; height: 25px; width: 100%;">
-            <engine:Button text="FactionSo" name="FactionBTN" selectable="true" triple-click-selects-line="true" />
-            <engine:Button text="MainBuildingSos" name="MainBuildingBTN" />
-            <engine:Button text="OtherBuildingSos" name="OtherBuildingBTN" selectable="false" />
-            <engine:Button text="ArmySos" name="ArmyBTN" />
-            <engine:Button text="ArmorSos" name="ArmorBTN" />
-        </engine:VisualElement>
-    </engine:TabView>
+    <editor:Toolbar name="Root_Toolbar" style="height: 20px;">
+        <engine:Button text="FactionSo" name="FactionBTN" selectable="true" triple-click-selects-line="true" />
+        <engine:Button text="MainBuildingSos" name="MainBuildingBTN" />
+        <engine:Button text="OtherBuildingSos" name="OtherBuildingBTN" selectable="false" />
+        <engine:Button text="ArmySos" name="ArmyBTN" />
+        <engine:Button text="ArmorSos" name="ArmorBTN" />
+        <engine:DropdownField name="UpdateDropDownField" />
+    </editor:Toolbar>
     <engine:VisualElement name="Context" style="flex-grow: 1; flex-direction: row;">
         <engine:VisualElement name="ElementList" style="flex-grow: 1; width: 30%; border-top-color: rgba(0, 0, 0, 0); border-top-width: 2px; border-right-color: rgb(0, 0, 0); border-right-width: 1px;">
             <engine:Label text="ScriptableObjectList" style="-unity-text-align: middle-center; -unity-font-style: normal; color: rgb(255, 255, 255); height: 25px;" />

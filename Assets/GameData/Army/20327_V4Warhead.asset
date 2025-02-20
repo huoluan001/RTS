@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 20327_V4Warhead
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 20327
+  priority: 0
+  nameChinese: "V4\u5BFC\u5F39\u53D1\u5C04\u8F66"
+  nameEnglish: V4Warhead
+  icon: {fileID: 0}
+  commentChinese: "\u673A\u52A8\u8FDC\u7A0B\u5F39\u9053\u706B\u7BAD\u5E73\u53F0,\u53EA\u9700\u4E00\u53D1\u4FBF\u5C06\u6574\u5EA7\u57CE\u5E02\u5937\u4E3A\u5E73\u5730"
+  commentEnglish: null
+  troopType: 3
+  actionScopes: 00000000
+  exp: 1200
+  hp: 400
+  requirement:
+  - {fileID: 0}
+  price: 1200
+  warningAndClearFogRad: {x: 500, y: 500}
+  armorType: {fileID: 11400000, guid: f08eda475c30c489ba563e8dd6ebdc94, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 0, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 20, y: 20}
+  labels: 0c000000
+  buildingTime: 15
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "V4\u706B\u7BAD\uFF08\u7CBE\u51C6\u6253\u51FB\uFF09"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 500, y: 500}
+    range: {x: 200, y: 500}
+    magazineSize: 1
+    magazineLoadingTime: {x: 4.5, y: 5.5}
+    aimingTime: {x: 0.5, y: 0.5}
+    firingDuration: {x: 1, y: 1}
+    sputteringRadius: {x: 40, y: 40}
+    sputteringDamage: {x: 500, y: 0}
+  - WeaponNameZH: "MIRV\u706B\u7BAD\uFF08\u6563\u5C04\u5F39\u5934\uFF09"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 100, y: 100}
+    range: {x: 200, y: 500}
+    magazineSize: 10
+    magazineLoadingTime: {x: 4.5, y: 5.5}
+    aimingTime: {x: 0.5, y: 0.5}
+    firingDuration: {x: 1, y: 1}
+    sputteringRadius: {x: 25, y: 25}
+    sputteringDamage: {x: 100, y: 25}
+  skills:
+  - skillNameZH: "\u9AD8\u7CBE\u5EA6\u5F39\u5934"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u51C6\u5907\u53EF\u4EE5\u7CBE\u786E\u6253\u51FB\u7684\u6807\u51C6\u63A5\u89E6\u5F15\u7206\u578B\u5F39\u9053\u5BFC\u5F39\u3002"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

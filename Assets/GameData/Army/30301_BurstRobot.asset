@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30301_BurstRobot
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 30301
+  priority: 0
+  nameChinese: "\u7206\u88C2\u673A\u5668\u4EBA"
+  nameEnglish: BurstRobot
+  icon: {fileID: 0}
+  commentChinese: "\u72E1\u8BC8\u53EF\u7231\u7684\u4FA6\u67E5\u673A\u5668\u4EBA,\u80FD\u591F\u6697\u4E2D\u7834\u574F\u654C\u65B9\u6218\u8F66\u5E76\u68C0\u6D4B\u51FA\u4F2A\u88C5\u7684\u654C\u4EBA"
+  commentEnglish: null
+  troopType: 2
+  actionScopes: 02000000
+  exp: 150
+  hp: 100
+  requirement: []
+  price: 300
+  warningAndClearFogRad: {x: 150, y: 750}
+  armorType: {fileID: 11400000, guid: 31a76a6352da24ec5ad920ff763bca10, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 0, y: 0, z: 125}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 99}
+  labels: 06000000
+  buildingTime: 5
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u81EA\u7206"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 200, y: 200}
+    range: {x: 0, y: 0}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 20, y: 20}
+    sputteringDamage: {x: 200, y: 200}
+  skills:
+  - skillNameZH: "\u81EA\u7206"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5F00\u59CB\u706B\u796D\u5012\u6570\u30023s\u540E\u53EF\u80FD\u9020\u6210\u95F4\u63A5\u7684\u4F24\u5BB3\u4E0E\u60B2\u75DB\u3002"
+    skillCooling: 0
+    skillPre_Swing: 3
+    skillPost_Swing: 0

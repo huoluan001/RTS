@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10330_Harbinger
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10330
+  priority: 0
+  nameChinese: "\u5148\u950B\u6B66\u88C5\u6218\u8247\u673A"
+  nameEnglish: Harbinger
+  icon: {fileID: 0}
+  commentChinese: "\u4E00\u4E9B\u76DF\u519B\u5B98\u5458\u5F3A\u529B\u53CD\u5BF9\u6838\u53D1\u8BB8\u53EF\u7ED9\u8FD9\u4E9B\u5DE8\u5927\u7684\u91CD\u578B\u652F\u63F4\u98DE\u884C\u5668"
+  commentEnglish: null
+  troopType: 3
+  actionScopes: 02000000
+  exp: 3000
+  hp: 5000
+  requirement:
+  - {fileID: 0}
+  - {fileID: 0}
+  price: 3600
+  warningAndClearFogRad: {x: 425, y: 500}
+  armorType: {fileID: 11400000, guid: bf7ff6d0b13a24a088efcc227fb20204, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 0, y: 0, z: 120}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 30}
+  labels: 0f00000001000000
+  buildingTime: 40
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u649E\u51FB\u70AE"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 100, y: 100}
+    range: {x: 50, y: 400}
+    magazineSize: 12
+    magazineLoadingTime: {x: 2, y: 2}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 2, y: 2}
+    sputteringRadius: {x: 50, y: 50}
+    sputteringDamage: {x: 100, y: 30}
+  - WeaponNameZH: "\u5BF9\u5730\u673A\u70AE"
+    WeaponNameEN: 
+    damageType: 4
+    singleDamage: {x: 12, y: 12}
+    range: {x: 300, y: 300}
+    magazineSize: 10
+    magazineLoadingTime: {x: 0.5, y: 0.5}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.1, y: 0.1}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills:
+  - skillNameZH: "\u649E\u51FB\u70AE"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u91CD\u65B0\u542F\u7528\u5938\u5F20\u7684\u5BF9\u649E\u70AE,\u5176\u5A01\u529B\u4E4B\u5927\u582A\u79F0\u76DF\u519B\u7EC8\u6781\u6B66\u5668"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

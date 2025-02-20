@@ -59,10 +59,10 @@ namespace ParadoxNotion.Serialization.FullSerializer.Internal
                 for ( int i = 0; i < enumValues.Length; ++i ) {
                     string enumValue = enumValues[i];
 
-                    // Verify that the enum name exists; Enum.TryParse is only available in .NET 4.0
+                    // Verify that the Enum name exists; Enum.TryParse is only available in .NET 4.0
                     // and above :(.
                     if ( ArrayContains(Enum.GetNames(storageType), enumValue) == false ) {
-                        return fsResult.Fail("Cannot find enum name " + enumValue + " on type " + storageType);
+                        return fsResult.Fail("Cannot find Enum name " + enumValue + " on type " + storageType);
                     }
 
                     long flagValue = (long)Convert.ChangeType(Enum.Parse(storageType, enumValue), typeof(long));

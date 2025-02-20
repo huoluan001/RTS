@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 30320_MechaTengu
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 30320
+  priority: 0
+  nameChinese: "\u5929\u72D7\u673A\u7532"
+  nameEnglish: MechaTengu
+  icon: {fileID: 0}
+  commentChinese: "\u5FEB\u901F\u79FB\u52A8\u3001\u9A7E\u9A76\u8F85\u52A9\u7684\u673A\u5668\u4EBA,\u80FD\u591F\u5728\u5730\u9762\u6216\u6D77\u4E0A\u53D1\u52A8\u653B\u52BF,\u6216\u662F\u4E00\u98DE\u51B2\u5929"
+  commentEnglish: null
+  troopType: 3
+  actionScopes: 000000000100000002000000
+  exp: 800
+  hp: 350
+  requirement: []
+  price: 800
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 755d8beead2e14f2e88e9ad87cfccd5e, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 100, y: 80, z: 200}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 1
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 20}
+  labels: 0100000010000000
+  buildingTime: 10
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u5BF9\u5730\u53CD\u6B65\u5175\u673A\u70AE"
+    WeaponNameEN: 
+    damageType: 4
+    singleDamage: {x: 4, y: 4}
+    range: {x: 150, y: 150}
+    magazineSize: 8
+    magazineLoadingTime: {x: 0.13, y: 0.2}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.13, y: 0.13}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  - WeaponNameZH: "\u5BF9\u7A7A\u6218\u673A\u673A\u67AA"
+    WeaponNameEN: 
+    damageType: 4
+    singleDamage: {x: 23, y: 23}
+    range: {x: 200, y: 200}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.2, y: 0.2}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills:
+  - skillNameZH: "\u673A\u7532\u6A21\u5F0F"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u8F6C\u6362\u4E3A\u5929\u72D7\u4E24\u6816\u673A\u7532\u6A21\u5F0F,\u80FD\u591F\u83B7\u5F97\u9AD8\u6548\u53CD\u6B65\u5175\u80FD\u529B\u3002"
+    skillCooling: 15
+    skillPre_Swing: 0
+    skillPost_Swing: 0

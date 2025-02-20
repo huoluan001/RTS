@@ -85,7 +85,7 @@ public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 			labelPosition.xMax -= s_buttonStyle.CalcSize(s_iconPlus).x;
 
 		EditorGUI.PropertyField(labelPosition, property, label, false);
-		// property.isExpanded = EditorGUI.Foldout(labelPosition, property.isExpanded, label);
+		// property.isExpanded = EditorGUI.Foldout(labelPosition, property.isExpanded, labelNameZh);
 		if (property.isExpanded)
 		{
 			var buttonPosition = position;

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 20311_ChemicalCorps
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 20311
+  priority: 0
+  nameChinese: "\u5316\u5B66\u90E8\u961F"
+  nameEnglish: ChemicalCorps
+  icon: {fileID: 0}
+  commentChinese: "\u539A\u91CD\u7684\u5316\u5B66\u9632\u62A4\u88C5,\u4F7F\u8FD9\u4E9B\u8650\u5F85\u72C2\u53EF\u514D\u53D7\u4E8E\u4ED6\u4EEC\u81EA\u5DF1\u6B66\u5668\u7684\u6BD2\u5BB3"
+  commentEnglish: null
+  troopType: 2
+  actionScopes: 00000000
+  exp: 1500
+  hp: 900
+  requirement:
+  - {fileID: 0}
+  price: 1500
+  warningAndClearFogRad: {x: 275, y: 500}
+  armorType: {fileID: 11400000, guid: 4f62ae9df5a1b4a558ee2aa0ce3c4880, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 0, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 20}
+  labels: 01000000
+  buildingTime: 15
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u6BD2\u6DB2\u55B7\u6D12"
+    WeaponNameEN: 
+    damageType: 15
+    singleDamage: {x: 15, y: 20}
+    range: {x: 225, y: 225}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.1, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.1, y: 0.25}
+    sputteringRadius: {x: 25, y: 25}
+    sputteringDamage: {x: 25, y: 25}
+  - WeaponNameZH: "\u8150\u8680\u55B7\u5C04"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 22, y: 22}
+    range: {x: 50, y: 250}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.5, y: 0.5}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.5, y: 0.5}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills:
+  - skillNameZH: "\u6B7B\u4EA1\u55B7\u96FE\u6A21\u5F0F"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5207\u6362\u56DE\u53EF\u4EE5\u6EB6\u89E3\u8840\u8089\u53CA\u9AA8\u5934\u7684\u6BD2\u6DB2\u55B7\u96FE\u675F"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using GameData.Script.Enum;
 using UnityEngine;
 
 [Serializable]
@@ -15,7 +16,7 @@ public class ArmySoTableElement : SerializableDictionary<int, ArmySo> {}
 public class ArmorSoTableElement : SerializableDictionary<int, ArmorSo> {}
 
 [Serializable]
-public class DamageModifiers : SerializableDictionary<DamageTypeSo, int> {}
+public class DamageModifiers : SerializableDictionary<DamageTypeEnum, int> {}
 
 [Serializable]
 public class StringStringDictionary : SerializableDictionary<string, string> {}

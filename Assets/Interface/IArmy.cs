@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameData.Script.Enum;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -8,11 +9,11 @@ public interface IArmy
     bool3 IsReverseMove { get; }
     bool IsAmphibious { get; }
     CrushList CrushingAndCrushedLevel { get; }
-    List<ArmyLabelSo> Labels { get; }
+    List<ArmyLabelEnum> Labels { get; }
     int BuildingTime { get; }
     List<MainBuildingSo> BuildFacilities { get; }
 
     void SetArmy(Vector3 moveSpeed, bool3 isReverseMove, bool isAmphibious,
-                    CrushList crushingAndCrushedLevel, List<ArmyLabelSo> labels,
+                    CrushList crushingAndCrushedLevel, List<ArmyLabelEnum> labels,
                         int buildingTime, List<MainBuildingSo> buildFacilities);
 }

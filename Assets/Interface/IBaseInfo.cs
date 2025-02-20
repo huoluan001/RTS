@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using NPOI.HSSF.Model;
+using GameData.Script.Enum;
 using UnityEngine;
 
 public interface IBaseInfo

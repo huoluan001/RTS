@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f3e25e395ec4ec188056256baa55c2, type: 3}
+  m_Name: 10_CommandoArmor
+  m_EditorClassIdentifier: 
+  elementIndex: 10
+  armorNameZh: "\u7A81\u51FB\u961F\u5458\u62A4\u7532"
+  armorNameEn: CommandoArmor
+  damageModifiers:
+    m_keys: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000
+    m_values: 640000000c00000064000000c80000000a000000140000001900000064000000e8030000320000006400000064000000640000006400000064000000

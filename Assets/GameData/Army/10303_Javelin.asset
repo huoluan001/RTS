@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10303_Javelin
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10303
+  priority: 0
+  nameChinese: "\u6807\u67AA\u5175"
+  nameEnglish: Javelin
+  icon: {fileID: 0}
+  commentChinese: "\u6807\u67AA\u5175(\u6807\u67AA\u5BFC\u5F39\u624B)"
+  commentEnglish: null
+  troopType: 2
+  actionScopes: 00000000
+  exp: 400
+  hp: 100
+  requirement: []
+  price: 300
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: 07aa8378dd8e54976a61c1293315ee91, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 0, z: 0}
+  isReverseMove:
+    x: 0
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 10}
+  labels: 0300000005000000
+  buildingTime: 5
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u706B\u7BAD"
+    WeaponNameEN: 
+    damageType: 6
+    singleDamage: {x: 25, y: 25}
+    range: {x: 175, y: 300}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.1, y: 0.1}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0.4, y: 0.6}
+    sputteringRadius: {x: 5, y: 5}
+    sputteringDamage: {x: 25, y: 25}
+  - WeaponNameZH: "\u6FC0\u5149\u7784\u51C6\u706B\u7BAD"
+    WeaponNameEN: 
+    damageType: 6
+    singleDamage: {x: 40, y: 40}
+    range: {x: 50, y: 250}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 3.5, y: 3.5}
+    firingDuration: {x: 0.2, y: 0.3}
+    sputteringRadius: {x: 5, y: 5}
+    sputteringDamage: {x: 40, y: 40}
+  skills:
+  - skillNameZH: "\u6FC0\u5149\u5236\u5BFC\u6A21\u5F0F"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u5BFC\u5F39\u6253\u5F97\u66F4\u5FEB\u66F4\u72E0,\u5C31\u662F\u53D1\u5C04\u524D\u9501\u5B9A\u76EE\u6807\u6BD4\u8F83\u82B1\u65F6\u95F4\u3002"
+    skillCooling: 0
+    skillPre_Swing: 0
+    skillPost_Swing: 0

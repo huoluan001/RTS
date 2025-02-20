@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda795255295f4312af0b7182d87b8ba, type: 3}
+  m_Name: 20204_TeslaCoil
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
+  id: 20204
+  priority: 0
+  nameChinese: "\u78C1\u66B4\u7EBF\u5708"
+  nameEnglish: TeslaCoil
+  icon: {fileID: 0}
+  commentChinese: "\u5145\u6EE1\u4E0D\u7965\u4E4B\u6C14,\u4F1A\u5C04\u51FA\u7535\u5149\u7684\u9AD8\u5854\u3002\u53EF\u7531\u78C1\u7206\u90E8\u961F\u6216\u78C1\u7206\u5FEB\u8247\u63D0\u4F9B\u7535\u529B"
+  commentEnglish: null
+  troopType: 1
+  actionScopes: 0000000001000000
+  exp: 1500
+  hp: 2000
+  requirement:
+  - {fileID: 0}
+  price: 1500
+  warningAndClearFogRad: {x: 360, y: 500}
+  armorType: {fileID: 11400000, guid: a04aaeaf6e0314b9987fd6e49b3a350f, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  label: 17
+  area: {x: 1, y: 1}
+  expandScope: {x: 0, y: 0}
+  buildingAndPlacementTime: {x: 0, y: 30}
+  powerConsume: -75
+  weapons:
+  - WeaponNameZH: "\u78C1\u66B4\u67AA"
+    WeaponNameEN: 
+    damageType: 9
+    singleDamage: {x: 450, y: 450}
+    range: {x: 350, y: 350}
+    magazineSize: 1
+    magazineLoadingTime: {x: 0.1, y: 0.1}
+    aimingTime: {x: 2.5, y: 2.5}
+    firingDuration: {x: 0.5, y: 0.5}
+    sputteringRadius: {x: 0, y: 0}
+    sputteringDamage: {x: 0, y: 0}
+  skills: []

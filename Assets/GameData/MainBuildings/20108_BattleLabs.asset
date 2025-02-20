@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852591920f89c40ceb4ba24dc886a216, type: 3}
+  m_Name: 20108_BattleLabs
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 0}
+  id: 0
+  priority: 0
+  nameChinese: 
+  nameEnglish: 
+  icon: {fileID: 0}
+  commentChinese: 
+  commentEnglish: 
+  troopType: 0
+  actionScopes: 
+  exp: 0
+  hp: 0
+  requirement: []
+  price: 0
+  warningAndClearFogRad: {x: 0, y: 0}
+  armorType: {fileID: 0}
+  gameObjectPrefab: {fileID: 0}
+  label: 0
+  area: {x: 0, y: 0}
+  expandScope: {x: 0, y: 0}
+  buildingAndPlacementTime: {x: 0, y: 0}
+  powerConsume: 0
+  skills: []

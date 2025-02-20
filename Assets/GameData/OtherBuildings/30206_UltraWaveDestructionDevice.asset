@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda795255295f4312af0b7182d87b8ba, type: 3}
+  m_Name: 30206_UltraWaveDestructionDevice
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
+  id: 30206
+  priority: 0
+  nameChinese: "\u8D85\u80FD\u6CE2\u6BC1\u706D\u88C5\u7F6E"
+  nameEnglish: UltraWaveDestructionDevice
+  icon: {fileID: 0}
+  commentChinese: "\u8BF1\u53D1\u6BD4\u53F2\u4E0A\u4EFB\u4F55\u81EA\u7136\u707E\u5BB3\u8FD8\u8981\u53EF\u6015\u7684\u8D85\u80FD\u6CE2\u5DE8\u53D8\u3002"
+  commentEnglish: null
+  troopType: 1
+  actionScopes: 0000000001000000
+  exp: 10000
+  hp: 4000
+  requirement:
+  - {fileID: 0}
+  price: 2500
+  warningAndClearFogRad: {x: 100, y: 100}
+  armorType: {fileID: 11400000, guid: 5bb9267ecfd6a4584aee22f5e32250d1, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  label: 21
+  area: {x: 4, y: 4}
+  expandScope: {x: 6, y: 6}
+  buildingAndPlacementTime: {x: 5, y: 26}
+  powerConsume: -75
+  weapons:
+  - WeaponNameZH: "\u5FC3\u7075\u7206\u7834"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 2000, y: 2000}
+    range: {x: 10000, y: 10000}
+    magazineSize: 0
+    magazineLoadingTime: {x: 0, y: 0}
+    aimingTime: {x: 0, y: 0}
+    firingDuration: {x: 0, y: 0}
+    sputteringRadius: {x: 300, y: 300}
+    sputteringDamage: {x: 2000, y: 500}
+  skills:
+  - skillNameZH: "\u8D85\u80FD\u6CE2\u6BC1\u706D"
+    skillNameEN: UltraWaveDestruction
+    icon: {fileID: 0}
+    commentChinese: "\u5BF9\u76EE\u6807\u533A\u57DF\u53D1\u5C04\u96BE\u4EE5\u8BA1\u91CF\u7684\u5F3A\u5927\u8D85\u80FD\u6CE2,\u9020\u6210\u6D69\u52AB\u6027\u7684\u7834\u574F!"
+    skillCooling: 360
+    skillPre_Swing: 4
+    skillPost_Swing: 0

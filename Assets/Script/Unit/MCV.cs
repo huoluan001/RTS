@@ -1,3 +1,4 @@
+using GameData.Script.Enum;
 using NodeCanvas.StateMachines;
 using UnityEngine;
 

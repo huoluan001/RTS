@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c2617ffb83451a90e16dd1178a249, type: 3}
+  m_Name: 10320_AthenaCannon
+  m_EditorClassIdentifier: 
+  factionSo: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
+  id: 10320
+  priority: 0
+  nameChinese: "\u96C5\u5178\u5A1C\u70AE"
+  nameEnglish: AthenaCannon
+  icon: {fileID: 0}
+  commentChinese: "\u4E0E\u8F68\u9053\u536B\u661F\u901A\u4FE1\u7684\u653B\u57CE\u6B66\u5668,\u80FD\u591F\u5F02\u5E38\u7CBE\u51C6\u5730\u91CD\u521B\u76EE\u6807"
+  commentEnglish: null
+  troopType: 3
+  actionScopes: 00000000
+  exp: 1400
+  hp: 400
+  requirement:
+  - {fileID: 0}
+  price: 1400
+  warningAndClearFogRad: {x: 200, y: 500}
+  armorType: {fileID: 11400000, guid: f08eda475c30c489ba563e8dd6ebdc94, type: 2}
+  gameObjectPrefab: {fileID: 0}
+  moveSpeed: {x: 50, y: 0, z: 0}
+  isReverseMove:
+    x: 1
+    y: 0
+    z: 0
+  isAmphibious: 0
+  crushingAndCrushedLevel:
+    m_keys: 00000000
+    m_values:
+    - {x: 20, y: 20}
+  labels: 0c000000
+  buildingTime: 20
+  buildFacilities:
+  - {fileID: 0}
+  weapons:
+  - WeaponNameZH: "\u6FC0\u5149"
+    WeaponNameEN: 
+    damageType: 10
+    singleDamage: {x: 20, y: 20}
+    range: {x: 200, y: 500}
+    magazineSize: 30
+    magazineLoadingTime: {x: 1.1, y: 1.1}
+    aimingTime: {x: 2, y: 2}
+    firingDuration: {x: 2, y: 2}
+    sputteringRadius: {x: 10, y: 10}
+    sputteringDamage: {x: 20, y: 20}
+  skills:
+  - skillNameZH: "\u80FD\u91CF\u62A4\u76FE"
+    skillNameEN: 
+    icon: {fileID: 0}
+    commentChinese: "\u751F\u6210\u4E00\u4E2A\u5E94\u6025\u80FD\u91CF\u58C1\u6765\u6682\u65F6\u62B5\u6321\u6765\u88AD\u706B\u529B\u3002\u62A4\u76FE\u534A\u5F84\u7531200\u8870\u51CF\u81F350,\u53D7\u5230\u653B\u51FB\u4F1A\u52A0\u5FEB\u8870\u51CF,\u81F3\u591A\u53EF\u5438\u65362000\u4F24\u5BB3"
+    skillCooling: 20
+    skillPre_Swing: 0
+    skillPost_Swing: 0
