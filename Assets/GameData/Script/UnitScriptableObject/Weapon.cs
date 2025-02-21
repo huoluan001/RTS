@@ -2,13 +2,14 @@ using System;
 using GameData.Script.Enum;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class Weapon
 {
     
-    public string WeaponNameZH;
-    public string WeaponNameEN;
+    public string weaponNameZh;
+    public string weaponNameEn;
     
     [Header("Damage")]
     [Tooltip("伤害类型")] public DamageTypeEnum damageType;

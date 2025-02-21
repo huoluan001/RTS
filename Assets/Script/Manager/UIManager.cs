@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            GameManager.GameAsset.buildingManager.StartBuilding(MCV);
+            // GameManager.GameAsset.buildingManager.StartBuilding(MCV);
         }
     }
     public Vector2Int CreateMainAndOtherBuildingPage(FactionSo factionSo)

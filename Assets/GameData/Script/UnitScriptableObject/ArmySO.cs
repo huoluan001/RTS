@@ -104,14 +104,14 @@ public class ArmySo : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     {
         if (weapons == null)
             weapons = new List<Weapon>();
-        var res = weapons.Where(w => w.WeaponNameZH == weaponNameZH).ToList();
+        var res = weapons.Where(w => w.weaponNameZh == weaponNameZH).ToList();
         Weapon weapon;
         if (res.Count() == 0)
             weapons.Add(weapon = new Weapon());
         else
             weapon = res[0];
-        weapon.WeaponNameZH = weaponNameZH;
-        weapon.WeaponNameEN = weaponNameEN;
+        weapon.weaponNameZh = weaponNameZH;
+        weapon.weaponNameEn = weaponNameEN;
         weapon.damageType = damageType;
         weapon.singleDamage = singleDamage;
         weapon.range = range;
@@ -132,14 +132,14 @@ public class ArmySo : ScriptableObject, IBaseInfo, IArmy, IWeapon, ISkill
     {
         if (skills == null)
             skills = new List<Skill>();
-        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
+        var res = skills.Where(s => s.skillNameEn == skillNameEN).ToList();
         Skill skill;
         if (res.Count() == 0)
             skills.Add(skill = new Skill());
         else
             skill = res[0];
-        skill.skillNameZH = skillNameZH;
-        skill.skillNameEN = skillNameEN;
+        skill.skillNameZh = skillNameZH;
+        skill.skillNameEn = skillNameEN;
         skill.commentChinese = commentChinese;
         skill.skillCooling = skillCooling;
         skill.skillPre_Swing = skillPre_Swing;

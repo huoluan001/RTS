@@ -121,14 +121,14 @@ public partial class MainBuildingSo : ScriptableObject, IBaseInfo, IBuilding , I
     {
         if (skills == null)
             skills = new List<Skill>();
-        var res = skills.Where(s => s.skillNameEN == skillNameEN).ToList();
+        var res = skills.Where(s => s.skillNameEn == skillNameEN).ToList();
         Skill skill;
         if (res.Count() == 0)
             skills.Add(skill = new Skill());
         else
             skill = res[0];
-        skill.skillNameZH = skillNameZH;
-        skill.skillNameEN = skillNameEN;
+        skill.skillNameZh = skillNameZH;
+        skill.skillNameEn = skillNameEN;
         skill.commentChinese = commentChinese;
         skill.skillCooling = skillCooling;
         skill.skillPre_Swing = skillPre_Swing;

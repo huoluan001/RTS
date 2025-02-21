@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 308183629}
   - component: {fileID: 308183628}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: Root_DockPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 346781697}
   - component: {fileID: 346781696}
   m_Layer: 5
-  m_Name: OtherBuildingBTN
+  m_Name: Root_OtherBuildingPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2379,7 +2379,7 @@ GameObject:
   - component: {fileID: 643336738}
   - component: {fileID: 643336737}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Root_InfantryPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4700,7 +4700,7 @@ GameObject:
   - component: {fileID: 2034784378}
   - component: {fileID: 2034784377}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Root_VehiclePage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 2038607154}
   - component: {fileID: 2038607153}
   m_Layer: 5
-  m_Name: MainBuildingBTN
+  m_Name: Root_MainBuildingPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4954,7 +4954,7 @@ GameObject:
   - component: {fileID: 2116802143}
   - component: {fileID: 2116802142}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Root_AircraftPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

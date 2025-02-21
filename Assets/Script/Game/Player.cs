@@ -17,11 +17,11 @@ public class Player : MonoBehaviour
     public float Fund = 100000;
     public bool isRunningProduce = true;
 
-    public CommandModel commandModel = CommandModel.None;
-    public CommandType commandType = CommandType.None;
+    // public CommandModel commandModel = CommandModel.None;
+    // public CommandType commandType = CommandType.None;
 
 
-    public List<Army> armies = new List<Army>();
+    public List<Unit> armies = new List<Unit>();
 
     public GameAsset gameAsset;
     public EventAsset eventAsset;

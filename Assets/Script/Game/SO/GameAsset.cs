@@ -8,7 +8,7 @@ public class GameAsset : ScriptableObject
 {
     public Player commander;
 
-    public BuildingManager buildingManager;
+    // public BuildingManager buildingManager;
 
     
 

@@ -48,34 +48,14 @@ namespace UnityEngine
         Aviation,   // 航空
         None,
     }
+    
 
-
-    // 军队行为模式
-    public enum ActionModelEnum
-    {
-        Invade,     // 侵略
-        Alert,      // 警戒
-        Defend,       // 固守
-        Ceasefire,      // 停火
-    }
-
-    // 指挥官命令模式
-    public enum CommandModel
-    {
-        None,           // 默认直接命令，立即执行
-        PathPoint,      // 路径点模式，持续执行
-        Plan,           // 计划模式，命令创建完成后执行
-    }
     // 命令类型
     public enum CommandType
     {
-        None,
-        CrushMovement,      // 碾压移动，需要position
-        ReverseMovement,    // 倒退移动，需要position
         Stop,               // 停止，什么都不需要
         ForcedAttack,       // 强制攻击，需要position或gameobject
         AdvanceAttack,      // 行进攻击，需要position
-        
     }
 
     public enum Technology
@@ -83,17 +63,7 @@ namespace UnityEngine
         T1, T2, T3, T4
     }
     // 职业定位
-    public enum CareerOrientation
-    {
-        Anti_Infantry,      // 反步兵
-        Anti_Armor,         // 反装甲
-        Anti_InfantryAndArmor,  // 反步兵和装甲
-        Osmosis,            // 渗透
-        HeavyBombing,       // 重轰炸
-        Auxiliary,          // 辅助
-        Economy,            // 经济
-        Maintenance         // 维修
-    }
+
 
     public enum CrushLabel
     {

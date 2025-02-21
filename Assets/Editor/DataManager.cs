@@ -41,7 +41,7 @@ public class DataManager : EditorWindow
 
         var updateDropdownButton = rootVisualElement.Q<DropdownField>("UpdateDropDownField");
         updateDropdownButton.choices = new List<string>()
-            { "Update", "MainBuilding", "OtherBuilding", "Army", "Armor", "All" };
+            { "Update", "MainBuilding", "OtherBuilding", "Element", "Armor", "All" };
         updateDropdownButton.RegisterValueChangedCallback(evt => UpGameData(evt.newValue));
 
 
@@ -119,7 +119,7 @@ public class DataManager : EditorWindow
             return;
         }
 
-        if (updateType == "Army")
+        if (updateType == "Element")
         {
             UpArmyData();
             return;

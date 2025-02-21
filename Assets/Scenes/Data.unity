@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -127,7 +128,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 32866508}
-  - component: {fileID: 32866507}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -135,33 +135,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &32866507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32866506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a1b2509ee825407db8c3b0fdda7bded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainBuildingSOTable: {fileID: 11400000, guid: a23d3141f834f48f69fabda3214eb0e5, type: 2}
-  otherBuildingSOTable: {fileID: 11400000, guid: 8a65878401c594192bb2f90ceb617b19, type: 2}
-  armySOTable: {fileID: 11400000, guid: 215bf86148bd449878c79ff600cdc5fc, type: 2}
-  armorSOTable: {fileID: 11400000, guid: 2766ec0700a664b3caa1a96d29b9d2d5, type: 2}
-  alliedForcesFactionSO: {fileID: 11400000, guid: 49c15821515f9406ba0ad0233f479a02, type: 2}
-  empireFactionSO: {fileID: 11400000, guid: 636d4a665abdc405e93ef33f78bf8fd0, type: 2}
-  sovietUnionFactionSO: {fileID: 11400000, guid: 765dbf13b2f3b45bf9cbe8f3937f183a, type: 2}
-  excelFilePath: Assets/DataBase/RTS.xlsx
-  armorTypePath: /DataBase/ArmorType
-  damageTypePath: /DataBase/DamageType
-  armyLabelPath: /DataBase/ArmyLabel
-  buildingLabelPath: /DataBase/BuildingLabel
-  FactionDBPath: /FactionDB
-  row: 4
-  col: 2
 --- !u!4 &32866508
 Transform:
   m_ObjectHideFlags: 0
