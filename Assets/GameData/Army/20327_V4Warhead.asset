@@ -45,8 +45,8 @@ MonoBehaviour:
   buildFacilities:
   - {fileID: 0}
   weapons:
-  - WeaponNameZH: "V4\u706B\u7BAD\uFF08\u7CBE\u51C6\u6253\u51FB\uFF09"
-    WeaponNameEN: 
+  - weaponNameZh: "V4\u706B\u7BAD\uFF08\u7CBE\u51C6\u6253\u51FB\uFF09"
+    weaponNameEn: 
     damageType: 10
     singleDamage: {x: 500, y: 500}
     range: {x: 200, y: 500}
@@ -56,8 +56,8 @@ MonoBehaviour:
     firingDuration: {x: 1, y: 1}
     sputteringRadius: {x: 40, y: 40}
     sputteringDamage: {x: 500, y: 0}
-  - WeaponNameZH: "MIRV\u706B\u7BAD\uFF08\u6563\u5C04\u5F39\u5934\uFF09"
-    WeaponNameEN: 
+  - weaponNameZh: "MIRV\u706B\u7BAD\uFF08\u6563\u5C04\u5F39\u5934\uFF09"
+    weaponNameEn: 
     damageType: 10
     singleDamage: {x: 100, y: 100}
     range: {x: 200, y: 500}
@@ -68,8 +68,8 @@ MonoBehaviour:
     sputteringRadius: {x: 25, y: 25}
     sputteringDamage: {x: 100, y: 25}
   skills:
-  - skillNameZH: "\u9AD8\u7CBE\u5EA6\u5F39\u5934"
-    skillNameEN: 
+  - skillNameZh: "\u9AD8\u7CBE\u5EA6\u5F39\u5934"
+    skillNameEn: 
     icon: {fileID: 0}
     commentChinese: "\u51C6\u5907\u53EF\u4EE5\u7CBE\u786E\u6253\u51FB\u7684\u6807\u51C6\u63A5\u89E6\u5F15\u7206\u578B\u5F39\u9053\u5BFC\u5F39\u3002"
     skillCooling: 0

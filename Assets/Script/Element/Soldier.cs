@@ -1,28 +1,54 @@
-using System.Collections.Generic;
+using Animancer;
+using UnityEngine;
 
 namespace Script.Element
 {
     public class Soldier : Army
     {
-        public ISoldierActionModel CurrentSoldierActionModel;
+        private SoldierFsmSystem _fsmSystem;
 
-        private Dictionary<SoldierActionModel, ISoldierActionModel> _actionStateMachine =
-            new Dictionary<SoldierActionModel, ISoldierActionModel>()
-            {
-                { SoldierActionModel.Idle, new IdleSoldierAction() },
-                { SoldierActionModel.Move, new MoveSoldierAction() },
-                { SoldierActionModel.Attack, new AttackSoldierAction() }
-            };
+        [Header("Motion")] 
+        public ClipTransition idleMotion;
+        public ClipTransition moveMotion;
+        
+        public ClipTransition aimMotion;
+        public ClipTransition fireMotion;
+        public ClipTransition bulletLoadMotion;
+        public ClipTransition deathMotion;
+        
 
-        public void Start()
+        protected void Start()
         {
-            SwitchActionModel(SoldierActionModel.Idle);
+            animancer = GetComponent<AnimancerComponent>();
+            currentWeapon = armySo.Weapons[0];
+            
+            MoveTarget = null;
+            _fsmSystem = new SoldierFsmSystem(armySo, this);
+            
         }
 
-        public void SwitchActionModel(SoldierActionModel newActionModel)
+        public void Update()
         {
-            CurrentSoldierActionModel = _actionStateMachine[newActionModel];
-            CurrentSoldierActionModel.Init();
+            _fsmSystem.CheckTransition();
+            _fsmSystem.CurrentSoldierState.Run();
+        }
+
+        public bool AttackTargetInRange()
+        {
+            var distance = Vector3.Distance(transform.position, attackTarget.transform.position);
+            return distance < currentWeapon.Range;
+        }
+
+        public void AddAttackTarget(Unit target)
+        {
+            attackTarget = target;
+            MoveTarget = null;
+        }
+
+        public void AddMoveTarget(Vector3 target)
+        {
+            MoveTarget = target;
+            attackTarget = null;
         }
     }
 }

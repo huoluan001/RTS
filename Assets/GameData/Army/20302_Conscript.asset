@@ -44,8 +44,8 @@ MonoBehaviour:
   buildFacilities:
   - {fileID: 0}
   weapons:
-  - WeaponNameZH: ADK,45
-    WeaponNameEN: 
+  - weaponNameZh: ADK,45
+    weaponNameEn: 
     damageType: 3
     singleDamage: {x: 5, y: 5}
     range: {x: 150, y: 150}
@@ -55,8 +55,8 @@ MonoBehaviour:
     firingDuration: {x: 0.1, y: 0.3}
     sputteringRadius: {x: 0, y: 0}
     sputteringDamage: {x: 0, y: 0}
-  - WeaponNameZH: "\u71C3\u70E7\u74F6"
-    WeaponNameEN: 
+  - weaponNameZh: "\u71C3\u70E7\u74F6"
+    weaponNameEn: 
     damageType: 10
     singleDamage: {x: 15, y: 50}
     range: {x: 60, y: 200}
@@ -67,8 +67,8 @@ MonoBehaviour:
     sputteringRadius: {x: 15, y: 15}
     sputteringDamage: {x: 5, y: 15}
   skills:
-  - skillNameZH: "\u7A81\u51FB\u6B65\u67AA"
-    skillNameEN: 
+  - skillNameZh: "\u7A81\u51FB\u6B65\u67AA"
+    skillNameEn: 
     icon: {fileID: 0}
     commentChinese: "\u5207\u6362\u5230ADK-45\u7A81\u51FB\u6B65\u67AA,\u8FD9\u662F\u4E00\u79CD\u65E2\u5EC9\u4EF7\u53C8\u53EF\u9760\u7684\u6B66\u5668\u3002"
     skillCooling: 0

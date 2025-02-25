@@ -45,8 +45,8 @@ MonoBehaviour:
   buildFacilities:
   - {fileID: 0}
   weapons:
-  - WeaponNameZH: "\u70B8\u5F39"
-    WeaponNameEN: 
+  - weaponNameZh: "\u70B8\u5F39"
+    weaponNameEn: 
     damageType: 10
     singleDamage: {x: 250, y: 250}
     range: {x: 50, y: 50}
@@ -57,8 +57,8 @@ MonoBehaviour:
     sputteringRadius: {x: 25, y: 25}
     sputteringDamage: {x: 250, y: 0}
   skills:
-  - skillNameZH: "\u7A7A\u6295"
-    skillNameEN: 
+  - skillNameZh: "\u7A7A\u6295"
+    skillNameEn: 
     icon: {fileID: 0}
     commentChinese: "\u628A\u6B65\u5175\u4EEC\u8E22\u51FA\u4E16\u7EAA\u8F70\u70B8\u673A\u3002\u522B\u62C5\u5FC3,\u4ED6\u4EEC\u6709\u964D\u843D\u4F1E\u3002"
     skillCooling: 10

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.UIElements;
 using System.IO;
+using System.Reflection;
 using GameData.Script.Enum;
 using NPOI.XSSF.UserModel;
 using Object = UnityEngine.Object;
@@ -41,7 +42,7 @@ public class DataManager : EditorWindow
 
         var updateDropdownButton = rootVisualElement.Q<DropdownField>("UpdateDropDownField");
         updateDropdownButton.choices = new List<string>()
-            { "Update", "MainBuilding", "OtherBuilding", "Element", "Armor", "All" };
+            { "Update", "MainBuilding", "OtherBuilding", "Army", "Armor", "All" };
         updateDropdownButton.RegisterValueChangedCallback(evt => UpGameData(evt.newValue));
 
 
@@ -57,12 +58,20 @@ public class DataManager : EditorWindow
             SerializedObject serializedObject = new SerializedObject(scriptableObject);
             SerializedProperty serializedProperty = serializedObject.GetIterator();
             serializedProperty.Next(true);
+            List<PropertyField> properties = new List<PropertyField>();
             while (serializedProperty.NextVisible(true))
             {
                 PropertyField propertyField = new PropertyField(serializedProperty);
                 propertyField.Bind(serializedObject);
+                properties.Add(propertyField);
+            }
+
+            foreach (var propertyField in properties.Distinct())
+            {
                 _scrollView.Add(propertyField);
             }
+            
+
         };
         _factionButton = rootVisualElement.Q<Button>("FactionBTN");
         _mBButton = rootVisualElement.Q<Button>("MainBuildingBTN");
@@ -119,7 +128,7 @@ public class DataManager : EditorWindow
             return;
         }
 
-        if (updateType == "Element")
+        if (updateType == "Army")
         {
             UpArmyData();
             return;

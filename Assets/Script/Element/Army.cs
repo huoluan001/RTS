@@ -1,8 +1,13 @@
+
+using Animancer;
 using UnityEngine;
+
 
 public class Army : Unit
 {
-    public Vector3 moveTarget;
+    public ArmySo armySo;
+    public Vector3? MoveTarget = null;
     public Unit attackTarget;
-    public MoveModel currentMoveModel;
+
+    public Weapon currentWeapon;
 }

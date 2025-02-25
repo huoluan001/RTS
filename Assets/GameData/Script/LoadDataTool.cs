@@ -101,7 +101,7 @@ public static class LoadDataTool
     #endregion
     public static readonly string MainBuildingsFolderPath = "/GameData/MainBuildings";
     public static readonly string OtherBuildingsFolderPath = "/GameData/OtherBuildings";
-    public static readonly string ArmyFolderPath = "/GameData/Element";
+    public static readonly string ArmyFolderPath = "/GameData/Army";
     public static readonly string ArmorTypeFolderPath = "/GameData/ArmorType";
     public static readonly string ExcelFilePath = "Assets/GameData/RTS.xlsx";
     public static readonly string FactionDBPath = "/GameData/Factions";
@@ -152,7 +152,7 @@ public static class LoadDataTool
                {
                    SequenceType.MainBuildingSequence => "/MainBuilding",
                    SequenceType.OtherBuildingSequence => "/OtherBuilding",
-                   _ => "/Element",
+                   _ => "/Army",
                };
     }
 

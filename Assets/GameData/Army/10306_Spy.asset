@@ -46,8 +46,8 @@ MonoBehaviour:
   - {fileID: 0}
   weapons: []
   skills:
-  - skillNameZH: "\u8D3F\u8D42"
-    skillNameEN: 
+  - skillNameZh: "\u8D3F\u8D42"
+    skillNameEn: 
     icon: {fileID: 0}
     commentChinese: "\u4EE5\u8D85\u4F4E\u8D39\u7528\uFF081000$\uFF09\u8BF4\u670D\u9644\u8FD165\u8303\u56F4\u5185\u7684\u654C\u4EBA\u53DB\u53D8\u3002\u8C01\u8BF4\u5FE0\u8BDA\u4E0D\u80FD\u6536\u4E70\uFF1F"
     skillCooling: 10
