@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Script.Element;
 
 public class SoldierFsmSystem
 {

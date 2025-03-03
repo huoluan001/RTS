@@ -1,7 +1,8 @@
-namespace Script.Element
+using System;
+
+public class Building : Unit
 {
-    public class Building : Unit
+    private void Start()
     {
-        
     }
 }

@@ -407,7 +407,7 @@ namespace ParadoxNotion.Design
         ///<summary>A Type.FullName to documentation lookup</summary>
         private static Dictionary<string, string> typeDocs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        ///<summary>Get documentation for type fetched either by the [Description] attribute, or it's xml doc.</summary>
+        ///<summary>Get documentation for type fetched either by the [Description] attribute, or it's xml 文档.</summary>
         public static string GetTypeDoc(MemberInfo info) {
             if ( info == null ) { return null; }
             var type = info is Type ? info as Type : info.ReflectedType;

@@ -1,7 +1,8 @@
-namespace Script.Element
+using System;
+
+public class Vehicle : Army
 {
-    public class Vehicle : Army
+    private void Start()
     {
-        
     }
 }

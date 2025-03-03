@@ -1,0 +1,5 @@
+
+public class Aircraft : Vehicle
+{
+    
+}

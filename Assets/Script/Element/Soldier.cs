@@ -4,8 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Script.Element
-{
     public class Soldier : Army
     {
         private SoldierFsmSystem _fsmSystem;
@@ -85,4 +83,3 @@ namespace Script.Element
             bulletLoadMotion.Events.Add(MOTION_END_TIME, callback);
         }
     }
-}
