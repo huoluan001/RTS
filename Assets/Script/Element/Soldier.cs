@@ -1,6 +1,8 @@
 using System;
 using Animancer;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Script.Element
 {
@@ -16,13 +18,18 @@ namespace Script.Element
         [SerializeField] private ClipTransition aimMotion;
         [SerializeField] private ClipTransition fireMotion;
         [SerializeField] private ClipTransition bulletLoadMotion;
-        public Action 
+        private AnimancerLayer _mainLayer;
+        private AnimancerLayer _upBodyLayer;
+        public AvatarMask upBodyMask;
 
-        protected void Start()
+        private void Start()
         {
             currentWeapon = armySo.Weapons[0];
-            _fsmSystem = new SoldierFsmSystem(armySo, this);
             MotionParameterUpdate();
+            _fsmSystem = new SoldierFsmSystem(armySo, this);
+            
+
+            
             TargetChangedCallBack += _fsmSystem.CheckTransition;
         }
 
@@ -31,27 +38,30 @@ namespace Script.Element
             // _fsmSystem.CurrentSoldierState.Run();
         }
 
-        public void PlayIdleMotion() => animancer.Play(idleMotion);
+        public void PlayIdleMotion()
+        {
+            _upBodyLayer.SetWeight(0f);
+            _mainLayer.Play(idleMotion);
+        }
 
-        public void PlayMoveMotion() => animancer.Play(moveMotion);
+        public void PlayMoveMotion() => _mainLayer.Play(moveMotion);
 
         // public void PlayDeathMotion() => _mainMotionLayer.Play(deathMotion);
         // public void PlayProstrateMotion() => _mainMotionLayer.Play(prostrateMotion);
         // public void PlayDanglingMotion() => _mainMotionLayer.Play(danglingMotion);
         // public void PlayAimMotion() => _mainMotionLayer.Play(aimMotion);
-        public void PlayFireMotion() => animancer.Play(fireMotion);
-
-        public void PlayBulletLoadMotion() => animancer.Play(bulletLoadMotion);
-        
-        public void PlayBulletLoadAnimationInUpBody(Action callback)
+        public void PlayFireMotion()
         {
-            bulletLoadMotion.Events.Clear();
-            if (callback != null)
-            {
-                
-            }
-            bulletLoadMotion.Events.Add(0.99999f, callback);
-            animancer.Play(bulletLoadMotion);
+            _upBodyLayer.SetWeight(0f);
+            var state = _mainLayer.Play(fireMotion);
+            state.Time = 0;
+        }
+
+        public void PlayBulletLoadMotion()
+        {
+            _upBodyLayer.SetWeight(1f);
+            var state = _upBodyLayer.Play(bulletLoadMotion);
+            state.Time = 0;
         }
 
 
@@ -59,12 +69,20 @@ namespace Script.Element
         {
             fireMotion.Speed = fireMotion.Length / currentWeapon.FiringDuration;
             bulletLoadMotion.Speed = bulletLoadMotion.Length / currentWeapon.MagazineLoadingTime;
-            if (fireMotion.Events.Count == 0)
-                fireMotion.Events.Add(0.999999f, FireCallback);
-            if (bulletLoadMotion.Events.Count == 0)
-            {
-                bulletLoadMotion.Events.Add(0.999999f, BulletLoadCallback);
-            }
+            _mainLayer = animancer.Layers[0];
+            _upBodyLayer = animancer.Layers[1];
+            _upBodyLayer.SetMask(upBodyMask);
+            _upBodyLayer.SetWeight(0f);
+        }
+
+        public void FireMotionAddCallBack(Action callback)
+        {
+            fireMotion.Events.Add(MOTION_END_TIME, callback);
+        }
+
+        public void BulletLoadMotionAddCallBack(Action callback)
+        {
+            bulletLoadMotion.Events.Add(MOTION_END_TIME, callback);
         }
     }
 }

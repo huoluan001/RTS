@@ -29,7 +29,7 @@ public class SoldierFsmSystem
         CurrentSoldierState = state_Map[state];
         CurrentSoldierState.Enter();
     }
-    
+
     public void CheckTransition()
     {
         // 如果没有攻击目标和移动目标，则保持Idle
@@ -38,12 +38,14 @@ public class SoldierFsmSystem
             SwitchState(SoldierState.Idle);
             return;
         }
+
         // 如果有移动目标，切换到Move状态
         if (!Soldier.MoveTargetIsNull())
         {
             SwitchState(SoldierState.Move);
             return;
         }
+
         // 如果有攻击目标且在攻击范围内，切换到Attack状态
         SwitchState(Soldier.AttackTargetInRange() ? SoldierState.Attack : SoldierState.Move);
     }
@@ -87,6 +89,7 @@ public class IdleSoldierFsmState : ISoldierFsmState
     {
     }
 }
+
 public class MoveSoldierFsmState : ISoldierFsmState
 {
     private float _moveSpeed;
@@ -107,7 +110,7 @@ public class MoveSoldierFsmState : ISoldierFsmState
     public void Run()
     {
         var targetPos = _soldier.GetMovePos();
-        if(targetPos == null)
+        if (targetPos == null)
             return;
         var moveDir = targetPos - _soldier.transform.position;
         _soldier.transform.Translate(moveDir.Value * (_moveSpeed * Time.deltaTime));
@@ -117,18 +120,27 @@ public class MoveSoldierFsmState : ISoldierFsmState
     {
     }
 }
+
 public class AttackSoldierFsmState : ISoldierFsmState
 {
     private readonly SoldierFsmSystem _soldierFsmSystem;
     private readonly Soldier _soldier;
     private Weapon _weapon;
     private float _fireTime;
-    
+
     private float _bulletLoadTime;
     private float _aimTime;
     private int _maxBulletCount;
     private int _currentBulletCount;
-
+    
+    public AttackSoldierFsmState(SoldierFsmSystem soldierFsmSystem)
+    {
+        _soldierFsmSystem = soldierFsmSystem;
+        _soldier = _soldierFsmSystem.Soldier;
+        WeaponChanged(_soldier.currentWeapon);
+        _soldier.FireMotionAddCallBack(FireCallBack);
+        _soldier.BulletLoadMotionAddCallBack(BulletLoadCallBack);
+    }
 
     private void WeaponChanged(Weapon weapon)
     {
@@ -139,16 +151,6 @@ public class AttackSoldierFsmState : ISoldierFsmState
         _maxBulletCount = weapon.magazineSize;
         _currentBulletCount = _maxBulletCount;
     }
-    
-    public AttackSoldierFsmState(SoldierFsmSystem soldierFsmSystem)
-    {
-        _soldierFsmSystem = soldierFsmSystem;
-        _soldier = _soldierFsmSystem.Soldier;
-        WeaponChanged(_soldier.currentWeapon);
-
-        _soldier.FireCallback += FireCallBack;
-        _soldier.BulletLoadCallback += BulletLoadCallBack;
-    }
 
     private void FireCallBack()
     {
@@ -157,17 +159,20 @@ public class AttackSoldierFsmState : ISoldierFsmState
         {
             _soldier.PlayBulletLoadMotion();
         }
+        else
+        {
+            _soldier.PlayFireMotion();
+        }
     }
 
     private void BulletLoadCallBack()
     {
         _currentBulletCount = _maxBulletCount;
-        
+
         if (_soldierFsmSystem.CurrentSoldierState == this)
         {
             _soldier.PlayFireMotion();
         }
-        
     }
 
     public void Enter()
@@ -184,14 +189,13 @@ public class AttackSoldierFsmState : ISoldierFsmState
 
     public void Run()
     {
-
     }
 
     public void Exit()
     {
         if (_currentBulletCount == _maxBulletCount)
         {
-            _soldier.PlayBulletLoadAnimationInUpBody();
+            _soldier.PlayBulletLoadMotion();
         }
     }
 }

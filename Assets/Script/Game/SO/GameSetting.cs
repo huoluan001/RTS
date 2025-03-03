@@ -7,4 +7,6 @@ public class GameSetting : ScriptableObject
     [Range(0,10)] public int selectionBoxLineWidth;
 
     public ShowLanguage asas;
+    
+    
 }

@@ -49,10 +49,10 @@ MonoBehaviour:
     damageType: 3
     singleDamage: {x: 25, y: 40}
     range: {x: 150, y: 150}
-    magazineSize: 5
-    magazineLoadingTime: {x: 1, y: 1}
+    magazineSize: 1
+    magazineLoadingTime: {x: 3, y: 3}
     aimingTime: {x: 0, y: 0}
-    firingDuration: {x: 0.5, y: 0.5}
+    firingDuration: {x: 3, y: 3}
     sputteringRadius: {x: 5, y: 5}
     sputteringDamage: {x: 25, y: 40}
   skills:
