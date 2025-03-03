@@ -1,3 +1,4 @@
+using System;
 using Animancer;
 using UnityEngine;
 
@@ -7,48 +8,63 @@ namespace Script.Element
     {
         private SoldierFsmSystem _fsmSystem;
 
-        [Header("Motion")] 
-        public ClipTransition idleMotion;
-        public ClipTransition moveMotion;
-        
-        public ClipTransition aimMotion;
-        public ClipTransition fireMotion;
-        public ClipTransition bulletLoadMotion;
-        public ClipTransition deathMotion;
-        
+        [Header("Motion")] [SerializeField] private ClipTransition idleMotion;
+        [SerializeField] private ClipTransition moveMotion;
+        [SerializeField] private ClipTransition deathMotion;
+        [SerializeField] private ClipTransition prostrateMotion; // 匍匐
+        [SerializeField] private ClipTransition danglingMotion; // 悬空
+        [SerializeField] private ClipTransition aimMotion;
+        [SerializeField] private ClipTransition fireMotion;
+        [SerializeField] private ClipTransition bulletLoadMotion;
+        public Action 
 
         protected void Start()
         {
-            animancer = GetComponent<AnimancerComponent>();
             currentWeapon = armySo.Weapons[0];
-            
-            MoveTarget = null;
             _fsmSystem = new SoldierFsmSystem(armySo, this);
-            
+            MotionParameterUpdate();
+            TargetChangedCallBack += _fsmSystem.CheckTransition;
         }
 
         public void Update()
         {
-            _fsmSystem.CheckTransition();
-            _fsmSystem.CurrentSoldierState.Run();
+            // _fsmSystem.CurrentSoldierState.Run();
         }
 
-        public bool AttackTargetInRange()
+        public void PlayIdleMotion() => animancer.Play(idleMotion);
+
+        public void PlayMoveMotion() => animancer.Play(moveMotion);
+
+        // public void PlayDeathMotion() => _mainMotionLayer.Play(deathMotion);
+        // public void PlayProstrateMotion() => _mainMotionLayer.Play(prostrateMotion);
+        // public void PlayDanglingMotion() => _mainMotionLayer.Play(danglingMotion);
+        // public void PlayAimMotion() => _mainMotionLayer.Play(aimMotion);
+        public void PlayFireMotion() => animancer.Play(fireMotion);
+
+        public void PlayBulletLoadMotion() => animancer.Play(bulletLoadMotion);
+        
+        public void PlayBulletLoadAnimationInUpBody(Action callback)
         {
-            var distance = Vector3.Distance(transform.position, attackTarget.transform.position);
-            return distance < currentWeapon.Range;
+            bulletLoadMotion.Events.Clear();
+            if (callback != null)
+            {
+                
+            }
+            bulletLoadMotion.Events.Add(0.99999f, callback);
+            animancer.Play(bulletLoadMotion);
         }
 
-        public void AddAttackTarget(Unit target)
-        {
-            attackTarget = target;
-            MoveTarget = null;
-        }
 
-        public void AddMoveTarget(Vector3 target)
+        private void MotionParameterUpdate()
         {
-            MoveTarget = target;
-            attackTarget = null;
+            fireMotion.Speed = fireMotion.Length / currentWeapon.FiringDuration;
+            bulletLoadMotion.Speed = bulletLoadMotion.Length / currentWeapon.MagazineLoadingTime;
+            if (fireMotion.Events.Count == 0)
+                fireMotion.Events.Add(0.999999f, FireCallback);
+            if (bulletLoadMotion.Events.Count == 0)
+            {
+                bulletLoadMotion.Events.Add(0.999999f, BulletLoadCallback);
+            }
         }
     }
 }

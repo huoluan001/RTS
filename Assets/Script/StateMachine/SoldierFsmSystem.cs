@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 using Script.Element;
-using Animancer;
 
 public class SoldierFsmSystem
 {
@@ -10,8 +8,6 @@ public class SoldierFsmSystem
     public ISoldierFsmState CurrentSoldierState = null;
     public ArmySo ArmySo;
     public readonly Soldier Soldier;
-    public AnimancerComponent animancer;
-    private IDisposable _disposableImplementation;
 
     public SoldierFsmSystem(ArmySo armySo, Soldier soldier)
     {
@@ -24,15 +20,11 @@ public class SoldierFsmSystem
             { SoldierState.Attack, new AttackSoldierFsmState(this) }
         };
         CurrentSoldierState = state_Map[SoldierState.Idle];
-        animancer = soldier.animancer;
-        animancer.Play(soldier.idleMotion);
-        animancer.Playable.ApplyAnimatorIK = true;
+        soldier.PlayIdleMotion();
     }
 
-    public void SwitchState(SoldierState state)
+    private void SwitchState(SoldierState state)
     {
-        if (CurrentSoldierState == state_Map[state])
-            return;
         CurrentSoldierState.Exit();
         CurrentSoldierState = state_Map[state];
         CurrentSoldierState.Enter();
@@ -40,16 +32,14 @@ public class SoldierFsmSystem
     
     public void CheckTransition()
     {
-        if(animancer.Layers[0].CurrentState.Clip == Soldier.fireMotion.Clip)
-            return;
         // 如果没有攻击目标和移动目标，则保持Idle
-        if (Soldier.attackTarget is null && !Soldier.MoveTarget.HasValue)
+        if (Soldier.AttackTargetIsNull() && Soldier.MoveTargetIsNull())
         {
             SwitchState(SoldierState.Idle);
             return;
         }
         // 如果有移动目标，切换到Move状态
-        if (Soldier.MoveTarget.HasValue)
+        if (!Soldier.MoveTargetIsNull())
         {
             SwitchState(SoldierState.Move);
             return;
@@ -86,7 +76,7 @@ public class IdleSoldierFsmState : ISoldierFsmState
 
     public void Enter()
     {
-        _soldierFsmSystem.animancer.Play(_soldier.idleMotion);
+        _soldier.PlayIdleMotion();
     }
 
     public void Run()
@@ -111,14 +101,16 @@ public class MoveSoldierFsmState : ISoldierFsmState
 
     public void Enter()
     {
-        _soldierFsmSystem.animancer.Play(_soldier.moveMotion);
+        _soldier.PlayMoveMotion();
     }
 
     public void Run()
     {
-        var targetPos = _soldier.MoveTarget ?? _soldier.attackTarget.transform.position;
-        var moveDir = (targetPos - _soldier.transform.position);
-        _soldier.transform.Translate(moveDir * (_moveSpeed * Time.deltaTime));
+        var targetPos = _soldier.GetMovePos();
+        if(targetPos == null)
+            return;
+        var moveDir = targetPos - _soldier.transform.position;
+        _soldier.transform.Translate(moveDir.Value * (_moveSpeed * Time.deltaTime));
     }
 
     public void Exit()
@@ -153,11 +145,9 @@ public class AttackSoldierFsmState : ISoldierFsmState
         _soldierFsmSystem = soldierFsmSystem;
         _soldier = _soldierFsmSystem.Soldier;
         WeaponChanged(_soldier.currentWeapon);
-        
-        _soldier.fireMotion.Speed = _soldier.fireMotion.Length / _fireTime;
-        _soldier.fireMotion.Events.Add(0.999999f, FireCallBack);
-        _soldier.bulletLoadMotion.Speed = _soldier.bulletLoadMotion.Length / _bulletLoadTime;
-        _soldier.bulletLoadMotion.Events.Add(0.999999f, BulletLoadCallBack);
+
+        _soldier.FireCallback += FireCallBack;
+        _soldier.BulletLoadCallback += BulletLoadCallBack;
     }
 
     private void FireCallBack()
@@ -165,25 +155,30 @@ public class AttackSoldierFsmState : ISoldierFsmState
         _currentBulletCount--;
         if (_currentBulletCount == 0)
         {
-            _soldierFsmSystem.animancer.Play(_soldier.bulletLoadMotion);
+            _soldier.PlayBulletLoadMotion();
         }
     }
 
     private void BulletLoadCallBack()
     {
         _currentBulletCount = _maxBulletCount;
-        _soldierFsmSystem.animancer.Play(_soldier.fireMotion);
+        
+        if (_soldierFsmSystem.CurrentSoldierState == this)
+        {
+            _soldier.PlayFireMotion();
+        }
+        
     }
 
     public void Enter()
     {
         if (_currentBulletCount == 0)
         {
-            _soldierFsmSystem.animancer.Play(_soldier.bulletLoadMotion);
+            _soldier.PlayBulletLoadMotion();
         }
         else
         {
-            _soldierFsmSystem.animancer.Play(_soldier.fireMotion);
+            _soldier.PlayFireMotion();
         }
     }
 
@@ -194,5 +189,9 @@ public class AttackSoldierFsmState : ISoldierFsmState
 
     public void Exit()
     {
+        if (_currentBulletCount == _maxBulletCount)
+        {
+            _soldier.PlayBulletLoadAnimationInUpBody();
+        }
     }
 }

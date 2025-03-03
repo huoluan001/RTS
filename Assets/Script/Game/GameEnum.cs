@@ -20,18 +20,13 @@ namespace UnityEngine
     {
         English, Chinese
     }
-    // 技能属性
-    public enum SkillAttributes
-    {
-        MorphologicalTransformation,    // 形态转换
-        ShortGain,   // 短暂增益
-        PointToPoint,   // 点对点
-    }
+    
     // 军队等级
     public enum Level
     {
         None, One, Two, Star
     }
+    
     // 攻击模式
     public enum AttackModel
     {
@@ -50,14 +45,6 @@ namespace UnityEngine
     }
     
 
-    // 命令类型
-    public enum CommandType
-    {
-        Stop,               // 停止，什么都不需要
-        ForcedAttack,       // 强制攻击，需要position或gameobject
-        AdvanceAttack,      // 行进攻击，需要position
-    }
-
     public enum Technology
     {
         T1, T2, T3, T4
@@ -70,16 +57,7 @@ namespace UnityEngine
         Default,
         New
     }
-    public enum SequenceType
-    {
-        None = 0,
-        MainBuildingSequence = 1,
-        OtherBuildingSequence = 2,
-        InfantrySequence = 3,
-        VehicleSequence = 4,
-        DockSequence = 5,
-        AircraftSequence = 6
-    }
+
     public enum TaskState
     {
         Waiting,
